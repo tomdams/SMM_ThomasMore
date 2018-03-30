@@ -33,7 +33,24 @@ namespace SMM_ThomasMore.BL
             repo.addAlert(alert);
         }
 
-        public void sendAlerts(Element element)
+    public bool Valideer(string wachtwoord, string wachtwoordHerhaling,string email)
+    {
+      try { 
+      var addr = new System.Net.Mail.MailAddress(email);
+      }
+      catch
+      {
+        return false;
+      }
+      if (wachtwoord.Equals(wachtwoordHerhaling))
+      {
+        return true;
+      }
+      return false;
+    }
+
+    
+    public void sendAlerts(Element element)
         {
             IEnumerable<AlertInstellingen> ai = repo.GetAlertInstellingen();
 
@@ -78,5 +95,11 @@ namespace SMM_ThomasMore.BL
         {
           repo.AddAi(ai);
         }
+
+    public void AddUser(User user)
+    {
+      repo.AddUser(user);
+
+    }
   }
 }

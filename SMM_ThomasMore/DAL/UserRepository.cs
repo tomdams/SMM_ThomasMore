@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SMM_ThomasMore.Domain;
 using SMM_ThomasMore.DAL.EF;
-
+using SMM_ThomasMore.Domain;
 namespace SMM_ThomasMore.DAL
 {
   public class UserRepository : IUserRepository
@@ -21,7 +20,14 @@ namespace SMM_ThomasMore.DAL
             uctx.SaveChanges();
         }
 
-        public IEnumerable<AlertInstellingen> GetAlertInstellingen()
+    public void AddUser(User u)
+    {
+      uctx.Users.Add(u);
+      uctx.SaveChanges();
+    }
+
+
+    public IEnumerable<AlertInstellingen> GetAlertInstellingen()
         {
            return uctx.AlertInstellingen.ToList<AlertInstellingen>();
         }
@@ -36,5 +42,7 @@ namespace SMM_ThomasMore.DAL
           uctx.AlertInstellingen.Add(ai);
           uctx.SaveChanges();
         }
-    }
+
+  
+  }
 }

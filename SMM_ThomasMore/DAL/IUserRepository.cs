@@ -9,5 +9,6 @@ namespace SMM_ThomasMore.DAL
         IEnumerable<AlertInstellingen> GetAlertInstellingen();
         void addAlert(Alert a);
         void AddAi(AlertInstellingen ai);
+        void AddUser(User u);
    }
 }

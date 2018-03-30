@@ -12,6 +12,7 @@ namespace SMM_ThomasMore.DAL.EF
             id = 1,
             email = "random@random.be",
             wachtwoord = "wachtwoord1",
+            compareWachtwoord = "wachtwoord1",
             username = "User 1 ",
             type = UserType.ADMIN
           };
@@ -20,6 +21,7 @@ namespace SMM_ThomasMore.DAL.EF
             id = 2,
             email = "random2@random.be",
             wachtwoord = "wachtwoord2",
+            compareWachtwoord = "wachtwoord2",
             username = "User 2",
             type = UserType.ADMIN
           };
@@ -29,6 +31,7 @@ namespace SMM_ThomasMore.DAL.EF
             id = 3,
             email = "random3@random.be",
             wachtwoord = "wachtwoord3",
+            compareWachtwoord = "wachtwoord3",
             username = "User 3",
             type = UserType.ADMIN
           };
@@ -38,6 +41,7 @@ namespace SMM_ThomasMore.DAL.EF
             id = 4,
             email = "random4@random.be",
             wachtwoord = "wachtwoord4",
+            compareWachtwoord = "wachtwoord4",
             username = "User 4",
             type = UserType.ADMIN
           };
@@ -46,6 +50,7 @@ namespace SMM_ThomasMore.DAL.EF
             id = 5,
             email = "random5@random.be",
             wachtwoord = "wachtwoord5",
+            compareWachtwoord = "wachtwoord5",
             username = "User 5",
             type = UserType.ADMIN
           };

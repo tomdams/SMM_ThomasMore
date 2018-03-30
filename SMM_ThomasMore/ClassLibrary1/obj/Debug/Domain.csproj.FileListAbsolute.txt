@@ -1,0 +1,23 @@
+C:\Users\Mario\Documents\school\integratie\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\school\integratie\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Documents\school\integratie\ThomasMore\ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Documents\school\integratie\ThomasMore\ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Documents\school\integratie\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Documents\school\integratie\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\Domain\bin\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\Domain\bin\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\School\2\Integratie\Project\SMM_ThomasMore\Domain\obj\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\Domain\obj\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\School\2\Integratie\Project\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\School\2\Integratie\Project\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb

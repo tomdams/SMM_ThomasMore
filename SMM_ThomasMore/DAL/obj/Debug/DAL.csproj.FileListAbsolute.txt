@@ -25,3 +25,15 @@ C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Projec
 C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\DAL\obj\Debug\SC.DAL.dll
 C:\Users\Bertg\Desktop\School\Toegepaste Informatica 2017-2018\Integratie Project\ThomasMore\ThomasMore\DAL\obj\Debug\SC.DAL.pdb
 C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll.config
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.xml
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

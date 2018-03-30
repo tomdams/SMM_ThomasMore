@@ -1,0 +1,41 @@
+﻿
+@model SMM_ThomasMore.Models.UserVM
+
+@{
+    ViewBag.Title = "Registreren";
+}
+
+<h2>Registreren</h2>
+
+
+@using (Html.BeginForm())
+{
+  @Html.AntiForgeryToken()
+<ul class="list-unstyled">
+
+    <li>
+        @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Gebruikersnaam" } })
+    </li>
+    <li>
+        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "Wachtwoord" } })
+    </li>
+    <li>
+        @Html.EditorFor(model => model.compareWachtwoord, new { htmlAttributes = new { placeholder = "Herhaal wachtwoord" } })
+    </li>
+    <li>
+        @Html.EditorFor(model => model.email, new { htmlAttributes = new { placeholder = "E-mailadres" } })
+    </li>
+    <li>
+        <input type="submit" value="Registreer">
+    </li>
+    <li>
+        <button>Registreer met Facebook</button>
+    </li>
+    <li>
+        <button>Registreer met Google+</button>
+    </li>
+</ul>
+
+
+
+}
