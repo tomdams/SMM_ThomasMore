@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e2120f</color>
+    <color name="colorPrimaryDark">#9f0202</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="facebookBlue">#3F5990</color>
+    <color name="twitterBlue">#29C5F6</color>
+    <color name="googleRed">#D04E2F</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="editTextBG">#dadada</color>
+
+    <color name="textColor">#6e6e6e</color>
+
+</resources>
