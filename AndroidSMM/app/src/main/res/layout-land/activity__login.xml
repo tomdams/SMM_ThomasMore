@@ -12,8 +12,8 @@
         android:layout_marginLeft="20dp"
         android:layout_centerInParent="true"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
         app:cardPreventCornerOverlap="false"
@@ -32,39 +32,8 @@
 
                 android:background="@color/colorPrimary">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/circle"
-                    android:padding="10dp"
-                    android:src="@drawable/img_authentication"
-                    android:tint="@color/white"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-medium"
-                    android:layout_marginBottom="22dp"
-                    android:layout_marginTop="10dp"
-                    android:text="LOGIN"
-
-                    android:textSize="20sp" />
 
             </LinearLayout>
-            
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="20dp"
-                android:layout_below="@id/linearLayout"
-                android:src="@drawable/square"
-                android:layout_marginTop="-10dp"
-                android:layout_centerHorizontal="true"
-                android:rotation="45"
-                android:layout_height="20dp"
-                />
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
@@ -228,18 +197,12 @@
                     android:layout_width="50dp"
                     android:src="@drawable/img_googleplus"
                     android:padding="10dp"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"/>
             </LinearLayout>
 
 
-            <TextView
-                android:layout_below="@id/linearLayout1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:text="Don't have an account? Sign up at our website!"/>
+
         </RelativeLayout>
 
 
