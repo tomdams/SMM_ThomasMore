@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SMM_ThomasMore.Domain
 {
+    
     public class User
     {
         public int id { get; set; }
@@ -15,12 +16,11 @@ namespace SMM_ThomasMore.Domain
         public string wachtwoord { get; set; }
         public string username { get; set; }
         public UserType type { get; set; }
-        [NotMapped]
-        [Required(ErrorMessage ="Wachtwoord moet herhaald worden!")]
-        [CompareAttribute("wachtwoord", ErrorMessage ="Wachtwoorden komen niet overeen!")]
         public string compareWachtwoord { get; set; }
 
 
         
     }
+
+ 
 }

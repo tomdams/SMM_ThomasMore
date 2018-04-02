@@ -12,18 +12,23 @@
 {
   @Html.AntiForgeryToken()
 <ul class="list-unstyled">
-
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <li>
-        @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Gebruikersnaam" } })
+        @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Gebruikersnaam", @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
     </li>
     <li>
-        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "Wachtwoord" } })
+        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "Wachtwoord", @class = "form-control", Type = "password" } })
+        @Html.ValidationMessageFor(model => model.wachtwoord, "", new { @class = "text-danger" })
     </li>
     <li>
-        @Html.EditorFor(model => model.compareWachtwoord, new { htmlAttributes = new { placeholder = "Herhaal wachtwoord" } })
+        @Html.EditorFor(model => model.compareWachtwoord, new { htmlAttributes = new { placeholder = "Herhaal wachtwoord" , @class = "form-control", Type="password" } })
+        @Html.ValidationMessageFor(model => model.compareWachtwoord, "", new { @class = "text-danger" })
+      
     </li>
     <li>
-        @Html.EditorFor(model => model.email, new { htmlAttributes = new { placeholder = "E-mailadres" } })
+        @Html.EditorFor(model => model.email, new { htmlAttributes = new { placeholder = "E-mailadres", @class = "form-control" } }) 
+        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
     </li>
     <li>
         <input type="submit" value="Registreer">

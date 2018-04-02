@@ -1,19 +1,24 @@
-﻿
+﻿@model SMM_ThomasMore.Models.UserVM
 @{
     ViewBag.Title = "Aanmelden";
 }
 
 <h2>Aanmelden</h2>
 
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+
 <ul class="list-unstyled">
     <li>
-        <input type="text" placeholder="Gebruikersnaam"/> 
+        @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Gebruikersnaam" } })
     </li>
     <li>
-        <input type="password" placeholder="Wachtwoord"/>
+        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "Wachtwoord" } })
     </li>
     <li>
-        <button>Login</button>
+        <input type="submit" value="Meld aan">
     </li>
     <li>
         <button>Login met Facebook</button>
@@ -22,7 +27,7 @@
         <button>Login met Google+</button>
     </li>
 </ul>
-
+}
 
 
 

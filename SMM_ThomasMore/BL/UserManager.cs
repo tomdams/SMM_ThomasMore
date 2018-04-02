@@ -33,21 +33,15 @@ namespace SMM_ThomasMore.BL
             repo.addAlert(alert);
         }
 
-    public bool Valideer(string wachtwoord, string wachtwoordHerhaling,string email)
-    {
-      try { 
-      var addr = new System.Net.Mail.MailAddress(email);
-      }
-      catch
+    
+
+    /*  public bool isUser(string username, string wachtwoord)
       {
-        return false;
-      }
-      if (wachtwoord.Equals(wachtwoordHerhaling))
-      {
-        return true;
-      }
-      return false;
-    }
+        foreach (var item in collection)
+        {
+
+        }
+      }*/
 
     
     public void sendAlerts(Element element)

@@ -24,8 +24,20 @@ namespace SMM_ThomasMore.Controllers
         {
             return View();
         }
-        
-        public ActionResult RegistrerenPage()
+
+    /*[HttpPost]
+    public ActionResult AanmeldenPage(UserVM userVM)
+    {
+      if (ModelState.IsValid)
+      {
+        if (umgr.isUser(userVM.username, userVM.wachtwoord))
+        {
+
+        }
+        return View();
+    }*/
+
+    public ActionResult RegistrerenPage()
         {
           return View();
         }
@@ -35,7 +47,6 @@ namespace SMM_ThomasMore.Controllers
        {
       if (ModelState.IsValid)
       {
-          if (umgr.Valideer(userVM.wachtwoord, userVM.compareWachtwoord, userVM.email)) {
           User newUser = new User()
           {
             wachtwoord = userVM.wachtwoord,
@@ -44,10 +55,10 @@ namespace SMM_ThomasMore.Controllers
             username = userVM.username
           };
           umgr.AddUser(newUser);
-         
-          return View("~/Views/Home/Index.cshtml");
-          }
-      }
+        
+
+        return View("~/Views/Home/Index.cshtml");
+        }
         return View();
        }
          
