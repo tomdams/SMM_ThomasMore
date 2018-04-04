@@ -6,44 +6,47 @@ using SMM_ThomasMore.Domain;
 
 namespace SMM_ThomasMore.BL
 {
-  public  class UserManager : IUserManager
+  public class UserManager : IUserManager
+  {
+    private IUserRepository repo;
+    public UserManager()
     {
-        private IUserRepository repo;
-        public UserManager()
-        {
-            repo = new UserRepository();
-        }
+      repo = new UserRepository();
+    }
 
-        public void sendAlert(User user, Element element, AlertType alertType)
-        {
+    public void sendAlert(User user, Element element, AlertType alertType)
+    {
 
-            if (alertType == AlertType.MAIL) {
-                this.sendMail(user, element);
-            }
-            if (alertType == AlertType.MOBILENOTIFICATION)
-            {
-                this.sendMobileNotification(user, element);
-            }
-            if (alertType == AlertType.NOTIFICATION)
-            {
-                this.sendNotification(user, element);
-            }
-
-            Alert alert = new Alert(alertType, "", user, element);
-            repo.addAlert(alert);
-        }
-
-    
-
-    /*  public bool isUser(string username, string wachtwoord)
+      if (alertType == AlertType.MAIL) {
+        this.sendMail(user, element);
+      }
+      if (alertType == AlertType.MOBILENOTIFICATION)
       {
-        foreach (var item in collection)
+        this.sendMobileNotification(user, element);
+      }
+      if (alertType == AlertType.NOTIFICATION)
+      {
+        this.sendNotification(user, element);
+      }
+
+      Alert alert = new Alert(alertType, "", user, element);
+      repo.addAlert(alert);
+    }
+
+    public User getUser(string username, string wachtwoord)
+    {
+      foreach (User u in repo.getUsers().ToList())
+      {
+        if (u.username.Equals(username) && u.wachtwoord.Equals(wachtwoord))
         {
-
+          return u;
         }
-      }*/
+      }
+      return null;
+    }
+  
 
-    
+       
     public void sendAlerts(Element element)
         {
             IEnumerable<AlertInstellingen> ai = repo.GetAlertInstellingen();
@@ -74,8 +77,7 @@ namespace SMM_ThomasMore.BL
 
         public User Aanmelden(string username)
         {
-            List<User> users = repo.getUsers().ToList();
-            foreach(User u in users)
+            foreach(User u in repo.getUsers().ToList())
             {
               if (u.username.Equals(username))
               {

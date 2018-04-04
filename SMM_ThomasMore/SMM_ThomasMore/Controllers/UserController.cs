@@ -1,18 +1,22 @@
 ﻿using SMM_ThomasMore.BL;
 using SMM_ThomasMore.Domain;
 using SMM_ThomasMore.Models;
+using SMM_ThomasMore.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SMM_ThomasMore.Controllers
 {
+
     public class UserController : Controller
     {
     public User currentUser { get; set; }
     private UserManager umgr;
+    SessionContext context = new SessionContext();
 
     public UserController()
     {
@@ -25,17 +29,23 @@ namespace SMM_ThomasMore.Controllers
             return View();
         }
 
-    /*[HttpPost]
-    public ActionResult AanmeldenPage(UserVM userVM)
+    [HttpPost]
+    public ActionResult AanmeldenPage(LoginVM loginVM)
     {
+     
       if (ModelState.IsValid)
       {
-        if (umgr.isUser(userVM.username, userVM.wachtwoord))
+        User authenticatedUser = umgr.getUser(loginVM.username, loginVM.wachtwoord);
+        if (authenticatedUser != null)
         {
-
+          currentUser = authenticatedUser;
+          context.SetAuthenticationToken(authenticatedUser.id.ToString(), false, authenticatedUser);
+          return RedirectToAction("Index", "Home");
         }
-        return View();
-    }*/
+      }
+      return View();
+    
+    }
 
     public ActionResult RegistrerenPage()
         {
@@ -62,5 +72,10 @@ namespace SMM_ThomasMore.Controllers
         return View();
        }
          
+    public ActionResult Afmelden()
+    {
+      FormsAuthentication.SignOut();
+      return RedirectToAction("Index", "Home");
+    }
     }
 }

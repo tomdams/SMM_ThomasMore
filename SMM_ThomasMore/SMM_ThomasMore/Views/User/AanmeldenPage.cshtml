@@ -1,4 +1,4 @@
-﻿@model SMM_ThomasMore.Models.UserVM
+﻿@model SMM_ThomasMore.Models.LoginVM
 @{
     ViewBag.Title = "Aanmelden";
 }
@@ -12,10 +12,10 @@
 
 <ul class="list-unstyled">
     <li>
-        @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Gebruikersnaam" } })
+        @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Gebruikersnaam", @class = "form-control" } })
     </li>
     <li>
-        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "Wachtwoord" } })
+        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "Wachtwoord", @class = "form-control",Type ="password" } })
     </li>
     <li>
         <input type="submit" value="Meld aan">

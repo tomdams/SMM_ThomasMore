@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SMM_ThomasMore.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -24,6 +25,13 @@ namespace SMM_ThomasMore.Models
     [Required(ErrorMessage = "Dit veld moet ingevuld zijn")]
     [EmailAddress(ErrorMessage = "Foutief emailadres")]
     public string email { get; set; }
+
+    public UserType type { get; set; }
+
+    public UserVM()
+    {
+      type = UserType.INGELOGDEGEBRUIKER;
+    }
 
   }
 }
