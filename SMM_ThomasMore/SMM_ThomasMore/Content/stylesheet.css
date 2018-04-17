@@ -40,10 +40,9 @@ list-style-type: none
    float:right;
 }
 .navMenuGroep {
-    margin-top: 10%;
-    
+    margin-top: 10%;    
 }
 .navMenuGroep li a{
-   font-size:large
+   font-size:medium;
 }
 

@@ -71,7 +71,13 @@ namespace SMM_ThomasMore.Controllers
         }
         return View();
        }
-         
+      public ActionResult UserBeherenPage() {
+
+
+        return View();
+      }
+
+
     public ActionResult Afmelden()
     {
       FormsAuthentication.SignOut();

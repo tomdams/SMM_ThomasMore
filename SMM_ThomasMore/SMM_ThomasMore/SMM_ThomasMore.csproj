@@ -193,6 +193,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\AanmeldenPage.cshtml" />
     <Content Include="Views\User\RegistrerenPage.cshtml" />
+    <Content Include="Views\User\UserBeherenPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

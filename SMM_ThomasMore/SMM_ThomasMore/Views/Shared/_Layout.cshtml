@@ -20,25 +20,35 @@
             </form>
         </div>
 
+       
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "navMenuItem" })</li>
             <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
             <li>@Html.ActionLink("Platformen", "Index", "Home")</li>
         </ul>
+
+        @if (User.IsInRole("Gebruikers"))
+        {
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Alertinstellingen", "Index", "Home")</li>
             <li>@Html.ActionLink("Account Instellingen", "Index", "Home")</li>
         </ul>
+        }
+        @if (User.Identity.IsAuthenticated)
+        {
         <ul class="navMenuGroep">
-            <li>@Html.ActionLink("Gebruikers beheren", "Index", "Home")</li>
+            <li>@Html.ActionLink("Gebruikers beheren", "UserBeherenPage", "User")</li>
             <li>@Html.ActionLink("Platform  beheren", "Index", "Home")</li>
         </ul>
+        }
+        @if (User.Identity.IsAuthenticated)
+        {
         <ul class="navMenuGroep">
             
-            <li> <a href="@Url.Action("Index","Home")">Social Media</a>
-
+            <li>@Html.ActionLink("Social Media Beheren", "Index", "Home")</li>
             <li>@Html.ActionLink("Deelplatformen", "Index", "Home")</li>
         </ul>
+        }
 
  </div>
 
