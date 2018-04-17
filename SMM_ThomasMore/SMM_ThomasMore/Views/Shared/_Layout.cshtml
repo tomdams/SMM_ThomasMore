@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/stylesheet.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  
+    <div class="sidenav">
+
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+
+        <ul class="navMenuGroep">
+            <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "navMenuItem" })</li>
+            <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+            <li>@Html.ActionLink("Platformen", "Index", "Home")</li>
+        </ul>
+        <ul class="navMenuGroep">
+            <li>@Html.ActionLink("Alertinstellingen", "Index", "Home")</li>
+            <li>@Html.ActionLink("Account Instellingen", "Index", "Home")</li>
+        </ul>
+        <ul class="navMenuGroep">
+            <li>@Html.ActionLink("Gebruikers beheren", "Index", "Home")</li>
+            <li>@Html.ActionLink("Platform  beheren", "Index", "Home")</li>
+        </ul>
+        <ul class="navMenuGroep">
+            
+            <li> <a href="@Url.Action("Index","Home")">Social Media</a>
+
+            <li>@Html.ActionLink("Deelplatformen", "Index", "Home")</li>
+        </ul>
+
+ </div>
+
+
+
+
+
+
+    <div class="main">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                   
+                    </button>
+                    @Html.ActionLink("Social Media Monitor", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="aanAfmelden">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Registreren", "RegistrerenPage", "User")</li>
+                            <li>@Html.ActionLink("Aanmelden", "AanmeldenPage", "User")</li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Afmelden", "Afmelden", "User")</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Social Media Monitor</p>
+            </footer>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
