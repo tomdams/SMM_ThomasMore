@@ -32,3 +32,9 @@
 .sidenav ul {
 list-style-type: none
 }
+.search-container {
+    margin-left: 10%;
+}
+#aanAfmelden {
+   float:right;
+}

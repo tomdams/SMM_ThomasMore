@@ -13,7 +13,7 @@ namespace SMM_ThomasMore.DAL.EF
             email = "random@random.be",
             wachtwoord = "wachtwoord1",
             compareWachtwoord = "wachtwoord1",
-            username = "User 1 ",
+            username = "gebruiker1",
             type = UserType.ADMIN
           };
           User u2 = new User()

@@ -27,3 +27,9 @@ C:\Users\Mario\Desktop\skool\integratieproject\applicatie\SMM_ThomasMore\SMM_Tho
 C:\Users\Mario\Desktop\skool\integratieproject\applicatie\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\Users\Mario\Desktop\skool\integratieproject\applicatie\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 C:\Users\Mario\Desktop\skool\integratieproject\applicatie\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
