@@ -27,7 +27,7 @@
             <li>@Html.ActionLink("Platformen", "Index", "Home")</li>
         </ul>
 
-        @if (User.IsInRole("Gebruikers"))
+        @if (User.IsInRole("admin"))
         {
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Alertinstellingen", "Index", "Home")</li>
@@ -43,6 +43,7 @@
         }
         @if (User.Identity.IsAuthenticated)
         {
+        <p>Name is @User.Identity.Name</p>
         <ul class="navMenuGroep">
             
             <li>@Html.ActionLink("Social Media Beheren", "Index", "Home")</li>
