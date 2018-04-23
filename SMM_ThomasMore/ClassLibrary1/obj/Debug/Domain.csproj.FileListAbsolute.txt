@@ -33,3 +33,9 @@ C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\Clas
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb

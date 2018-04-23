@@ -21,5 +21,17 @@ namespace SMM_ThomasMore.DAL.EF
         public DbSet<User> Users { get; set; }
         public DbSet<Alert> Alerts { get; set; }
         public DbSet<AlertInstellingen> AlertInstellingen { get; set; }
+
+
+   //1
+
+
+    public void AddUserRole(User user, UserType type)
+    {
+      User u = Users.Find(user.id);
+      u.type = type;  
+      SaveChanges();
     }
+
+  }
 }

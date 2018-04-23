@@ -19,6 +19,7 @@ namespace SMM_ThomasMore.Controllers
     private UserManager umgr;
     SessionContext context = new SessionContext();
 
+
     public UserController()
     {
       umgr = new UserManager();
@@ -41,16 +42,11 @@ namespace SMM_ThomasMore.Controllers
         if (authenticatedUser != null)
         {
           currentUser = authenticatedUser;
-          // context.SetAuthenticationToken(authenticatedUser.id.ToString(), false, authenticatedUser);
           var authTicket = new FormsAuthenticationTicket(1, authenticatedUser.username, DateTime.Now, DateTime.Now.AddMinutes(30), true, authenticatedUser.type.ToString().ToLower());
           string cookieContents = FormsAuthentication.Encrypt(authTicket);
-          var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, cookieContents)
-          {
-            Expires = authTicket.Expiration,
-            Path = FormsAuthentication.FormsCookiePath
-          };
-          Response.Cookies.Add(cookie);
-
+          var encTicket = FormsAuthentication.Encrypt(authTicket);
+          Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+          
           return RedirectToAction("Index", "Home");
         }
       }
@@ -68,8 +64,10 @@ namespace SMM_ThomasMore.Controllers
        {
       if (ModelState.IsValid)
       {
+       
           User newUser = new User()
           {
+           
             wachtwoord = userVM.wachtwoord,
             compareWachtwoord = userVM.compareWachtwoord,
             email = userVM.email,

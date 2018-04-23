@@ -396,7 +396,6 @@ C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\Microsoft.AI.Web.xml
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\SC.DAL.pdb
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\SC.DAL.dll.config
-C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\EntityFramework.xml
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\EntityFramework.SqlServer.xml
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.csprojResolveAssemblyReference.cache
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.csproj.CoreCompileInputs.cache
