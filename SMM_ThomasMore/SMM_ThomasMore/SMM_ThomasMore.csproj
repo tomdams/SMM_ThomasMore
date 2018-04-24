@@ -197,10 +197,15 @@
     <Content Include="Views\User\AanmeldenPage.cshtml" />
     <Content Include="Views\User\RegistrerenPage.cshtml" />
     <Content Include="Views\User\UserBeherenPage.cshtml" />
+    <Content Include="Views\Home\PlatformenPage.cshtml" />
+    <Content Include="Views\User\DashboardPage.cshtml" />
+    <Content Include="Views\User\AlertInstellingenPage.cshtml" />
+    <Content Include="Views\User\AccountInstellingenPage.cshtml" />
+    <Content Include="Views\User\SMBeherenPage.cshtml" />
+    <Content Include="Views\User\DeelplatformenPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Registreren\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

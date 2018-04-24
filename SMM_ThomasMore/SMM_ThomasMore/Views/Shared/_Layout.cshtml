@@ -23,22 +23,22 @@
        
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "navMenuItem" })</li>
-            <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
-            <li>@Html.ActionLink("Platformen", "Index", "Home")</li>
+            <li>@Html.ActionLink("Dashboard", "DashboardPage", "User")</li>
+            <li>@Html.ActionLink("Platformen", "PlatformenPage", "Home")</li>
         </ul>
         
         @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin"))
         {
         <ul class="navMenuGroep">
-            <li>@Html.ActionLink("Alertinstellingen", "Index", "Home")</li>
-            <li>@Html.ActionLink("Account Instellingen", "Index", "Home")</li>
+            <li>@Html.ActionLink("Alertinstellingen", "AlertInstellingenPage", "User")</li>
+            <li>@Html.ActionLink("Account Instellingen", "AccountInstellingenPage", "User")</li>
         </ul>
         }
         @if (User.IsInRole("admin") || User.IsInRole("superadmin"))
         {
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Gebruikers beheren", "UserBeherenPage", "User")</li>
-            <li>@Html.ActionLink("Platform  beheren", "Index", "Home")</li>
+            <li>@Html.ActionLink("Platform  beheren", "PlatformbeheerPage", "User")</li>
         </ul>
         }
         @if (User.IsInRole("superadmin"))
@@ -46,8 +46,8 @@
         
         <ul class="navMenuGroep">
             
-            <li>@Html.ActionLink("Social Media Beheren", "Index", "Home")</li>
-            <li>@Html.ActionLink("Deelplatformen", "Index", "Home")</li>
+            <li>@Html.ActionLink("Social Media Beheren", "SMBeherenPage", "User")</li>
+            <li>@Html.ActionLink("Deelplatformen", "DeelplatformenPage", "User")</li>
         </ul>
         }
 

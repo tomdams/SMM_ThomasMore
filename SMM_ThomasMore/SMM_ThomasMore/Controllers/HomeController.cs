@@ -27,5 +27,11 @@ namespace SMM_ThomasMore.Controllers
 
       return View();
     }
+
+    public ActionResult PlatformenPage()
+    {
+      return View();
+    }
+
   }
 }

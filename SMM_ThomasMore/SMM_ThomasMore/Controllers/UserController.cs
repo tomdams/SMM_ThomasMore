@@ -153,5 +153,32 @@ namespace SMM_ThomasMore.Controllers
       FormsAuthentication.SetAuthCookie(email, false);
       return RedirectToAction("Index", "Home");
     }
+
+    public ActionResult DashboardPage()
+    {
+      return View();
+    }
+
+    public ActionResult AlertInstellingenPage()
+    {
+      return View();
+    }
+
+    public ActionResult PlatformbeheerPage()
+    {
+      return View();
+    }
+
+    public ActionResult SMBeherenPage()
+    {
+      return View();
+    }
+
+    public ActionResult DeelplatformenPage()
+    {
+      return View();
+    }
+
+
   }
 }
