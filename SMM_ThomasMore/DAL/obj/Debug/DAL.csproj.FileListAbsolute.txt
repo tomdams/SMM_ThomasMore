@@ -76,3 +76,5 @@ C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.c
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.xml

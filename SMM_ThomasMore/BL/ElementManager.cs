@@ -1,6 +1,11 @@
-﻿using SMM_ThomasMore.DAL;
+﻿using Newtonsoft.Json;
+using SC.BL.Domain;
+using SC.BL.Domain.User;
+using SMM_ThomasMore.DAL;
 using SMM_ThomasMore.Domain;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace SMM_ThomasMore.BL
@@ -12,21 +17,64 @@ namespace SMM_ThomasMore.BL
         public ElementManager()
         {
             repo = new ElementRepository();
-        }
-
-        public void genereerAlerts()
-        {
-            IEnumerable<Element> elements = repo.getElements();
             userMgr = new UserManager();
-            foreach (Element e in elements) {
-                if (e.trending == true) {
-                  userMgr.sendAlerts(e);
-                }
-            }
-
         }
 
-        public void volgElement(string naam, AlertType type, User user)
+
+
+    public void genereerAlerts(Element e)
+    {
+      userMgr.sendAlerts(e);
+    }
+
+    public void politiciInlezen()
+    {
+      try
+      {
+        using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\Data\politici.json"))
+        {
+          string json = r.ReadToEnd();
+
+          dynamic array = JsonConvert.DeserializeObject(json);
+          foreach (var item in array)
+          {
+            Persoon p = new Persoon();
+            p.id = item.id;
+            p.first_name = item.first_name;
+            p.last_name = item.last_name;
+            p.district = item.district;
+            p.level = item.level;
+            if (item.gender.ToString().ToLower().Equals("m"))
+            {
+              p.geslacht = Geslacht.Man;
+            }
+            else
+            {
+              p.geslacht = Geslacht.Vrouw;
+            }
+            p.twitter = item.twitter;
+            p.site = item.site;
+            DateTime date = item.dateOfBirth;
+            p.geboorteDatum = date;
+            p.facebook = item.facebook;
+            p.postal_code = item.postal_code;
+            p.naam = item.full_name;
+            p.position = item.position;
+            p.organisation = item.organisation;
+            p.town = item.town;
+
+            repo.addPersoon(p);
+          }
+        }
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("The file could not be read:");
+        Console.WriteLine(e.Message);
+      }
+    }
+
+    public void volgElement(string naam, AlertType type, User user)
         {
           Element e = null;
           List<Element> elements = repo.getElements().ToList();
@@ -39,7 +87,6 @@ namespace SMM_ThomasMore.BL
           }
 
           AlertInstellingen ai = new AlertInstellingen(type, user, e);
-          userMgr = new UserManager();
           userMgr.AddAI(ai);
 
     }

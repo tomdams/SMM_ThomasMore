@@ -1,4 +1,5 @@
-﻿using SMM_ThomasMore.Domain;
+﻿using SC.BL.Domain;
+using SMM_ThomasMore.Domain;
 using System.Data.Entity;
 
 namespace SMM_ThomasMore.DAL.EF
@@ -62,8 +63,8 @@ namespace SMM_ThomasMore.DAL.EF
             aantalVermeldingen = 0,
             woorden = null,
             verhalen = null,
-            polariteit = 0,
-            trending = false
+            polariteit = 0
+           
           };
 
           Thema t1 = new Thema()
@@ -73,8 +74,7 @@ namespace SMM_ThomasMore.DAL.EF
             aantalVermeldingen = 5,
             woorden = null,
             verhalen = null,
-            polariteit = 0,
-            trending = true
+            polariteit = 0
           };
 
           Organisatie o1 = new Organisatie()
@@ -85,7 +85,7 @@ namespace SMM_ThomasMore.DAL.EF
             woorden = null,
             verhalen = null,
             polariteit = 0,
-            trending = false
+           
           };
 
           Persoon p2 = new Persoon()
@@ -96,7 +96,7 @@ namespace SMM_ThomasMore.DAL.EF
             woorden = null,
             verhalen = null,
             polariteit = 0,
-            trending = false
+           
           };
 
           Thema t2 = new Thema()
@@ -107,7 +107,7 @@ namespace SMM_ThomasMore.DAL.EF
             woorden = null,
             verhalen = null,
             polariteit = 0,
-            trending = true
+           
           };
 
           Organisatie o2 = new Organisatie()
@@ -118,7 +118,7 @@ namespace SMM_ThomasMore.DAL.EF
             woorden = null,
             verhalen = null,
             polariteit = 0,
-            trending = true
+        
           };
 
           AlertInstellingen a1 = new AlertInstellingen()
@@ -175,7 +175,7 @@ namespace SMM_ThomasMore.DAL.EF
           };
 
 
-            context.Users.Add(u1);
+            /*context.Users.Add(u1);
             context.Users.Add(u2);
             context.Users.Add(u3);
             context.Users.Add(u4);
@@ -193,7 +193,7 @@ namespace SMM_ThomasMore.DAL.EF
             context.AlertInstellingen.Add(a5);
             context.AlertInstellingen.Add(a6);
             context.AlertInstellingen.Add(a7);
-            context.SaveChanges();
+            context.SaveChanges();*/
         }
     }
 }

@@ -84,3 +84,5 @@ C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csp
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
+C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml

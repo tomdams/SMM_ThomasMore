@@ -54,6 +54,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -116,9 +119,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ApplicationInsights">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
@@ -146,15 +146,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ElementController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="UIControllers\HomeController.cs" />
+    <Compile Include="Controllers\SMController.cs" />
+    <Compile Include="UIControllers\UIUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Session\SessionContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -169,6 +170,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\politici.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -194,15 +196,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\AanmeldenPage.cshtml" />
-    <Content Include="Views\User\RegistrerenPage.cshtml" />
-    <Content Include="Views\User\UserBeherenPage.cshtml" />
+    <Content Include="Views\UIUser\AanmeldenPage.cshtml" />
+    <Content Include="Views\UIUser\RegistrerenPage.cshtml" />
+    <Content Include="Views\UIUser\UserBeherenPage.cshtml" />
     <Content Include="Views\Home\PlatformenPage.cshtml" />
-    <Content Include="Views\User\DashboardPage.cshtml" />
-    <Content Include="Views\User\AlertInstellingenPage.cshtml" />
-    <Content Include="Views\User\AccountInstellingenPage.cshtml" />
-    <Content Include="Views\User\SMBeherenPage.cshtml" />
-    <Content Include="Views\User\DeelplatformenPage.cshtml" />
+    <Content Include="Views\UIUser\DashboardPage.cshtml" />
+    <Content Include="Views\UIUser\AlertInstellingenPage.cshtml" />
+    <Content Include="Views\UIUser\AccountInstellingenPage.cshtml" />
+    <Content Include="Views\UIUser\SMBeherenPage.cshtml" />
+    <Content Include="Views\UIUser\DeelplatformenPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

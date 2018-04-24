@@ -95,7 +95,7 @@ namespace SMM_ThomasMore.BL
     public void AddUser(User user)
     {
       repo.AddUser(user);
-
+     
     }
   }
 }
