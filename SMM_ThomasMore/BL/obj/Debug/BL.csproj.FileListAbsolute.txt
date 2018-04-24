@@ -62,12 +62,10 @@ C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\b
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll
-C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.dll
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.pdb
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
-C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.xml
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache

@@ -295,7 +295,6 @@ C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\Microsoft.AI.Web.xml
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\SC.DAL.pdb
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\SC.DAL.dll.config
-C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\EntityFramework.xml
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\EntityFramework.SqlServer.xml
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.csprojResolveAssemblyReference.cache
 C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.csproj.CoreCompileInputs.cache
@@ -403,3 +402,5 @@ C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.pdb
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\Facebook.dll
 C:\School\2\Integratie\Project\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\Facebook.xml
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\Facebook.dll
+C:\Users\mario\Desktop\integratie\PROJECTTTTT\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\bin\Facebook.xml

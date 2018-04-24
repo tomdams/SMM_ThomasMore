@@ -26,22 +26,22 @@
             <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
             <li>@Html.ActionLink("Platformen", "Index", "Home")</li>
         </ul>
-
-        @if (User.IsInRole("admin"))
+        
+        @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin"))
         {
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Alertinstellingen", "Index", "Home")</li>
             <li>@Html.ActionLink("Account Instellingen", "Index", "Home")</li>
         </ul>
         }
-        @if (User.Identity.IsAuthenticated)
+        @if (User.IsInRole("admin") || User.IsInRole("superadmin"))
         {
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Gebruikers beheren", "UserBeherenPage", "User")</li>
             <li>@Html.ActionLink("Platform  beheren", "Index", "Home")</li>
         </ul>
         }
-        @if (User.Identity.IsAuthenticated)
+        @if (User.IsInRole("superadmin"))
         {
         
         <ul class="navMenuGroep">
