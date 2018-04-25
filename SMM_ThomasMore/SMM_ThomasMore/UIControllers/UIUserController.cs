@@ -5,7 +5,10 @@ using SMM_ThomasMore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
+
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -60,22 +63,51 @@ namespace SMM_ThomasMore.Controllers
        {
       if (ModelState.IsValid)
       {
-          User newUser = new User()
+         User newUser = new User()
           {
-           
-            wachtwoord = userVM.wachtwoord,
-            compareWachtwoord = userVM.compareWachtwoord,
-            email = userVM.email,
-            username = userVM.username
-          };
-         
-          uc.addUser(newUser);
-        
 
-        return View("~/Views/Home/Index.cshtml");
+                    wachtwoord = userVM.wachtwoord,
+                    compareWachtwoord = userVM.compareWachtwoord,
+                    email = userVM.email,
+                    confirmEmail = false,
+                    username = userVM.username
+          };         
+          uc.addUser(newUser);
+
+
+                /*********/
+                MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");
+                MailAddress to = new MailAddress(userVM.email);
+                MailMessage message = new MailMessage(from, to);
+                message.Subject = "Using email verification";
+                message.Body = "binnenkort een verificatie link :)";
+                
+               
+                using (var smtp =  new SmtpClient()) {
+                    var credential = new NetworkCredential{
+                        UserName = "thomasmoreintegratie@gmail.com", 
+                         Password = "D9O8M7S6"  
+                 };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.Send(message);
+                    
+                }
+               
+                
+                
+                
+
+                /********/
+
+
+        return View("~/Views/Home/Confirmation.cshtml");
         }
         return View();
        }
+
       public ActionResult UserBeherenPage() {
 
 

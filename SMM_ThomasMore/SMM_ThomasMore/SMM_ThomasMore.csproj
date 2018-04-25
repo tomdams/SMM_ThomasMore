@@ -205,6 +205,7 @@
     <Content Include="Views\UIUser\AccountInstellingenPage.cshtml" />
     <Content Include="Views\UIUser\SMBeherenPage.cshtml" />
     <Content Include="Views\UIUser\DeelplatformenPage.cshtml" />
+    <Content Include="Views\Home\Confirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

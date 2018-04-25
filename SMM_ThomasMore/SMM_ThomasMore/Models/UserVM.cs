@@ -35,6 +35,8 @@ namespace SMM_ThomasMore.Models
     [EmailAddress(ErrorMessage = "Foutief emailadres")]
     public string email { get; set; }
 
+    public bool confirmEmail { get; set; }
+
    // [Required(ErrorMessage = "Dit veld moet ingevuld zijn")]
     public string name { get; set; }
 
