@@ -74,15 +74,16 @@ namespace SMM_ThomasMore.Controllers
           };         
           uc.addUser(newUser);
 
+                int userid = uc.getUser(newUser.username, newUser.wachtwoord).id;
 
-                /*********/
+                /* versturen van verificatie email */
                 MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");
                 MailAddress to = new MailAddress(userVM.email);
                 MailMessage message = new MailMessage(from, to);
                 message.Subject = "Using email verification";
-                message.Body = "binnenkort een verificatie link :)";
+                message.Body = "http://localhost:11981/UIUser/verified/"+userid;
                 
-               
+                
                 using (var smtp =  new SmtpClient()) {
                     var credential = new NetworkCredential{
                         UserName = "thomasmoreintegratie@gmail.com", 
@@ -103,7 +104,7 @@ namespace SMM_ThomasMore.Controllers
                 /********/
 
 
-        return View("~/Views/Home/Confirmation.cshtml");
+        return View("~/Views/UIUser/Confirmation.cshtml");
         }
         return View();
        }
@@ -206,7 +207,19 @@ namespace SMM_ThomasMore.Controllers
     {
       return View();
     }
-
-
-  }
+     public ActionResult Verified()
+     {
+            
+            return View();
+     }
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Verified(VerifyVM vm) {            
+            uc.verifyUser(vm.id);
+            return RedirectToAction("AanmeldenPage", "UIUser");
+        }
+    }
 }

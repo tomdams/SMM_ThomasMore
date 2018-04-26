@@ -43,6 +43,13 @@ namespace SMM_ThomasMore.DAL
           uctx.SaveChanges();
         }
 
-  
-  }
+        public void verifyUser(User u)
+        {
+            uctx.Users.Find(u.id).username = "little bogger";
+            
+            
+            uctx.SaveChanges();
+         
+        }
+    }
 }

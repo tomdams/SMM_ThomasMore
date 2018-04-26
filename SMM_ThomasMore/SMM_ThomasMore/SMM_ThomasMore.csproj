@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\VerifyVM.cs" />
     <Compile Include="UIControllers\HomeController.cs" />
     <Compile Include="Controllers\SMController.cs" />
     <Compile Include="UIControllers\UIUserController.cs" />
@@ -205,7 +206,8 @@
     <Content Include="Views\UIUser\AccountInstellingenPage.cshtml" />
     <Content Include="Views\UIUser\SMBeherenPage.cshtml" />
     <Content Include="Views\UIUser\DeelplatformenPage.cshtml" />
-    <Content Include="Views\Home\Confirmation.cshtml" />
+    <Content Include="Views\UIUser\Confirmation.cshtml" />
+    <Content Include="Views\UIUser\Verified.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

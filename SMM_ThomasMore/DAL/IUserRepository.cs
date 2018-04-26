@@ -10,5 +10,6 @@ namespace SMM_ThomasMore.DAL
         void addAlert(Alert a);
         void AddAi(AlertInstellingen ai);
         void AddUser(User u);
-   }
+        void verifyUser(User id);
+    }
 }
