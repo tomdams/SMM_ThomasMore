@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using SMM_ThomasMore.DAL;
 using SMM_ThomasMore.Domain;
+using System.Net.Mail;
+using System.Net;
 
 namespace SMM_ThomasMore.BL
 {
@@ -46,9 +48,51 @@ namespace SMM_ThomasMore.BL
       }
       return null;
     }
-  
 
-       
+    public void sendVerificationMail(User u)
+    {
+
+      int userid = getUser(u.username, u.wachtwoord).id;
+
+      /* versturen van verificatie email */
+      
+      
+      string subject = "Using email verification";
+      string body = "http://localhost:11981/UIUser/verified/" + userid;
+      sendMail(u.email, subject, body);
+
+     
+
+
+
+    }
+    public void sendMail(string ontvanger,string subject,string body) {
+
+      MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");
+      MailAddress to = new MailAddress(ontvanger);
+      MailMessage message = new MailMessage(from, to);
+      message.Subject = subject;
+      message.Body = body;
+
+
+
+      using (var smtp = new SmtpClient())
+      {
+        var credential = new NetworkCredential
+        {
+          UserName = "thomasmoreintegratie@gmail.com",
+          Password = "D9O8M7S6"
+        };
+        smtp.Credentials = credential;
+        smtp.Host = "smtp.gmail.com";
+        smtp.Port = 587;
+        smtp.EnableSsl = true;
+        smtp.Send(message);
+      }
+    }
+
+
+
     public void sendAlerts(Element element)
         {
             IEnumerable<AlertInstellingen> ai = repo.GetAlertInstellingen();

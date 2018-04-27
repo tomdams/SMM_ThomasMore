@@ -3,6 +3,8 @@ using SMM_ThomasMore.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 
 namespace SMM_ThomasMore.Controllers
@@ -36,6 +38,12 @@ namespace SMM_ThomasMore.Controllers
     {
       User u = umgr.getUserById(id);
       return u;
+    }
+    public void sendVerificationMail(User u) {
+      int userid =  umgr.getUser(u.username,u.wachtwoord).id;
+      umgr.sendVerificationMail(u);
+
+
     }
   }
 }

@@ -74,37 +74,9 @@ namespace SMM_ThomasMore.Controllers
                     type= UserType.INGELOGDEGEBRUIKER
           };         
           uc.addUser(newUser);
-
-                int userid = uc.getUser(newUser.username, newUser.wachtwoord).id;
-
-                /* versturen van verificatie email */
-                MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");
-                MailAddress to = new MailAddress(userVM.email);
-                MailMessage message = new MailMessage(from, to);
-                message.Subject = "Using email verification";
-                message.Body = "http://localhost:11981/UIUser/verified/"+userid;
-                
-                
-                using (var smtp =  new SmtpClient()) {
-                    var credential = new NetworkCredential{
-                        UserName = "thomasmoreintegratie@gmail.com", 
-                         Password = "D9O8M7S6"  
-                 };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    smtp.Send(message);
-          
-                 
-                    
-                }
-               
-                
-                
-                
-
-                /********/
+          uc.sendVerificationMail(newUser);    
+        
+           
 
 
         return View("~/Views/UIUser/Confirmation.cshtml");
