@@ -1,4 +1,5 @@
 ﻿using Facebook;
+using SMM_ThomasMore.Annotations;
 using SMM_ThomasMore.BL;
 using SMM_ThomasMore.Domain;
 using SMM_ThomasMore.Models;
@@ -49,8 +50,7 @@ namespace SMM_ThomasMore.Controllers
           return RedirectToAction("Index", "Home");
         }
       }
-      return View();
-    
+      return View();  
     }
 
     public ActionResult RegistrerenPage()
@@ -70,7 +70,8 @@ namespace SMM_ThomasMore.Controllers
                     compareWachtwoord = userVM.compareWachtwoord,
                     email = userVM.email,
                     confirmEmail = false,
-                    username = userVM.username
+                    username = userVM.username,
+                    type= UserType.INGELOGDEGEBRUIKER
           };         
           uc.addUser(newUser);
 
@@ -93,11 +94,8 @@ namespace SMM_ThomasMore.Controllers
                     smtp.Host = "smtp.gmail.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
-
-          for (int i = 0; i < 10; i++)
-          {
-              smtp.Send(message);
-          }
+                    smtp.Send(message);
+          
                  
                     
                 }
@@ -114,11 +112,7 @@ namespace SMM_ThomasMore.Controllers
         return View();
        }
 
-      public ActionResult UserBeherenPage() {
-
-
-        return View();
-      }
+   
 
 
     public ActionResult Afmelden()
@@ -193,28 +187,49 @@ namespace SMM_ThomasMore.Controllers
       return View();
     }
 
+
+    [CustomAuthorize(Roles = "ingelogdegebruiker, admin, superadmin")]
     public ActionResult AlertInstellingenPage()
     {
       return View();
     }
 
-    public ActionResult PlatformbeheerPage()
+    [Authorize(Roles = "ingelogdegebruiker, admin, superadmin")]
+    public ActionResult AccountInstellingenPage()
     {
       return View();
     }
 
+    [Authorize(Roles = "admin, superadmin")]
+    public ActionResult PlatformbeheerPage()
+    {
+      return View();
+    }
+    [Authorize(Roles = "admin, superadmin")]
+    public ActionResult UserBeherenPage()
+    {
+
+
+      return View();
+    }
+
+    [Authorize(Roles = "superadmin")]
     public ActionResult SMBeherenPage()
     {
       return View();
     }
 
+    [Authorize(Roles = "superadmin")]
     public ActionResult DeelplatformenPage()
     {
       return View();
     }
-     public ActionResult Verified()
-     {
-            
+
+  
+
+
+    public ActionResult Verified()
+     {           
             return View();
      }
         public ActionResult Confirmation()

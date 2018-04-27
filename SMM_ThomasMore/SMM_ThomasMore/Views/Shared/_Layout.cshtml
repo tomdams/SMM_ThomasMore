@@ -27,7 +27,7 @@
             <li>@Html.ActionLink("Platformen", "PlatformenPage", "Home")</li>
         </ul>
         
-        @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin"))
+        @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
         {
         <ul class="navMenuGroep">
             <li>@Html.ActionLink("Alertinstellingen", "AlertInstellingenPage", "UIUser")</li>

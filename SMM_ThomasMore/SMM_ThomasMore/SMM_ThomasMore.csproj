@@ -142,12 +142,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\CustomAuthorize.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\VerifyVM.cs" />
+    <Compile Include="UIControllers\ErrorController.cs" />
     <Compile Include="UIControllers\HomeController.cs" />
     <Compile Include="Controllers\SMController.cs" />
     <Compile Include="UIControllers\UIUserController.cs" />
@@ -208,6 +210,7 @@
     <Content Include="Views\UIUser\DeelplatformenPage.cshtml" />
     <Content Include="Views\UIUser\Confirmation.cshtml" />
     <Content Include="Views\UIUser\Verified.cshtml" />
+    <Content Include="Views\Error\UnauthorizedError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

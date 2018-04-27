@@ -1,36 +1,6 @@
-﻿@model SMM_ThomasMore.Models.UserVM
-@{
+﻿@{
   ViewBag.Title = "UserBeherenPage";
 }
 
 <h2>UserBeherenPage</h2>
 
-@using (Html.BeginForm())
-{
-@Html.AntiForgeryToken()
-
-<ul class="form-inline">
-    <li class="list-group-item">
-        @Html.LabelFor(model => model.username)
-        @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Oude Gebruikersnaam", @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-
-
-        @Html.EditorFor(model => model.nieuweUsername, new { htmlAttributes = new { placeholder = "Gebruikersnaam", @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.nieuweUsername, "", new { @class = "text-danger" })
-    </li>
-    <li class="list-group-item">
-        @Html.LabelFor(model => model.wachtwoord)
-        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "Oud wachtwoord", @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.wachtwoord, "", new { @class = "text-danger" })
-
-
-        @Html.EditorFor(model => model.wachtwoord, new { htmlAttributes = new { placeholder = "nieuw wachtwoord", @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.wachtwoord, "", new { @class = "text-danger" })
-    </li>
-    <li><input type="submit" value=" Save Username!"></li>
-</ul>
-
-
-
-}
