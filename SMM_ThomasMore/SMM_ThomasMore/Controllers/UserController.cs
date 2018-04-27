@@ -27,9 +27,15 @@ namespace SMM_ThomasMore.Controllers
       umgr.AddUser(user);
     }
 
-        public void verifyUser(string id)
+        public void verifyUser(User user)
         {
-            umgr.verifyUser(id);
+            umgr.verifyUser(user);
         }
+
+    public User getUserById(string id)
+    {
+      User u = umgr.getUserById(id);
+      return u;
     }
+  }
 }

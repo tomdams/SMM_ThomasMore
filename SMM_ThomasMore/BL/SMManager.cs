@@ -70,7 +70,7 @@ namespace SC.BL
 
     public void readMessages()
     {
-      //repo maken
+     /* //repo maken
       repo = new SMRepository();
       repo.getMessages();
       em = new ElementManager();
@@ -128,8 +128,8 @@ namespace SC.BL
       checkTrending();
       //Commentaar weghalen
       lastRead = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-    }
-
+   */ }
+    
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
     {
       int aantalVermeldingen = 0;

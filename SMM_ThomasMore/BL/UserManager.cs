@@ -33,9 +33,9 @@ namespace SMM_ThomasMore.BL
       repo.addAlert(alert);
     }
 
-      
+ 
 
-        public User getUser(string username, string wachtwoord)
+    public User getUser(string username, string wachtwoord)
     {
       foreach (User u in repo.getUsers().ToList())
       {
@@ -100,14 +100,30 @@ namespace SMM_ThomasMore.BL
      
     }
 
-        public void verifyUser(string id)
+        public void verifyUser(User user)
         {
             foreach (User u in repo.getUsers().ToList()) {
-                if (u.id.Equals(id)) {
+                if (u.Equals(user)) {
                     repo.verifyUser(u);
                     break;
                 }
             }
         }
+
+    public User getUserById(string id)
+    {
+      foreach (User u in repo.getUsers().ToList())
+      {
+        int userid = Convert.ToInt32(id);
+        bool test = userid == u.id;
+        if (u.id==userid)
+        {
+          return u;
+
+        }
+      }
+      return null;
     }
+
+  }
 }

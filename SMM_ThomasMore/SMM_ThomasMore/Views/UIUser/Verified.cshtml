@@ -1,7 +1,7 @@
 ﻿@model SMM_ThomasMore.Models.VerifyVM
 @{
     ViewBag.Title = "Verified";
-    var id = Request.Url.Segments.Last();
+    var userid = Request.Url.Segments.Last();
 }
 
 
@@ -9,7 +9,7 @@
 {
     @Html.AntiForgeryToken()
 
-    @Html.EditorFor(model => model.id, new { htmlAttributes = new { @value=@id , placeholder = @id, @class = "form-control" } })
+    @Html.EditorFor(model => model.id, new { htmlAttributes = new { @Value=@userid.ToString() , @class = "form-control" } })
     <input type="submit" value="Voltooi de registratie">
 }
 

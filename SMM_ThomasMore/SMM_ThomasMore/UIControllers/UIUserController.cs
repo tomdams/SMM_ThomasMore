@@ -216,9 +216,12 @@ namespace SMM_ThomasMore.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult Verified(VerifyVM vm) {            
-            uc.verifyUser(vm.id);
+        public ActionResult Verified(VerifyVM vm) {
+            User u = uc.getUserById(vm.id);
+            
+            uc.verifyUser(u);
             return RedirectToAction("AanmeldenPage", "UIUser");
         }
     }
