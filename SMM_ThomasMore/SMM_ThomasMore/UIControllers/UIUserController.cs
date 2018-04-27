@@ -93,7 +93,12 @@ namespace SMM_ThomasMore.Controllers
                     smtp.Host = "smtp.gmail.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
-                    smtp.Send(message);
+
+          for (int i = 0; i < 10; i++)
+          {
+              smtp.Send(message);
+          }
+                 
                     
                 }
                
