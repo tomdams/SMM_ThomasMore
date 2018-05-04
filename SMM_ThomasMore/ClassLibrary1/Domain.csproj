@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -41,17 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alert.cs" />
-    <Compile Include="AlertInstellingen.cs" />
-    <Compile Include="AlertType.cs" />
-    <Compile Include="Element.cs" />
-    <Compile Include="Keyword.cs" />
-    <Compile Include="Organisatie.cs" />
-    <Compile Include="Persoon.cs" />
+    <Compile Include="SocialeMedia\Message.cs" />
+    <Compile Include="User\Alert.cs" />
+    <Compile Include="User\AlertInstellingen.cs" />
+    <Compile Include="User\AlertType.cs" />
+    <Compile Include="Platform\Element.cs" />
+    <Compile Include="Platform\Keyword.cs" />
+    <Compile Include="Platform\Organisatie.cs" />
+    <Compile Include="Platform\Persoon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Thema.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserType.cs" />
+    <Compile Include="Platform\Thema.cs" />
+    <Compile Include="SocialeMedia\Geslacht.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="User\UserType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="SocialeMedia\politici.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

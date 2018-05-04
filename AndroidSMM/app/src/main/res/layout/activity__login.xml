@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android_smm.Activity_Login">
+    tools:context="com.example.android_smm.LoginActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -207,14 +207,22 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true">
-                <ImageView
+                <!--<ImageView
+                    android:id="@+id/facebooklogo"
                     android:background="@color/facebookBlue"
                     android:layout_width="50dp"
                     android:src="@drawable/img_facebook"
                     android:padding="10dp"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp" />-->
 
-                <ImageView
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/facebooklogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                     />
+
+                <!--<ImageView
                     android:background="@color/twitterBlue"
                     android:layout_width="50dp"
                     android:layout_marginLeft="15dp"
@@ -228,7 +236,7 @@
                     android:layout_width="50dp"
                     android:src="@drawable/img_googleplus"
                     android:padding="10dp"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp" />-->
             </LinearLayout>
 
 

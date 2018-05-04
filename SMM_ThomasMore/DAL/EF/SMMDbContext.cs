@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using SMM_ThomasMore.Domain;
+using SC.BL.Domain;
+using SC.BL.Domain.SocialeMedia;
 
 namespace SMM_ThomasMore.DAL.EF
 {
@@ -21,5 +23,17 @@ namespace SMM_ThomasMore.DAL.EF
         public DbSet<User> Users { get; set; }
         public DbSet<Alert> Alerts { get; set; }
         public DbSet<AlertInstellingen> AlertInstellingen { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
+    //1
+
+
+    public void AddUserRole(User user, UserType type)
+    {
+      User u = Users.Find(user.id);
+      u.type = type;  
+      SaveChanges();
     }
+
+  }
 }

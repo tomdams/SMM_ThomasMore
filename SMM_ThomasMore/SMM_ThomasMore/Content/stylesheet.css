@@ -2,7 +2,8 @@
 
 .sidenav {
     height: 100%;
-    width: 300px;
+    min-width: 250px;
+    width: auto;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -26,9 +27,47 @@
         }
 
 .main {
-    margin-left: 160px;    
+    margin-left: 300px;
     padding: 0px 10px;
 }
+
 .sidenav ul {
-list-style-type: none
+    list-style-type: none
+}
+
+.search-container {
+    margin-left: 10%;
+}
+
+#aanAfmelden {
+    float: right;
+}
+
+.navMenuGroep {
+    margin-top: 10%;
+}
+
+    .navMenuGroep li a {
+        font-size: medium;
+    }
+
+.TicketsListItem {
+    float: none;
+    margin-top: 2px;
+    margin-bottom: 50px;
+}
+
+.TicketsSublist {
+    float: none;
+    margin: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    #Ticketsform .TicketsSublist ul li {
+        width: 100%;
+    }
+
+        #Ticketsform .TicketsSublist ul li :nth-child(2) {
+            width: 100%;
+        }
 }
