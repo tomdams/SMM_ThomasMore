@@ -8,20 +8,26 @@ using System.Threading.Tasks;
 
 namespace SMM_ThomasMore.Domain
 {
-    
-    public class User
+
+  public class User
+  {
+    [Key]
+    public int user_id { get; set; }
+    public string email { get; set; }
+    public bool confirmEmail { get; set; }
+    public string wachtwoord { get; set; }
+    public string username { get; set; }
+    public UserType type { get; set; }
+    public string compareWachtwoord { get; set; }
+    public ICollection<AlertInstellingen> alertInstellingen { get; set; }
+    public ICollection<Alert> alerts { get; set; }
+
+    public User()
     {
-        public int id { get; set; }
-        public string email { get; set; }
-        public bool confirmEmail { get; set; }
-        public string wachtwoord { get; set; }
-        public string username { get; set; }
-        public UserType type { get; set; }
-        public string compareWachtwoord { get; set; }
-
-
-        
+      alertInstellingen = new List<AlertInstellingen>();
+      alerts = new List<Alert>();
     }
+  }
 
- 
+
 }

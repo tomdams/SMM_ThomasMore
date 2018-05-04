@@ -45,7 +45,7 @@ namespace SMM_ThomasMore.DAL
 
         public void verifyUser(User u)
         {
-            uctx.Users.Find(u.id).confirmEmail = true;        
+            uctx.Users.Find(u.user_id).confirmEmail = true;        
             uctx.SaveChanges();         
         }
     }

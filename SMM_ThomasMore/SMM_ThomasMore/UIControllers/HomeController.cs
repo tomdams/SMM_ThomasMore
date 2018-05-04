@@ -16,7 +16,12 @@ namespace SMM_ThomasMore.Controllers
       elController = new ElementController();
       elController.politiciInlezen();
       smController = new SMController();
-      smController.readMessages();
+      if(UserController.currentUser != null)
+      {
+        elController.volgElement(254, Domain.AlertType.NOTIFICATION, UserController.currentUser.user_id);
+        smController.readMessages();
+      }
+      
       return View();
     }
 

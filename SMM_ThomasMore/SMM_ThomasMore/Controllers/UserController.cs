@@ -11,7 +11,7 @@ namespace SMM_ThomasMore.Controllers
 {
   public class UserController
   {
-    public User currentUser { get; set; }
+    public static User currentUser { get; set; }
     private UserManager umgr;
 
     public UserController()
@@ -40,7 +40,7 @@ namespace SMM_ThomasMore.Controllers
       return u;
     }
     public void sendVerificationMail(User u) {
-      int userid =  umgr.getUser(u.username,u.wachtwoord).id;
+      int userid =  umgr.getUser(u.username,u.wachtwoord).user_id;
       umgr.sendVerificationMail(u);
 
 

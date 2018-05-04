@@ -41,7 +41,7 @@ namespace SMM_ThomasMore.Controllers
 
         if (authenticatedUser != null)
         {
-          uc.currentUser = authenticatedUser;
+          UserController.currentUser = authenticatedUser;
           var authTicket = new FormsAuthenticationTicket(1, authenticatedUser.username, DateTime.Now, DateTime.Now.AddMinutes(30), true, authenticatedUser.type.ToString().ToLower());
           string cookieContents = FormsAuthentication.Encrypt(authTicket);
           var encTicket = FormsAuthentication.Encrypt(authTicket);

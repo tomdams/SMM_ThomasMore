@@ -52,7 +52,7 @@ namespace SMM_ThomasMore.BL
     public void sendVerificationMail(User u)
     {
 
-      int userid = getUser(u.username, u.wachtwoord).id;
+      int userid = getUser(u.username, u.wachtwoord).user_id;
 
       /* versturen van verificatie email */
       
@@ -100,7 +100,7 @@ namespace SMM_ThomasMore.BL
             List<AlertInstellingen> alertinstellingenVoorElement = new List<AlertInstellingen>();
 
             foreach (AlertInstellingen alertinstelling in ai) {
-            if (alertinstelling.element.id == element.id) {
+            if (alertinstelling.element.element_id == element.element_id) {
                 sendAlert(alertinstelling.user, alertinstelling.element, alertinstelling.type);
               }
             }
@@ -159,8 +159,8 @@ namespace SMM_ThomasMore.BL
       foreach (User u in repo.getUsers().ToList())
       {
         int userid = Convert.ToInt32(id);
-        bool test = userid == u.id;
-        if (u.id==userid)
+        bool test = userid == u.user_id;
+        if (u.user_id==userid)
         {
           return u;
 

@@ -17,9 +17,9 @@ namespace SMM_ThomasMore.Controllers
       mgr = new ElementManager();
     }
 
-    public void volgElement(string naam, AlertType type, User user)
+    public void volgElement(int element_id, AlertType type, int user_id)
     {
-      mgr.volgElement(naam, type, user);
+      mgr.volgElement(element_id, type, user_id);
     }
 
     public void politiciInlezen()

@@ -39,7 +39,7 @@ namespace SMM_ThomasMore.BL
           foreach (var item in array)
           {
             Persoon p = new Persoon();
-            p.id = item.id;
+            p.element_id = item.id;
             p.first_name = item.first_name;
             p.last_name = item.last_name;
             p.district = item.district;
@@ -74,20 +74,32 @@ namespace SMM_ThomasMore.BL
       }
     }
 
-    public void volgElement(string naam, AlertType type, User user)
-        {
-          Element e = null;
-          List<Element> elements = repo.getElements().ToList();
-          foreach(Element el in elements)
-          {
-            if (el.naam.Equals(naam))
-            {
-              e = el;
-            }
-          }
+    public void volgElement(int element_id, AlertType type, int user_id)
+    {
+      AlertInstellingen ai = new AlertInstellingen(type, repo.getUser(user_id), repo.getElement(element_id));
+      ai.element_id = element_id;
+      ai.user_id = user_id;
+      bool exists = false;
 
-          AlertInstellingen ai = new AlertInstellingen(type, user, e);
-          userMgr.AddAI(ai);
+      foreach (AlertInstellingen aitest in repo.getAIs())
+      {
+        if (aitest.Equals(ai))
+        {
+          ai = aitest;
+          exists = true;
+        }
+      }
+
+      if (!exists)
+      {
+        repo.getUser(user_id).alertInstellingen.Add(ai);
+        repo.getElement(element_id).alertInstellingen.Add(ai);
+        repo.AddAI(ai);
+      }
+      else
+      {
+        repo.RemoveAI(ai);
+      }
 
     }
   }

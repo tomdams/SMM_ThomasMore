@@ -19,8 +19,8 @@ namespace SC.BL
     private IElementRepository elementrepo;
     private IElementManager em;
     private readonly int MINIMUM = 10;
-    private static DateTime lastRead = new DateTime(2018, 04, 28);
-    private DateTime Today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second);
+    private static DateTime lastRead = new DateTime(2018, 04, 25);
+    private DateTime Today = new DateTime(2018,04,29);
 
     public void checkTrending()
     {
@@ -69,7 +69,7 @@ namespace SC.BL
     }
 
     public void readMessages()
-    {/*
+    {
       //repo maken
       repo = new SMRepository();
       repo.getMessages();
@@ -128,7 +128,7 @@ namespace SC.BL
       checkTrending();
       //Commentaar weghalen
       lastRead = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-   */ }
+      }
     
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
     {

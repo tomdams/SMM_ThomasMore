@@ -30,7 +30,7 @@ namespace SMM_ThomasMore.DAL.EF
 
     public void AddUserRole(User user, UserType type)
     {
-      User u = Users.Find(user.id);
+      User u = Users.Find(user.user_id);
       u.type = type;  
       SaveChanges();
     }
