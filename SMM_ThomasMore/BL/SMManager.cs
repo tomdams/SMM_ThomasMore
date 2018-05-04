@@ -19,7 +19,7 @@ namespace SC.BL
     private IElementRepository elementrepo;
     private IElementManager em;
     private readonly int MINIMUM = 10;
-    private static DateTime lastRead = new DateTime(2018, 04, 20);
+    private static DateTime lastRead = new DateTime(2018, 04, 28);
     private DateTime Today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second);
 
     public void checkTrending()
@@ -69,8 +69,8 @@ namespace SC.BL
     }
 
     public void readMessages()
-    {
-     /* //repo maken
+    {/*
+      //repo maken
       repo = new SMRepository();
       repo.getMessages();
       em = new ElementManager();

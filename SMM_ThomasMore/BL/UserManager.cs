@@ -20,7 +20,7 @@ namespace SMM_ThomasMore.BL
     {
 
       if (alertType == AlertType.MAIL) {
-        this.sendMail(user, element);
+        this.sendMailNotification(user, element);
       }
       if (alertType == AlertType.MOBILENOTIFICATION)
       {
@@ -106,12 +106,12 @@ namespace SMM_ThomasMore.BL
             }
         }
 
-        public void sendMail(User user, Element element)
-        {
-            Console.WriteLine("Trending: {0},  mail verstuurt naar {1}",element.naam,user.username);
-        }
+    public void sendMailNotification(User user, Element element) => sendMail(user.email, "Een item is trending", " is nu trending");
 
-        public void sendMobileNotification(User user, Element element)
+
+
+
+    public void sendMobileNotification(User user, Element element)
         {
             Console.WriteLine("Trending: {0},  mobilenotification verstuurt naar {1}", element.naam, user.username);
         }
