@@ -8,7 +8,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
-
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -33,14 +32,13 @@ namespace SMM_ThomasMore.Controllers
     [HttpPost]
     public ActionResult AanmeldenPage(LoginVM loginVM)
     {
-      
       if (ModelState.IsValid)
       {
         User authenticatedUser = uc.getUser(loginVM.username, loginVM.wachtwoord);
 
         if (authenticatedUser != null)
         {
-          uc.currentUser = authenticatedUser;
+          UserController.currentUser = authenticatedUser;
           var authTicket = new FormsAuthenticationTicket(1, authenticatedUser.username, DateTime.Now, DateTime.Now.AddMinutes(30), true, authenticatedUser.type.ToString().ToLower());
           string cookieContents = FormsAuthentication.Encrypt(authTicket);
           var encTicket = FormsAuthentication.Encrypt(authTicket);
@@ -74,7 +72,7 @@ namespace SMM_ThomasMore.Controllers
           };         
           uc.addUser(newUser);
 
-                int userid = uc.getUser(newUser.username, newUser.wachtwoord).id;
+                int userid = uc.getUser(newUser.username, newUser.wachtwoord).user_id;
 
                 /* versturen van verificatie email */
                 MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");

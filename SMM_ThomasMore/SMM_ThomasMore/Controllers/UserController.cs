@@ -9,7 +9,7 @@ namespace SMM_ThomasMore.Controllers
 {
   public class UserController
   {
-    public User currentUser { get; set; }
+    public static User currentUser { get; set; }
     private UserManager umgr;
 
     public UserController()

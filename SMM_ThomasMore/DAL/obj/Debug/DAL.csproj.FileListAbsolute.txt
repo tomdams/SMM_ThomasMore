@@ -110,3 +110,18 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-ma
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-master\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-master\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-master\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll.config
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.pdb
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.xml

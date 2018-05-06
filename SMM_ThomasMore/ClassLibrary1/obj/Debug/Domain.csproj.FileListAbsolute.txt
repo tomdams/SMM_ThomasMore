@@ -59,3 +59,11 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-ma
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-master\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-master\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\test\SMM_ThomasMore-master\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb

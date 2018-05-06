@@ -9,21 +9,38 @@ namespace SMM_ThomasMore.Controllers
 
   public class HomeController : Controller
   {
-    //private ElementController elController;
-    //private SMController smController;
-    public ActionResult Index()
-    {
-      //elController = new ElementController();
-      //elController.politiciInlezen();
-      //smController = new SMController();
-      //smController.readMessages();
-      return View();
-    }
+        private ElementController elController;
+        private SMController sMController;
+        private static bool ingelezen = false;
+        public ActionResult Index()
+        {
+            elController = new ElementController();
+            sMController = new SMController();
+            if (!ingelezen)
+            {
+                elController.politiciInlezen();
+                //sMController.readMessages();
+                ingelezen = true;
+            }
+            return View();
+        }
 
-    public ActionResult About()
+        public ActionResult About()
     {
       ViewBag.Message = "Your application description page.";
 
+      return View();
+    }
+
+     public ActionResult Contact()
+    {
+      ViewBag.Message = "Your contact page.";
+
+      return View();
+    }
+
+        public ActionResult PlatformenPage()
+    {
       return View();
     }
 
@@ -33,21 +50,5 @@ namespace SMM_ThomasMore.Controllers
 
             return View();
     }
-
-        public ActionResult Contact()
-    {
-      ViewBag.Message = "Your contact page.";
-
-      return View();
-    }
-
-    public ActionResult PlatformenPage()
-    {
-      return View();
-    }
-
-        
-
-
     }
 }

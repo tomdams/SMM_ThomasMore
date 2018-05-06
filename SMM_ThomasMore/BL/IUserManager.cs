@@ -1,4 +1,5 @@
 ﻿using SMM_ThomasMore.Domain;
+using System.Collections;
 
 namespace SMM_ThomasMore.BL
 {
@@ -10,6 +11,7 @@ namespace SMM_ThomasMore.BL
         void sendMail(User user, Element element);
         void sendMobileNotification(User user, Element element);
         void AddAI(AlertInstellingen ai);
-
+        IEnumerable getUsers();
+        User getUser(int id);
     }
 }

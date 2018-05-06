@@ -15,13 +15,35 @@ namespace SMM_ThomasMore.DAL
             ctx.Database.Initialize(false);
         }
 
-    public void addPersoon(Persoon p)
+        public void AddAI(AlertInstellingen ai)
+        {
+            ctx.AlertInstellingen.Add(ai);
+            ctx.SaveChanges();
+        }
+
+        public void addPersoon(Persoon p)
     {
       ctx.Personen.Add(p);
       ctx.SaveChanges();
     }
+        public IEnumerable<AlertInstellingen> getAIs()
+        {
+            return ctx.AlertInstellingen;
+        }
 
-    public IEnumerable<Element> getElements()
+        public Element getElement(int id)
+        {
+            foreach (Element e in ctx.Elements)
+            {
+                if (e.element_id == id)
+                {
+                    return e;
+                }
+            }
+
+            return null;
+        }
+        public IEnumerable<Element> getElements()
         {
           List<Element> elements = new List<Element>();
 
@@ -40,5 +62,23 @@ namespace SMM_ThomasMore.DAL
           return elements;
         }
 
+        public User getUser(int id)
+        {
+            foreach (User u in ctx.Users)
+            {
+                if (u.user_id == id)
+                {
+                    return u;
+                }
+            }
+            return null;
+        }
+
+
+        public void RemoveAI(AlertInstellingen ai)
+        {
+            ctx.AlertInstellingen.Remove(ai);
+            ctx.SaveChanges();
+        }
     }
 }

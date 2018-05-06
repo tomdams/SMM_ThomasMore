@@ -34,9 +34,26 @@ namespace SMM_ThomasMore.DAL
 
         public IEnumerable<User> getUsers()
         {
-           return uctx.Users.ToList<User>();
+            List<User> users = new List<User>();
+            foreach (User u in uctx.Users)
+            {
+                users.Add(u);
+            }
+            return users;
         }
 
+        public User getUser(int id)
+        {
+            foreach (User u in uctx.Users)
+            {
+                if (u.user_id == id)
+                {
+                    return u;
+                }
+            }
+
+            return null;
+        }
         public void AddAi(AlertInstellingen ai)
         {
           uctx.AlertInstellingen.Add(ai);
@@ -45,11 +62,8 @@ namespace SMM_ThomasMore.DAL
 
         public void verifyUser(User u)
         {
-            uctx.Users.Find(u.id).username = "little bogger";
-            
-            
+            uctx.Users.Find(u.user_id).username = "little bogger";
             uctx.SaveChanges();
-         
         }
     }
 }

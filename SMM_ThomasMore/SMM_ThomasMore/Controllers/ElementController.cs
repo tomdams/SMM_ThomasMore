@@ -17,12 +17,12 @@ namespace SMM_ThomasMore.Controllers
       mgr = new ElementManager();
     }
 
-    public void volgElement(string naam, AlertType type, User user)
-    {
-      mgr.volgElement(naam, type, user);
-    }
+        public void volgElement(int element_id, AlertType type, int user_id)
+        {
+            mgr.volgElement(element_id, type, user_id);
+        }
 
-    public void politiciInlezen()
+        public void politiciInlezen()
     {
       mgr.politiciInlezen();
     }

@@ -5,7 +5,7 @@ namespace SMM_ThomasMore.BL
   public interface IElementManager
     {
         void genereerAlerts(Element e);
-        void volgElement(string naam, AlertType type, User user);
+        void volgElement(int element_id, AlertType type, int user_id);
         void politiciInlezen();
-  }
+    }
 }

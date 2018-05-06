@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using SMM_ThomasMore.DAL;
@@ -29,9 +30,11 @@ namespace SMM_ThomasMore.BL
         this.sendNotification(user, element);
       }
 
-      Alert alert = new Alert(alertType, "", user, element);
-      repo.addAlert(alert);
-    }
+            Alert alert = new Alert(alertType, "", user, element);
+            user.alerts.Add(alert);
+            element.alerts.Add(alert);
+            repo.addAlert(alert);
+        }
 
       
 
@@ -56,7 +59,7 @@ namespace SMM_ThomasMore.BL
             List<AlertInstellingen> alertinstellingenVoorElement = new List<AlertInstellingen>();
 
             foreach (AlertInstellingen alertinstelling in ai) {
-            if (alertinstelling.element.id == element.id) {
+            if (alertinstelling.element.element_id == element.element_id) {
                 sendAlert(alertinstelling.user, alertinstelling.element, alertinstelling.type);
               }
             }
@@ -103,11 +106,20 @@ namespace SMM_ThomasMore.BL
         public void verifyUser(string id)
         {
             foreach (User u in repo.getUsers().ToList()) {
-                if (u.id.Equals(id)) {
+                if (u.user_id.Equals(id)) {
                     repo.verifyUser(u);
                     break;
                 }
             }
+        }
+        public IEnumerable getUsers()
+        {
+            return repo.getUsers();
+        }
+
+        public User getUser(int id)
+        {
+            return repo.getUser(id);
         }
     }
 }
