@@ -1,4 +1,5 @@
 ﻿
+using SC.BL.Domain;
 using SMM_ThomasMore.Domain;
 namespace SMM_ThomasMore.BL
 {
@@ -7,5 +8,8 @@ namespace SMM_ThomasMore.BL
         void genereerAlerts(Element e);
         void volgElement(int element_id, AlertType type, int user_id);
         void politiciInlezen();
+        Element getElement(string el);
+        Persoon getPersoon(Element element);
+        void berekenPersoon(Persoon persoon);
     }
 }

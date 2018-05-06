@@ -1,0 +1,19 @@
+﻿@model SMM_ThomasMore.Domain.Element
+@{
+    ViewBag.Title = "PersoonPage";
+}
+
+<h2>ElementPage</h2>
+
+@Html.DisplayFor(m => m.naam)
+
+
+<form action="http://localhost:11981/UIElement/volgElement" method="GET">
+    <input type="submit" value="Volg element" />
+</form>
+
+@Html.ActionLink("Twitter", "Twitter", "UIElement")
+@Html.ActionLink("Facebook", "Facebook", "UIElement")
+@Html.DisplayFor(m => m.aantalVermeldingen)
+@Html.DisplayFor(m => m.polariteit)
+@Html.DisplayFor(m => m.verhalen)

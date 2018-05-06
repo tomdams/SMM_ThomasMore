@@ -19,7 +19,7 @@ namespace SMM_ThomasMore.Controllers
             if (!ingelezen)
             {
                 elController.politiciInlezen();
-                //sMController.readMessages();
+                sMController.readMessages();
                 ingelezen = true;
             }
             return View();

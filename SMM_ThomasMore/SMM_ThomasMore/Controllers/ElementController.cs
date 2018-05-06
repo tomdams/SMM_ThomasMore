@@ -1,4 +1,5 @@
-﻿using SMM_ThomasMore.BL;
+﻿using SC.BL.Domain;
+using SMM_ThomasMore.BL;
 using SMM_ThomasMore.Domain;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,20 @@ namespace SMM_ThomasMore.Controllers
     {
       mgr.politiciInlezen();
     }
+        public Element getElement(string el)
+        {
+            return mgr.getElement(el);
+        }
 
-  }
+        public Persoon getPersoon(Element element)
+        {
+            return mgr.getPersoon(element);
+        }
+
+
+        public void berekenPersoon(Persoon persoon)
+        {
+            mgr.berekenPersoon(persoon);
+        }
+    }
 }

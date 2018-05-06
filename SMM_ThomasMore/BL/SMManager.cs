@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SC.BL.Domain;
 using SC.BL.Domain.SocialeMedia;
 using SC.BL.Domain.User;
 using SC.DAL;
@@ -133,9 +134,9 @@ namespace SC.BL
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
     {
-               int aantalVermeldingen = 0;
+            int aantalVermeldingen = 0;
 
-                foreach (Message m in repo.getMessages())
+            foreach (Message m in repo.getMessages())
             {
                 if (m.date > startDate && m.date < endDate)
                 {
@@ -143,16 +144,17 @@ namespace SC.BL
                     {
                         aantalVermeldingen++;
                     }
-                    else
+                    else if (m.words.ToLower().Contains(e.naam.ToLower()))
                     {
-                        if (m.words.ToLower().Contains(e.naam.ToLower()))
-                        {
-                            aantalVermeldingen++;
-                        }
+                        aantalVermeldingen++;
+                    }
+                    else if (e.GetType() == typeof(Persoon) || e.GetType() == typeof(Organisatie))
+                    {
+                        aantalVermeldingen++;
                     }
                 }
             }
             return aantalVermeldingen;
-              }           
+        }           
             }          
 }

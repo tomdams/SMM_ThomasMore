@@ -154,6 +154,7 @@
     <Compile Include="Controllers\SMController.cs" />
     <Compile Include="UIControllers\LoginController.cs" />
     <Compile Include="UIControllers\UIAlertController.cs" />
+    <Compile Include="UIControllers\UIElementController.cs" />
     <Compile Include="UIControllers\UIUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4525,6 +4526,7 @@
     <Content Include="Views\UIUser\Confirmation.cshtml" />
     <Content Include="Views\UIUser\Verified.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\UIElement\PersoonPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,6 +26,12 @@ namespace SMM_ThomasMore.DAL
       ctx.Personen.Add(p);
       ctx.SaveChanges();
     }
+        public void berekenPersoon(Persoon persoon)
+        {
+
+
+            //ctx.SaveChanges();
+        }
         public IEnumerable<AlertInstellingen> getAIs()
         {
             return ctx.AlertInstellingen;
@@ -60,6 +66,23 @@ namespace SMM_ThomasMore.DAL
             elements.Add(t);
           }
           return elements;
+        }
+
+        public IEnumerable<Persoon> getPersonen()
+        {
+            return ctx.Personen;
+        }
+        public Persoon getPersoon(string naam)
+        {
+            Persoon p = null;
+            foreach (Persoon persoon in getPersonen())
+            {
+                if (persoon.naam.Equals(naam))
+                {
+                    p = persoon;
+                }
+            }
+            return p;
         }
 
         public User getUser(int id)

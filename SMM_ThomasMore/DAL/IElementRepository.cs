@@ -13,5 +13,7 @@ namespace SMM_ThomasMore.DAL
         void AddAI(AlertInstellingen ai);
         IEnumerable<AlertInstellingen> getAIs();
         void RemoveAI(AlertInstellingen ai);
+        IEnumerable<Persoon> getPersonen();
+        Persoon getPersoon(string naam);
     }
 }
