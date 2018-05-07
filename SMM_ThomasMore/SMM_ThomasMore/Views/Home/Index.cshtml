@@ -1,6 +1,7 @@
 ﻿@{
 
     ViewBag.Title = "Home";
+
 }
 <!-- Custom Theme Style -->
 <link href="../Content/build/css/dashboard.css" rel="stylesheet">
@@ -39,7 +40,7 @@
         ]);
 
         var options = {
-            title: 'Populaire politiekers',
+            title: 'ard',
             is3D: true,
             backgroundColor: 'none',
             colors: ['#d7cec7', '#76323f', '#c09f80', '#636161', '#565656']
@@ -50,6 +51,7 @@
         chart.draw(data, options);
     }
 </script>
+
 
 
 <div class="grid-stack">
@@ -87,6 +89,12 @@
         $('.grid-stack').gridstack(options);
     });
 </script>
+
+<p>@if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+{
+    ViewBag.dashboard.ToString();
+}
+    </p>
 
 
 

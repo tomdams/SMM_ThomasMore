@@ -13,6 +13,7 @@ namespace SMM_ThomasMore.DAL
     private SMMDbContext ctx;
 
     public DashboardRepository()
+
     {
       ctx = new SMMDbContext();
       ctx.Database.Initialize(false);
@@ -22,7 +23,7 @@ namespace SMM_ThomasMore.DAL
     {
       foreach(Dashboard d in ctx.Dashboards.ToList())
       {
-        if (d.user.Equals(u))
+        if (d.user.user_id == u.user_id)
         {
           return d;
         }

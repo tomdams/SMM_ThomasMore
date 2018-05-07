@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SMM_ThomasMore.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,16 +13,29 @@ namespace SMM_ThomasMore.Controllers
         private ElementController elController;
         private SMController sMController;
         private static bool ingelezen = false;
+        private DashboardController dbController;
         public ActionResult Index()
         {
             elController = new ElementController();
             sMController = new SMController();
+            dbController = new DashboardController();
+
             if (!ingelezen)
             {
                 elController.politiciInlezen();
                 //sMController.readMessages();
                 ingelezen = true;
             }
+
+
+            if (!(UserController.currentUser == null))
+            {
+              ViewBag.dashboard = dbController.GetDashboard(UserController.currentUser);
+            }
+
+            
+
+            
             return View();
         }
 

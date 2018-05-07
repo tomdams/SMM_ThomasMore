@@ -18,9 +18,10 @@ namespace SMM_ThomasMore.DAL.EF
             compareWachtwoord = "test123456"
           };
 
-          Dashboard d1 = new Dashboard(u1)
+          Dashboard d1 = new Dashboard()
           {
-            id = 1
+            id = 1,
+            user = u1
           };
 
           Grafiek g1 = new Grafiek(d1)
