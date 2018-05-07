@@ -12,6 +12,12 @@ namespace SMM_ThomasMore.DAL
   {
     private SMMDbContext ctx;
 
+    public DashboardRepository()
+        {
+            ctx = new SMMDbContext();
+            ctx.Database.Initialize(false);
+        }
+
     public Dashboard GetDashboard(User u)
     {
       foreach(Dashboard d in ctx.Dashboards.ToList())

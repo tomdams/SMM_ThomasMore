@@ -12,16 +12,34 @@ namespace SMM_ThomasMore.Controllers
         private ElementController elController;
         private SMController sMController;
         private static bool ingelezen = false;
+        private DashboardController dbController;
         public ActionResult Index()
         {
             elController = new ElementController();
             sMController = new SMController();
+            dbController = new DashboardController();
+
             if (!ingelezen)
             {
                 elController.politiciInlezen();
                 sMController.readMessages();
                 ingelezen = true;
             }
+
+
+            if (dbController.GetDashboard(UserController.currentUser) == null)
+            {
+                ViewBag.aangemeld = false;
+            }
+            else
+            {
+                ViewBag.dashboard = dbController.GetDashboard(UserController.currentUser);
+                ViewBag.aangemeld = true;
+            }
+
+            
+
+            
             return View();
         }
 
