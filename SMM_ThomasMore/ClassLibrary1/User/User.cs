@@ -21,6 +21,7 @@ namespace SMM_ThomasMore.Domain
         public string compareWachtwoord { get; set; }
         public ICollection<AlertInstellingen> alertInstellingen { get; set; }
         public ICollection<Alert> alerts { get; set; }
+        public virtual Dashboard dashboard { get; set; }
 
         public User()
         {

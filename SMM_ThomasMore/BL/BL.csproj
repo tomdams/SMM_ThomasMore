@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRoleProvider.cs" />
+    <Compile Include="DashboardManager.cs" />
     <Compile Include="ElementManager.cs" />
+    <Compile Include="IDashboardManager.cs" />
     <Compile Include="IElementManager.cs" />
     <Compile Include="ISMManager.cs" />
     <Compile Include="IUserManager.cs" />

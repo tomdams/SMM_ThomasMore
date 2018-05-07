@@ -50,10 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DashboardRepository.cs" />
     <Compile Include="EF\SMMDbConfiguration.cs" />
     <Compile Include="EF\SMMDbContext.cs" />
     <Compile Include="EF\SMMDbInitializer.cs" />
     <Compile Include="ElementRepository.cs" />
+    <Compile Include="IDashboardRepository.cs" />
     <Compile Include="IElementRepository.cs" />
     <Compile Include="ISMRepository.cs" />
     <Compile Include="IUserRepository.cs" />

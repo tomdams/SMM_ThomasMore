@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dashboard\Dashboard.cs" />
+    <Compile Include="Dashboard\Grafiek.cs" />
+    <Compile Include="Dashboard\GrafiekType.cs" />
+    <Compile Include="Dashboard\Zone.cs" />
     <Compile Include="SocialeMedia\Message.cs" />
     <Compile Include="User\Alert.cs" />
     <Compile Include="User\AlertInstellingen.cs" />

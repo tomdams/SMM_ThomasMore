@@ -22,7 +22,10 @@ namespace SMM_ThomasMore.DAL
 
     public void AddUser(User u)
     {
+      Dashboard d = new Dashboard(u);
+      u.dashboard = d;
       uctx.Users.Add(u);
+      uctx.Dashboards.Add(d);
       uctx.SaveChanges();
     }
 

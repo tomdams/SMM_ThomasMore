@@ -24,6 +24,8 @@ namespace SMM_ThomasMore.DAL.EF
         public DbSet<Alert> Alerts { get; set; }
         public DbSet<AlertInstellingen> AlertInstellingen { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Dashboard> Dashboards { get; set; }
+        public DbSet<Grafiek> Grafieken { get; set; }
 
     //1
 
