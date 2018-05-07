@@ -117,6 +117,7 @@ namespace SMM_ThomasMore.Controllers
     public ActionResult Afmelden()
     {
       FormsAuthentication.SignOut();
+      UserController.currentUser = null;
       return RedirectToAction("Index", "Home");
     }
 

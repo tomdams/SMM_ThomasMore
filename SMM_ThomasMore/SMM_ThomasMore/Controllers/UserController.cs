@@ -10,6 +10,7 @@ namespace SMM_ThomasMore.Controllers
   public class UserController
   {
     public static User currentUser { get; set; }
+
     private UserManager umgr;
 
     public UserController()
@@ -22,14 +23,19 @@ namespace SMM_ThomasMore.Controllers
       return umgr.getUser(username, wachtwoord);
     }
 
+    public string currentUserName()
+    {
+      return currentUser.username;
+    }
+
     public void addUser(User user)
     {
       umgr.AddUser(user);
     }
 
-        public void verifyUser(string id)
-        {
-            umgr.verifyUser(id);
-        }
+    public void verifyUser(string id)
+    {
+      umgr.verifyUser(id);
     }
+  }
 }

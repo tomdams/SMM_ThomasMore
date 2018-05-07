@@ -67,3 +67,11 @@ C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibra
 C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 C:\Users\Mario\Documents\school\MAARTEN\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\Users\Bertg\Desktop\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb

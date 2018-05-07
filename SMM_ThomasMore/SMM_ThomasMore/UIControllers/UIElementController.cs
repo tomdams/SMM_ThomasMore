@@ -38,7 +38,7 @@ namespace SMM_ThomasMore.UIControllers
         {
             if (UserController.currentUser != null)
             {
-                //    elController.volgElement(element, AlertType.NOTIFICATION, UserController.currentUser);
+               elController.volgElement(element.element_id, AlertType.NOTIFICATION, UserController.currentUser.user_id);
             }
             return View("~/Views/UIElement/PersoonPage.cshtml", element);
         }

@@ -42,16 +42,10 @@
 
                     <div class="clearfix"></div>
 
-                    <!-- menu profile quick info -->
-                    <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <img src="../Content/images/img.jpg" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>Maarten Vissers</h2>
-                        </div>
-                    </div>
+                   @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                   {
+                       {Html.RenderPartial("UserName", SMM_ThomasMore.Controllers.UserController.currentUser);}
+                   }
                     <!-- /menu profile quick info -->
 
                     @using (Html.BeginForm("ElementPage", "UIElement"))
@@ -60,7 +54,7 @@
                             @Html.TextBoxFor(m => m.naam)
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
-                    }
+                    } 
 
                     <br />
 
@@ -212,9 +206,11 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="../Content/images/img.jpg" alt="">John Doe
+                                    Account
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
+                                @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                                {
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                                     <li><a href="javascript:;"> Profile</a></li>
                                     <li>
@@ -224,8 +220,17 @@
                                         </a>
                                     </li>
                                     <li><a href="javascript:;">Help</a></li>
-                                    <li><a href="@Url.Action("Index", "Login")"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                    <li><a href="@Url.Action("Afmelden", "UIUser")"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                                 </ul>
+                                }
+                                else
+                                {
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="@Url.Action("AanmeldenPage", "UIUser")"><i class="fa fa-sign-in pull-right"></i> Log In</a></li>
+                                    <li><a href="@Url.Action("RegistrerenPage", "UIUser")"><i class="fa fa-sign-in pull-right"></i> Registreer</a></li>
+                                </ul>
+                                }
+                                
                             </li>
 
                             <li role="presentation" class="dropdown">

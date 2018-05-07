@@ -95,7 +95,7 @@ namespace SC.BL
             };
 
             dynamic array = JsonConvert.DeserializeObject(json);
-            foreach (var item in array)
+            /*foreach (var item in array)
             {
                 DateTime date = item.date;
                 Message m = new Message();
@@ -125,7 +125,7 @@ namespace SC.BL
                 m.language = item.profile.language;
 
                 repo.add(m);
-            }
+            }*/
 
             checkTrending();
             //Commentaar weghalen
