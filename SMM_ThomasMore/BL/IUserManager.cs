@@ -7,7 +7,6 @@ namespace SMM_ThomasMore.BL
     {
         void sendAlerts(Element element);
         void sendAlert(User user, Element element, AlertType alertType);
-        void sendNotification(User user, Element element);
         void sendMail(User user, Element element);
         void sendMobileNotification(User user, Element element);
         void AddAI(AlertInstellingen ai);

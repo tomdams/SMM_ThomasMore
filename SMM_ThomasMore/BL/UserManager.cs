@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using SMM_ThomasMore.DAL;
 using SMM_ThomasMore.Domain;
+using System.Net.Mail;
+using System.Net;
 
 namespace SMM_ThomasMore.BL
 {
@@ -24,10 +26,6 @@ namespace SMM_ThomasMore.BL
       if (alertType == AlertType.MOBILENOTIFICATION)
       {
         this.sendMobileNotification(user, element);
-      }
-      if (alertType == AlertType.NOTIFICATION)
-      {
-        this.sendNotification(user, element);
       }
 
             Alert alert = new Alert(alertType, "", user, element);
@@ -71,17 +69,33 @@ namespace SMM_ThomasMore.BL
 
         public void sendMail(User user, Element element)
         {
-            Console.WriteLine("Trending: {0},  mail verstuurt naar {1}",element.naam,user.username);
-        }
+      /* versturen van verificatie email */
+      MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");
+      MailAddress to = new MailAddress(user.email);
+      MailMessage message = new MailMessage(from, to);
+      message.Subject = "Trending Alert Sociale Media Monitor";
+      message.Body = element.naam + " is Trending";
+
+
+      using (var smtp = new SmtpClient())
+      {
+        var credential = new NetworkCredential
+        {
+          UserName = "thomasmoreintegratie@gmail.com",
+          Password = "D9O8M7S6"
+        };
+        smtp.Credentials = credential;
+        smtp.Host = "smtp.gmail.com";
+        smtp.Port = 587;
+        smtp.EnableSsl = true;
+        smtp.Send(message);
+
+      }
+    }
 
         public void sendMobileNotification(User user, Element element)
         {
             Console.WriteLine("Trending: {0},  mobilenotification verstuurt naar {1}", element.naam, user.username);
-        }
-
-        public void sendNotification(User user, Element element)
-        {
-            Console.WriteLine("Trending: {0},  notification verstuurt naar {1}", element.naam, user.username);
         }
 
         public User Aanmelden(string username)
