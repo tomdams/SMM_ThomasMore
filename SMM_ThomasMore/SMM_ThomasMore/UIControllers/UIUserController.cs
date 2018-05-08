@@ -14,14 +14,14 @@ using System.Web.Security;
 namespace SMM_ThomasMore.Controllers
 {
 
-    public class UIUserController : Controller
-    {
+  public class UIUserController : Controller
+  {
 
     private UserController uc;
     public UIUserController()
     {
       uc = new UserController();
-      if(UserController.currentUser != null)
+      if (UserController.currentUser != null)
       {
         UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
       }
@@ -29,9 +29,9 @@ namespace SMM_ThomasMore.Controllers
 
     // GET: User
     public ActionResult AanmeldenPage()
-        {
-            return View();
-        }
+    {
+      return View();
+    }
 
     [HttpPost]
     public ActionResult AanmeldenPage(LoginVM loginVM)
@@ -47,75 +47,81 @@ namespace SMM_ThomasMore.Controllers
           string cookieContents = FormsAuthentication.Encrypt(authTicket);
           var encTicket = FormsAuthentication.Encrypt(authTicket);
           Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
-          
+
           return RedirectToAction("Index", "Home");
         }
       }
       return View();
-    
+
     }
 
     public ActionResult RegistrerenPage()
-        {
-          return View();
-        }
+    {
+      return View();
+    }
 
     [HttpPost]
-       public ActionResult RegistrerenPage(UserVM userVM)
-       {
+    public ActionResult RegistrerenPage(UserVM userVM)
+    {
       if (ModelState.IsValid)
       {
-         User newUser = new User()
+        User newUser = new User()
+        {
+
+          wachtwoord = userVM.wachtwoord,
+          compareWachtwoord = userVM.compareWachtwoord,
+          email = userVM.email,
+          confirmEmail = false,
+          username = userVM.username,
+          type = UserType.SUPERADMIN
+          
+        };
+        uc.addUser(newUser);
+
+        int userid = uc.getUser(newUser.username, newUser.wachtwoord).user_id;
+
+        /* versturen van verificatie email */
+        MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");
+        MailAddress to = new MailAddress(userVM.email);
+        MailMessage message = new MailMessage(from, to);
+        message.Subject = "Using email verification";
+        message.Body = "http://localhost:11981/UIUser/verified/" + userid;
+
+
+        using (var smtp = new SmtpClient())
+        {
+
+          var credential = new NetworkCredential
           {
+            UserName = "thomasmoreintegratie@gmail.com",
+            Password = "D9O8M7S6"
+          };
+          smtp.Credentials = credential;
+          smtp.Host = "smtp.gmail.com";
+          smtp.Port = 587;
+          smtp.EnableSsl = true;
+          smtp.Send(message);
 
-                    wachtwoord = userVM.wachtwoord,
-                    compareWachtwoord = userVM.compareWachtwoord,
-                    email = userVM.email,
-                    confirmEmail = false,
-                    username = userVM.username
-          };         
-          uc.addUser(newUser);
+        }
 
-                int userid = uc.getUser(newUser.username, newUser.wachtwoord).user_id;
 
-                /* versturen van verificatie email */
-                MailAddress from = new MailAddress("thomasmoreintegratie@gmail.com");
-                MailAddress to = new MailAddress(userVM.email);
-                MailMessage message = new MailMessage(from, to);
-                message.Subject = "Using email verification";
-                message.Body = "http://localhost:11981/UIUser/verified/"+userid;
-                
-                
-                using (var smtp =  new SmtpClient()) {
-                    var credential = new NetworkCredential{
-                        UserName = "thomasmoreintegratie@gmail.com", 
-                         Password = "D9O8M7S6"  
-                 };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    smtp.Send(message);
-                    
-                }
-               
-                
-                
-                
 
-                /********/
+
+
+        /********/
 
 
         return View("~/Views/UIUser/Confirmation.cshtml");
-        }
-        return View();
-       }
-
-      public ActionResult UserBeherenPage() {
-
-
-        return View();
       }
+      return View();
+    }
+    [Authorize(Roles = "superadmin,admin")]
+    public ActionResult UserBeherenPage()
+    {
+
+
+      return View();
+    }
 
 
     public ActionResult Afmelden()
@@ -186,27 +192,29 @@ namespace SMM_ThomasMore.Controllers
       return RedirectToAction("Index", "Home");
     }
 
+    [Authorize(Roles = "superadmin,admin,ingelogdegebruiker,nietingelogdegebruiker")]
     public ActionResult DashboardPage()
     {
       return View();
     }
-
+    [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
     public ActionResult AlertInstellingenPage()
     {
       return View();
     }
 
+    [Authorize(Roles = "superadmin,admin")]
     public ActionResult PlatformbeheerPage()
     {
       return View();
     }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        public ActionResult SMBeherenPage()
+    public ActionResult Login()
+    {
+      return View();
+    }
+    [Authorize(Roles = "superadmin")]
+    public ActionResult SMBeherenPage()
     {
       return View();
     }
@@ -215,19 +223,26 @@ namespace SMM_ThomasMore.Controllers
     {
       return View();
     }
-     public ActionResult Verified()
-     {
-            
-            return View();
-     }
-        public ActionResult Confirmation()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Verified(VerifyVM vm) {            
-            uc.verifyUser(vm.id);
-            return RedirectToAction("AanmeldenPage", "UIUser");
-        }
+    [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
+    public ActionResult AccountInstellingenPage()
+    {
+      return View();
     }
+
+    public ActionResult Verified()
+    {
+
+      return View();
+    }
+    public ActionResult Confirmation()
+    {
+      return View();
+    }
+    [HttpPost]
+    public ActionResult Verified(VerifyVM vm)
+    {
+      uc.verifyUser(vm.id);
+      return RedirectToAction("AanmeldenPage", "UIUser");
+    }
+  }
 }

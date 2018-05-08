@@ -99,3 +99,11 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integrati
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\Users\mario\Desktop\integratie\mei 805\v6\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
