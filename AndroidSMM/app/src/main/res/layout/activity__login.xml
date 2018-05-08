@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android_smm.LoginActivity">
+    tools:context="com.example.android_smm.LoginActivity"
+    >
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -17,7 +18,8 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
         app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:backgroundTint="@color/backgroundcolor">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -78,7 +80,7 @@
                 <ImageView
                     android:id="@+id/imageView_userToon"
                     android:layout_width="40dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryDark"
                     android:src="@drawable/img_user"
                     android:padding="8dp"
                     android:tint="@color/white"
@@ -114,7 +116,7 @@
                 <ImageView
                     android:id="@+id/imageView_passwordToon"
                     android:layout_width="40dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryDark"
                     android:src="@drawable/img_authentication"
                     android:padding="8dp"
                     android:tint="@color/white"
@@ -173,7 +175,8 @@
                 android:text="SIGN IN"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@color/white"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimaryDark"/>
 
             <ImageView
                 android:id="@+id/imageView_signin"
