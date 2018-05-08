@@ -138,9 +138,11 @@ namespace SMM_ThomasMore.BL
             int aantalVermeldingen = 0;
             double totaalPolariteit = 0;
             string[] verhalenUrls = { };
+            string[] wordsList = { };
             bool mentioned = false;
             Dictionary<string, int> verhalen = new Dictionary<string, int>();
-            foreach (Message m in smRepo.getMessages())
+            Dictionary<string, int> woorden = new Dictionary<string, int>();
+      foreach (Message m in smRepo.getMessages())
             {
                 mentioned = false;
                 //   if (m.date > startDate && m.date < endDate)
@@ -174,14 +176,15 @@ namespace SMM_ThomasMore.BL
                         if (m.urls.Length > 2)
                         {
                             List<string> urls = splitData(m.urls).ToList();
-                            foreach (string url in urls)
-                            { 
-                                if (verhalen.ContainsKey(url))
+                            foreach (string u in urls)
+                            {
+                             string url = u.Remove(u.Length-3,3).Remove(0,1);
+                             if (verhalen.ContainsKey(url))
                                 {
                                     verhalen[url] += 1;
                                 }
                                 else
-                                {
+                                {   
                                     verhalen.Add(url, 1);
                                 }
                             }
@@ -193,14 +196,39 @@ namespace SMM_ThomasMore.BL
                             }
                             verhalenUrls = (from kvp in verhalenLinks select kvp.Key).ToArray();
                         }
-                    }
+
+            if (m.words.Length > 2)
+            {
+              List<string> words = splitData(m.words).ToList();
+              foreach (string w in words)
+              {
+                if (woorden.ContainsKey(w))
+                {
+                  woorden[w] += 1;
                 }
+                else
+                {
+                  woorden.Add(w, 1);
+                }
+              }
+              List<KeyValuePair<string, int>> woordenLijst = woorden.ToList();
+              woordenLijst.Sort((u1, u2) => u1.Value.CompareTo(u2.Value));
+              if (woordenLijst.Count > 5)
+              {
+                woordenLijst.RemoveRange(2, woordenLijst.Count - 5);
+              }
+              wordsList = (from kvp in woordenLijst select kvp.Key).ToArray();
+            }
+
+          }
+        }
 
             }
             Persoon p1 = getPersoon(persoon);
             p1.polariteit = totaalPolariteit / aantalVermeldingen;
             p1.aantalVermeldingen = aantalVermeldingen;
             p1.verhalen = verhalenUrls;
+            p1.woorden = wordsList;
         }
 
 
