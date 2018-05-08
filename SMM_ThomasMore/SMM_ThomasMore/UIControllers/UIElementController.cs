@@ -16,6 +16,14 @@ namespace SMM_ThomasMore.UIControllers
         private SMController smc = new SMController();
         private static Element element;
         // GET: UIElement
+        public UIElementController()
+        {
+          if (UserController.currentUser != null)
+          {
+            UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
+          }
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -42,7 +50,6 @@ namespace SMM_ThomasMore.UIControllers
             if (UserController.currentUser != null)
             {
                elController.volgElement(element.element_id, AlertType.NOTIFICATION, UserController.currentUser.user_id);
-               UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
             }
             return View("~/Views/UIElement/PersoonPage.cshtml", element);
         }

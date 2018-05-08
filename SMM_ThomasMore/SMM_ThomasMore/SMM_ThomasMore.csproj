@@ -154,7 +154,6 @@
     <Compile Include="UIControllers\HomeController.cs" />
     <Compile Include="Controllers\SMController.cs" />
     <Compile Include="UIControllers\LoginController.cs" />
-    <Compile Include="UIControllers\UIAlertController.cs" />
     <Compile Include="UIControllers\UIElementController.cs" />
     <Compile Include="UIControllers\UIUserController.cs" />
     <Compile Include="Global.asax.cs">

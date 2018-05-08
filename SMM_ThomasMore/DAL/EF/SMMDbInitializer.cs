@@ -50,18 +50,32 @@ namespace SMM_ThomasMore.DAL.EF
                 y_as = "4, 5, 6, 7, 8",
                 x_as_beschrijving = "groepsleden",
                 y_as_beschrijving = "aantal punten",
-                grafiekType = GrafiekType.TAART
+                grafiekType = GrafiekType.STAAF
+            };
+
+            Grafiek g3 = new Grafiek(d1)
+            {
+                id = 3,
+                titel = "Test grafiek",
+                plaats = 3,
+                x_as = "tom, bert, mario, pj",
+                y_as = "5, 6, 7, 8",
+                x_as_beschrijving = "groepsleden",
+                y_as_beschrijving = "aantal punten",
+                grafiekType = GrafiekType.LIJN
             };
 
             u1.dashboard = d1;
           d1.grafieken.Add(g1);
             d1.grafieken.Add(g2);
-          context.Users.Add(u1);
+            d1.grafieken.Add(g3);
+            context.Users.Add(u1);
           context.Dashboards.Add(d1);
 
             context.Grafieken.Add(g1);
                 context.Grafieken.Add(g2);
-          context.SaveChanges();
+            context.Grafieken.Add(g3);
+            context.SaveChanges();
         }
     }
 }

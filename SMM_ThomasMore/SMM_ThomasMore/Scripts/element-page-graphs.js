@@ -1,7 +1,7 @@
-﻿ google.charts.load('current', {'packages':['corechart']});
- google.charts.setOnLoadCallback(drawChart);
+﻿google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
 
-function drawChart(data,options) {
+function drawChart(data, options) {
     $.ajax(
         {
             type: 'POST',
@@ -38,5 +38,5 @@ function drawChart(data,options) {
                 console.log('memes');
             }
         });
-   
+
 }

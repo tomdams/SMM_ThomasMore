@@ -12,8 +12,18 @@ namespace SMM_ThomasMore.Controllers
   {
         private ElementController elController;
         private SMController sMController;
+        private UserController uController;
         private static bool ingelezen = false;
         private DashboardController dbController;
+
+        public HomeController()
+        { 
+          if (UserController.currentUser != null)
+          {
+            uController = new UserController();
+            UserController.currentUser = uController.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
+          }
+        }
         public ActionResult Index()
         {
             elController = new ElementController();
@@ -23,7 +33,6 @@ namespace SMM_ThomasMore.Controllers
             if (!ingelezen)
             {
                 elController.politiciInlezen();
-                //sMController.readMessages();
                 ingelezen = true;
             }
 

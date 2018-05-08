@@ -21,6 +21,10 @@ namespace SMM_ThomasMore.Controllers
     public UIUserController()
     {
       uc = new UserController();
+      if(UserController.currentUser != null)
+      {
+        UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
+      }
     }
 
     // GET: User
