@@ -15,8 +15,8 @@
             android:id="@+id/colapppsingtoolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/materialbackground"
-            app:contentScrim="?attr/colorPrimary"
+            android:background="@drawable/materialbackground2"
+            app:contentScrim="?attr/colorPrimaryDark"
             app:expandedTitleMarginEnd="64dp"
 
             app:expandedTitleMarginStart="48dp"
@@ -95,12 +95,13 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Check your bank activities"
+                            android:text="Check your charts"
                             android:textColor="@android:color/darker_gray" />
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
                 <android.support.v7.widget.CardView
+                    android:id="@+id/accountSettingsId"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_width="160dp"
@@ -133,7 +134,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Check your bank activities"
+                            android:text="See and edit your settings"
                             android:padding="5dp"
                             android:textColor="@android:color/darker_gray"/>
 
@@ -150,6 +151,7 @@
                 <android.support.v7.widget.CardView
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
+                    android:id="@+id/notificationId"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp">
@@ -169,7 +171,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Notification Settings"
+                            android:text="Notification"
                             android:textStyle="bold" />
                         <View
                             android:layout_width="match_parent"
@@ -180,7 +182,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Check your bank activities"
+                            android:text="See your notifications"
                             android:padding="5dp"
                             android:textColor="@android:color/darker_gray"/>
 
@@ -188,6 +190,7 @@
                 </android.support.v7.widget.CardView>
                 <android.support.v7.widget.CardView
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:id="@+id/chartSettingsId"
                     android:clickable="true"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
@@ -240,6 +243,7 @@
                 <android.support.v7.widget.CardView
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
+                    android:id="@+id/signOutId"
                     android:layout_width="340dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp">

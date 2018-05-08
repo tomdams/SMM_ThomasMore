@@ -12,6 +12,14 @@ import butterknife.ButterKnife;
 public class OverzichtActivity extends AppCompatActivity {
     @BindView(R.id.dashboardId)
     CardView dashboardCardView;
+    @BindView(R.id.notificationId)
+    CardView notificationCardView;
+    @BindView(R.id.accountSettingsId)
+    CardView accountSettingsCardView;
+    @BindView(R.id.chartSettingsId)
+    CardView chardSettingsCardView;
+    @BindView(R.id.signOutId)
+    CardView signOutCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +31,6 @@ public class OverzichtActivity extends AppCompatActivity {
 
 
     private void addEventHandlers(){
-
-
         dashboardCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,5 +38,39 @@ public class OverzichtActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        notificationCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverzichtActivity.this, NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        accountSettingsCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverzichtActivity.this, AccountSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        chardSettingsCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverzichtActivity.this, ChartSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signOutCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverzichtActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
