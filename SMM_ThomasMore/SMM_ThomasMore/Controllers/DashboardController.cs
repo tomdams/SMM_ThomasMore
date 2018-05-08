@@ -20,5 +20,7 @@ namespace SMM_ThomasMore.Controllers
     {
       return mgr.GetDashboard(u);
     }
+
+       
   }
 }

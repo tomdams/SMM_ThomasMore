@@ -1,6 +1,15 @@
-﻿@{
+﻿@model SMM_ThomasMore.Domain.Dashboard
 
-    ViewBag.Title = "Home";
+@{
+    if (ViewBag.user != null && User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+    {
+
+        ViewBag.Title = @ViewBag.dashboard.ToString();
+    }
+    else
+    {
+        ViewBag.Title = "Dashboard";
+    }
 
 }
 <!-- Custom Theme Style -->
@@ -24,53 +33,111 @@
         }
     </style>
 </head>
-
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-    google.charts.load("current", { packages: ["corechart"] });
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Politieker', 'Tags'],
-            ['Francken', 11],
-            ['De Block', 2],
-            ['De Winter', 2],
-            ['Homans', 2],
-            ['De Wever', 7]
-        ]);
-
-        var options = {
-            title: 'ard',
-            is3D: true,
-            backgroundColor: 'none',
-            colors: ['#d7cec7', '#76323f', '#c09f80', '#636161', '#565656']
-
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-        chart.draw(data, options);
-    }
-</script>
-
-
-
 <div class="grid-stack">
-    <div class="grid-stack-item"
-         data-gs-x="0" data-gs-y="0"
-         data-gs-width="4" data-gs-height="4">
-        <div class="grid-stack-item-content">
-            <div id="piechart_3d" style="width: 100%; height: 98%;"></div>
-        </div>
-    </div>
-    <div class="grid-stack-item"
-         data-gs-x="4" data-gs-y="0"
-         data-gs-width="4" data-gs-height="4">
-        <div class="grid-stack-item-content">
-            <div style="display:block;margin:auto" class="glyphicon glyphicon-plus">
 
-            </div>
-        </div>
-    </div>
+    @if (ViewBag.user != null && User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+    {
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+            google.charts.load("current", { packages: ["corechart"] });
+            console.log("load");
+        </script>
+
+
+
+
+        for (int i = 0; i < @ViewBag.dashboard.grafieken.Count; i++)
+        {
+            switch (@ViewBag.dashboard.grafieken[i].grafiekType.ToString())
+            {
+                case "TAART":
+
+
+
+                    @*<script>
+                            var xAsString = "@ViewBag.dashboard.grafieken[i].x_as";
+                            var xAsArray = xAsString.split(',');
+
+
+                            document.getElementById("test").textContent = xAsArray[2];
+                        </script>*@
+
+
+
+                    
+                    <script type="text/javascript">
+                        console.log("ja");
+                        google.charts.setOnLoadCallback(drawChart);
+                        console.log("nee");
+                                            function drawChart() {
+
+
+                                                var tempdata   = [];
+                                                var Header = ['@ViewBag.dashboard.grafieken[i].x_as_beschrijving', '@ViewBag.dashboard.grafieken[i].y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                                var xAsString = "@ViewBag.dashboard.grafieken[i].x_as";
+                                                var xAsArray = new Array();
+                                                xAsArray = xAsString.split(', ');
+                                                var yAsArray = new Array();
+                                                    var yAsString = "@ViewBag.dashboard.grafieken[i].y_as";
+                                                    yAsArray = yAsString.split(', ');
+                                                    for (var j = 0; j < xAsArray.length; j++) {
+                                                        var temp = [];
+                                                        console.log(xAsArray[j]);
+                                                        console.log(yAsArray[j]);
+                                                        temp.push(xAsArray[j]);
+                                                        var yel = parseInt(yAsArray[j]);
+                                                        temp.push(yel);
+
+                                                        tempdata.push(temp);
+                                                    }
+
+                                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                            var options = {
+                                        title: '@ViewBag.dashboard.grafieken[i].titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+                                    };
+
+                                        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_@i'));
+                                        chart.draw(data, options);
+                                }
+                    </script>
+
+
+                    <div class="grid-stack-item"
+                         data-gs-x="0" data-gs-y="0"
+                         data-gs-width="4" data-gs-height="4">
+                        <div class="grid-stack-item-content">
+                            <div id="piechart_3d_@i" style="width: 100%; height: 98%;"></div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    break;
+                case "STAAF": <p>Staaf</p>
+                    break;
+                case "LIJN": <p>Lijn</p>
+                    break;
+            }
+
+
+
+        }
+
+
+
+
+    }
 </div>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
@@ -95,6 +162,27 @@
     ViewBag.dashboard.ToString();
 }
 </p>
+
+
+
+            
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
+            <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+            <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+            <script type="text/javascript">
+                                            $(function () {
+                                                var options = {
+                                                    cellHeight: 75,
+                                                    verticalMargin: 10,
+                                                    disableResize: true
+
+                                                };
+                                                $('.grid-stack').gridstack(options);
+                                            });
+            </script>
 
 
 

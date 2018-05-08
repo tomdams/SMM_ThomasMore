@@ -31,6 +31,9 @@ namespace SMM_ThomasMore.Controllers
             if (!(UserController.currentUser == null))
             {
               ViewBag.dashboard = dbController.GetDashboard(UserController.currentUser);
+                ViewBag.user = UserController.currentUser;
+              
+                return View();
             }
 
             

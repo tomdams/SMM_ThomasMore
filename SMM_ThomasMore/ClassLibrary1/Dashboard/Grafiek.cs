@@ -21,6 +21,11 @@ namespace SMM_ThomasMore.Domain
     [Required]
     public virtual Dashboard dashboard { get; set; }
 
+    public Grafiek()
+        {
+            elements = new List<Element>();
+        }
+
     public Grafiek(Dashboard d)
     {
       elements = new List<Element>();

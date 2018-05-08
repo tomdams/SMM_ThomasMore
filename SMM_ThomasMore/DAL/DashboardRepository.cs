@@ -30,5 +30,13 @@ namespace SMM_ThomasMore.DAL
       }
       return null;
     }
+
+        public IEnumerable<Grafiek> GetGrafieken()
+        {
+            return ctx.Grafieken.ToList<Grafiek>();
+        }
+
   }
+    
+
 }

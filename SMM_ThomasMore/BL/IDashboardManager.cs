@@ -10,5 +10,6 @@ namespace SMM_ThomasMore.BL
   public interface IDashboardManager
   {
     Dashboard GetDashboard(User u);
+       
   }
 }

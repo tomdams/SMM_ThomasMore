@@ -19,6 +19,7 @@ namespace SMM_ThomasMore.BL
 
     public Dashboard GetDashboard(User u)
     {
+      repo.GetGrafieken().ToList();
       return repo.GetDashboard(u);
     }
   }
