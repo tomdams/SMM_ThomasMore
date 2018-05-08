@@ -20,17 +20,17 @@ namespace SMM_ThomasMore.DAL
             uctx.SaveChanges();
         }
 
-    public void AddUser(User u)
-    {
-      Dashboard d = new Dashboard(u);
-      u.dashboard = d;
-      uctx.Users.Add(u);
-      uctx.Dashboards.Add(d);
-      uctx.SaveChanges();
-    }
+        public void AddUser(User u)
+        {
+          Dashboard d = new Dashboard(u);
+          u.dashboard = d;
+          uctx.Users.Add(u);
+          uctx.Dashboards.Add(d);
+          uctx.SaveChanges();
+        }
 
 
-    public IEnumerable<AlertInstellingen> GetAlertInstellingen()
+        public IEnumerable<AlertInstellingen> GetAlertInstellingen()
         {
            return uctx.AlertInstellingen.ToList<AlertInstellingen>();
         }
@@ -68,5 +68,17 @@ namespace SMM_ThomasMore.DAL
             uctx.Users.Find(u.user_id).username = "little bogger";
             uctx.SaveChanges();
         }
+
+    public IEnumerable<Alert> GetAlerts()
+    {
+      return uctx.Alerts.ToList<Alert>();
     }
+
+    public void setALertGelezen(int alert_id)
+    {
+        Alert a = uctx.Alerts.Find(alert_id);
+        a.gelezen = true;
+        uctx.SaveChanges();
+    }
+  }
 }

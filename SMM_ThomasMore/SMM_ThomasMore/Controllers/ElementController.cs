@@ -42,5 +42,10 @@ namespace SMM_ThomasMore.Controllers
         {
             mgr.berekenPersoon(persoon);
         }
+
+        public Element GetElement(int element_id)
+        {
+          return mgr.getElement(element_id);
+        }
     }
 }

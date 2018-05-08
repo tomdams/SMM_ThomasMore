@@ -4529,6 +4529,7 @@
     <Content Include="Views\UIElement\PersoonPage.cshtml" />
     <Content Include="Views\Shared\Username.cshtml" />
     <Content Include="Views\Shared\Alerts.cshtml" />
+    <Content Include="Views\Shared\SingleAlert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

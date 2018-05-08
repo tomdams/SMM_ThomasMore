@@ -31,6 +31,9 @@ namespace SMM_ThomasMore.BL
       }
 
             Alert alert = new Alert(alertType, "", user, element);
+            alert.message = element.naam + " is trending!";
+            alert.date = DateTime.Now;
+            alert.gelezen = false;
             user.alerts.Add(alert);
             element.alerts.Add(alert);
             repo.addAlert(alert);
@@ -39,16 +42,17 @@ namespace SMM_ThomasMore.BL
       
 
         public User getUser(string username, string wachtwoord)
-    {
-      foreach (User u in repo.getUsers().ToList())
-      {
-        if (u.username.Equals(username) && u.wachtwoord.Equals(wachtwoord))
         {
-          return u;
+          foreach (User u in repo.getUsers().ToList())
+          {
+            if (u.username.Equals(username) && u.wachtwoord.Equals(wachtwoord))
+            {
+              repo.GetAlerts().ToList();
+              return u;
+            }
+          }
+          return null;
         }
-      }
-      return null;
-    }
   
 
        
@@ -121,5 +125,10 @@ namespace SMM_ThomasMore.BL
         {
             return repo.getUser(id);
         }
+
+    public void setAlertGelezen(int alert_id)
+    {
+      repo.setALertGelezen(alert_id);
     }
+  }
 }

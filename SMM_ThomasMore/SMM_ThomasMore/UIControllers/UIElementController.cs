@@ -35,19 +35,26 @@ namespace SMM_ThomasMore.UIControllers
             }
             return View("~/Views/Home/Index.cshtml");
         }
+
+        
         public ActionResult volgElement()
         {
             if (UserController.currentUser != null)
             {
                elController.volgElement(element.element_id, AlertType.NOTIFICATION, UserController.currentUser.user_id);
-               smc.readMessages();
-                UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
+               UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
             }
             return View("~/Views/UIElement/PersoonPage.cshtml", element);
         }
 
-        public ActionResult Twitter()
+        public ActionResult leesMessages()
         {
+          smc.readMessages();
+          return View("~/Views/UIElement/PersoonPage.cshtml", element);
+        }
+
+        public ActionResult Twitter()
+         {
             Persoon persoon = new Persoon();
             if (element != null)
             {
@@ -72,5 +79,22 @@ namespace SMM_ThomasMore.UIControllers
             return Redirect(persoon.facebook);
         }
 
-    }
+        public ActionResult AfterAlertElementPage(int element_id, int alert_id)
+        {
+          uc.setAlertGelezen(alert_id);
+          element = elController.GetElement(element_id);
+          if (element != null)
+          {
+            if (element.GetType() == typeof(Persoon))
+            {
+              Persoon persoon = elController.getPersoon(element);
+              elController.berekenPersoon(persoon);
+              return View("~/Views/UIElement/PersoonPage.cshtml", element);
+            }
+          }
+
+          return View("~/Views/Home/Index.cshtml");
+        }
+
+  }
 }

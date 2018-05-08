@@ -1,0 +1,16 @@
+﻿@model SMM_ThomasMore.Domain.Alert
+@{
+    Layout = null;
+}
+
+<li>
+    <a href="@Url.Action("AfterAlertElementPage", "UIElement", new { element_id = Model.element_id, alert_id = Model.Id })">
+        <span>
+            <span>Trending Alert!</span>
+            <span class="time">@Model.date</span>
+        </span>
+        <span class="message">
+            @Model.message
+        </span>
+    </a>
+</li>

@@ -11,6 +11,7 @@ namespace SMM_ThomasMore.BL
         void sendMail(User user, Element element);
         void sendMobileNotification(User user, Element element);
         void AddAI(AlertInstellingen ai);
+        void setAlertGelezen(int alert_id);
         IEnumerable getUsers();
         User getUser(int id);
     }

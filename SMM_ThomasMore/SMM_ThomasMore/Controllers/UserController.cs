@@ -37,5 +37,10 @@ namespace SMM_ThomasMore.Controllers
     {
       umgr.verifyUser(id);
     }
+
+    public void setAlertGelezen(int alert_id)
+    {
+      umgr.setAlertGelezen(alert_id);
+    }
   }
 }

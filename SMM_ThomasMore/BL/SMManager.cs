@@ -59,14 +59,14 @@ namespace SC.BL
 
                 if (vermeldingenVandaag > (gemiddeldeVermeldingen * 1.15))
                 {
-                    /*
-                    Console.WriteLine(e.naam + " is trending");
-                    Console.WriteLine(e.naam + " vermeldingen vandaag " + vermeldingenVandaag);
-                    Console.WriteLine(e.naam + " 1 dag geleden: " + countVermeldingen(e, DateTime.Now.AddDays(0 - (2)), DateTime.Now.AddDays(-1)));
-                    Console.WriteLine(e.naam + " 2 dag geleden: " + countVermeldingen(e, DateTime.Now.AddDays(0 - (3)), DateTime.Now.AddDays(-2)));
-                    Console.WriteLine(e.naam + " 3 dag geleden: " + countVermeldingen(e, DateTime.Now.AddDays(0 - (4)), DateTime.Now.AddDays(-3)));
-                    */
-                    return true;
+          /*
+          System.Diagnostics.Debug.WriteLine(e.naam + " is trending");
+          System.Diagnostics.Debug.WriteLine(e.naam + " vermeldingen vandaag " + vermeldingenVandaag);
+          System.Diagnostics.Debug.WriteLine(e.naam + " 1 dag geleden: " + countVermeldingen(e, today.AddDays(0 - (2)), today.AddDays(-1)));
+          System.Diagnostics.Debug.WriteLine(e.naam + " 2 dag geleden: " + countVermeldingen(e, today.AddDays(0 - (3)), today.AddDays(-2)));
+          System.Diagnostics.Debug.WriteLine(e.naam + " 3 dag geleden: " + countVermeldingen(e, today.AddDays(0 - (4)), today.AddDays(-3)));
+          */
+          return true;
                 }
             }
             return false;
@@ -130,11 +130,12 @@ namespace SC.BL
 
             checkTrending();
             //Commentaar weghalen
-            lastRead = today;
+            lastRead = DateTime.Now;
         }
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
     {
+      /*
             int aantalVermeldingen = 0;
 
             foreach (Message m in repo.getMessages())
@@ -156,6 +157,28 @@ namespace SC.BL
                 }
             }
             return aantalVermeldingen;
-        }           
+            */
+
+      int aantalVermeldingen = 0;
+
+      foreach (Message m in repo.getMessages())
+      {
+        if (m.date > startDate && m.date < endDate)
+        {
+          if (m.persons.ToLower().Contains(e.naam.ToLower()))
+          {
+            aantalVermeldingen++;
+          }
+          else
+          {
+            if (m.words.ToLower().Contains(e.naam.ToLower()))
+            {
+              aantalVermeldingen++;
+            }
+          }
+        }
+      }
+      return aantalVermeldingen;
+    }           
             }          
 }

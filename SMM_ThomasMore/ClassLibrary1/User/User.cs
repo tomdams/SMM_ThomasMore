@@ -29,6 +29,19 @@ namespace SMM_ThomasMore.Domain
             alerts = new List<Alert>();
         }
 
+        public List<Alert> getUnreadAlerts(string at)
+        {
+          List<Alert> newAlerts = new List<Alert>();
+          foreach(Alert a in alerts)
+          {
+            if (!(a.gelezen) && a.type.ToString().ToLower().Equals(at.ToLower()))
+            {
+              newAlerts.Add(a);
+            }
+          }
+          return newAlerts;
+        }
+
     }
 
  

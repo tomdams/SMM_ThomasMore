@@ -12,6 +12,10 @@
     <input type="submit" value="Volg element" />
 </form>
 
+<form action="http://localhost:11981/UIElement/leesMessages" method="GET">
+    <input type="submit" value="Lees Messages" />
+</form>
+
 @Html.ActionLink("Twitter", "Twitter", "UIElement")
 @Html.ActionLink("Facebook", "Facebook", "UIElement")
 @Html.DisplayFor(m => m.aantalVermeldingen)

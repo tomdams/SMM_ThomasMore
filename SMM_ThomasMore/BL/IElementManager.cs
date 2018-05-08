@@ -9,6 +9,7 @@ namespace SMM_ThomasMore.BL
         void volgElement(int element_id, AlertType type, int user_id);
         void politiciInlezen();
         Element getElement(string el);
+        Element getElement(int element_id);
         Persoon getPersoon(Element element);
         void berekenPersoon(Persoon persoon);
     }

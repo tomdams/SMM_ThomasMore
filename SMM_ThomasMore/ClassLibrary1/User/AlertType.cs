@@ -9,5 +9,7 @@ namespace SMM_ThomasMore.Domain
     public enum AlertType
     {
         MAIL,MOBILENOTIFICATION,NOTIFICATION
+
+
     }
 }

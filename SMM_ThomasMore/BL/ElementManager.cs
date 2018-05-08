@@ -211,5 +211,10 @@ namespace SMM_ThomasMore.BL
             string[] gesplitsteData = data.Split(stringSeparators, StringSplitOptions.None);
             return gesplitsteData;
         }
-    }
+
+        public Element getElement(int element_id)
+        {
+          return repo.getElement(element_id);
+        }
+  }
 }
