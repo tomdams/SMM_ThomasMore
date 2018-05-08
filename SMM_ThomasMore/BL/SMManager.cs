@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SC.BL
 {
@@ -23,7 +22,9 @@ namespace SC.BL
         private static DateTime lastRead = new DateTime(2018, 04, 25);
         private DateTime today = new DateTime(2018, 04, 29);
 
-        public void checkTrending()
+    public object UserController { get; private set; }
+
+    public void checkTrending()
         {
             //elements ophalen
             elementrepo = new ElementRepository();
@@ -95,7 +96,7 @@ namespace SC.BL
             };
 
             dynamic array = JsonConvert.DeserializeObject(json);
-            /*foreach (var item in array)
+            foreach (var item in array)
             {
                 DateTime date = item.date;
                 Message m = new Message();
@@ -125,7 +126,7 @@ namespace SC.BL
                 m.language = item.profile.language;
 
                 repo.add(m);
-            }*/
+            }
 
             checkTrending();
             //Commentaar weghalen

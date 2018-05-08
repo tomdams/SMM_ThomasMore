@@ -31,5 +31,26 @@ namespace SMM_ThomasMore.Domain
         {
             return user.username + "'s dashboard";
         }
+
+        public ICollection<Grafiek> getGrafieken()
+        {
+
+            //List<Grafiek> returnGrafieken = new List<Grafiek>();
+
+            //foreach (Grafiek g in grafieken)
+            //{
+            //    returnGrafieken.Add(g);
+            //}
+            //return returnGrafieken;
+
+            return grafieken;
+
+            
+
+            
+        }
     }
+
+
+    
 }
