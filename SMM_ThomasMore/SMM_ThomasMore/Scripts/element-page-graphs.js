@@ -11,19 +11,21 @@ function drawChart(data,options) {
             function (response) {
                 var options =
                     {
-                        width: 1100,
-                        height: 900,
+                        width: 200,
+                        height: 180,
                         sliceVisibilityThreshold: 0,
-                        legend: { position: "top", alignment: "end" },
-                        chartArea: { left: 370, top: 50, height: "90%" },
+                        chartArea: { left: 30, top: 30, height: "90%" },
                         bar: { groupWidth: "50%" },
-                        colors: ['#00FF00','#FF0000']
+                        colors: ['#FF0000', '#00FF00'],
+                        pieSliceText: 'label',
+                        title: "Polariteit",
+                        legend: 'none'
                     };
 
                 var data = google.visualization.arrayToDataTable([
                     ['test', "test"],
-                    ['Positief', 50 + ((response / 2)*100)],
-                    ['Negatief', 50 - ((response / 2)*100)]
+                    ['Negatief', 50 - ((response / 2) * 100)],
+                    ['Positief', 50 + ((response / 2) * 100)]
                 ]);
 
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));

@@ -175,7 +175,7 @@ namespace SMM_ThomasMore.BL
                         {
                             List<string> urls = splitData(m.urls).ToList();
                             foreach (string url in urls)
-                            {
+                            { 
                                 if (verhalen.ContainsKey(url))
                                 {
                                     verhalen[url] += 1;

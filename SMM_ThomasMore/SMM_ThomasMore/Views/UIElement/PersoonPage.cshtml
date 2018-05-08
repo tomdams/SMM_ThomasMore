@@ -16,17 +16,22 @@
     <input type="submit" value="Lees Messages" />
 </form>
 
-@Html.ActionLink("Twitter", "Twitter", "UIElement")
-@Html.ActionLink("Facebook", "Facebook", "UIElement")
+<a href='@Url.Action("Twitter","UIElement")' class="btn btn-info">Twitter</a>
+<a href='@Url.Action("Facebook","UIElement")' class="btn btn-primary">Facebook</a>
 @Html.DisplayFor(m => m.aantalVermeldingen)
 @Html.DisplayFor(m => m.polariteit)
-@Html.DisplayFor(m => m.verhalen)
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
+
+<div class="list-group">
+    @for (int index = 0; index < Model.verhalen.Count(); index++)
+    {
+       <a href="http://www.msn.com/fr-be/actualite/national/après-les-émeutes-à-anderlecht-theo-francken-et-jan-jambon-jouent-à-fond-la-carte-identitaire/ar-AAwiH0x?ocid=ob-tw-frbe-615" class="list-group-item list-group-item-action">@Html.DisplayFor(m => m.verhalen[index])</a>
+    }
+</div>
+
 
 <!-- Graphs -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 @Scripts.Render("~/Scripts/element-page-graphs.js")
 
-<div id="piechart" style="width: 900px; height: 500px;"></div>
+<div id="piechart" style="width: 200px; height: 100px;"></div>
