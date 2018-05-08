@@ -96,5 +96,10 @@ namespace SMM_ThomasMore.UIControllers
           return View("~/Views/Home/Index.cshtml");
         }
 
+    [HttpPost]
+    public double getPolariteit()
+    {
+      return element.polariteit;
+    }
   }
 }

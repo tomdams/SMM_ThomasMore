@@ -4469,6 +4469,7 @@
     <Content Include="Scripts\custom.min.js" />
     <Content Include="Scripts\date.js" />
     <Content Include="Scripts\daterangepicker.js" />
+    <Content Include="Scripts\element-page-graphs.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\gauge.min.js" />
     <Content Include="Scripts\icheck.min.js" />
