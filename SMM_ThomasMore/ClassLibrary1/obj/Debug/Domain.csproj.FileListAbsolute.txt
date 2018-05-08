@@ -91,3 +91,11 @@ C:\School\2\Integratie\Project3\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.cs
 C:\School\2\Integratie\Project3\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\School\2\Integratie\Project3\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 C:\School\2\Integratie\Project3\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
