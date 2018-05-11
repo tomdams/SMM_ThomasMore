@@ -18,6 +18,7 @@ namespace SC.BL
         private ISMRepository repo;
         private IElementRepository elementrepo;
         private IElementManager em;
+        private IDashboardManager dbManager;
         private readonly int MINIMUM = 10;
         private static DateTime lastRead = new DateTime(2018, 04, 25);
         private DateTime today = new DateTime(2018, 04, 29);
@@ -77,14 +78,16 @@ namespace SC.BL
             //repo maken
             repo = new SMRepository();
             em = new ElementManager();
+            dbManager = new DashboardManager();
 
-            string json = "";
+      string json = "";
             using (var client = new System.Net.Http.HttpClient())
             {
-                var uri = "http://kdg.textgain.com/query";
+                var uri = "https://kdg.textgain.com/query";
                 var httpRequest = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Post, uri);
-                var content = "{ \"since\":\"" + lastRead.ToString("dd MMM yyyy HH:mm:ss") + "\" }";
-                httpRequest.Content = new System.Net.Http.StringContent(content, Encoding.UTF8, "application/json");
+                var content = "{ \"since\":\"" + lastRead.ToString("dd MMM yyyy HH:mm:ss") + "\",\n" +
+                "\"until\":\"30 april 2018 22:00\" }";
+        httpRequest.Content = new System.Net.Http.StringContent(content, Encoding.UTF8, "application/json");
                 httpRequest.Headers.Add("X-API-Key", "aEN3K6VJPEoh3sMp9ZVA73kkr");
                 httpRequest.Headers.Add("Accept", "application/json; charset=utf-8");
 
@@ -107,7 +110,14 @@ namespace SC.BL
                 m.retweet = item.retweet;
                 m.date = date;
                 m.words = item.words.ToString();
-                m.sentiment = item.sentiment.ToString();
+                if (item.sentiment.ToString() is null)
+                {
+                  m.sentiment = "";
+                }
+                else
+                {
+                  m.sentiment = item.sentiment.ToString();
+                }
                 m.hashtags = item.hashtags.ToString();
                 m.urls = item.urls.ToString();
                 m.themas = item.themes.ToString();
@@ -129,36 +139,13 @@ namespace SC.BL
             }
 
             checkTrending();
+            dbManager.updateGrafieken();
             //Commentaar weghalen
             lastRead = DateTime.Now;
         }
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
     {
-      /*
-            int aantalVermeldingen = 0;
-
-            foreach (Message m in repo.getMessages())
-            {
-                if (m.date > startDate && m.date < endDate)
-                {
-                    if (m.persons.ToLower().Contains(e.naam.ToLower()))
-                    {
-                        aantalVermeldingen++;
-                    }
-                    else if (m.words.ToLower().Contains(e.naam.ToLower()))
-                    {
-                        aantalVermeldingen++;
-                    }
-                    else if (e.GetType() == typeof(Persoon) || e.GetType() == typeof(Organisatie))
-                    {
-                        aantalVermeldingen++;
-                    }
-                }
-            }
-            return aantalVermeldingen;
-            */
-
       int aantalVermeldingen = 0;
 
       foreach (Message m in repo.getMessages())

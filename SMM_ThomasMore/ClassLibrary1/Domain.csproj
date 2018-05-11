@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Dashboard\Dashboard.cs" />
     <Compile Include="Dashboard\Grafiek.cs" />
+    <Compile Include="Dashboard\GrafiekOnderwerp.cs" />
     <Compile Include="Dashboard\GrafiekType.cs" />
+    <Compile Include="Dashboard\Polariteit.cs" />
     <Compile Include="Dashboard\Zone.cs" />
     <Compile Include="SocialeMedia\Message.cs" />
     <Compile Include="User\Alert.cs" />
