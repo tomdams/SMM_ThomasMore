@@ -34,6 +34,9 @@ namespace SMM_ThomasMore.BL
 
         public Element getElement(string el)
         {
+            if (el == null) {
+            return null;
+             }else { 
             foreach (Element e in repo.getElements().ToList())
             {
                 if (e.naam.ToLower().Equals(el.ToLower()))
@@ -42,6 +45,7 @@ namespace SMM_ThomasMore.BL
                 }
             }
             return null;
+            }
         }
 
 

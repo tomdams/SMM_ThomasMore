@@ -22,6 +22,8 @@ namespace SMM_ThomasMore.UIControllers
           {
             UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
           }
+           
+            
         }
 
         public ActionResult Index()

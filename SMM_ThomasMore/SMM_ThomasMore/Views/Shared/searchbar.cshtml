@@ -1,0 +1,13 @@
+﻿@model SMM_ThomasMore.Domain.Element
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("ElementPage", "UIElement"))
+{
+    <form>
+        @Html.TextBoxFor(m => m.naam)
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+}

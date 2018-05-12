@@ -85,7 +85,7 @@ namespace SMM_ThomasMore.Controllers
         MailAddress to = new MailAddress(userVM.email);
         MailMessage message = new MailMessage(from, to);
         message.Subject = "Using email verification";
-        message.Body = "http://localhost:11981/UIUser/verified/" + userid;
+        message.Body = "http://localhost:11981/UIUser/verified/?userid=" + userid;
 
 
         using (var smtp = new SmtpClient())
@@ -104,15 +104,9 @@ namespace SMM_ThomasMore.Controllers
 
         }
 
+              return View("~/Views/UIUser/Confirmation.cshtml");
 
-
-
-
-        /********/
-
-
-        return View("~/Views/UIUser/Confirmation.cshtml");
-      }
+            }
       return View();
     }
     [Authorize(Roles = "superadmin,admin")]
@@ -229,20 +223,16 @@ namespace SMM_ThomasMore.Controllers
       return View();
     }
 
-    public ActionResult Verified()
-    {
-
-      return View();
-    }
     public ActionResult Confirmation()
     {
       return View();
     }
-    [HttpPost]
-    public ActionResult Verified(VerifyVM vm)
-    {
-      uc.verifyUser(vm.id);
-      return RedirectToAction("AanmeldenPage", "UIUser");
-    }
+
+
+   public ActionResult Verified(string userid)
+        {
+            uc.verifyUser(userid);
+            return RedirectToAction("Index", "Home");                    
+        }
   }
 }

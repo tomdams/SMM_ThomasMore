@@ -1,5 +1,4 @@
-﻿@model SMM_ThomasMore.Domain.Element
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -40,23 +39,20 @@
                         <a href="@Url.Action("Index", "Home")" style="font-family:'Times New Roman', Times, serif" class="site_title"><i class="fa fa-paw"></i> <span>Thomas More</span></a>
                     </div>
 
-                        <div class="clearfix"></div>
+                    <div class="clearfix"></div>
 
-                        @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
-                        {
-                            { Html.RenderPartial("UserName", SMM_ThomasMore.Controllers.UserController.currentUser); }
-                        }
-                        <!-- /menu profile quick info -->
+                    @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+    {
+        { Html.RenderPartial("UserName", SMM_ThomasMore.Controllers.UserController.currentUser); }
+    }
+                    <!-- /menu profile quick info -->
 
-                        @using (Html.BeginForm("ElementPage", "UIElement"))
-                        {
-                        <form>
-                            @Html.TextBoxFor(m => m.naam)
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                        }
 
-                        <br />
+                    @{
+                      { Html.RenderPartial("SearchBar", SMM_ThomasMore.Controllers.ElementController.currentelement); }
+                    }
+
+                    <br />
 
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -73,55 +69,55 @@
                                 </li>
                                 <li>
                                     @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
-                                    {
-                                    <a><i class="fa fa-edit"></i> Account <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("AccountInstellingenPage", "UIUser")">Account Instellingen</a></li>
-                                        <li><a href="@Url.Action("AlertInstellingenPage", "UIUser")">Alert Instellingen</a></li>
+                    {
+                        <a><i class="fa fa-edit"></i> Account <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="@Url.Action("AccountInstellingenPage", "UIUser")">Account Instellingen</a></li>
+                            <li><a href="@Url.Action("AlertInstellingenPage", "UIUser")">Alert Instellingen</a></li>
 
-                                    </ul>
-                                    }
+                        </ul>
+    }
                                 </li>
                                 <li>
                                     @if (User.IsInRole("admin") || User.IsInRole("superadmin"))
-                                    {
-                                    <a><i class="fa fa-desktop"></i> Admin <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("UserBeherenPage", "UIUser")">Users  beheren</a></li>
-                                    </ul>
-                                    }
+                    {
+                        <a><i class="fa fa-desktop"></i> Admin <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="@Url.Action("UserBeherenPage", "UIUser")">Users  beheren</a></li>
+                        </ul>
+    }
                                 </li>
                                 <li>
                                     @if (User.IsInRole("superadmin"))
-                                    {
-                                    <a><i class="fa fa-table"></i> Superadmin <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("SMBeherenPage", "UIUser")">Social Media</a></li>
-                                    </ul>
-                                    }
+                    {
+                        <a><i class="fa fa-table"></i> Superadmin <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="@Url.Action("SMBeherenPage", "UIUser")">Social Media</a></li>
+                        </ul>
+    }
                         </div>
 
 
                     </div>
                     <!-- /sidebar menu -->
-                        <!-- /menu footer buttons -->
-                        <div class="sidebar-footer hidden-small">
-                            <a data-toggle="tooltip" data-placement="top" title="Settings">
-                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Lock">
-                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                            </a>
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
 
-                        </div>
-                        <!-- /menu footer buttons -->
-</div>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
             </div>
 
             <!-- top navigation -->

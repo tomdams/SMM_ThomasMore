@@ -12,10 +12,12 @@ namespace SMM_ThomasMore.Controllers
   {
 
     private IElementManager mgr;
+        public static Element currentelement { get; set; }
 
-    public ElementController()
+        public ElementController()
     {
-      mgr = new ElementManager();
+            ElementController.currentelement = new Element();
+            mgr = new ElementManager();
     }
 
         public void volgElement(int element_id, AlertType type, int user_id)
