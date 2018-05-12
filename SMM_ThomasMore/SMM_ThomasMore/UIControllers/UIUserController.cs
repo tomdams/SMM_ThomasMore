@@ -32,14 +32,20 @@ namespace SMM_ThomasMore.Controllers
     {
       return View();
     }
+        public ActionResult Unverified()
+        {
+            return View();
+        }
 
-    [HttpPost]
+        [HttpPost]
     public ActionResult AanmeldenPage(LoginVM loginVM)
     {
       if (ModelState.IsValid)
       {
         User authenticatedUser = uc.getUser(loginVM.username, loginVM.wachtwoord);
-
+                if (authenticatedUser.confirmEmail == false) {
+                    return RedirectToAction("Unverified", "UIUser");
+                }
         if (authenticatedUser != null)
         {
           UserController.currentUser = authenticatedUser;
@@ -47,7 +53,7 @@ namespace SMM_ThomasMore.Controllers
           string cookieContents = FormsAuthentication.Encrypt(authTicket);
           var encTicket = FormsAuthentication.Encrypt(authTicket);
           Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
-
+            
           return RedirectToAction("Index", "Home");
         }
       }

@@ -4531,6 +4531,7 @@
     <Content Include="Views\Shared\Alerts.cshtml" />
     <Content Include="Views\Shared\SingleAlert.cshtml" />
     <Content Include="Views\Shared\SearchBar.cshtml" />
+    <Content Include="Views\UIUser\Unverified.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
