@@ -81,7 +81,7 @@ namespace SC.BL
             string json = "";
             using (var client = new System.Net.Http.HttpClient())
             {
-                var uri = "http://kdg.textgain.com/query";
+                var uri = "https://kdg.textgain.com/query";
                 var httpRequest = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Post, uri);
                 var content = "{ \"since\":\"" + lastRead.ToString("dd MMM yyyy HH:mm:ss") + "\" }";
                 httpRequest.Content = new System.Net.Http.StringContent(content, Encoding.UTF8, "application/json");
