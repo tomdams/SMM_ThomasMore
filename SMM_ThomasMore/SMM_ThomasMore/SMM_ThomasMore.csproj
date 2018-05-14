@@ -151,6 +151,7 @@
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\VerifyVM.cs" />
+    <Compile Include="UIControllers\AndroidController.cs" />
     <Compile Include="UIControllers\HomeController.cs" />
     <Compile Include="Controllers\SMController.cs" />
     <Compile Include="UIControllers\LoginController.cs" />
@@ -4532,6 +4533,7 @@
     <Content Include="Views\Shared\SingleAlert.cshtml" />
     <Content Include="Views\Shared\SearchBar.cshtml" />
     <Content Include="Views\UIUser\Unverified.cshtml" />
+    <Content Include="Views\Android\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
