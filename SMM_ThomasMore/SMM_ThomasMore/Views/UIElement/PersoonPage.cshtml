@@ -16,6 +16,8 @@
     <input type="submit" value="Lees Messages" />
 </form>
 
+<a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
+
 <a href='@Url.Action("Twitter","UIElement")' class="btn btn-info">Twitter</a>
 <a href='@Url.Action("Facebook","UIElement")' class="btn btn-primary">Facebook</a>
 @Html.DisplayFor(m => m.aantalVermeldingen)

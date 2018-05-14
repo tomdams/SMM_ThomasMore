@@ -16,7 +16,8 @@ namespace SMM_ThomasMore.DAL.EF
         email = "test@test.be",
         type = UserType.INGELOGDEGEBRUIKER,
         wachtwoord = "test123456",
-        compareWachtwoord = "test123456"
+        compareWachtwoord = "test123456",
+        confirmEmail = true
       };
 
       Dashboard d1 = new Dashboard()

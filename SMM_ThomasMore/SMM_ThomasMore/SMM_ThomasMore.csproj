@@ -155,6 +155,7 @@
     <Compile Include="UIControllers\HomeController.cs" />
     <Compile Include="Controllers\SMController.cs" />
     <Compile Include="UIControllers\LoginController.cs" />
+    <Compile Include="UIControllers\UIDashboardController.cs" />
     <Compile Include="UIControllers\UIElementController.cs" />
     <Compile Include="UIControllers\UIUserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -4534,6 +4535,7 @@
     <Content Include="Views\Shared\SearchBar.cshtml" />
     <Content Include="Views\UIUser\Unverified.cshtml" />
     <Content Include="Views\Android\Login.cshtml" />
+    <Content Include="Views\UIDashboard\NewGrafiek.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,7 +26,6 @@ namespace SMM_ThomasMore.DAL
       dashboard.grafieken.Add(g);
       ctx.Grafieken.Add(g);
       ctx.SaveChanges();
-
     }
 
     public Dashboard GetDashboard(User u)
