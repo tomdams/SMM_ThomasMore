@@ -10,6 +10,8 @@ namespace SMM_ThomasMore.BL
   public interface IDashboardManager
   {
     Dashboard GetDashboard(User u);
-       
+    void addGrafiek(Dashboard d, Grafiek g);
+    void updateGrafiek(Grafiek g);
+    void updateGrafieken();
   }
 }

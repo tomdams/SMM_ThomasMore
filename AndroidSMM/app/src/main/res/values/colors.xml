@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#e2120f</color>
-    <color name="colorPrimaryDark">#9f0202</color>
+    <color name="colorPrimary">#494949</color>
+    <color name="colorPrimaryDark">#76323f</color>
+
     <color name="colorAccent">#FF4081</color>
     <color name="facebookBlue">#3F5990</color>
     <color name="twitterBlue">#29C5F6</color>
     <color name="googleRed">#D04E2F</color>
 
-    <color name="white">#FFFFFF</color>
+    <color name="white">#d7cec7</color>
     <color name="transparent">#00000000</color>
     <color name="editTextBG">#dadada</color>
 
-    <color name="textColor">#6e6e6e</color>
+    <color name="textColor">#636363</color>
 
-
-    <color name="backgroundcolor">#fcfcfc</color>
+<color name="orangiee">#c09f80</color>
+    <color name="backgroundcolor">#ccb179</color>
     <color name="lightgray">#ededed</color>
     <color name="deeppurple">#7c4dff</color>
     <color name="yello">#ffb300</color>

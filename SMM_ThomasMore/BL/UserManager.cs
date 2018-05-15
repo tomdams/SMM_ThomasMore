@@ -124,7 +124,7 @@ namespace SMM_ThomasMore.BL
         public void verifyUser(string id)
         {
             foreach (User u in repo.getUsers().ToList()) {
-                if (u.user_id.Equals(id)) {
+                if (u.user_id.ToString().Equals(id)) {
                     repo.verifyUser(u);
                     break;
                 }

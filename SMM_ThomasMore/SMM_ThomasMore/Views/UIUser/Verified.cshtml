@@ -1,7 +1,6 @@
-﻿@model SMM_ThomasMore.Models.VerifyVM
+﻿@model SMM_ThomasMore.Models.UserVM
 @{
     ViewBag.Title = "Verified";
-    var id = Request.Url.Segments.Last();
 }
 
 
@@ -9,7 +8,7 @@
 {
     @Html.AntiForgeryToken()
 
-    @Html.EditorFor(model => model.id, new { htmlAttributes = new { @value=@id , placeholder = @id, @class = "form-control" } })
-    <input type="submit" value="Voltooi de registratie">
+    <p> BEDANKT VOOR DE REGISTREREN :<h2>@Html.DisplayFor(m=>m.username)</h2></p>
+
 }
 

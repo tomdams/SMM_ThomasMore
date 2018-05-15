@@ -22,6 +22,8 @@ namespace SMM_ThomasMore.UIControllers
           {
             UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
           }
+           
+            
         }
 
         public ActionResult Index()
@@ -107,6 +109,19 @@ namespace SMM_ThomasMore.UIControllers
     public double getPolariteit()
     {
       return element.polariteit;
+    }
+
+    public ActionResult TwitterPic()
+    {
+      Persoon persoon = new Persoon();
+      if (element != null)
+      {
+        if (element.GetType() == typeof(Persoon))
+        {
+          persoon = elController.getPersoon(element);
+        }
+      }
+      return Redirect("https://twitter.com/" + persoon.twitter + "/profile_image?size=original");
     }
   }
 }

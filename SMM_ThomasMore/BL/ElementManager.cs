@@ -34,6 +34,9 @@ namespace SMM_ThomasMore.BL
 
         public Element getElement(string el)
         {
+            if (el == null) {
+            return null;
+             }else { 
             foreach (Element e in repo.getElements().ToList())
             {
                 if (e.naam.ToLower().Equals(el.ToLower()))
@@ -42,6 +45,7 @@ namespace SMM_ThomasMore.BL
                 }
             }
             return null;
+            }
         }
 
 
@@ -202,13 +206,15 @@ namespace SMM_ThomasMore.BL
               List<string> words = splitData(m.words).ToList();
               foreach (string w in words)
               {
-                if (woorden.ContainsKey(w))
+                string woord = w.Trim();
+                woord = woord.Remove(woord.Length - 1, 1).Remove(0, 1);
+                if (woorden.ContainsKey(woord))
                 {
-                  woorden[w] += 1;
+                  woorden[woord] += 1;
                 }
                 else
                 {
-                  woorden.Add(w, 1);
+                  woorden.Add(woord, 1);
                 }
               }
               List<KeyValuePair<string, int>> woordenLijst = woorden.ToList();
