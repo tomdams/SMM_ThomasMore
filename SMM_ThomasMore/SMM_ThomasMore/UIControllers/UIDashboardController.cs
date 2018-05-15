@@ -31,14 +31,36 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult GenereerGrafiek(Grafiek g)
     {
       g.element = lastGrafiek.element;
+      g.id = lastGrafiek.id;
       lastGrafiek = dc.UpdateGrafiek(g);
+      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
+    }
+
+    public ActionResult EditGrafiek(int grafiek_id)
+    {
+      lastGrafiek = dc.GetGrafiek(grafiek_id);
       return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
     }
 
     public ActionResult SaveGrafiek()
     {
-      dc.AddGrafiek(dc.GetDashboard(UserController.currentUser), lastGrafiek);
-      return View("~/Views/Home/Index.cshtml");
+      if(!(lastGrafiek.beginDate.Equals(new DateTime(0001,01,1)) || lastGrafiek.eindDate.Equals(new DateTime(0001, 01, 1))))
+      {
+        dc.AddGrafiek(dc.GetDashboard(UserController.currentUser), lastGrafiek);
+        return RedirectToAction("Index", "Home");
+      }
+      else
+      {
+        return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
+      }
+      
+      
+    }
+
+    public ActionResult DeleteGrafiek(int grafiek_id)
+    {
+      dc.RemoveGrafiek(grafiek_id);
+      return RedirectToAction("Index", "Home");
     }
   }
 }

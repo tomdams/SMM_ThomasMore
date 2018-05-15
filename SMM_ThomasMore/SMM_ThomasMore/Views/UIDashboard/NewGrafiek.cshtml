@@ -33,11 +33,11 @@
 </tr>
 <tr>
     <td>Begindatum </td>
-    <td>@Html.EditorFor(model => model.beginDate, new { htmlAttributes = new { type = "date" } })</td>
+    <td>@Html.EditorFor(model => model.beginDate, new { htmlAttributes = new { type = "date", required = "required" } })</td>
 </tr>
 <tr>
     <td>Einddatum</td>
-    <td>@Html.EditorFor(model => model.eindDate, new { htmlAttributes = new { type = "date" } })</td>
+    <td>@Html.EditorFor(model => model.eindDate, new { htmlAttributes = new { type = "date", required = "required" } })</td>
 </tr>
 <tr>
     <td>Leeftijd </td>

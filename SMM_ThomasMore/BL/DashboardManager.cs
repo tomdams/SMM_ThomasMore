@@ -149,6 +149,16 @@ namespace SMM_ThomasMore.BL
       }
       return aantalVermeldingen;
     }
+
+    public Grafiek GetGrafiek(int id)
+    {
+      return repo.GetGrafiek(id);
+    }
+
+    public void RemoveGrafiek(int id)
+    {
+      repo.RemoveGrafiek(id);
+    }
   }
 }
 

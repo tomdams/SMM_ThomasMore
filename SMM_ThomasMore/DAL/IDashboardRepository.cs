@@ -17,5 +17,6 @@ namespace SMM_ThomasMore.DAL
     void updateGrafiek(string x_as, string y_as, int grafiek_id);
     IEnumerable<Message> GetMessages();
     void setElement(Grafiek g);
+    void RemoveGrafiek(int id);
   }
 }

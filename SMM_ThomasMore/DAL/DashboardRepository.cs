@@ -23,8 +23,28 @@ namespace SMM_ThomasMore.DAL
     public void addGrafiek(Dashboard d, Grafiek g)
     {
       Dashboard dashboard = ctx.Dashboards.Find(d.id);
-      dashboard.grafieken.Add(g);
-      ctx.Grafieken.Add(g);
+      if (!(ctx.Grafieken.Find(g.id) is null))
+      {
+        Grafiek graph = ctx.Grafieken.Find(g.id);
+        graph.beginDate = g.beginDate;
+        graph.eindDate = g.eindDate;
+        graph.titel = g.titel;
+        graph.grafiekOnderwerp = g.grafiekOnderwerp;
+        graph.grafiekType = g.grafiekType;
+        graph.leeftijd = g.leeftijd;
+        graph.opleiding = g.opleiding;
+        graph.polariteit = g.polariteit;
+        graph.plaats = g.plaats;
+        graph.x_as = g.x_as;
+        graph.y_as = g.y_as;
+        graph.x_as_beschrijving = g.x_as_beschrijving;
+        graph.y_as_beschrijving = g.y_as_beschrijving;
+      }
+      else
+      {
+        dashboard.grafieken.Add(g);
+        ctx.Grafieken.Add(g);
+      }
       ctx.SaveChanges();
     }
 
@@ -53,6 +73,12 @@ namespace SMM_ThomasMore.DAL
     public IEnumerable<Message> GetMessages()
     {
       return ctx.Messages.ToList();
+    }
+
+    public void RemoveGrafiek(int id)
+    {
+      ctx.Grafieken.Remove(ctx.Grafieken.Find(id));
+      ctx.SaveChanges();
     }
 
     public void setElement(Grafiek g)

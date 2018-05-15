@@ -19,6 +19,11 @@
         .grid-stack-item-content {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
+            display: inline-block;
+        }
+
+        .grid-stack-item {
+            display: inline-block;
         }
 
         .grid-stack-item-content:hover {
@@ -31,6 +36,19 @@
         .grid-stack {
             margin-top: 5%;
         }
+
+        .dropbtn {
+            background-color: lightslategray;
+            color: white;
+            padding: 8px;
+            font-size: 8px;
+            border: none;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
     </style>
 </head>
 <div class="grid-stack">
@@ -42,7 +60,6 @@
             google.charts.load("current", { packages: ["corechart"] });
             console.log("load");
         </script>
-
 
 
 
@@ -101,7 +118,11 @@
                          data-gs-x="0" data-gs-y="0"
                          data-gs-width="4" data-gs-height="4">
                         <div class="grid-stack-item-content">
-                            <div id="chart_@i" style="width: 100%; height: 98%;"></div>
+                                    <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
+                                    <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;">
+                            </div>
+                            
                         </div>
                     </div>
                     break;
@@ -156,7 +177,9 @@
                          data-gs-x="0" data-gs-y="0"
                          data-gs-width="4" data-gs-height="4">
                         <div class="grid-stack-item-content">
-                            <div id="chart_@i" style="width: 100%; height: 98%;"></div>
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
+                            <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;"></div>
                         </div>
                     </div>
                     break;
@@ -211,14 +234,13 @@
                          data-gs-x="0" data-gs-y="0"
                          data-gs-width="4" data-gs-height="4">
                         <div class="grid-stack-item-content">
-                            <div id="chart_@i" style="width: 100%; height: 98%;"></div>
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
+                            <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;"></div>
                         </div>
                     </div>
                     break;
             }
-
-
-
         }
 
 

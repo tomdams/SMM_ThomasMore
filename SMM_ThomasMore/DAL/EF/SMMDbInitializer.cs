@@ -28,7 +28,6 @@ namespace SMM_ThomasMore.DAL.EF
 
       Grafiek g1 = new Grafiek(d1)
       {
-        id = 1,
         titel = "Aantal mannen/vrouwen over Bart de Wever",
         plaats = 1,
         x_as = "",
@@ -47,7 +46,6 @@ namespace SMM_ThomasMore.DAL.EF
 
       Grafiek g2 = new Grafiek(d1)
       {
-        id = 2,
         titel = "Opleiding mannen over Bart de Wever",
         plaats = 2,
         x_as = "",
@@ -66,7 +64,6 @@ namespace SMM_ThomasMore.DAL.EF
 
       Grafiek g3 = new Grafiek(d1)
       {
-        id = 3,
         titel = "Aantal vermeldingen Bart de Wever",
         plaats = 3,
         x_as = "",

@@ -31,6 +31,15 @@ namespace SMM_ThomasMore.Controllers
       mgr.addGrafiek(d, g);
     }
 
+    public Grafiek GetGrafiek(int id)
+    {
+      return mgr.GetGrafiek(id);
+    }
+
+    public void RemoveGrafiek(int id)
+    {
+      mgr.RemoveGrafiek(id);
+    }
 
   }
 }

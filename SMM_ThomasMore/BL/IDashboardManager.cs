@@ -13,5 +13,7 @@ namespace SMM_ThomasMore.BL
     void addGrafiek(Dashboard d, Grafiek g);
     Grafiek updateGrafiek(Grafiek g);
     void updateGrafieken();
+    Grafiek GetGrafiek(int id);
+    void RemoveGrafiek(int id);
   }
 }
