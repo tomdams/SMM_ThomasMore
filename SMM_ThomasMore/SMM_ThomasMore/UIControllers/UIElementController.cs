@@ -110,5 +110,18 @@ namespace SMM_ThomasMore.UIControllers
     {
       return element.polariteit;
     }
+
+    public ActionResult TwitterPic()
+    {
+      Persoon persoon = new Persoon();
+      if (element != null)
+      {
+        if (element.GetType() == typeof(Persoon))
+        {
+          persoon = elController.getPersoon(element);
+        }
+      }
+      return Redirect("https://twitter.com/" + persoon.twitter + "/profile_image?size=original");
+    }
   }
 }

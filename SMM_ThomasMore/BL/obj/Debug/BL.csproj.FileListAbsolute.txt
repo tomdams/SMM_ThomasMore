@@ -163,21 +163,6 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\IntegratieProject\SMM_
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\IntegratieProject\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\IntegratieProject\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\IntegratieProject\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.dll
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.pdb
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
-C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\0_thomasmore_integratie\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
@@ -253,3 +238,18 @@ D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAss
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
+C:\School\2\Integratie\Project3\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb

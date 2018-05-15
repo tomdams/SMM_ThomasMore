@@ -1,11 +1,58 @@
-﻿@model SMM_ThomasMore.Domain.Element
+﻿<style>
+    #main-wrap > div {
+        min-height: 250px;
+    }
+    td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    #header,
+    #footer {
+        min-height: 40px;
+    }
+
+    .info {
+        min-height: 80px;
+    }
+    #main-wrap {
+        overflow: hidden;
+        margin-left:5%;
+    }
+    #sidebar {
+        float: left;
+        width: 30%;
+    }
+    #content-wrap {
+        
+        width: 100%;
+    }
+
+    #info-wrap {
+       
+    }
+    .info {
+        width: 50%;
+        float:left;
+    }
+    #woorden{
+        float:right;
+        margin-right:10%;
+    }
+   
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #b3b3b3;
+        color: black;
+    }
+</style>
+
+@model SMM_ThomasMore.Domain.Element
 @{
     ViewBag.Title = "PersoonPage";
 }
 
-<h2>ElementPage</h2>
-
-@Html.DisplayFor(m => m.naam)
 
 
 <form action="http://localhost:11981/UIElement/volgElement" method="GET">
@@ -16,26 +63,67 @@
     <input type="submit" value="Lees Messages" />
 </form>
 
-<a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
-
-<a href='@Url.Action("Twitter","UIElement")' class="btn btn-info">Twitter</a>
-<a href='@Url.Action("Facebook","UIElement")' class="btn btn-primary">Facebook</a>
-@Html.DisplayFor(m => m.aantalVermeldingen)
-@Html.DisplayFor(m => m.polariteit)
-@Html.DisplayFor(m => m.woorden)
 
 
-<div class="list-group">
-    @for (int index = 0; index < Model.verhalen.Count(); index++)
-    {
-       <a href=@Model.verhalen[index] class="list-group-item list-group-item-action">@Html.DisplayFor(m => m.verhalen[index])</a>
-    }
-</div>
+<div id="main-wrap">
+    <table width="100%">
+        <tr>
+            <td>
+                <h2>@Html.DisplayFor(m => m.naam)</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src=@Url.Action("TwitterPic","UIElement") class="img-thumbnail" height="10%" width="10%" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='@Url.Action("Twitter","UIElement")' class="btn btn-info">Twitter</a>
+                <a href='@Url.Action("Facebook","UIElement")' class="btn btn-primary">Facebook</a>
+                <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
+            </td>
+        </tr>
+    </table>
+    @Html.DisplayFor(m => m.aantalVermeldingen)
+    <div id="content-wrap">
+        <div id="info-wrap">
+            <div class="info">
+                <div class="list-group">
+                    <h3>Meest voorkomende verhalen</h3>
+                    @for (int index = 0; index < Model.verhalen.Count(); index++)
+                    {
+                    <a href=@Model.verhalen[index] class="list-group-item list-group-item-action">@Html.DisplayFor(m => m.verhalen[index])</a>
+                    }
+                </div>
+            </div>
+            <div class="info">
+                <table id="woorden">
+                    <tr>
+                        <th>Meest voorkomende woorden</th>
+                    </tr>
+                    @for (var i = 0; i < Model.woorden.Length; i++)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => (m.woorden[i]))
+                        </td>
+                    </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="piechart" style="width: 200px; height: 100px;"></div>
+    
+    </div>
+ 
+    
+
+    <!-- Graphs -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="~/Scripts/element-page-graphs.js"></script>
 
 
-<!-- Graphs -->
-
-       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-@Scripts.Render("~/Scripts/element-page-graphs.js")
-
-<div id="piechart" style="width: 200px; height: 100px;"></div>
