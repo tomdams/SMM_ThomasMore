@@ -21,6 +21,16 @@ namespace SMM_ThomasMore.Controllers
       return mgr.GetDashboard(u);
     }
 
-       
+    public Grafiek UpdateGrafiek(Grafiek g)
+    {
+      return mgr.updateGrafiek(g);
+    }
+
+    public void AddGrafiek(Dashboard d, Grafiek g)
+    {
+      mgr.addGrafiek(d, g);
+    }
+
+
   }
 }

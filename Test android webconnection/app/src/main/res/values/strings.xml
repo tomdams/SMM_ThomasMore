@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">testing calls</string>
+    <string name="title_activity_received_data">receivedDataActivity</string>
+</resources>

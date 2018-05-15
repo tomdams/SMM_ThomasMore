@@ -11,7 +11,7 @@ namespace SMM_ThomasMore.BL
   {
     Dashboard GetDashboard(User u);
     void addGrafiek(Dashboard d, Grafiek g);
-    void updateGrafiek(Grafiek g);
+    Grafiek updateGrafiek(Grafiek g);
     void updateGrafieken();
   }
 }

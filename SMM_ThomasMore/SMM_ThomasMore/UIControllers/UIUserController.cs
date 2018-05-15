@@ -43,11 +43,13 @@ namespace SMM_ThomasMore.Controllers
       if (ModelState.IsValid)
       {
         User authenticatedUser = uc.getUser(loginVM.username, loginVM.wachtwoord);
-                if (authenticatedUser.confirmEmail == false) {
-                    return RedirectToAction("Unverified", "UIUser");
-                }
+                
         if (authenticatedUser != null)
         {
+          if (authenticatedUser.confirmEmail == false)
+          {
+            return RedirectToAction("Unverified", "UIUser");
+          }
           UserController.currentUser = authenticatedUser;
           var authTicket = new FormsAuthenticationTicket(1, authenticatedUser.username, DateTime.Now, DateTime.Now.AddMinutes(30), true, authenticatedUser.type.ToString().ToLower());
           string cookieContents = FormsAuthentication.Encrypt(authTicket);

@@ -1,0 +1,320 @@
+﻿@model SMM_ThomasMore.Domain.Grafiek
+@{
+  ViewBag.Title = "New Grafiek";
+}
+<h1>Grafiek voor @Html.DisplayFor(m => m.element.naam)</h1>
+@using (Html.BeginForm("GenereerGrafiek", "UIDashboard"))
+{
+<table>
+    <tr>
+        <td>Titel </td>
+        <td>@Html.EditorFor(model => model.titel, new { htmlAttributes = new { placeholder = "Titel", @class = "form-control" } })</td>
+    </tr>
+    <tr>
+        <td>Aantal vermeldingen per </td>
+        <td>
+            @Html.EnumDropDownListFor(
+    x => x.grafiekOnderwerp,
+    "Selecteer onderwerp",
+    new { @class = "form-control" })
+    </td>
+</tr>
+<tr>
+    <td>Grafiektype </td>
+    <td>
+        @Html.EnumDropDownListFor(
+    x => x.grafiekType,
+    "Selecteer grafiekType",
+    new { @class = "form-control" })
+    </td>
+</tr>
+<tr>
+    <td><h2>Filters (leeg laten voor elke optie)</h2></td>
+</tr>
+<tr>
+    <td>Begindatum </td>
+    <td>@Html.EditorFor(model => model.beginDate, new { htmlAttributes = new { type = "date" } })</td>
+</tr>
+<tr>
+    <td>Einddatum</td>
+    <td>@Html.EditorFor(model => model.eindDate, new { htmlAttributes = new { type = "date" } })</td>
+</tr>
+<tr>
+    <td>Leeftijd </td>
+    <td>
+        @{
+      List<SelectListItem> leeftijden = new List<SelectListItem>();
+      leeftijden.Add(new SelectListItem
+      {
+          Text = "25+",
+          Value = "25+"
+      });
+      leeftijden.Add(new SelectListItem
+      {
+          Text = "25-",
+          Value = "25-",
+      });
+    }
+
+    @Html.DropDownListFor(model => model.leeftijd, leeftijden, "Selecteer leeftijd")
+</td>
+</tr>
+<tr>
+    <td>Opleiding </td>
+    <td>
+        @{
+      List<SelectListItem> opleidingen = new List<SelectListItem>();
+      opleidingen.Add(new SelectListItem
+      {
+          Text = "+",
+          Value = "+"
+      });
+      opleidingen.Add(new SelectListItem
+      {
+          Text = "-",
+          Value = "-",
+      });
+    }
+
+    @Html.DropDownListFor(model => model.opleiding, opleidingen, "Selecteer opleiding")
+</td>
+</tr>
+<tr>
+    <td>Geslacht </td>
+    <td>
+        @Html.EnumDropDownListFor(
+    x => x.geslacht,
+    "Selecteer geslacht",
+    new { @class = "form-control" })
+</td>
+</tr>
+<tr>
+    <td>Polariteit</td>
+    <td>
+        @Html.EnumDropDownListFor(
+    x => x.polariteit,
+    "Selecteer polariteit",
+    new { @class = "form-control" })
+</td>
+</tr>
+<tr>
+    <td><input type="submit" value="Genereer Grafiek" class="btn btn-info"></td>
+    <td></td>
+</tr>
+</table>
+      }
+@if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+{
+    using (Html.BeginForm("SaveGrafiek", "UIDashboard"))
+    {
+    <input type="submit" value="Save Grafiek" class="btn btn-info">
+    }
+}
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    google.charts.load("current", { packages: ["corechart"] });
+    console.log("load");
+</script>
+@switch (@Model.grafiekType.ToString())
+{
+    case "TAART":
+    <script type="text/javascript">
+                        console.log("ja");
+                        google.charts.setOnLoadCallback(drawChart);
+                        console.log("nee");
+                                            function drawChart() {
+
+
+                                                var tempdata   = [];
+                                                var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                                var xAsString = "@Model.x_as";
+                                                var xAsArray = new Array();
+                                                xAsArray = xAsString.split(', ');
+                                                var yAsArray = new Array();
+                                                    var yAsString = "@Model.y_as";
+                                                    yAsArray = yAsString.split(', ');
+                                                    for (var j = 0; j < xAsArray.length; j++) {
+                                                        var temp = [];
+                                                        console.log(xAsArray[j]);
+                                                        console.log(yAsArray[j]);
+                                                        temp.push(xAsArray[j]);
+                                                        var yel = parseInt(yAsArray[j]);
+                                                        temp.push(yel);
+
+                                                        tempdata.push(temp);
+                                                    }
+
+                                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                            var options = {
+                                        title: '@Model.titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+                                    };
+
+                                        var chart = new google.visualization.PieChart(document.getElementById('chart'));
+                                        chart.draw(data, options);
+                                }
+    </script>
+
+
+        <div class="grid-stack-item"
+             data-gs-x="0" data-gs-y="0"
+             data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <div id="chart" style="width: 100%; height: 98%;"></div>
+            </div>
+        </div>
+        break;
+    case "STAAF":
+    <script type="text/javascript">
+                        console.log("ja");
+                        google.charts.setOnLoadCallback(drawChart);
+                        console.log("nee");
+                                            function drawChart() {
+
+
+                                                var tempdata   = [];
+                                                var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                                var xAsString = "@Model.x_as";
+                                                var xAsArray = new Array();
+                                                xAsArray = xAsString.split(', ');
+                                                var yAsArray = new Array();
+                                                    var yAsString = "@Model.y_as";
+                                                    yAsArray = yAsString.split(', ');
+                                                    for (var j = 0; j < xAsArray.length; j++) {
+                                                        var temp = [];
+                                                        console.log(xAsArray[j]);
+                                                        console.log(yAsArray[j]);
+                                                        temp.push(xAsArray[j]);
+                                                        var yel = parseInt(yAsArray[j]);
+                                                        temp.push(yel);
+
+                                                        tempdata.push(temp);
+                                                    }
+
+                                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                            var options = {
+                                        title: '@Model.titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+                                    };
+
+                                        var chart = new google.visualization.BarChart(document.getElementById('chart'));
+                                        chart.draw(data, options);
+                                }
+    </script>
+
+
+        <div class="grid-stack-item"
+             data-gs-x="0" data-gs-y="0"
+             data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <div id="chart" style="width: 100%; height: 98%;"></div>
+            </div>
+        </div>
+        break;
+    case "LIJN":
+    <script type="text/javascript">
+                        console.log("ja");
+                        google.charts.setOnLoadCallback(drawChart);
+                        console.log("nee");
+                                            function drawChart() {
+
+
+                                                var tempdata   = [];
+                                                var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                                var xAsString = "@Model.x_as";
+                                                var xAsArray = new Array();
+                                                xAsArray = xAsString.split(', ');
+                                                var yAsArray = new Array();
+                                                    var yAsString = "@Model.y_as";
+                                                    yAsArray = yAsString.split(', ');
+                                                    for (var j = 0; j < xAsArray.length; j++) {
+                                                        var temp = [];
+                                                        console.log(xAsArray[j]);
+                                                        console.log(yAsArray[j]);
+                                                        temp.push(xAsArray[j]);
+                                                        var yel = parseInt(yAsArray[j]);
+                                                        temp.push(yel);
+
+                                                        tempdata.push(temp);
+                                                    }
+
+                                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                            var options = {
+                                        title: '@Model.titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+                                    };
+
+                                        var chart = new google.visualization.LineChart(document.getElementById('chart'));
+                                        chart.draw(data, options);
+                                }
+    </script>
+
+
+        <div class="grid-stack-item"
+             data-gs-x="0" data-gs-y="0"
+             data-gs-width="4" data-gs-height="">
+            <div class="grid-stack-item-content">
+                <div id="chart" style="width: 100%; height: 98%;"></div>
+            </div>
+        </div>
+        break;
+}
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
+<script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+<script type="text/javascript">
+                                            $(function () {
+                                                var options = {
+                                                    cellHeight: 75,
+                                                    verticalMargin: 10,
+                                                    disableResize: true
+
+                                                };
+                                                $('.grid-stack').gridstack(options);
+                                            });
+</script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
+<script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+<script type="text/javascript">
+                                            $(function () {
+                                                var options = {
+                                                    cellHeight: 75,
+                                                    verticalMargin: 10,
+                                                    disableResize: true
+
+                                                };
+                                                $('.grid-stack').gridstack(options);
+                                            });
+</script>

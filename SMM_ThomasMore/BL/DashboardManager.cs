@@ -8,6 +8,7 @@ using SMM_ThomasMore.DAL;
 using SC.BL.Domain.User;
 using SC.BL.Domain.SocialeMedia;
 using System.Globalization;
+using SC.BL;
 
 namespace SMM_ThomasMore.BL
 {
@@ -37,14 +38,16 @@ namespace SMM_ThomasMore.BL
       foreach (Grafiek g in repo.GetGrafieken())
       {
         repo.setElement(g);
-        updateGrafiek(repo.GetGrafiek(g.id));
+        Grafiek graph = updateGrafiek(repo.GetGrafiek(g.id));
+        repo.updateGrafiek(graph.x_as, graph.y_as, graph.id);
       }
     }
 
-    public void updateGrafiek(Grafiek g)
+    public Grafiek updateGrafiek(Grafiek g)
     {
       string y_as = "";
       string x_as = "";
+
       if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.GESLACHT))
       {
         y_as = countVermeldingen(g.element, g.beginDate, g.eindDate, g.leeftijd, Geslacht.Man, g.polariteit, g.opleiding) + ", " +
@@ -80,7 +83,11 @@ namespace SMM_ThomasMore.BL
         y_as += countVermeldingen(g.element, g.beginDate, g.eindDate, g.leeftijd, g.geslacht, g.polariteit, "-");
         x_as = "+, -";
       }
-      repo.updateGrafiek(x_as, y_as, g.id);
+      g.x_as = x_as;
+      g.y_as = y_as;
+      g.y_as_beschrijving = "Aantal Vermeldingen";
+      g.x_as_beschrijving = g.grafiekOnderwerp.ToString();
+      return g;
     }
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate, string leeftijd, Geslacht? geslacht, Polariteit? polariteit, string opleiding)
