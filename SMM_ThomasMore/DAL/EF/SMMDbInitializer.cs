@@ -42,6 +42,7 @@ namespace SMM_ThomasMore.DAL.EF
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.GESLACHT,
         grafiekType = GrafiekType.TAART,
+        element = new Element() { element_id=1000}
       };
 
       Grafiek g2 = new Grafiek(d1)
@@ -59,7 +60,8 @@ namespace SMM_ThomasMore.DAL.EF
         geslacht = SC.BL.Domain.User.Geslacht.Man,
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.OPLEIDING,
-        grafiekType = GrafiekType.STAAF
+        grafiekType = GrafiekType.STAAF,
+        element = new Element() { element_id = 1000 }
       };
 
       Grafiek g3 = new Grafiek(d1)
@@ -77,7 +79,8 @@ namespace SMM_ThomasMore.DAL.EF
         geslacht = null,
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.DATUM,
-        grafiekType = GrafiekType.LIJN
+        grafiekType = GrafiekType.LIJN,
+        element = new Element() { element_id = 1000 }
       };
 
       u1.dashboard = d1;

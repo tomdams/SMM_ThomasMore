@@ -11,6 +11,7 @@ namespace SMM_ThomasMore.Domain
 {
   public class Grafiek
   {
+    [Key]
     public int id { get; set; }
     public string titel { get; set; }
     public int plaats { get; set; }

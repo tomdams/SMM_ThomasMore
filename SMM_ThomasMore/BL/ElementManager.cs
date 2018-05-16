@@ -125,14 +125,7 @@ namespace SMM_ThomasMore.BL
         }
         public Persoon getPersoon(Element element)
         {
-            foreach (Persoon persoon in repo.getPersonen())
-            {
-                if (element.naam.Equals(persoon.naam))
-                {
-                    return persoon;
-                }
-            }
-            return null;
+            return repo.getPersoon(element.naam);
         }
 
 

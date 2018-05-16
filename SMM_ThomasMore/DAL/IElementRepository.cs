@@ -10,10 +10,13 @@ namespace SMM_ThomasMore.DAL
         Element getElement(int id);
         User getUser(int id);
         void addPersoon(Persoon p);
+        void addOrganisatie(Organisatie o);
+        void addThema(Thema t);
         void AddAI(AlertInstellingen ai);
         IEnumerable<AlertInstellingen> getAIs();
         void RemoveAI(AlertInstellingen ai);
         IEnumerable<Persoon> getPersonen();
         Persoon getPersoon(string naam);
+        List<Grafiek> basisGrafieken(Element e);
     }
 }
