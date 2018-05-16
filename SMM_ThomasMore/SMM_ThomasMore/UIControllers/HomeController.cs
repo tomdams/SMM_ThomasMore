@@ -32,7 +32,7 @@ namespace SMM_ThomasMore.Controllers
             //dbController.UpdateGrafieken();
             if (!ingelezen)
             {
-                elController.politiciInlezen();
+                //elController.politiciInlezen();
                 ingelezen = true;
             }
 

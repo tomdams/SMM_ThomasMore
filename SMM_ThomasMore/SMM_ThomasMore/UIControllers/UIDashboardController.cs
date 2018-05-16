@@ -31,6 +31,7 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult GenereerGrafiek(Grafiek g)
     {
       g.element = lastGrafiek.element;
+      g.dashboard = lastGrafiek.dashboard;
       g.id = lastGrafiek.id;
       lastGrafiek = dc.UpdateGrafiek(g);
       return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);

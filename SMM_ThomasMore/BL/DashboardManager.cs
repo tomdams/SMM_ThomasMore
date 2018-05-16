@@ -37,9 +37,6 @@ namespace SMM_ThomasMore.BL
 
       foreach (Grafiek g in repo.GetGrafieken())
       {
-        repo.setElement(1,163);
-        repo.setElement(2, 163);
-        repo.setElement(3, 163);
         Grafiek graph = updateGrafiek(repo.GetGrafiek(g.id));
         repo.updateGrafiek(graph.x_as, graph.y_as, graph.id);
       }

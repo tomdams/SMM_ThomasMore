@@ -128,12 +128,14 @@
 </script>
 
 
-@for (int i = 0; i < 3; i++)
+@for (int i = 0; i < Model.grafieken.Count; i++)
+{
+    if (Model.grafieken.ElementAt(i).dashboard is null)
+    {
+        switch (@Model.grafieken.ElementAt(i).grafiekType.ToString())
         {
-            switch (@Model.grafieken.ElementAt(i).grafiekType.ToString())
-            {
             case "TAART":
-            <script type="text/javascript">
+        <script type="text/javascript">
                         console.log("ja");
                         google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
@@ -176,7 +178,7 @@
                                         var chart = new google.visualization.PieChart(document.getElementById('chart_@i'));
                                         chart.draw(data, options);
                                 }
-            </script>
+        </script>
 
 
             <div class="grid-stack-item"
@@ -190,9 +192,9 @@
 
                 </div>
             </div>
-            break;
+                break;
             case "STAAF":
-            <script type="text/javascript">
+        <script type="text/javascript">
                         console.log("ja");
                         google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
@@ -235,7 +237,7 @@
                                         var chart = new google.visualization.BarChart(document.getElementById('chart_@i'));
                                         chart.draw(data, options);
                                 }
-            </script>
+        </script>
 
 
             <div class="grid-stack-item"
@@ -247,9 +249,9 @@
                     <div id="chart_@i" style="width: 100%; height: 90%;"></div>
                 </div>
             </div>
-            break;
+                break;
             case "LIJN":
-            <script type="text/javascript">
+        <script type="text/javascript">
                         console.log("ja");
                         google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
@@ -292,7 +294,7 @@
                                         var chart = new google.visualization.LineChart(document.getElementById('chart_@i'));
                                         chart.draw(data, options);
                                 }
-            </script>
+        </script>
 
 
             <div class="grid-stack-item"
@@ -304,9 +306,11 @@
                     <div id="chart_@i" style="width: 100%; height: 90%;"></div>
                 </div>
             </div>
-            break;
-            }
-            }
+                break;
+        }
+    }
+}
+    
 
 
 
