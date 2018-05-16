@@ -22,10 +22,10 @@ namespace SMM_ThomasMore.DAL
         }
 
         public void addPersoon(Persoon p)
-    {
-      ctx.Personen.Add(p);
-      ctx.SaveChanges();
-    }
+        {
+          ctx.Personen.Add(p);
+          ctx.SaveChanges();
+        }
         public void berekenPersoon(Persoon persoon)
         {
 

@@ -29,10 +29,10 @@ namespace SMM_ThomasMore.Controllers
             elController = new ElementController();
             sMController = new SMController();
             dbController = new DashboardController();
-
+            //dbController.UpdateGrafieken();
             if (!ingelezen)
             {
-                elController.politiciInlezen();
+                //elController.politiciInlezen();
                 ingelezen = true;
             }
 

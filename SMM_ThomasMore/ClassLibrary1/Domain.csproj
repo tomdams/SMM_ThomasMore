@@ -50,6 +50,7 @@
     <Compile Include="Dashboard\GrafiekType.cs" />
     <Compile Include="Dashboard\Polariteit.cs" />
     <Compile Include="Dashboard\Zone.cs" />
+    <Compile Include="Platform\Deelplatform.cs" />
     <Compile Include="SocialeMedia\Message.cs" />
     <Compile Include="User\Alert.cs" />
     <Compile Include="User\AlertInstellingen.cs" />
