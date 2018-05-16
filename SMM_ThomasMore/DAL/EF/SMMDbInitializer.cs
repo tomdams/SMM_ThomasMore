@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace SMM_ThomasMore.DAL.EF
 {
-  class SMMDbInitializer : DropCreateDatabaseIfModelChanges<SMMDbContext>
+  class SMMDbInitializer : DropCreateDatabaseAlways<SMMDbContext>
   {
     protected override void Seed(SMMDbContext context)
     {
@@ -59,7 +59,7 @@ namespace SMM_ThomasMore.DAL.EF
         geslacht = SC.BL.Domain.User.Geslacht.Man,
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.OPLEIDING,
-        grafiekType = GrafiekType.STAAF
+        grafiekType = GrafiekType.STAAF,
       };
 
       Grafiek g3 = new Grafiek(d1)
@@ -77,23 +77,23 @@ namespace SMM_ThomasMore.DAL.EF
         geslacht = null,
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.DATUM,
-        grafiekType = GrafiekType.LIJN
+        grafiekType = GrafiekType.LIJN,
       };
 
       u1.dashboard = d1;
-      d1.grafieken.Add(g1);
+      //d1.grafieken.Add(g1);
       context.Users.Add(u1);
       context.Dashboards.Add(d1);
-      context.Grafieken.Add(g1);
+      //context.Grafieken.Add(g1);
 
-      d1.grafieken.Add(g2);
-      d1.grafieken.Add(g3);
-      context.Users.Add(u1);
-      context.Dashboards.Add(d1);
+      //d1.grafieken.Add(g2);
+      //d1.grafieken.Add(g3);
+      //context.Users.Add(u1);
+      //context.Dashboards.Add(d1);
 
-      context.Grafieken.Add(g1);
-      context.Grafieken.Add(g2);
-      context.Grafieken.Add(g3);
+      //context.Grafieken.Add(g1);
+      //context.Grafieken.Add(g2);
+      //context.Grafieken.Add(g3);
 
       context.SaveChanges();
     }

@@ -2,16 +2,18 @@
 using SMM_ThomasMore.Domain;
 using System.Collections.Generic;
 using SC.BL.Domain;
+using System;
 
 namespace SMM_ThomasMore.DAL
 {
   public class ElementRepository : IElementRepository
     {
         private SMMDbContext ctx;
-
+        private DashboardRepository dashboardRepository;
         public ElementRepository()
         {
             ctx = new SMMDbContext();
+            dashboardRepository = new DashboardRepository();
             ctx.Database.Initialize(false);
         }
 
@@ -23,7 +25,12 @@ namespace SMM_ThomasMore.DAL
 
         public void addPersoon(Persoon p)
         {
+          p.grafieken = basisGrafieken(p);
           ctx.Personen.Add(p);
+          foreach (var grafiek in p.grafieken)
+          {
+            ctx.Grafieken.Add(grafiek);
+          }
           ctx.SaveChanges();
         }
         public void berekenPersoon(Persoon persoon)
@@ -52,8 +59,7 @@ namespace SMM_ThomasMore.DAL
         public IEnumerable<Element> getElements()
         {
           List<Element> elements = new List<Element>();
-
-          foreach(Persoon p in ctx.Personen)
+          foreach (Persoon p in ctx.Personen)
           {
             elements.Add(p);
           }
@@ -70,19 +76,22 @@ namespace SMM_ThomasMore.DAL
 
         public IEnumerable<Persoon> getPersonen()
         {
-            return ctx.Personen;
+           return ctx.Personen;
         }
         public Persoon getPersoon(string naam)
         {
             Persoon p = null;
-            foreach (Persoon persoon in getPersonen())
+            var personen = ctx.Personen.Include("Grafieken");
+            foreach (Persoon persoon in personen)
             {
                 if (persoon.naam.Equals(naam))
                 {
                     p = persoon;
                 }
             }
-            return p;
+
+
+      return p;
         }
 
         public User getUser(int id)
@@ -103,5 +112,81 @@ namespace SMM_ThomasMore.DAL
             ctx.AlertInstellingen.Remove(ai);
             ctx.SaveChanges();
         }
+
+    private List<Grafiek> basisGrafieken(Element e)
+    {
+      List<Grafiek> grafieken = new List<Grafiek>();
+      Grafiek g1 = new Grafiek()
+      {
+        titel = "Aantal vermeldingen " + e.naam,
+        plaats = 3,
+        x_as = "",
+        y_as = "",
+        x_as_beschrijving = "",
+        y_as_beschrijving = "",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.DATUM,
+        grafiekType = GrafiekType.LIJN,
+        element = e
+      };
+
+      Grafiek g2 = new Grafiek()
+      {
+        titel = "Polariteit " + e.naam,
+        plaats = 3,
+        x_as = "",
+        y_as = "",
+        x_as_beschrijving = "",
+        y_as_beschrijving = "",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.SENTIMENT,
+        grafiekType = GrafiekType.STAAF,
+        element = e 
+      };
+
+      Grafiek g3 = new Grafiek()
+      {
+        titel = "Mannen/Vrouwen over " + e.naam,
+        plaats = 3,
+        x_as = "",
+        y_as = "",
+        x_as_beschrijving = "",
+        y_as_beschrijving = "",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.GESLACHT,
+        grafiekType = GrafiekType.TAART,
+        element = e
+      };
+
+      grafieken.Add(g1);
+      grafieken.Add(g2);
+      grafieken.Add(g3);
+      return grafieken;
     }
+
+    public void addOrganisatie(Organisatie o)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void addThema(Thema t)
+    {
+      throw new NotImplementedException();
+    }
+  }
 }

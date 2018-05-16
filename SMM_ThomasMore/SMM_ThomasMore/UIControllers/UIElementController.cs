@@ -39,8 +39,8 @@ namespace SMM_ThomasMore.UIControllers
                 if (element.GetType() == typeof(Persoon))
                 {
                     Persoon persoon = elController.getPersoon(element);
-                    elController.berekenPersoon(persoon);
-                    return View("~/Views/UIElement/PersoonPage.cshtml", element);
+                      elController.berekenPersoon(persoon);
+                    return View("~/Views/UIElement/PersoonPage.cshtml", persoon);
                 }
             }
             return View("~/Views/Home/Index.cshtml");

@@ -81,10 +81,10 @@ namespace SMM_ThomasMore.DAL
       ctx.SaveChanges();
     }
 
-    public void setElement(Grafiek g)
+    public void setElement(int grafiekId, int elementId)
     {
-      Grafiek graph = ctx.Grafieken.Find(g.id);
-      Element e = ctx.Elements.Find(163);
+      Grafiek graph = ctx.Grafieken.Find(grafiekId);
+      Element e = ctx.Elements.Find(elementId);
       graph.element = e;
       e.grafieken.Add(graph);
       ctx.SaveChanges();
