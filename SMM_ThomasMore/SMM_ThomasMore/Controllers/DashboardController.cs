@@ -16,9 +16,9 @@ namespace SMM_ThomasMore.Controllers
       mgr = new DashboardManager();
     }
 
-    public Dashboard GetDashboard(User u)
+    public Dashboard GetDashboard(User u, Deelplatform platform)
     {
-      return mgr.GetDashboard(u);
+      return mgr.GetDashboard(u, platform);
     }
 
     public Grafiek UpdateGrafiek(Grafiek g)

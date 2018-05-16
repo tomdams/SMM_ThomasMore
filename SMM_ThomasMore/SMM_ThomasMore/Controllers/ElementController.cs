@@ -15,10 +15,10 @@ namespace SMM_ThomasMore.Controllers
         public static Element currentelement { get; set; }
 
         public ElementController()
-    {
+        {
             ElementController.currentelement = new Element();
             mgr = new ElementManager();
-    }
+        }
 
         public void volgElement(int element_id, AlertType type, int user_id)
         {
@@ -26,12 +26,12 @@ namespace SMM_ThomasMore.Controllers
         }
 
         public void politiciInlezen()
-    {
-      mgr.politiciInlezen();
-    }
-        public Element getElement(string el)
         {
-            return mgr.getElement(el);
+          mgr.politiciInlezen();
+        }
+        public Element GetElement(string naam)
+        {
+            return mgr.getElement(naam, PlatformController.currentDeelplatform.id);
         }
 
         public Persoon getPersoon(Element element)

@@ -6,10 +6,11 @@ namespace SMM_ThomasMore.DAL
 {
   public interface IElementRepository
     {
-        IEnumerable<Element> getElements();
-        Element getElement(int id);
+        IEnumerable<Element> getElements(int platform_id);
+        Element getElement(int element_id);
+        Element getElement(string naam, int platform_id);
         User getUser(int id);
-        void addPersoon(Persoon p);
+        void addPersoon(Persoon p, int platformid);
         void addOrganisatie(Organisatie o);
         void addThema(Thema t);
         void AddAI(AlertInstellingen ai);

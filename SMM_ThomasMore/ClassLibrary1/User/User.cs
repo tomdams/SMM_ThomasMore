@@ -21,12 +21,13 @@ namespace SMM_ThomasMore.Domain
         public string compareWachtwoord { get; set; }
         public ICollection<AlertInstellingen> alertInstellingen { get; set; }
         public ICollection<Alert> alerts { get; set; }
-        public virtual Dashboard dashboard { get; set; }
+        public ICollection<Dashboard> dasboards { get; set; }
 
         public User()
         {
             alertInstellingen = new List<AlertInstellingen>();
             alerts = new List<Alert>();
+            dasboards = new List<Dashboard>();
         }
 
         public List<Alert> getUnreadAlerts(string at)
@@ -41,7 +42,6 @@ namespace SMM_ThomasMore.Domain
           }
           return newAlerts;
         }
-
     }
 
  

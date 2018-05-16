@@ -9,8 +9,8 @@ namespace SC.BL
 {
   public interface ISMManager
   {
-    void readMessages();
-    void checkTrending();
+    void readMessages(int platform_id);
+    void checkTrending(int platform_id);
     bool checkTrending(Element e);
   }
 }

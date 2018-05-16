@@ -20,7 +20,17 @@ namespace SMM_ThomasMore.Controllers
 
     public User getUser(string username, string wachtwoord)
     {
-      return umgr.getUser(username, wachtwoord);
+      User u =  umgr.getUser(username, wachtwoord);
+      List<Alert> alerts = new List<Alert>();
+      foreach(Alert a in u.alerts)
+      {
+        if (a.element.Deelplatform.id == PlatformController.currentDeelplatform.id)
+        {
+          alerts.Add(a);
+        }
+      }
+      u.alerts = alerts;
+      return u;
     }
 
     public string currentUserName()
@@ -28,9 +38,9 @@ namespace SMM_ThomasMore.Controllers
       return currentUser.username;
     }
 
-    public void addUser(User user)
+    public void addUser(User user, Deelplatform platform)
     {
-      umgr.AddUser(user);
+      umgr.AddUser(user, platform);
     }
 
     public void verifyUser(string id)

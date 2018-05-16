@@ -14,10 +14,12 @@ namespace SMM_ThomasMore.Domain
     public string naam { get; set; }
 
     public ICollection<Element> elements;
+    public ICollection<Dashboard> dashboards;
 
     public Deelplatform()
     {
       elements = new List<Element>();
+      dashboards = new List<Dashboard>();
     }
   }
 }

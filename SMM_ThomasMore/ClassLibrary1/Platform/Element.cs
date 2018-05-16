@@ -19,6 +19,8 @@ namespace SMM_ThomasMore.Domain
         public ICollection<AlertInstellingen> alertInstellingen { get; set; }
         public ICollection<Alert> alerts { get; set; }
         public ICollection<Grafiek> grafieken { get; set; }
+        [Required]
+        public virtual Deelplatform Deelplatform { get; set; }
 
         public Element()
         {

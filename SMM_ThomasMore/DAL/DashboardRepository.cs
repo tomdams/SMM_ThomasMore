@@ -70,11 +70,11 @@ namespace SMM_ThomasMore.DAL
       ctx.SaveChanges();
     }
 
-    public Dashboard GetDashboard(User u)
+    public Dashboard GetDashboard(User u, Deelplatform platform)
     {
       foreach (Dashboard d in ctx.Dashboards.ToList())
       {
-        if (d.user.user_id == u.user_id)
+        if (d.user.user_id == u.user_id && d.deelplatform.id == platform.id)
         {
           return d;
         }

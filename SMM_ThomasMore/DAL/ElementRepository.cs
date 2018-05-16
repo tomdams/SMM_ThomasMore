@@ -23,10 +23,13 @@ namespace SMM_ThomasMore.DAL
             ctx.SaveChanges();
         }
 
-        public void addPersoon(Persoon p)
+        public void addPersoon(Persoon p, int platformid)
         {
           p.grafieken = basisGrafieken(p);
           ctx.Personen.Add(p);
+          Deelplatform deelplatform = ctx.Deelplatformen.Find(platformid);
+          deelplatform.elements.Add(p);
+          p.Deelplatform = deelplatform;
           foreach (var grafiek in p.grafieken)
           {
             ctx.Grafieken.Add(grafiek);
@@ -44,33 +47,26 @@ namespace SMM_ThomasMore.DAL
             return ctx.AlertInstellingen;
         }
 
-        public Element getElement(int id)
+        public Element getElement(int element_Id)
         {
-            foreach (Element e in ctx.Elements)
-            {
-                if (e.element_id == id)
-                {
-                    return e;
-                }
-            }
-
-            return null;
+            return ctx.Elements.Find(element_Id);
         }
-        public IEnumerable<Element> getElements()
+        public IEnumerable<Element> getElements(int platform_id)
         {
           List<Element> elements = new List<Element>();
           foreach (Persoon p in ctx.Personen)
           {
-            elements.Add(p);
+             elements.Add(p);
           }
           foreach(Organisatie o in ctx.Organisaties)
           {
-            elements.Add(o);
+             elements.Add(o);
           }
           foreach(Thema t in ctx.Themas)
           {
             elements.Add(t);
           }
+          
           return elements;
         }
 
@@ -187,6 +183,62 @@ namespace SMM_ThomasMore.DAL
     public void addThema(Thema t)
     {
       throw new NotImplementedException();
+    }
+
+    public Element getElement(string naam, int platform_id)
+    {
+      List<Persoon> personen = new List<Persoon>();
+      foreach(Persoon p in ctx.Personen)
+      {
+        if (p.naam.ToLower().Equals(naam.ToLower()))
+        {
+          personen.Add(p);
+        }
+      }
+
+      foreach(Persoon p in personen)
+      {
+        if(p.Deelplatform.id == platform_id)
+        {
+          return p;
+        }
+      }
+
+      List<Organisatie> organisaties = new List<Organisatie>();
+      foreach (Organisatie o in ctx.Organisaties)
+      {
+        if (o.naam.ToLower().Equals(naam.ToLower()))
+        {
+          organisaties.Add(o);
+        }
+      }
+
+      foreach (Organisatie o in organisaties)
+      {
+        if (o.Deelplatform.id == platform_id)
+        {
+          return o;
+        }
+      }
+
+      List<Thema> themas = new List<Thema>();
+      foreach (Thema t in ctx.Themas)
+      {
+        if (t.naam.ToLower().Equals(naam.ToLower()))
+        {
+          themas.Add(t);
+        }
+      }
+
+      foreach (Thema t in themas)
+      {
+        if (t.Deelplatform.id == platform_id)
+        {
+          return t;
+        }
+      }
+
+      return null;
     }
   }
 }

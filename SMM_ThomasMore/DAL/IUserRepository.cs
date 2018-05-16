@@ -12,7 +12,7 @@ namespace SMM_ThomasMore.DAL
         void addAlert(Alert a);
         void setALertGelezen(int alert_id);
         void AddAi(AlertInstellingen ai);
-        void AddUser(User u);
+        void AddUser(User u, Deelplatform platform);
         void verifyUser(User id);
     }
 }

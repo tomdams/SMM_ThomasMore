@@ -5,6 +5,7 @@ using SC.BL.Domain.User;
 using SC.DAL;
 using SMM_ThomasMore.DAL;
 using SMM_ThomasMore.Domain;
+using SMM_ThomasMore;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,19 +33,20 @@ namespace SMM_ThomasMore.BL
             userMgr.sendAlerts(e);
         }
 
-        public Element getElement(string el)
+        public Element getElement(int element_id)
         {
-            if (el == null) {
-            return null;
-             }else { 
-            foreach (Element e in repo.getElements().ToList())
+          return repo.getElement(element_id);
+        }
+
+        public Element getElement(string el, int platform_id)
+        {
+            if (el == null)
             {
-                if (e.naam.ToLower().Equals(el.ToLower()))
-                {
-                    return e;
-                }
+              return null;
             }
-            return null;
+            else
+            {
+              return repo.getElement(el, platform_id);
             }
         }
 
@@ -85,7 +87,7 @@ namespace SMM_ThomasMore.BL
                         p.organisation = item.organisation;
                         p.town = item.town;
 
-                        repo.addPersoon(p);
+                        repo.addPersoon(p, 1);
                     }
                 }
             }
@@ -139,7 +141,7 @@ namespace SMM_ThomasMore.BL
             bool mentioned = false;
             Dictionary<string, int> verhalen = new Dictionary<string, int>();
             Dictionary<string, int> woorden = new Dictionary<string, int>();
-      foreach (Message m in smRepo.getMessages())
+            foreach (Message m in smRepo.getMessages())
             {
                 mentioned = false;
                 //   if (m.date > startDate && m.date < endDate)
@@ -237,11 +239,6 @@ namespace SMM_ThomasMore.BL
             data = data.Trim().Remove(0, 5).Remove(data.Length - 8, 3);
             string[] gesplitsteData = data.Split(stringSeparators, StringSplitOptions.None);
             return gesplitsteData;
-        }
-
-        public Element getElement(int element_id)
-        {
-          return repo.getElement(element_id);
-        }
+        } 
   }
 }

@@ -115,9 +115,9 @@ namespace SMM_ThomasMore.BL
           repo.AddAi(ai);
         }
 
-    public void AddUser(User user)
+    public void AddUser(User user, Deelplatform platform)
     {
-      repo.AddUser(user);
+      repo.AddUser(user, platform);
      
     }
 

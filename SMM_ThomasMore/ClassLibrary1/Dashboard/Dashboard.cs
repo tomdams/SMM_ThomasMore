@@ -14,6 +14,7 @@ namespace SMM_ThomasMore.Domain
     [Required]
     public virtual User user { get; set; }
     public ICollection<Grafiek> grafieken { get; set; }
+    public virtual Deelplatform deelplatform { get; set; }
     //public ICollection<Zone> zones { get; set; }
 
     public Dashboard()
@@ -21,10 +22,11 @@ namespace SMM_ThomasMore.Domain
             grafieken = new List<Grafiek>();
         }
 
-    public Dashboard(User u)
+    public Dashboard(User u, Deelplatform d)
     {
       grafieken = new List<Grafiek>();
       user = u;
+      deelplatform = d;
     }
 
         public override string ToString()

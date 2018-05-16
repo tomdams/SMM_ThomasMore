@@ -47,7 +47,7 @@ namespace SMM_ThomasMore.UIControllers
     {
       if(!(lastGrafiek.beginDate.Equals(new DateTime(0001,01,1)) || lastGrafiek.eindDate.Equals(new DateTime(0001, 01, 1))))
       {
-        dc.AddGrafiek(dc.GetDashboard(UserController.currentUser), lastGrafiek);
+        dc.AddGrafiek(dc.GetDashboard(UserController.currentUser, PlatformController.currentDeelplatform), lastGrafiek);
         return RedirectToAction("Index", "Home");
       }
       else

@@ -33,13 +33,14 @@ namespace SMM_ThomasMore.UIControllers
         [HttpPost]
         public ActionResult ElementPage(Element el)
         {
-            element = elController.getElement(el.naam);
+            element = elController.GetElement(el.naam);
+
             if (element != null)
             {
-                if (element.GetType() == typeof(Persoon))
+                if (element.GetType().ToString().ToLower().Contains("persoon"))
                 {
                     Persoon persoon = elController.getPersoon(element);
-                      elController.berekenPersoon(persoon);
+                    elController.berekenPersoon(persoon);
                     return View("~/Views/UIElement/PersoonPage.cshtml", persoon);
                 }
             }
@@ -58,7 +59,7 @@ namespace SMM_ThomasMore.UIControllers
 
         public ActionResult leesMessages()
         {
-          smc.readMessages();
+          smc.readMessages(PlatformController.currentDeelplatform.id);
           return View("~/Views/UIElement/PersoonPage.cshtml", element);
         }
 
@@ -94,7 +95,7 @@ namespace SMM_ThomasMore.UIControllers
           element = elController.GetElement(element_id);
           if (element != null)
           {
-            if (element.GetType() == typeof(Persoon))
+            if (element.GetType().ToString().ToLower().Contains("persoon"))
             {
               Persoon persoon = elController.getPersoon(element);
               elController.berekenPersoon(persoon);

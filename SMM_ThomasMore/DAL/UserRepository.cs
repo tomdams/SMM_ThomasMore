@@ -20,10 +20,10 @@ namespace SMM_ThomasMore.DAL
             uctx.SaveChanges();
         }
 
-        public void AddUser(User u)
+        public void AddUser(User u, Deelplatform platform)
         {
-          Dashboard d = new Dashboard(u);
-          u.dashboard = d;
+          Dashboard d = new Dashboard(u, platform);
+          u.dasboards.Add(d);
           uctx.Users.Add(u);
           uctx.Dashboards.Add(d);
           uctx.SaveChanges();

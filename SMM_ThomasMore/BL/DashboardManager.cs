@@ -26,15 +26,15 @@ namespace SMM_ThomasMore.BL
       repo.addGrafiek(d, g);
     }
 
-    public Dashboard GetDashboard(User u)
+    public Dashboard GetDashboard(User u, Deelplatform platform)
     {
       repo.GetGrafieken().ToList();
-      return repo.GetDashboard(u);
+      return repo.GetDashboard(u, platform);
     }
 
     public void updateGrafieken()
     {
-
+      repo.setElement(1, 163);
       foreach (Grafiek g in repo.GetGrafieken())
       {
         Grafiek graph = updateGrafiek(repo.GetGrafiek(g.id));

@@ -13,5 +13,6 @@ namespace SMM_ThomasMore.BL
         void setAlertGelezen(int alert_id);
         IEnumerable getUsers();
         User getUser(int id);
+        void AddUser(User u, Deelplatform platform);
     }
 }

@@ -9,7 +9,7 @@ namespace SMM_ThomasMore.BL
 {
   public interface IDashboardManager
   {
-    Dashboard GetDashboard(User u);
+    Dashboard GetDashboard(User u, Deelplatform platform);
     void addGrafiek(Dashboard d, Grafiek g);
     Grafiek updateGrafiek(Grafiek g);
     void updateGrafieken();

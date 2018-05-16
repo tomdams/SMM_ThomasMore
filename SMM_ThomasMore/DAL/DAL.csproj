@@ -57,8 +57,10 @@
     <Compile Include="ElementRepository.cs" />
     <Compile Include="IDashboardRepository.cs" />
     <Compile Include="IElementRepository.cs" />
+    <Compile Include="IPlatformRepository.cs" />
     <Compile Include="ISMRepository.cs" />
     <Compile Include="IUserRepository.cs" />
+    <Compile Include="PlatformRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMRepository.cs" />
     <Compile Include="UserRepository.cs" />

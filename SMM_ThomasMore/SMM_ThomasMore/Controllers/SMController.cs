@@ -10,10 +10,10 @@ namespace SMM_ThomasMore.Controllers
   {
     private ISMManager mgr;
 
-    public void readMessages()
+    public void readMessages(int platform_id)
     {
       mgr = new SMManager();
-      mgr.readMessages();
+      mgr.readMessages(platform_id);
     }
 
   }

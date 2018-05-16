@@ -84,7 +84,7 @@ namespace SMM_ThomasMore.Controllers
           type = UserType.SUPERADMIN
           
         };
-        uc.addUser(newUser);
+        uc.addUser(newUser, PlatformController.currentDeelplatform);
 
         int userid = uc.getUser(newUser.username, newUser.wachtwoord).user_id;
 

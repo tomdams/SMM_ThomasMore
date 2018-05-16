@@ -10,7 +10,7 @@ namespace SMM_ThomasMore.DAL
 {
   public interface IDashboardRepository
   {
-    Dashboard GetDashboard(User u);
+    Dashboard GetDashboard(User u, Deelplatform platform);
     Grafiek GetGrafiek(int id);
     IEnumerable<Grafiek> GetGrafieken();
     void addGrafiek(Dashboard d, Grafiek g);

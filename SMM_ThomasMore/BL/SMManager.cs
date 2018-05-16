@@ -25,11 +25,11 @@ namespace SC.BL
 
     public object UserController { get; private set; }
 
-    public void checkTrending()
+    public void checkTrending(int platform_id)
         {
             //elements ophalen
             elementrepo = new ElementRepository();
-            List<Element> elements = elementrepo.getElements().ToList();
+            List<Element> elements = elementrepo.getElements(platform_id).ToList();
 
             foreach (Element e in elements)
             {
@@ -73,7 +73,7 @@ namespace SC.BL
             return false;
         }
 
-        public void readMessages()
+        public void readMessages(int platform_id)
     {
             //repo maken
             repo = new SMRepository();
@@ -138,8 +138,8 @@ namespace SC.BL
                 repo.add(m);
             }
 
-            checkTrending();
-            dbManager.updateGrafieken();
+            checkTrending(platform_id);
+            //dbManager.updateGrafieken();
             //Commentaar weghalen
             lastRead = DateTime.Now;
         }

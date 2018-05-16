@@ -15,6 +15,7 @@ namespace SMM_ThomasMore.Controllers
         private UserController uController;
         private static bool ingelezen = false;
         private DashboardController dbController;
+        private PlatformController pController;
 
         public HomeController()
         { 
@@ -29,17 +30,19 @@ namespace SMM_ThomasMore.Controllers
             elController = new ElementController();
             sMController = new SMController();
             dbController = new DashboardController();
+            pController = new PlatformController();
+            PlatformController.currentDeelplatform = pController.GetDeelplatform(1);
             //dbController.UpdateGrafieken();
             if (!ingelezen)
             {
-                //elController.politiciInlezen();
+                elController.politiciInlezen();
                 ingelezen = true;
             }
 
 
             if (!(UserController.currentUser == null))
             {
-              ViewBag.dashboard = dbController.GetDashboard(UserController.currentUser);
+                ViewBag.dashboard = dbController.GetDashboard(UserController.currentUser, PlatformController.currentDeelplatform);
                 ViewBag.user = UserController.currentUser;
               
                 return View();
