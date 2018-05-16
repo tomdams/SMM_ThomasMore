@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace SMM_ThomasMore.DAL.EF
 {
-  class SMMDbInitializer : DropCreateDatabaseIfModelChanges<SMMDbContext>
+  class SMMDbInitializer : DropCreateDatabaseAlways<SMMDbContext>
   {
     protected override void Seed(SMMDbContext context)
     {
