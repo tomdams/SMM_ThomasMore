@@ -48,6 +48,25 @@ namespace SMM_ThomasMore.DAL.EF
         adminDashboard = true
       };
 
+      Grafiek g1 = new Grafiek()
+      {
+        titel = "Aantal vermeldingen " + e.naam,
+        plaats = 3,
+        kruising = true,
+        x_as = "",
+        y_as = "",
+        x_as_beschrijving = "",
+        y_as_beschrijving = "",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.DATUM,
+        grafiekType = GrafiekType.LIJN
+      };
+
 
 
       u1.dasboards.Add(d1);
@@ -55,6 +74,9 @@ namespace SMM_ThomasMore.DAL.EF
 
       u2.dasboards.Add(d2);
       platform1.dashboards.Add(d2);
+
+      d2.grafieken.Add(g1);
+      g1.dashboards.Add(d2);
 
       context.Users.Add(u1);
       context.Users.Add(u2);

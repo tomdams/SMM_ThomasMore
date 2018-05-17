@@ -15,6 +15,7 @@ namespace SMM_ThomasMore.Domain
     public int id { get; set; }
     public string titel { get; set; }
     public int plaats { get; set; }
+    public bool kruising { get; set; }
 
     public string x_as { get; set; }
     public string y_as { get; set; }
