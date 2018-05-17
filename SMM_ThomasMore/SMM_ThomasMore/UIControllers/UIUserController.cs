@@ -42,7 +42,7 @@ namespace SMM_ThomasMore.Controllers
     {
       if (ModelState.IsValid)
       {
-        User authenticatedUser = uc.getUser(loginVM.username, loginVM.wachtwoord);
+        User authenticatedUser = uc.getUser(loginVM.username, uc.Hash(loginVM.wachtwoord));
                 
         if (authenticatedUser != null)
         {
@@ -76,8 +76,7 @@ namespace SMM_ThomasMore.Controllers
         User newUser = new User()
         {
 
-          wachtwoord = userVM.wachtwoord,
-          compareWachtwoord = userVM.compareWachtwoord,
+          wachtwoord = uc.Hash(userVM.wachtwoord),         
           email = userVM.email,
           confirmEmail = false,
           username = userVM.username,

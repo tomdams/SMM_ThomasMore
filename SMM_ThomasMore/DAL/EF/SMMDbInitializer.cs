@@ -19,8 +19,8 @@ namespace SMM_ThomasMore.DAL.EF
         username = "Testgebruiker",
         email = "test@test.be",
         type = UserType.INGELOGDEGEBRUIKER,
-        wachtwoord = "test123456",
-        compareWachtwoord = "test123456",
+          // test123456   -hashed
+          wachtwoord = "R+wt15HjHi7yB2yvZO2bPQ==",
         confirmEmail = true
       };
 
@@ -36,8 +36,8 @@ namespace SMM_ThomasMore.DAL.EF
         username = "TestAdmin",
         email = "amdin@admin.be",
         type = UserType.ADMIN,
-        wachtwoord = "test123456",
-        compareWachtwoord = "test123456",
+          // test123456   -hashed
+          wachtwoord = "R+wt15HjHi7yB2yvZO2bPQ==",
         confirmEmail = true
       };
 

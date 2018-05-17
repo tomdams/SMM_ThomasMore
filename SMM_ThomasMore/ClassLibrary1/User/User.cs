@@ -17,8 +17,7 @@ namespace SMM_ThomasMore.Domain
         public bool confirmEmail { get; set; }
         public string wachtwoord { get; set; }
         public string username { get; set; }
-        public UserType type { get; set; }
-        public string compareWachtwoord { get; set; }
+        public UserType type { get; set; }    
         public virtual ICollection<AlertInstellingen> alertInstellingen { get; set; }
         public virtual ICollection<Alert> alerts { get; set; }
         public virtual ICollection<Dashboard> dasboards { get; set; }
