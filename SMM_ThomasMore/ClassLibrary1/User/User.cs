@@ -44,7 +44,45 @@ namespace SMM_ThomasMore.Domain
           }
           return newAlerts;
         }
+
+        public string exportAsSuperadmin()
+        {
+            string u = "";
+            u = user_id + "," + email + "," + username + ",";
+            if (type == UserType.SUPERADMIN)
+            {
+                u += "********,";
+            }
+            else
+            {
+                u += wachtwoord + ",";
+            }
+            u += type;
+            return u;
+
+        }
+
+
+
+
+        public string exportAsAdmin()
+        {
+            string u;
+            u = user_id + "," + email + "," + username + ",";
+            if (type == UserType.SUPERADMIN || type == UserType.ADMIN)
+            {
+                u += "********,";
+            }
+            else
+            {
+                u += wachtwoord + ",";
+            }
+            u += type;
+            return u;
+        }
+
     }
+}
 
  
-}
+

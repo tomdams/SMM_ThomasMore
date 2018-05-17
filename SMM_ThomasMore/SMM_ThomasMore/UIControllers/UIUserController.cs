@@ -242,5 +242,12 @@ namespace SMM_ThomasMore.Controllers
             uc.verifyUser(userid);
             return RedirectToAction("Index", "Home");                    
         }
-  }
+
+        public FileContentResult ExportUsers()
+        {
+            string csv = uc.ExportUsers(uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord));
+
+            return File(new System.Text.UTF8Encoding().GetBytes(csv), "text/csv", "Users.csv");
+        }
+    }
 }

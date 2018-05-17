@@ -55,5 +55,10 @@ namespace SMM_ThomasMore.Controllers
     {
       umgr.setAlertGelezen(alert_id);
     }
-  }
+
+        internal string ExportUsers(User user)
+        {
+            return umgr.ExportUsers(user);
+        }
+    }
 }
