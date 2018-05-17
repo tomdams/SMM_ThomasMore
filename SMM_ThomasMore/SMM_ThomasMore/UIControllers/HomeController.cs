@@ -32,7 +32,7 @@ namespace SMM_ThomasMore.Controllers
             dbController = new DashboardController();
             pController = new PlatformController();
             PlatformController.currentDeelplatform = pController.GetDeelplatform(1);
-            //dbController.UpdateGrafieken();
+            //dbController.UpdateGrafieken(PlatformController.currentDeelplatform.id);
             if (!ingelezen)
             {
                 elController.politiciInlezen();
@@ -46,6 +46,10 @@ namespace SMM_ThomasMore.Controllers
                 ViewBag.user = UserController.currentUser;
               
                 return View();
+            }
+            else
+            {
+                ViewBag.dashboard = dbController.GetAdminDashboard(PlatformController.currentDeelplatform.id);
             }
 
             

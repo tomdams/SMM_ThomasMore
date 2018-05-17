@@ -16,7 +16,6 @@ namespace SMM_ThomasMore.DAL.EF
 
       User u1 = new User()
       {
-        user_id = 1,
         username = "Testgebruiker",
         email = "test@test.be",
         type = UserType.INGELOGDEGEBRUIKER,
@@ -27,36 +26,41 @@ namespace SMM_ThomasMore.DAL.EF
 
       Dashboard d1 = new Dashboard()
       {
-        id = 1,
         user = u1,
-        deelplatform = platform1
+        deelplatform = platform1,
+        adminDashboard = false
       };
 
-      Grafiek g1 = new Grafiek()
+      User u2 = new User()
       {
-        titel = "Aantal vermeldingen Bart De Wever",
-        plaats = 3,
-        x_as = "",
-        y_as = "",
-        x_as_beschrijving = "",
-        y_as_beschrijving = "",
+        username = "TestAdmin",
+        email = "amdin@admin.be",
+        type = UserType.ADMIN,
+        wachtwoord = "test123456",
+        compareWachtwoord = "test123456",
+        confirmEmail = true
+      };
 
-        beginDate = new DateTime(2018, 04, 25),
-        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
-        leeftijd = null,
-        geslacht = null,
-        polariteit = null,
-        grafiekOnderwerp = GrafiekOnderwerp.DATUM,
-        grafiekType = GrafiekType.LIJN
+      Dashboard d2 = new Dashboard()
+      {
+        user = u2,
+        deelplatform = platform1,
+        adminDashboard = true
       };
 
 
-      d1.grafieken.Add(g1);
+
       u1.dasboards.Add(d1);
       platform1.dashboards.Add(d1);
+
+      u2.dasboards.Add(d2);
+      platform1.dashboards.Add(d2);
+
       context.Users.Add(u1);
+      context.Users.Add(u2);
       context.Deelplatformen.Add(platform1);
       context.Dashboards.Add(d1);
+      context.Dashboards.Add(d2);
       context.SaveChanges();
     }
   }

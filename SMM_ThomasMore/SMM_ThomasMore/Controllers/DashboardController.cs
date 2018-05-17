@@ -36,14 +36,19 @@ namespace SMM_ThomasMore.Controllers
       return mgr.GetGrafiek(id);
     }
 
-    public void RemoveGrafiek(int id)
+    public void RemoveGrafiek(int id, int platform_Id)
     {
-      mgr.RemoveGrafiek(id);
+      mgr.RemoveGrafiek(id, platform_Id);
     }
 
-    public void UpdateGrafieken()
+    public void UpdateGrafieken(int platformId)
     {
-      mgr.updateGrafieken();
+      mgr.updateGrafieken(platformId);
+    }
+
+    public Dashboard GetAdminDashboard(int platformId)
+    {
+      return mgr.GetAdminDashboard(platformId);
     }
 
   }

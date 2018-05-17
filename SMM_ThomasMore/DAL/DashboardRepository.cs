@@ -24,7 +24,9 @@ namespace SMM_ThomasMore.DAL
     {
       Dashboard dashboard = ctx.Dashboards.Find(d.id);
       Element e = ctx.Elements.Find(g.element.element_id);
-      if(g.dashboard is null)
+
+      //Grafiek van een element
+      if(g.dashboards.Count == 0)
       {
         Grafiek graph = new Grafiek();
         graph.beginDate = g.beginDate;
@@ -40,34 +42,116 @@ namespace SMM_ThomasMore.DAL
         graph.y_as = g.y_as;
         graph.x_as_beschrijving = g.x_as_beschrijving;
         graph.y_as_beschrijving = g.y_as_beschrijving;
-        graph.dashboard = dashboard;
+        graph.dashboards.Add(dashboard);
         dashboard.grafieken.Add(graph);
         graph.element = e;
         e.grafieken.Add(graph);
+
+        if (dashboard.adminDashboard)
+        {
+          foreach (Dashboard dboard in ctx.Dashboards)
+          {
+            if (dboard.deelplatform.id == dashboard.deelplatform.id && !(dboard.adminDashboard))
+            {
+              dboard.grafieken.Add(graph);
+              graph.dashboards.Add(dboard);
+            }
+          }
+        }
       }
+      //Grafiek bestaat al
       else if (!(ctx.Grafieken.Find(g.id) is null))
       {
-        Grafiek graph = ctx.Grafieken.Find(g.id);
-        graph.beginDate = g.beginDate;
-        graph.eindDate = g.eindDate;
-        graph.titel = g.titel;
-        graph.grafiekOnderwerp = g.grafiekOnderwerp;
-        graph.grafiekType = g.grafiekType;
-        graph.leeftijd = g.leeftijd;
-        graph.opleiding = g.opleiding;
-        graph.polariteit = g.polariteit;
-        graph.plaats = g.plaats;
-        graph.x_as = g.x_as;
-        graph.y_as = g.y_as;
-        graph.x_as_beschrijving = g.x_as_beschrijving;
-        graph.y_as_beschrijving = g.y_as_beschrijving;
+        if (!dashboard.user.type.Equals(UserType.ADMIN))
+        {
+          bool adminGrafiek = false;
+          foreach (Dashboard dboard in g.dashboards)
+          {
+            if (dboard.adminDashboard)
+            {
+              adminGrafiek = true;
+            }
+          }
+
+          if (adminGrafiek)
+          {
+            dashboard.grafieken.Remove(ctx.Grafieken.Find(g.id));
+            ctx.Grafieken.Find(g.id).dashboards.Remove(dashboard);
+
+            Grafiek graph = new Grafiek();
+            graph.beginDate = g.beginDate;
+            graph.eindDate = g.eindDate;
+            graph.titel = g.titel;
+            graph.grafiekOnderwerp = g.grafiekOnderwerp;
+            graph.grafiekType = g.grafiekType;
+            graph.leeftijd = g.leeftijd;
+            graph.opleiding = g.opleiding;
+            graph.polariteit = g.polariteit;
+            graph.plaats = g.plaats;
+            graph.x_as = g.x_as;
+            graph.y_as = g.y_as;
+            graph.x_as_beschrijving = g.x_as_beschrijving;
+            graph.y_as_beschrijving = g.y_as_beschrijving;
+            graph.dashboards.Add(dashboard);
+            dashboard.grafieken.Add(graph);
+            graph.element = e;
+            e.grafieken.Add(graph);
+
+            dashboard.grafieken.Add(graph);
+            graph.dashboards.Add(dashboard);
+
+          }
+        }
+        else
+        {
+          Grafiek graph = ctx.Grafieken.Find(g.id);
+          graph.beginDate = g.beginDate;
+          graph.eindDate = g.eindDate;
+          graph.titel = g.titel;
+          graph.grafiekOnderwerp = g.grafiekOnderwerp;
+          graph.grafiekType = g.grafiekType;
+          graph.leeftijd = g.leeftijd;
+          graph.opleiding = g.opleiding;
+          graph.polariteit = g.polariteit;
+          graph.plaats = g.plaats;
+          graph.x_as = g.x_as;
+          graph.y_as = g.y_as;
+          graph.x_as_beschrijving = g.x_as_beschrijving;
+          graph.y_as_beschrijving = g.y_as_beschrijving;
+        }
+        
       }
+      //Nieuwe grafiek
       else
       {
         dashboard.grafieken.Add(g);
         ctx.Grafieken.Add(g);
+        if (dashboard.adminDashboard)
+        {
+          foreach(Dashboard dboard in ctx.Dashboards)
+          {
+            if(dboard.deelplatform.id == dashboard.deelplatform.id && !(dboard.adminDashboard))
+            {
+              dboard.grafieken.Add(g);
+              g.dashboards.Add(dboard);
+            }
+          }
+        }
       }
       ctx.SaveChanges();
+    }
+
+    public Dashboard GetAdminDashboard(int platformid)
+    {
+      foreach(Dashboard d in ctx.Deelplatformen.Find(platformid).dashboards)
+      {
+        if (d.adminDashboard)
+        {
+          return d;
+        }
+      }
+
+      return null;
     }
 
     public Dashboard GetDashboard(User u, Deelplatform platform)
@@ -97,10 +181,22 @@ namespace SMM_ThomasMore.DAL
       return ctx.Messages.ToList();
     }
 
-    public void RemoveGrafiek(int id)
+    public void RemoveGrafiek(int id, int dashboardId)
     {
-      ctx.Grafieken.Remove(ctx.Grafieken.Find(id));
+      if (ctx.Dashboards.Find(dashboardId).adminDashboard)
+      {
+        ctx.Grafieken.Remove(ctx.Grafieken.Find(id));
+      }
+      else
+      {
+        Grafiek g = ctx.Grafieken.Find(id);
+        Dashboard d = ctx.Dashboards.Find(dashboardId);
+        g.dashboards.Remove(d);
+        d.grafieken.Remove(g);
+      }
+
       ctx.SaveChanges();
+
     }
 
     public void setElement(int grafiekId, int elementId)

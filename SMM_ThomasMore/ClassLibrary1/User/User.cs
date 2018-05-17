@@ -19,9 +19,11 @@ namespace SMM_ThomasMore.Domain
         public string username { get; set; }
         public UserType type { get; set; }
         public string compareWachtwoord { get; set; }
-        public ICollection<AlertInstellingen> alertInstellingen { get; set; }
-        public ICollection<Alert> alerts { get; set; }
-        public ICollection<Dashboard> dasboards { get; set; }
+        public virtual ICollection<AlertInstellingen> alertInstellingen { get; set; }
+        public virtual ICollection<Alert> alerts { get; set; }
+        public virtual ICollection<Dashboard> dasboards { get; set; }
+        public virtual Deelplatform adminDeelplatform { get; set; }
+        
 
         public User()
         {

@@ -130,7 +130,7 @@
 
 @for (int i = 0; i < Model.grafieken.Count; i++)
 {
-    if (Model.grafieken.ElementAt(i).dashboard is null)
+    if (Model.grafieken.ElementAt(i).dashboards.Count == 0)
     {
         switch (@Model.grafieken.ElementAt(i).grafiekType.ToString())
         {

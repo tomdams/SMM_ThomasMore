@@ -53,9 +53,6 @@
     </style>
 </head>
 <div class="grid-stack">
-
-    @if (ViewBag.user != null && User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
-    {
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script>
             google.charts.load("current", { packages: ["corechart"] });
@@ -64,7 +61,7 @@
 
 
 
-                    for (int i = 0; i < @ViewBag.dashboard.grafieken.Count; i++)
+                    @for (int i = 0; i < @ViewBag.dashboard.grafieken.Count; i++)
                     {
                         int ycoord = (i / 3) * 4;
                         int xcoord = (i % 3) * 4;
@@ -245,7 +242,6 @@
                     </div>
                     break;
             }
-        }
 
 
 

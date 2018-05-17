@@ -31,7 +31,7 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult GenereerGrafiek(Grafiek g)
     {
       g.element = lastGrafiek.element;
-      g.dashboard = lastGrafiek.dashboard;
+      g.dashboards = lastGrafiek.dashboards;
       g.id = lastGrafiek.id;
       lastGrafiek = dc.UpdateGrafiek(g);
       return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
@@ -60,7 +60,7 @@ namespace SMM_ThomasMore.UIControllers
 
     public ActionResult DeleteGrafiek(int grafiek_id)
     {
-      dc.RemoveGrafiek(grafiek_id);
+      dc.RemoveGrafiek(grafiek_id, dc.GetDashboard(UserController.currentUser, PlatformController.currentDeelplatform).id);
       return RedirectToAction("Index", "Home");
     }
   }

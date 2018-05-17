@@ -32,13 +32,16 @@ namespace SMM_ThomasMore.BL
       return repo.GetDashboard(u, platform);
     }
 
-    public void updateGrafieken()
+    public void updateGrafieken(int platformId)
     {
       repo.setElement(1, 163);
       foreach (Grafiek g in repo.GetGrafieken())
       {
-        Grafiek graph = updateGrafiek(repo.GetGrafiek(g.id));
-        repo.updateGrafiek(graph.x_as, graph.y_as, graph.id);
+        if(g.element.Deelplatform.id == platformId)
+        {
+          Grafiek graph = updateGrafiek(repo.GetGrafiek(g.id));
+          repo.updateGrafiek(graph.x_as, graph.y_as, graph.id);
+        }
       }
     }
 
@@ -154,9 +157,14 @@ namespace SMM_ThomasMore.BL
       return repo.GetGrafiek(id);
     }
 
-    public void RemoveGrafiek(int id)
+    public void RemoveGrafiek(int id, int platform_Id)
     {
-      repo.RemoveGrafiek(id);
+      repo.RemoveGrafiek(id, platform_Id);
+    }
+
+    public Dashboard GetAdminDashboard(int platformId)
+    {
+      return repo.GetAdminDashboard(platformId);
     }
   }
 }

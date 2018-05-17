@@ -12,8 +12,9 @@ namespace SMM_ThomasMore.BL
     Dashboard GetDashboard(User u, Deelplatform platform);
     void addGrafiek(Dashboard d, Grafiek g);
     Grafiek updateGrafiek(Grafiek g);
-    void updateGrafieken();
+    void updateGrafieken(int platformId);
     Grafiek GetGrafiek(int id);
-    void RemoveGrafiek(int id);
+    void RemoveGrafiek(int id, int platform_Id);
+    Dashboard GetAdminDashboard(int platformId);
   }
 }

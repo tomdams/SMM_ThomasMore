@@ -20,12 +20,34 @@ namespace SMM_ThomasMore.DAL
             uctx.SaveChanges();
         }
 
-        public void AddUser(User u, Deelplatform platform)
+        public void AddUser(User u, int platformId)
         {
-          Dashboard d = new Dashboard(u, platform);
+          Deelplatform p = uctx.Deelplatformen.Find(platformId);
+          Dashboard d = new Dashboard(u, p);
+          if (u.type.Equals(UserType.ADMIN))
+          {
+            d.adminDashboard = true;
+          }
+          else
+          {
+            d.adminDashboard = false;
+            foreach(Dashboard dashboard in p.dashboards)
+            {
+              if (dashboard.adminDashboard)
+              {
+                foreach(Grafiek g in dashboard.grafieken)
+                {
+                  d.grafieken.Add(g);
+                  g.dashboards.Add(d);
+                }
+              }
+            }
+          }
           u.dasboards.Add(d);
-          uctx.Users.Add(u);
+          p.dashboards.Add(d);
+          
           uctx.Dashboards.Add(d);
+          uctx.Users.Add(u);
           uctx.SaveChanges();
         }
 
@@ -69,16 +91,16 @@ namespace SMM_ThomasMore.DAL
             uctx.SaveChanges();
         }
 
-    public IEnumerable<Alert> GetAlerts()
-    {
-      return uctx.Alerts.ToList<Alert>();
-    }
+        public IEnumerable<Alert> GetAlerts()
+        {
+          return uctx.Alerts.ToList<Alert>();
+        }
 
-    public void setALertGelezen(int alert_id)
-    {
-        Alert a = uctx.Alerts.Find(alert_id);
-        a.gelezen = true;
-        uctx.SaveChanges();
-    }
+        public void setALertGelezen(int alert_id)
+        {
+            Alert a = uctx.Alerts.Find(alert_id);
+            a.gelezen = true;
+            uctx.SaveChanges();
+        }
   }
 }

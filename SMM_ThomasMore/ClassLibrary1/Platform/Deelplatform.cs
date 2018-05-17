@@ -13,8 +13,8 @@ namespace SMM_ThomasMore.Domain
     public int id { get; set; }
     public string naam { get; set; }
 
-    public ICollection<Element> elements;
-    public ICollection<Dashboard> dashboards;
+    public virtual ICollection<Element> elements { get; set; }
+    public virtual ICollection<Dashboard> dashboards { get; set; }
 
     public Deelplatform()
     {

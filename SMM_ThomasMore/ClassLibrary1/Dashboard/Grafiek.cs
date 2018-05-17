@@ -32,16 +32,17 @@ namespace SMM_ThomasMore.Domain
     public GrafiekType grafiekType { get; set; }
 
     public virtual Element element { get; set; }
-    public virtual Dashboard dashboard { get; set; }
+    public virtual ICollection<Dashboard> dashboards { get; set; }
 
     public Grafiek()
     {
-
+      dashboards = new List<Dashboard>();
     }
 
     public Grafiek(Dashboard d)
     {
-      dashboard = d;
+      dashboards = new List<Dashboard>();
+      dashboards.Add(d);
     }
   }
 }

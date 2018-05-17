@@ -139,7 +139,7 @@ namespace SC.BL
             }
 
             checkTrending(platform_id);
-            //dbManager.updateGrafieken();
+            dbManager.updateGrafieken(platform_id);
             //Commentaar weghalen
             lastRead = DateTime.Now;
         }
