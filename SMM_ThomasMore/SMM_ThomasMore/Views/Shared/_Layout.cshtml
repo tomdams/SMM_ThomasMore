@@ -36,30 +36,19 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="@Url.Action("Index", "Home")" style="font-family:'Times New Roman', Times, serif" class="site_title"><i class="fa fa-paw"></i>
-                        @if (SMM_ThomasMore.Controllers.PlatformController.currentDeelplatform is null)
-                        {
-                          <span>Thomas More</span>
-                        }
-                        else
-                        {
-                          <span>@SMM_ThomasMore.Controllers.PlatformController.currentDeelplatform.naam</span>
-                        }
-                        </a>
+                        <a href="@Url.Action("Index", "Home")" style="font-family:'Times New Roman', Times, serif" class="site_title"><i class="fa fa-paw"></i> <span>Thomas More</span></a>
                     </div>
 
                     <div class="clearfix"></div>
 
                     @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
-    {
-        { Html.RenderPartial("UserName", SMM_ThomasMore.Controllers.UserController.currentUser); }
-    }
+                    {
+                        { Html.RenderPartial("UserName", SMM_ThomasMore.Controllers.UserController.currentUser); }
+                    }
                     <!-- /menu profile quick info -->
 
 
-                    @{
-                      { Html.RenderPartial("SearchBar", SMM_ThomasMore.Controllers.ElementController.currentelement); }
-                    }
+
 
                     <br />
 
@@ -78,32 +67,32 @@
                                 </li>
                                 <li>
                                     @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
-                    {
-                        <a><i class="fa fa-edit"></i> Account <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="@Url.Action("AccountInstellingenPage", "UIUser")">Account Instellingen</a></li>
-                            <li><a href="@Url.Action("AlertInstellingenPage", "UIUser")">Alert Instellingen</a></li>
+                                    {
+                                        <a><i class="fa fa-edit"></i> Account <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="@Url.Action("AccountInstellingenPage", "UIUser")">Account Instellingen</a></li>
+                                            <li><a href="@Url.Action("AlertInstellingenPage", "UIUser")">Alert Instellingen</a></li>
 
-                        </ul>
-    }
+                                        </ul>
+                                    }
                                 </li>
                                 <li>
                                     @if (User.IsInRole("admin") || User.IsInRole("superadmin"))
-                    {
-                        <a><i class="fa fa-desktop"></i> Admin <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="@Url.Action("UserBeherenPage", "UIUser")">Users  beheren</a></li>
-                        </ul>
-    }
+                                    {
+                                        <a><i class="fa fa-desktop"></i> Admin <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="@Url.Action("UserBeherenPage", "UIUser")">Users  beheren</a></li>
+                                        </ul>
+                                    }
                                 </li>
                                 <li>
                                     @if (User.IsInRole("superadmin"))
-                    {
-                        <a><i class="fa fa-table"></i> Superadmin <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="@Url.Action("SMBeherenPage", "UIUser")">Social Media</a></li>
-                        </ul>
-    }
+                                    {
+                                        <a><i class="fa fa-table"></i> Superadmin <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="@Url.Action("SMBeherenPage", "UIUser")">Social Media</a></li>
+                                        </ul>
+                                    }
                         </div>
 
 
@@ -135,6 +124,12 @@
                     <nav>
                         <div class="nav toggle">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+
+                        </div>
+                        <div class="nav toggle">
+                            @{
+                                { Html.RenderPartial("SearchBar", SMM_ThomasMore.Controllers.ElementController.currentelement); }
+                            }
                         </div>
 
                         <ul class="nav navbar-nav navbar-right">
@@ -145,40 +140,40 @@
                                 </a>
                                 @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
                                 {
-                                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="javascript:;"> Profile</a></li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="javascript:;">Help</a></li>
-                                    <li><a href="@Url.Action("Afmelden", "UIUser")"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                                </ul>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="javascript:;"> Profile</a></li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="badge bg-red pull-right">50%</span>
+                                                <span>Settings</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="javascript:;">Help</a></li>
+                                        <li><a href="@Url.Action("Afmelden", "UIUser")"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                    </ul>
                                 }
                                 else
                                 {
-                                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="@Url.Action("AanmeldenPage", "UIUser")"><i class="fa fa-sign-in pull-right"></i> Log In</a></li>
-                                    <li><a href="@Url.Action("RegistrerenPage", "UIUser")"><i class="fa fa-sign-in pull-right"></i> Registreer</a></li>
-                                </ul>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="@Url.Action("AanmeldenPage", "UIUser")"><i class="fa fa-sign-in pull-right"></i> Log In</a></li>
+                                        <li><a href="@Url.Action("RegistrerenPage", "UIUser")"><i class="fa fa-sign-in pull-right"></i> Registreer</a></li>
+                                    </ul>
                                 }
-                                
+
                             </li>
 
-                            @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                            @if (ViewBag.user != null && User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
                             {
                                 { Html.RenderPartial("Alerts", SMM_ThomasMore.Controllers.UserController.currentUser); }
                             }
-                            
+
                         </ul>
                     </nav>
                 </div>
             </div>
             <!-- /top navigation -->
             <!-- page content -->
-            <div class="right_col" role="main">
+            <div class="right_col" style="height:100%" role="main">
                 @RenderBody()
             </div>
             <!-- /page content -->
