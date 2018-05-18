@@ -146,3 +146,11 @@ C:\Users\Mario\Desktop\skool\intrgratie\dashboard to string yow\SMM_ThomasMore\S
 C:\Users\Mario\Desktop\skool\intrgratie\dashboard to string yow\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\Users\Mario\Desktop\skool\intrgratie\dashboard to string yow\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 C:\Users\Mario\Desktop\skool\intrgratie\dashboard to string yow\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb

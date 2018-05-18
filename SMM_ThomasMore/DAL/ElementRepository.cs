@@ -10,7 +10,7 @@ namespace SMM_ThomasMore.DAL
     {
         private SMMDbContext ctx;
         private DashboardRepository dashboardRepository;
-        public ElementRepository()
+        public ElementRepository()  
         {
             ctx = new SMMDbContext();
             dashboardRepository = new DashboardRepository();
@@ -38,6 +38,19 @@ namespace SMM_ThomasMore.DAL
           {
             ctx.Grafieken.Add(grafiek);
           }
+          Organisatie o = getOrganisatie(p.organisation);
+          
+          if (o is null)
+          {
+            o = new Organisatie() { naam = p.organisation, Deelplatform = p.Deelplatform, personen = new List<Persoon>() {p}  };
+            ctx.Elements.Add(o);
+          }
+          else
+          {
+            o.personen.Add(p);
+          }
+
+          
           ctx.SaveChanges();
         }
         public void berekenPersoon(Persoon persoon)
@@ -182,10 +195,6 @@ namespace SMM_ThomasMore.DAL
       return grafieken;
     }
 
-    public void addOrganisatie(Organisatie o)
-    {
-      throw new NotImplementedException();
-    }
 
     public void addThema(Thema t)
     {
@@ -246,6 +255,19 @@ namespace SMM_ThomasMore.DAL
       }
 
       return null;
+    }
+
+    public Organisatie getOrganisatie(string organisation)
+    {
+      Organisatie o = null;
+      foreach (Organisatie organisatie in ctx.Organisaties)
+      {
+        if (organisatie.naam.Equals(organisation))
+        {
+          o = organisatie;
+        }
+      }
+      return o;
     }
   }
 }

@@ -1,7 +1,9 @@
 ﻿using SC.BL.Domain;
 using SMM_ThomasMore.Domain;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace SMM_ThomasMore.DAL.EF
 {
@@ -71,23 +73,123 @@ namespace SMM_ThomasMore.DAL.EF
         grafiekType = GrafiekType.LIJN
       };
 
+      Thema t1 = new Thema()
+      {
+        naam = "mobiliteit",
+        keywords = new List<Keyword>(),
+        Deelplatform = platform1
+      };
 
+      Thema t2 = new Thema()
+      {
+        naam = "buitenlandse zaken",
+        keywords = new List<Keyword>(),
+        Deelplatform = platform1
+      };
 
-      u1.dasboards.Add(d1);
-      platform1.dashboards.Add(d1);
+      Keyword k1 = new Keyword()
+      {
+        woord = "file",
+        thema = t1
+      };
 
-      u2.dasboards.Add(d2);
-      platform1.dashboards.Add(d2);
+      Keyword k2 = new Keyword()
+      {
+        woord = "wegenwerken",
+        thema = t1
+    };
 
-      d2.grafieken.Add(g1);
-      g1.dashboards.Add(d2);
+      Keyword k3 = new Keyword()
+      {
+        woord = "staking",
+        thema = t1
+      };
 
-      context.Users.Add(u1);
-      context.Users.Add(u2);
-      context.Deelplatformen.Add(platform1);
-      context.Dashboards.Add(d1);
-      context.Dashboards.Add(d2);
-      context.SaveChanges();
+      Keyword k4 = new Keyword()
+      {
+        woord = "openbaar vervoer",
+        thema = t1
+      };
+
+      Keyword k5 = new Keyword()
+      {
+        woord = "voertuig",
+        thema = t1
+      };
+
+      Keyword k6 = new Keyword()
+      {
+        woord = "army",
+        thema = t2
+      };
+
+      Keyword k7 = new Keyword()
+      {
+        woord = "syria",
+        thema = t2
+      };
+
+      Keyword k8 = new Keyword()
+      {
+        woord = "asielzoekers",
+        thema = t2
+      };
+
+      Keyword k9 = new Keyword()
+      {
+        woord = "transmigranten",
+        thema = t2
+      };
+
+      Keyword k10 = new Keyword()
+      {
+        woord = "buitenland",
+        thema = t2
+      };
+
+        t1.keywords.Add(k1);
+        t1.keywords.Add(k2);
+        t1.keywords.Add(k3);
+        t1.keywords.Add(k4);
+        t1.keywords.Add(k5);
+
+        t2.keywords.Add(k6);
+        t2.keywords.Add(k7);
+        t2.keywords.Add(k8);
+        t2.keywords.Add(k9);
+        t2.keywords.Add(k10);
+
+        u1.dasboards.Add(d1);
+        platform1.dashboards.Add(d1);
+
+        u2.dasboards.Add(d2);
+        platform1.dashboards.Add(d2);
+
+        d2.grafieken.Add(g1);
+        g1.dashboards.Add(d2);
+
+        context.Users.Add(u1);
+        context.Users.Add(u2);
+
+        context.Keywords.Add(k1);
+        context.Keywords.Add(k2);
+        context.Keywords.Add(k3);
+        context.Keywords.Add(k4);
+        context.Keywords.Add(k5);
+        context.Keywords.Add(k6);
+        context.Keywords.Add(k7);
+        context.Keywords.Add(k8);
+        context.Keywords.Add(k9);
+        context.Keywords.Add(k10);
+
+        context.Themas.Add(t1);
+        context.Themas.Add(t2);
+
+        context.Deelplatformen.Add(platform1);
+        context.Dashboards.Add(d1);
+        context.Dashboards.Add(d2);
+        context.SaveChanges();
+      }
     }
   }
-}
+
