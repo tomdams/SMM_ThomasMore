@@ -51,10 +51,29 @@ namespace SMM_ThomasMore.BL
           }
           return null;
         }
-  
 
-       
-    public void sendAlerts(Element element)
+        public string ExportUsers(User user)
+        {
+            String users = "sep=," + Environment.NewLine;
+            if (user.type == UserType.SUPERADMIN)
+            {
+                foreach (User u in repo.getUsers().ToList())
+                {
+                    users += u.exportAsSuperadmin() + Environment.NewLine;
+                }
+            }
+            else if (user.type == UserType.ADMIN)
+            {
+                foreach (User u in repo.getUsers().ToList())
+                {
+                    users += u.exportAsAdmin() + Environment.NewLine;
+                }
+            }
+
+            return users;
+        }
+
+        public void sendAlerts(Element element)
         {
             IEnumerable<AlertInstellingen> ai = repo.GetAlertInstellingen();
 

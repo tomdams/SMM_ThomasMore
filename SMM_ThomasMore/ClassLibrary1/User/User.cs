@@ -17,8 +17,7 @@ namespace SMM_ThomasMore.Domain
         public bool confirmEmail { get; set; }
         public string wachtwoord { get; set; }
         public string username { get; set; }
-        public UserType type { get; set; }
-        public string compareWachtwoord { get; set; }
+        public UserType type { get; set; }    
         public virtual ICollection<AlertInstellingen> alertInstellingen { get; set; }
         public virtual ICollection<Alert> alerts { get; set; }
         public virtual ICollection<Dashboard> dasboards { get; set; }
@@ -44,7 +43,45 @@ namespace SMM_ThomasMore.Domain
           }
           return newAlerts;
         }
+
+        public string exportAsSuperadmin()
+        {
+            string u = "";
+            u = user_id + "," + email + "," + username + ",";
+            if (type == UserType.SUPERADMIN)
+            {
+                u += "********,";
+            }
+            else
+            {
+                u += wachtwoord + ",";
+            }
+            u += type;
+            return u;
+
+        }
+
+
+
+
+        public string exportAsAdmin()
+        {
+            string u;
+            u = user_id + "," + email + "," + username + ",";
+            if (type == UserType.SUPERADMIN || type == UserType.ADMIN)
+            {
+                u += "********,";
+            }
+            else
+            {
+                u += wachtwoord + ",";
+            }
+            u += type;
+            return u;
+        }
+
     }
+}
 
  
-}
+

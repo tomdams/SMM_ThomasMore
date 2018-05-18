@@ -1,141 +1,204 @@
-﻿<style>
-    #main-wrap > div {
-        min-height: 250px;
-    }
-    td, th {
-        border: 1px solid #ddd;
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<style>
+
+    .dropbtn {
+        background-color: lightslategray;
+        color: white;
         padding: 8px;
-    }
-    #header,
-    #footer {
-        min-height: 40px;
+        font-size: 8px;
+        border: none;
     }
 
-    .info {
-        min-height: 80px;
-    }
-    #main-wrap {
-        overflow: hidden;
-        margin-left:5%;
-    }
-    #sidebar {
-        float: left;
-        width: 30%;
-    }
-    #content-wrap {
-        
-        width: 100%;
-    }
-
-    #info-wrap {
-       
-    }
-    .info {
-        width: 50%;
-        float:left;
-    }
-    #woorden{
-        float:right;
-        margin-right:10%;
-    }
-   
-    th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #b3b3b3;
-        color: black;
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
     }
 </style>
 
+
 @model SMM_ThomasMore.Domain.Element
 @{
-    ViewBag.Title = "PersoonPage";
-    
+  ViewBag.Title = "PersoonPage";
 }
 
 
 
-<form action="http://localhost:11981/UIElement/volgElement" method="GET">
-    <input type="submit" value="Volg element" />
-</form>
+<div class="col-md-3 col-xs-12 widget widget_tally_box">
+    <div class="x_panel fixed_height_390" ">
+        <div class="x_content">
 
-<form action="http://localhost:11981/UIElement/leesMessages" method="GET">
-    <input type="submit" value="Lees Messages" />
-</form>
-
-
-
-<div id="main-wrap">
-    <table width="100%">
-        <tr>
-            <td>
-                <h2>@Html.DisplayFor(m => m.naam)</h2>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <img src=@Url.Action("TwitterPic","UIElement") class="img-thumbnail" height="10%" width="10%" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href='@Url.Action("Twitter","UIElement")' class="btn btn-info">Twitter</a>
-                <a href='@Url.Action("Facebook","UIElement")' class="btn btn-primary">Facebook</a>
-                <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
-            </td>
-        </tr>
-    </table>
-    @Html.DisplayFor(m => m.aantalVermeldingen)
-    <div id="content-wrap">
-        <div id="info-wrap">
-            <div class="info">
-                <div class="list-group">
-                    <h3>Meest voorkomende verhalen</h3>
-                    @for (int index = 0; index < Model.verhalen.Count(); index++)
-                    {
-                    <a href=@Model.verhalen[index] class="list-group-item list-group-item-action">@Html.DisplayFor(m => m.verhalen[index])</a>
-                    }
-                </div>
+            <div class="flex">
+                <ul class="list-inline widget_profile_box">
+                    <li>
+                        <a href='@Url.Action("Facebook","UIElement")'>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <img src='@Url.Action("TwitterPic","UIElement")' alt="..." class="img-circle profile_img">
+                    </li>
+                    <li>
+                        <a href='@Url.Action("Twitter","UIElement")'>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="info">
-                <table id="woorden">
-                    <tr>
-                        <th>Meest voorkomende woorden</th>
-                    </tr>
-                    @for (var i = 0; i < Model.woorden.Length; i++)
-                    {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(m => (m.woorden[i]))
-                        </td>
-                    </tr>
-                    }
 
-                </table>
+            <h3 class="name">@Html.DisplayFor(m => m.naam)</h3>
+
+            <div class="flex">
+                <ul class="list-inline count2">
+                    <li>
+                        <h3>123</h3>
+                        <span>Articles</span>
+                    </li>
+                    <li>
+                        <h3>1234</h3>
+                        <span>Followers</span>
+                    </li>
+                    <li>
+                        <h3>123</h3>
+                        <span>Following</span>
+                    </li>
+                </ul>
             </div>
+            <form style="float:left" action="http://localhost:11981/UIElement/volgElement" method="GET">
+                <input type="submit" class="btn btn-default" value="Volg element" />
+            </form>
+
+            <form action="http://localhost:11981/UIElement/leesMessages" method="GET">
+                <input type="submit" class="btn btn-default" value="Lees Messages" />
+            </form>
+            </br>
+
+            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen</p>
         </div>
     </div>
-    <div id="piechart" style="width: 200px; height: 100px;"></div>
+</div>
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Gebruikte links <small>Klik om te gaan</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+
+            @for (int index = 0; index < Model.verhalen.Count(); index++)
+            {
+
+            <button style="width:100%;white-space:normal" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Html.DisplayFor(m => m.verhalen[index])</button>
+            }
+
+
+
+        </div>
     </div>
- 
-    
+</div>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
-    google.charts.load("current", { packages: ["corechart"] });
-    console.log("load");
-</script>
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel" ">
+        <div class="x_title">
+            <h2>Voorkomende woorden <small>Overzicht</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <p>Meest gebrukte woorden:</p>
+            @for (var i = 0; i < Model.woorden.Length; i++)
+            {
+
+            <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.woorden[i]))</button>
+            }
 
 
-@for (int i = 0; i < Model.grafieken.Count; i++)
-{
-    if (Model.grafieken.ElementAt(i).dashboards.Count == 0)
-    {
-        switch (@Model.grafieken.ElementAt(i).grafiekType.ToString())
-        {
-            case "TAART":
-        <script type="text/javascript">
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" ">
+        <div class="x_title">
+            <h2>Grafieken <small>Overzicht</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script>
+                google.charts.load("current", { packages: ["corechart"] });
+                console.log("load");
+            </script>
+
+
+            @for (int i = 0; i < Model.grafieken.Count; i++)
+            {
+                if (Model.grafieken.ElementAt(i).dashboards.Count == 0)
+                {
+                    switch (@Model.grafieken.ElementAt(i).grafiekType.ToString())
+                    {
+                        case "TAART":
+                    <script type="text/javascript">
                         console.log("ja");
                         google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
@@ -178,23 +241,23 @@
                                         var chart = new google.visualization.PieChart(document.getElementById('chart_@i'));
                                         chart.draw(data, options);
                                 }
-        </script>
+                    </script>
 
 
-            <div class="grid-stack-item"
-                 data-gs-x="0" data-gs-y="0"
-                 data-gs-width="4" data-gs-height="4">
-                <div class="grid-stack-item-content">
-                    <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
-                    <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Delete</a>
-                    <div id="chart_@i" style="width: 100%; height: 90%;">
+                    <div class="grid-stack-item"
+                         data-gs-x="0" data-gs-y="0"
+                         data-gs-width="4" data-gs-height="4">
+                        <div class="grid-stack-item-content">
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
+                            <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Delete</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;">
+                            </div>
+
+                        </div>
                     </div>
-
-                </div>
-            </div>
-                break;
-            case "STAAF":
-        <script type="text/javascript">
+                            break;
+                        case "STAAF":
+                    <script type="text/javascript">
                         console.log("ja");
                         google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
@@ -237,21 +300,21 @@
                                         var chart = new google.visualization.BarChart(document.getElementById('chart_@i'));
                                         chart.draw(data, options);
                                 }
-        </script>
+                    </script>
 
 
-            <div class="grid-stack-item"
-                 data-gs-x="0" data-gs-y="0"
-                 data-gs-width="4" data-gs-height="4">
-                <div class="grid-stack-item-content">
-                    <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
-                    <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Delete</a>
-                    <div id="chart_@i" style="width: 100%; height: 90%;"></div>
-                </div>
-            </div>
-                break;
-            case "LIJN":
-        <script type="text/javascript">
+                    <div class="grid-stack-item"
+                         data-gs-x="0" data-gs-y="0"
+                         data-gs-width="4" data-gs-height="4">
+                        <div class="grid-stack-item-content">
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
+                            <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Delete</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;"></div>
+                        </div>
+                    </div>
+                            break;
+                        case "LIJN":
+                    <script type="text/javascript">
                         console.log("ja");
                         google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
@@ -294,59 +357,73 @@
                                         var chart = new google.visualization.LineChart(document.getElementById('chart_@i'));
                                         chart.draw(data, options);
                                 }
-        </script>
+                    </script>
 
 
-            <div class="grid-stack-item"
-                 data-gs-x="0" data-gs-y="0"
-                 data-gs-width="4" data-gs-height="4">
-                <div class="grid-stack-item-content">
-                    <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
-                    <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Delete</a>
-                    <div id="chart_@i" style="width: 100%; height: 90%;"></div>
-                </div>
-            </div>
-                break;
-        }
-    }
-}
+                    <div class="grid-stack-item"
+                         data-gs-x="0" data-gs-y="0"
+                         data-gs-width="4" data-gs-height="4">
+                        <div class="grid-stack-item-content">
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
+                            <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Delete</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;"></div>
+                        </div>
+                    </div>
+                            break;
+                    }
+                }
+            }
+
+
+
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
+            <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+            <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+            <script type="text/javascript">
+                                            $(function () {
+                                                var options = {
+                                                    cellHeight: 75,
+                                                    verticalMargin: 10,
+                                                    disableResize: true
+
+                                                };
+                                                $('.grid-stack').gridstack(options);
+                                            });
+            </script>
+
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
+            <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+            <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+            <script type="text/javascript">
+                                            $(function () {
+                                                var options = {
+                                                    cellHeight: 75,
+                                                    verticalMargin: 10,
+                                                    disableResize: true
+
+                                                };
+                                                $('.grid-stack').gridstack(options);
+                                            });
+            </script>
+            
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
     
 
 
-
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
-            <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-            <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
-            <script type="text/javascript">
-                                            $(function () {
-                                                var options = {
-                                                    cellHeight: 75,
-                                                    verticalMargin: 10,
-                                                    disableResize: true
-
-                                                };
-                                                $('.grid-stack').gridstack(options);
-                                            });
-            </script>
-
-
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
-            <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-            <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
-            <script type="text/javascript">
-                                            $(function () {
-                                                var options = {
-                                                    cellHeight: 75,
-                                                    verticalMargin: 10,
-                                                    disableResize: true
-
-                                                };
-                                                $('.grid-stack').gridstack(options);
-                                            });
-            </script>
 
 

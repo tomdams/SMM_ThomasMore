@@ -2,7 +2,7 @@
 @{
   ViewBag.Title = "New Grafiek";
 }
-<h1>Grafiek voor @Html.DisplayFor(m => m.element.naam)</h1>
+<h1>Grafiek voor @Html.DisplayFor(m => m.elements.First().naam)</h1>
 @using (Html.BeginForm("GenereerGrafiek", "UIDashboard"))
 {
 <table>

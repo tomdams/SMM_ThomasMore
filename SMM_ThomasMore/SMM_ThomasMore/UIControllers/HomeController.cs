@@ -36,6 +36,7 @@ namespace SMM_ThomasMore.Controllers
             if (!ingelezen)
             {
                 elController.politiciInlezen();
+                //dbController.UpdateGrafieken(1);
                 ingelezen = true;
             }
 

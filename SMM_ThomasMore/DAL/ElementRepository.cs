@@ -129,7 +129,6 @@ namespace SMM_ThomasMore.DAL
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.DATUM,
         grafiekType = GrafiekType.LIJN,
-        element = e
       };
 
       Grafiek g2 = new Grafiek()
@@ -149,7 +148,6 @@ namespace SMM_ThomasMore.DAL
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.SENTIMENT,
         grafiekType = GrafiekType.STAAF,
-        element = e 
       };
 
       Grafiek g3 = new Grafiek()
@@ -169,9 +167,11 @@ namespace SMM_ThomasMore.DAL
         polariteit = null,
         grafiekOnderwerp = GrafiekOnderwerp.GESLACHT,
         grafiekType = GrafiekType.TAART,
-        element = e
       };
 
+      g1.elements.Add(e);
+      g2.elements.Add(e);
+      g3.elements.Add(e);
       grafieken.Add(g1);
       grafieken.Add(g2);
       grafieken.Add(g3);

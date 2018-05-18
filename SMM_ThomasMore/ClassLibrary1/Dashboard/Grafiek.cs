@@ -19,6 +19,10 @@ namespace SMM_ThomasMore.Domain
 
     public string x_as { get; set; }
     public string y_as { get; set; }
+    public string y_as1 { get; set; }
+    public string y_as2 { get; set; }
+    public string y_as3 { get; set; }
+    public string y_as4 { get; set; }
     public string x_as_beschrijving { get; set; }
     public string y_as_beschrijving { get; set; }
 
@@ -32,18 +36,34 @@ namespace SMM_ThomasMore.Domain
     public GrafiekOnderwerp grafiekOnderwerp { get; set; }
     public GrafiekType grafiekType { get; set; }
 
-    public virtual Element element { get; set; }
+    public virtual ICollection<Element> elements { get; set; }
     public virtual ICollection<Dashboard> dashboards { get; set; }
 
     public Grafiek()
     {
       dashboards = new List<Dashboard>();
+      elements = new List<Element>();
     }
 
     public Grafiek(Dashboard d)
     {
+      elements = new List<Element>();
       dashboards = new List<Dashboard>();
       dashboards.Add(d);
+    }
+
+    public string GetElementNames()
+    {
+      string s = "";
+      if(elements.Count == 0)
+      {
+        return s;
+      }
+      foreach(Element e in elements)
+      {
+        s += e.naam + ",";
+      }
+      return s.Substring(0,s.Length-1);
     }
   }
 }

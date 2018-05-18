@@ -19,8 +19,8 @@ namespace SMM_ThomasMore.DAL.EF
         username = "Testgebruiker",
         email = "test@test.be",
         type = UserType.INGELOGDEGEBRUIKER,
-        wachtwoord = "test123456",
-        compareWachtwoord = "test123456",
+          // test123456   -hashed
+          wachtwoord = "R+wt15HjHi7yB2yvZO2bPQ==",
         confirmEmail = true
       };
 
@@ -36,8 +36,8 @@ namespace SMM_ThomasMore.DAL.EF
         username = "TestAdmin",
         email = "amdin@admin.be",
         type = UserType.ADMIN,
-        wachtwoord = "test123456",
-        compareWachtwoord = "test123456",
+          // test123456   -hashed
+          wachtwoord = "R+wt15HjHi7yB2yvZO2bPQ==",
         confirmEmail = true
       };
 
@@ -50,12 +50,16 @@ namespace SMM_ThomasMore.DAL.EF
 
       Grafiek g1 = new Grafiek()
       {
-        titel = "Aantal vermeldingen " + e.naam,
+        titel = "Aantal vermeldingen ",
         plaats = 3,
         kruising = true,
-        x_as = "",
-        y_as = "",
-        x_as_beschrijving = "",
+        x_as = "25, 26, 27",
+        y_as = "37.8, 80.8, 41.8",
+        y_as1 = "30.9, 69.5, 32.4",
+        y_as2 = "25.4,   57, 25.7",
+        y_as3 = "28, 44, 23",
+        y_as4 = "",
+        x_as_beschrijving = "Datum",
         y_as_beschrijving = "",
 
         beginDate = new DateTime(2018, 04, 25),
