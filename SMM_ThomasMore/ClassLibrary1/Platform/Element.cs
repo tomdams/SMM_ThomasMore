@@ -16,9 +16,9 @@ namespace SMM_ThomasMore.Domain
         public string[] woorden { get; set; }
         public string[] verhalen { get; set; }
         public double polariteit { get; set; }
-        public ICollection<AlertInstellingen> alertInstellingen { get; set; }
-        public ICollection<Alert> alerts { get; set; }
-        public ICollection<Grafiek> grafieken { get; set; }
+        public virtual ICollection<AlertInstellingen> alertInstellingen { get; set; }
+        public virtual ICollection<Alert> alerts { get; set; }
+        public virtual ICollection<Grafiek> grafieken { get; set; }
         [Required]
         public virtual Deelplatform Deelplatform { get; set; }
 

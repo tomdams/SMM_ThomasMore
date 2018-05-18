@@ -115,7 +115,7 @@ namespace SMM_ThomasMore.UIControllers
       Persoon persoon = new Persoon();
       if (element != null)
       {
-        if (element.GetType() == typeof(Persoon))
+        if (element.GetType().ToString().ToLower().Contains("persoon"))
         {
           persoon = elController.getPersoon(element);
         }

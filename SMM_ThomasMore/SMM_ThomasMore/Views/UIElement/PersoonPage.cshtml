@@ -50,16 +50,12 @@
             <div class="flex">
                 <ul class="list-inline count2">
                     <li>
-                        <h3>123</h3>
-                        <span>Articles</span>
+                        <h3>@Model.grafieken.Count</h3>
+                        <span>Grafieken</span>
                     </li>
                     <li>
-                        <h3>1234</h3>
-                        <span>Followers</span>
-                    </li>
-                    <li>
-                        <h3>123</h3>
-                        <span>Following</span>
+                        <h3>@Model.alertInstellingen.Count</h3>
+                        <span>Volgers</span>
                     </li>
                 </ul>
             </div>
@@ -104,16 +100,18 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-
-
             @for (int index = 0; index < Model.verhalen.Count(); index++)
             {
-
-            <button style="width:100%;white-space:normal" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Html.DisplayFor(m => m.verhalen[index])</button>
+                if (Model.verhalen[index].ToString().Length >= 110)
+                {
+                    String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
+                <button style="width:100%;white-space:" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
+                }
+                else
+                {
+                <button style="width:100%;white-space:" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
+                }
             }
-
-
-
         </div>
     </div>
 </div>

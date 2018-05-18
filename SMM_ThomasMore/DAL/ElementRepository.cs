@@ -20,6 +20,10 @@ namespace SMM_ThomasMore.DAL
         public void AddAI(AlertInstellingen ai)
         {
             ctx.AlertInstellingen.Add(ai);
+            Element e = ctx.Elements.Find(ai.element.element_id);
+            User u = ctx.Users.Find(ai.user.user_id);
+            e.alertInstellingen.Add(ai);
+            u.alertInstellingen.Add(ai);
             ctx.SaveChanges();
         }
 
