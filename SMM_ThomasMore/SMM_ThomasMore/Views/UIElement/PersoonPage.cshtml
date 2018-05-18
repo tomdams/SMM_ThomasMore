@@ -102,42 +102,17 @@
         <div class="x_content">
             @for (int index = 0; index < Model.verhalen.Count(); index++)
             {
-                if (Request.Browser.ScreenPixelsWidth >= 640)
+                if (Model.verhalen[index].ToString().Length >= 110)
                 {
-                    if (Model.verhalen[index].ToString().Length >= 110)
-                    {
-                        String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
-                        <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
-                    }
-                    else
-                    {
-                        <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
-                    }
-                }
-                else if (Request.Browser.ScreenPixelsWidth >= 350)
-                {
-                    if (Model.verhalen[index].ToString().Length >= 80)
-                    {
-                        String afgekort = Model.verhalen[index].ToString().Substring(0, 80);
-                        <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
-                    }
-                    else
-                    {
-                        <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
-                    }
+                    String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
+                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
                 }
                 else
                 {
-                    if (Model.verhalen[index].ToString().Length >= 110)
-                    {
-                        String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
-                        <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
-                    }
-                    else
-                    {
-                        <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
-                    }
+                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
                 }
+
+                
 
             }
         </div>
