@@ -25,6 +25,9 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,7 +52,9 @@ public class LoginActivity extends AppCompatActivity {
 
     // API
     private ApiInterface apiInterface;
-    private User opgehaaldeUser;
+    private String opgehaaldeUser;
+    private User jsonuser;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
@@ -122,34 +127,46 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.button_signin)
     public void onViewClicked() {
         if(!editTextPassword.getText().toString().isEmpty() && !editTextUsername.getText().toString().isEmpty()){
-            Intent intent = new Intent(LoginActivity.this, OverzichtActivity.class);
+          final  Intent intent = new Intent(LoginActivity.this, OverzichtActivity.class);
 
 
-           // API
+
+
+          // API
             Map<String, String> data = new HashMap<>();
             data.put("username", editTextUsername.getText().toString());
             data.put("password", editTextPassword.getText().toString());
 
             apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
-            Call<User> user = apiInterface.AuthenticateUser(data);
-            user.enqueue(new Callback<User>() {
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    opgehaaldeUser= (User) response.body();
-                }
+            final Call<String> user = apiInterface.AuthenticateUser(data);
+            user.enqueue(new Callback<String>() {
+                 @Override
+                 public void onResponse(Call<String> call, Response<String> response) {
+                     opgehaaldeUser=response.body();
+                     Gson gson = new Gson();
+                     jsonuser=gson.fromJson(opgehaaldeUser,User.class);
 
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    opgehaaldeUser=null;
-                }
-            });
+                     if(jsonuser != null){
+                         if (jsonuser.isConfirmEmail()){
+                             intent.putExtra("username",jsonuser);
+                             startActivity(intent);
+                         }
+                     }
+
+                 }
+
+         @Override
+         public void onFailure(Call<String> call, Throwable t) {
+            jsonuser=null;
+            // eventueel melding geven nog ?
+         }
+     });
 
 
 
 
 
-            intent.putExtra("username",opgehaaldeUser);
-            startActivity(intent);
+
         }
 
     }

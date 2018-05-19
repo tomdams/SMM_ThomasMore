@@ -161,6 +161,8 @@
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\AndroidModels\AndroidDeelplatformVM.cs" />
+    <Compile Include="Models\AndroidModels\AndroidGrafiekVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidUserVM.cs" />
     <Compile Include="Models\VerifyVM.cs" />
     <Compile Include="UIControllers\AndroidController.cs" />

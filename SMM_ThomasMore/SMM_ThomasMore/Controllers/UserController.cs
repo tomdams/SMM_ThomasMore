@@ -52,6 +52,11 @@ namespace SMM_ThomasMore.Controllers
             umgr.verifyUser(id);
         }
 
+        internal List<Deelplatform> getDashboards(User u)
+        {
+           return umgr.getDashboards(u);
+        }
+
         public void setAlertGelezen(int alert_id)
         {
             umgr.setAlertGelezen(alert_id);

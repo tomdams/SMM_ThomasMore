@@ -14,5 +14,6 @@ namespace SMM_ThomasMore.DAL
         void AddAi(AlertInstellingen ai);
         void AddUser(User u, int platformId);
         void verifyUser(User id);
+        IEnumerable<Dashboard> getDashboards();
     }
 }

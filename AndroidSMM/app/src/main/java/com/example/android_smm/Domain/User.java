@@ -9,10 +9,13 @@ import java.io.Serializable;
  */
 
 public class User implements Serializable{
-    @SerializedName("userid")
+    @SerializedName("user_id")
     private int User_id;
     @SerializedName("email")
     private String Email;
+
+    @SerializedName("confirmEmail")
+    private boolean ConfirmEmail;
     @SerializedName("wachtwoord")
     private String Wachtwoord;
     @SerializedName("username")
@@ -34,7 +37,10 @@ public class User implements Serializable{
         return Username;
     }
 
-    /*
+    public boolean isConfirmEmail() {
+        return ConfirmEmail;
+    }
+/*
     public  ICollection<AlertInstellingen> alertInstellingen;
     public  ICollection<Alert> alerts ;
     public  ICollection<Dashboard> dasboards ;
