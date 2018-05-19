@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('mssql-jdbc-6.4.0.jre9.jar'))

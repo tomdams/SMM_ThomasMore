@@ -298,3 +298,18 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\Integratieprojectje\SM
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\Integratieprojectje\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\Integratieprojectje\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\Integratieprojectje\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\git merge again\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb

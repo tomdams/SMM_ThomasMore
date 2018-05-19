@@ -5,19 +5,23 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
+import com.example.android_smm.Api.ApiClient;
+import com.example.android_smm.Api.ApiInterface;
+import com.example.android_smm.Domain.User;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -26,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.button_signin)
@@ -40,6 +46,10 @@ public class LoginActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     DatabaseHelper databaseHelper;
 
+
+    // API
+    private ApiInterface apiInterface;
+    private User opgehaaldeUser;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
@@ -55,6 +65,16 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         final String EMAIL = "email";
         facebookLogoLogin.setReadPermissions(Arrays.asList("email", "public_profile"));
+
+
+
+
+
+
+
+
+
+
 
 
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -103,6 +123,32 @@ public class LoginActivity extends AppCompatActivity {
     public void onViewClicked() {
         if(!editTextPassword.getText().toString().isEmpty() && !editTextUsername.getText().toString().isEmpty()){
             Intent intent = new Intent(LoginActivity.this, OverzichtActivity.class);
+
+
+           // API
+            Map<String, String> data = new HashMap<>();
+            data.put("username", editTextUsername.getText().toString());
+            data.put("password", editTextPassword.getText().toString());
+
+            apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
+            Call<User> user = apiInterface.AuthenticateUser(data);
+            user.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    opgehaaldeUser= (User) response.body();
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                    opgehaaldeUser=null;
+                }
+            });
+
+
+
+
+
+            intent.putExtra("username",opgehaaldeUser);
             startActivity(intent);
         }
 

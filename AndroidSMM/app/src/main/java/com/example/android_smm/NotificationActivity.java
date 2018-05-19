@@ -24,7 +24,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     @BindView(R.id.lvNotifications)
     ListView lvNotifications;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
