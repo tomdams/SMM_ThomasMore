@@ -24,15 +24,22 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult NewGrafiek(int eid)
     {
       lastGrafiek = new Grafiek();
+      lastGrafiek.kruising = true;
       lastGrafiek.elements.Add(ec.GetElement(eid));
       return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
     }
 
     public ActionResult GenereerGrafiek(Grafiek g)
     {
+      Element e = ec.GetElement(g.x_as);
+      if(e != null)
+      {
+        lastGrafiek.elements.Add(e);
+      }
       g.elements = lastGrafiek.elements;
       g.dashboards = lastGrafiek.dashboards;
       g.id = lastGrafiek.id;
+      g.kruising = lastGrafiek.kruising;
       lastGrafiek = dc.UpdateGrafiek(g);
       return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
     }

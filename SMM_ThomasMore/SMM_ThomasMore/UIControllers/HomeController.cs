@@ -32,10 +32,9 @@ namespace SMM_ThomasMore.Controllers
             dbController = new DashboardController();
             pController = new PlatformController();
             PlatformController.currentDeelplatform = pController.GetDeelplatform(1);
-            //dbController.UpdateGrafieken(PlatformController.currentDeelplatform.id);
             if (!ingelezen)
             {
-                elController.politiciInlezen();
+                //elController.politiciInlezen();
                 //dbController.UpdateGrafieken(1);
                 ingelezen = true;
             }

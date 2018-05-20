@@ -28,6 +28,17 @@
     new { @class = "form-control" })
     </td>
 </tr>
+    @if (Model.kruising)
+    {
+    <tr>
+        <td><h2>Elementen</h2></td>
+    </tr>
+    <tr>
+        <td>Voeg element toe </td>
+        <td>@Html.EditorFor(model => model.x_as, new { htmlAttributes = new { placeholder = "Elementnaam", @class = "form-control" } })
+        <input type="submit" value="Genereer Grafiek" class="btn btn-info"></td>
+    </tr>
+    }
 <tr>
     <td><h2>Filters (leeg laten voor elke optie)</h2></td>
 </tr>
@@ -117,42 +128,196 @@
     google.charts.load("current", { packages: ["corechart"] });
     console.log("load");
 </script>
-@switch (@Model.grafiekType.ToString())
-{
-    case "TAART":
-    <script type="text/javascript">
+@if (Model.kruising)
+                        {
+<script type="text/javascript">
                         console.log("ja");
-                        google.charts.setOnLoadCallback(drawChart);
+                                google.charts.setOnLoadCallback(drawChart);
+                                console.log("nee");
+                                function drawChart() {
+
+                                      var data = new google.visualization.DataTable();
+                                      data.addColumn('string', '@Model.x_as_beschrijving');
+                                      var namenString = "@Model.GetElementNames()";
+                                      var namen = new Array();
+                                      namen = namenString.split(',');
+                                      for (j = 0; j < namen.length; j++)
+                                      {
+                                          data.addColumn('number', namen[j]);
+                                      }
+
+                                      var x_asString = "@Model.x_as"
+                                      var valueString = "@Model.y_as"
+                                      var valueString1 = "@Model.y_as1"
+                                      var valueString2 = "@Model.y_as2"
+                                      var valueString3 = "@Model.y_as3"
+                                      var valueString4 = "@Model.y_as4"
+
+                                      var x_asArray = new Array();
+                                      var valueArray = new Array();
+                                      var valueArray1 = new Array();
+                                      var valueArray2 = new Array();
+                                      var valueArray3 = new Array();
+                                      var valueArray4 = new Array();
+
+                                      var x_asArray = x_asString.split(', ');
+                                      var valueArray = valueString.split(', ');
+                                      var valueArray1 = valueString1.split(', ');
+                                      var valueArray2 = valueString2.split(', ');
+                                      var valueArray3 = valueString3.split(', ');
+                                      var valueArray4 = valueString4.split(', ');
+
+                                      var totalArray = new Array();
+                                      for (j = 0; j < x_asArray.length; j++) {
+                                          var newArray = new Array();
+                                          newArray[0] = x_asArray[j];
+                                          if (!valueArray[0] == "") {
+                                              newArray[1] = valueArray[j];
+                                          }
+                                          if (!valueArray1[0] == "") {
+                                              newArray[2] = valueArray1[j];
+                                          }
+                                          if (!valueArray2[0] == "") {
+                                              newArray[3] = valueArray2[j];
+                                          }
+                                          if (!valueArray3[0] == "") {
+                                              newArray[4] = valueArray3[j];
+                                          }
+                                          if (!valueArray4[0] == "") {
+                                              newArray[5] = valueArray4[j];
+                                          }
+                                          totalArray[j] = newArray;
+                                      }
+
+                                      for (var a = 0; a < totalArray.length; a++) {
+                                          for (var j = 1; j < totalArray[a].length; j++) {
+                                              totalArray[a][j] = parseInt(totalArray[a][j]);
+                                          }
+                                      }
+
+
+                                      console.log(totalArray);
+                                      data.addRows(totalArray);
+
+                                      var options = {
+                                        chart: {
+                                          title: '@Model.titel',
+                                        },
+                                      };
+
+                                      var chart = new google.charts.Line(document.getElementById('chart'));
+
+                                      chart.draw(data, google.charts.Line.convertOptions(options));
+                                    }
+</script>
+
+
+<div class="grid-stack-item"
+     data-gs-x="0" data-gs-y="0"
+     data-gs-width="8" data-gs-height="4">
+    <div class="grid-stack-item-content">
+        <div id="chart" style="width: 100%; height: 90%;">
+        </div>
+
+    </div>
+</div>
+                        }
+                        else
+                        {
+                            switch (@Model.grafiekType.ToString())
+                            {
+                            case "TAART":
+                            <script type="text/javascript">
+                        console.log("ja");
+                                google.charts.setOnLoadCallback(drawChart);
+                                console.log("nee");
+                                function drawChart() {
+
+
+                                    var tempdata   = [];
+                                    var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                    var xAsString = "@Model.x_as";
+                                    var xAsArray = new Array();
+                                    xAsArray = xAsString.split(', ');
+                                    var yAsArray = new Array();
+                                    var yAsString = "@Model.y_as";
+                                    yAsArray = yAsString.split(', ');
+                                    for (var j = 0; j < xAsArray.length; j++) {
+                                        var temp = [];
+                                        console.log(xAsArray[j]);
+                                        console.log(yAsArray[j]);
+                                        temp.push(xAsArray[j]);
+                                        var yel = parseInt(yAsArray[j]);
+                                        temp.push(yel);
+
+                                        tempdata.push(temp);
+                                    }
+
+                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                    var options = {
+                                        title: '@Model.titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+
+                                    };
+
+                        var chart = new google.visualization.PieChart(document.getElementById('chart'));
+                        chart.draw(data, options);
+                    }
+                            </script>
+
+
+                            <div class="grid-stack-item"
+                                 data-gs-x="0" data-gs-y="0"
+                                 data-gs-width="4" data-gs-height="4">
+                                <div class="grid-stack-item-content">
+                                    <div id="chart" style="width: 100%; height: 90%;">
+                                    </div>
+
+                                </div>
+                            </div>
+                            break;
+                            case "STAAF":
+                            <script type="text/javascript">
+                        console.log("ja");
+            google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
                                             function drawChart() {
 
 
-                                                var tempdata   = [];
-                                                var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
+                var tempdata   = [];
+                var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
                                                 tempdata.push(Header);
 
 
-                                                var xAsString = "@Model.x_as";
-                                                var xAsArray = new Array();
-                                                xAsArray = xAsString.split(', ');
-                                                var yAsArray = new Array();
-                                                    var yAsString = "@Model.y_as";
-                                                    yAsArray = yAsString.split(', ');
-                                                    for (var j = 0; j < xAsArray.length; j++) {
-                                                        var temp = [];
-                                                        console.log(xAsArray[j]);
-                                                        console.log(yAsArray[j]);
-                                                        temp.push(xAsArray[j]);
-                                                        var yel = parseInt(yAsArray[j]);
-                                                        temp.push(yel);
+                var xAsString = "@Model.x_as";
+                var xAsArray = new Array();
+                xAsArray = xAsString.split(', ');
+                var yAsArray = new Array();
+                var yAsString = "@Model.y_as";
+                yAsArray = yAsString.split(', ');
+                for (var j = 0; j < xAsArray.length; j++) {
+                    var temp = [];
+                    console.log(xAsArray[j]);
+                    console.log(yAsArray[j]);
+                    temp.push(xAsArray[j]);
+                    var yel = parseInt(yAsArray[j]);
+                    temp.push(yel);
 
-                                                        tempdata.push(temp);
-                                                    }
+                    tempdata.push(temp);
+                }
 
-                                                    var data = google.visualization.arrayToDataTable(tempdata);
+                var data = google.visualization.arrayToDataTable(tempdata);
 
 
-                                            var options = {
+                var options = {
                                         title: '@Model.titel',
                                         is3D: true,
                                         backgroundColor: 'none',
@@ -160,54 +325,54 @@
 
                                     };
 
-                                        var chart = new google.visualization.PieChart(document.getElementById('chart'));
-                                        chart.draw(data, options);
+            var chart = new google.visualization.BarChart(document.getElementById('chart'));
+            chart.draw(data, options);
                                 }
-    </script>
+                            </script>
 
 
-        <div class="grid-stack-item"
-             data-gs-x="0" data-gs-y="0"
-             data-gs-width="4" data-gs-height="6">
-            <div class="grid-stack-item-content">
-                <div id="chart" style="width: 100%; height: 98%;"></div>
-            </div>
-        </div>
-        break;
-    case "STAAF":
-    <script type="text/javascript">
+                            <div class="grid-stack-item"
+                                 data-gs-x="0" data-gs-y="0"
+                                 data-gs-width="4" data-gs-height="4">
+                                <div class="grid-stack-item-content">
+                                    <div id="chart" style="width: 100%; height: 90%;"></div>
+                                </div>
+                            </div>
+                            break;
+                            case "LIJN":
+                            <script type="text/javascript">
                         console.log("ja");
-                        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart);
                         console.log("nee");
                                             function drawChart() {
 
 
-                                                var tempdata   = [];
-                                                var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
+            var tempdata   = [];
+            var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
                                                 tempdata.push(Header);
 
 
-                                                var xAsString = "@Model.x_as";
-                                                var xAsArray = new Array();
-                                                xAsArray = xAsString.split(', ');
-                                                var yAsArray = new Array();
-                                                    var yAsString = "@Model.y_as";
-                                                    yAsArray = yAsString.split(', ');
-                                                    for (var j = 0; j < xAsArray.length; j++) {
-                                                        var temp = [];
-                                                        console.log(xAsArray[j]);
-                                                        console.log(yAsArray[j]);
-                                                        temp.push(xAsArray[j]);
-                                                        var yel = parseInt(yAsArray[j]);
-                                                        temp.push(yel);
+            var xAsString = "@Model.x_as";
+            var xAsArray = new Array();
+            xAsArray = xAsString.split(', ');
+            var yAsArray = new Array();
+            var yAsString = "@Model.y_as";
+            yAsArray = yAsString.split(', ');
+            for (var j = 0; j < xAsArray.length; j++) {
+                var temp = [];
+                console.log(xAsArray[j]);
+                console.log(yAsArray[j]);
+                temp.push(xAsArray[j]);
+                var yel = parseInt(yAsArray[j]);
+                temp.push(yel);
 
-                                                        tempdata.push(temp);
-                                                    }
+                tempdata.push(temp);
+            }
 
-                                                    var data = google.visualization.arrayToDataTable(tempdata);
+            var data = google.visualization.arrayToDataTable(tempdata);
 
 
-                                            var options = {
+            var options = {
                                         title: '@Model.titel',
                                         is3D: true,
                                         backgroundColor: 'none',
@@ -215,76 +380,22 @@
 
                                     };
 
-                                        var chart = new google.visualization.BarChart(document.getElementById('chart'));
-                                        chart.draw(data, options);
+        var chart = new google.visualization.LineChart(document.getElementById('chart'));
+        chart.draw(data, options);
                                 }
-    </script>
+                            </script>
 
 
-        <div class="grid-stack-item"
-             data-gs-x="0" data-gs-y="0"
-             data-gs-width="4" data-gs-height="6">
-            <div class="grid-stack-item-content">
-                <div id="chart" style="width: 100%; height: 98%;"></div>
-            </div>
-        </div>
-        break;
-    case "LIJN":
-    <script type="text/javascript">
-                        console.log("ja");
-                        google.charts.setOnLoadCallback(drawChart);
-                        console.log("nee");
-                                            function drawChart() {
-
-
-                                                var tempdata   = [];
-                                                var Header = ['@Model.x_as_beschrijving', '@Model.y_as_beschrijving']
-                                                tempdata.push(Header);
-
-
-                                                var xAsString = "@Model.x_as";
-                                                var xAsArray = new Array();
-                                                xAsArray = xAsString.split(', ');
-                                                var yAsArray = new Array();
-                                                    var yAsString = "@Model.y_as";
-                                                    yAsArray = yAsString.split(', ');
-                                                    for (var j = 0; j < xAsArray.length; j++) {
-                                                        var temp = [];
-                                                        console.log(xAsArray[j]);
-                                                        console.log(yAsArray[j]);
-                                                        temp.push(xAsArray[j]);
-                                                        var yel = parseInt(yAsArray[j]);
-                                                        temp.push(yel);
-
-                                                        tempdata.push(temp);
-                                                    }
-
-                                                    var data = google.visualization.arrayToDataTable(tempdata);
-
-
-                                            var options = {
-                                        title: '@Model.titel',
-                                        is3D: true,
-                                        backgroundColor: 'none',
-                                        colors: ['#d7cec7', '#76323f', '#c09f80']
-
-                                    };
-
-                                        var chart = new google.visualization.LineChart(document.getElementById('chart'));
-                                        chart.draw(data, options);
-                                }
-    </script>
-
-
-        <div class="grid-stack-item"
-             data-gs-x="0" data-gs-y="0"
-             data-gs-width="4" data-gs-height="">
-            <div class="grid-stack-item-content">
-                <div id="chart" style="width: 100%; height: 98%;"></div>
-            </div>
-        </div>
-        break;
-}
+                            <div class="grid-stack-item"
+                                 data-gs-x="0" data-gs-y="0"
+                                 data-gs-width="4" data-gs-height="4">
+                                <div class="grid-stack-item-content">
+                                    <div id="chart" style="width: 100%; height: 90%;"></div>
+                                </div>
+                            </div>
+                            break;
+                            }
+                            }
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
 <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>

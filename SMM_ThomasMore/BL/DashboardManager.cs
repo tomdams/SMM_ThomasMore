@@ -63,9 +63,11 @@ namespace SMM_ThomasMore.BL
       {
         int count = 0;
         string temporaryString = "";
+        List<Element> elements = g.elements.ToList();
+        elements.Sort();
         if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.GESLACHT))
         {
-          foreach(Element e in g.elements)
+          foreach(Element e in elements)
           {
             temporaryString = countVermeldingen(e, g.beginDate, g.eindDate, g.leeftijd, Geslacht.Man, g.polariteit, g.opleiding) + ", " +
             "" + countVermeldingen(e, g.beginDate, g.eindDate, g.leeftijd, Geslacht.Vrouw, g.polariteit, g.opleiding);
@@ -85,7 +87,7 @@ namespace SMM_ThomasMore.BL
         if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.DATUM))
         {
           double days = (g.eindDate - g.beginDate).TotalDays;
-          foreach (Element e in g.elements)
+          foreach (Element e in elements)
           {
             for (int i = 0; i < 5; i++)
             {
@@ -109,7 +111,7 @@ namespace SMM_ThomasMore.BL
         }
         if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.SENTIMENT))
         {
-          foreach (Element e in g.elements)
+          foreach (Element e in elements)
           {
             temporaryString += countVermeldingen(e, g.beginDate, g.eindDate, g.leeftijd, g.geslacht, Polariteit.POSITIEF, g.opleiding) + ", ";
             temporaryString += countVermeldingen(e, g.beginDate, g.eindDate, g.leeftijd, g.geslacht, Polariteit.NEGATIEF, g.opleiding) + ", ";
@@ -130,7 +132,7 @@ namespace SMM_ThomasMore.BL
         }
         if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.LEEFTIJD))
         {
-          foreach (Element e in g.elements)
+          foreach (Element e in elements)
           {
             temporaryString += countVermeldingen(e, g.beginDate, g.eindDate, "25+", g.geslacht, g.polariteit, g.opleiding) + ", ";
             temporaryString += countVermeldingen(e, g.beginDate, g.eindDate, "25-", g.geslacht, g.polariteit, g.opleiding) + ", ";
@@ -151,7 +153,7 @@ namespace SMM_ThomasMore.BL
         }
         if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.OPLEIDING))
         {
-          foreach (Element e in g.elements)
+          foreach (Element e in elements)
           {
             temporaryString += countVermeldingen(e, g.beginDate, g.eindDate, g.leeftijd, g.geslacht, g.polariteit, "+") + ", ";
             temporaryString += countVermeldingen(e, g.beginDate, g.eindDate, g.leeftijd, g.geslacht, g.polariteit, "-");

@@ -23,17 +23,8 @@ namespace SMM_ThomasMore.DAL
     public void addGrafiek(Dashboard d, Grafiek g)
     {
       Dashboard dashboard = ctx.Dashboards.Find(d.id);
-      List<Element> elements = new List<Element>();
-      foreach(Element e in ctx.Elements)
-      {
-        foreach(Element e2 in elements)
-        {
-          if(e.element_id == e2.element_id)
-          {
-            elements.Add(e);
-          }
-        }
-      }
+      List<Element> elements = g.elements.ToList();
+      
 
       //Grafiek van een element
       if(g.dashboards.Count == 0)
@@ -61,8 +52,9 @@ namespace SMM_ThomasMore.DAL
         dashboard.grafieken.Add(graph);
         foreach(Element e in elements)
         {
-          graph.elements.Add(e);
-          e.grafieken.Add(graph);
+          Element element = ctx.Elements.Find(e.element_id);
+          graph.elements.Add(element);
+          element.grafieken.Add(graph);
         }
         if (dashboard.adminDashboard)
         {
@@ -118,8 +110,9 @@ namespace SMM_ThomasMore.DAL
             dashboard.grafieken.Add(graph);
             foreach(Element e in elements)
             {
-              graph.elements.Add(e);
-              e.grafieken.Add(graph);
+              Element element = ctx.Elements.Find(e.element_id);
+              graph.elements.Add(element);
+              element.grafieken.Add(graph);
             }
             dashboard.grafieken.Add(graph);
             graph.dashboards.Add(dashboard);
@@ -132,6 +125,7 @@ namespace SMM_ThomasMore.DAL
           graph.beginDate = g.beginDate;
           graph.eindDate = g.eindDate;
           graph.titel = g.titel;
+          graph.kruising = g.kruising;
           graph.grafiekOnderwerp = g.grafiekOnderwerp;
           graph.grafiekType = g.grafiekType;
           graph.leeftijd = g.leeftijd;
@@ -140,8 +134,29 @@ namespace SMM_ThomasMore.DAL
           graph.plaats = g.plaats;
           graph.x_as = g.x_as;
           graph.y_as = g.y_as;
+          graph.y_as1 = g.y_as1;
+          graph.y_as2 = g.y_as2;
+          graph.y_as3 = g.y_as3;
+          graph.y_as4 = g.y_as4;
           graph.x_as_beschrijving = g.x_as_beschrijving;
           graph.y_as_beschrijving = g.y_as_beschrijving;
+          foreach (Element e in elements)
+          {
+            Element element = ctx.Elements.Find(e.element_id);
+            bool bestaat = false;
+            foreach (Grafiek grafiek in element.grafieken)
+            {
+              if (grafiek.id == g.id)
+              {
+                bestaat = true;
+              }
+            }
+            if (!bestaat)
+            {
+              graph.elements.Add(element);
+              element.grafieken.Add(graph);
+            }
+          }
         }
         
       }
