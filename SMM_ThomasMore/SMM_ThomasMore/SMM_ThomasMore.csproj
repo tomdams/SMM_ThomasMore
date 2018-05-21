@@ -4537,6 +4537,8 @@
     <Content Include="Views\UIUser\Unverified.cshtml" />
     <Content Include="Views\Android\Login.cshtml" />
     <Content Include="Views\UIDashboard\NewGrafiek.cshtml" />
+    <Content Include="Views\UIElement\ElementBeherenPage.cshtml" />
+    <Content Include="Views\UIElement\NewThema.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

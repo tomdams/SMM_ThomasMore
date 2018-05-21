@@ -269,5 +269,14 @@ namespace SMM_ThomasMore.DAL
       }
       return o;
     }
+
+    public void addOrganisatie(Organisatie o, int platformid)
+    {
+      ctx.Organisaties.Add(o);
+      Deelplatform deelplatform = ctx.Deelplatformen.Find(platformid);
+      deelplatform.elements.Add(o);
+      o.Deelplatform = deelplatform;
+      ctx.SaveChanges();
+    }
   }
 }

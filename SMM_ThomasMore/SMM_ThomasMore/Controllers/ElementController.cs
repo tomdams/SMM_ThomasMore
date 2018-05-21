@@ -49,5 +49,15 @@ namespace SMM_ThomasMore.Controllers
         {
           return mgr.getElement(element_id);
         }
+
+    public void addElement(Element e)
+    {
+     // mgr.addElement(e, PlatformController.currentDeelplatform.id);
     }
+
+    public IEnumerable<Element> getElements()
+    {
+      return mgr.getElements(PlatformController.currentDeelplatform.id);
+    }
+  }
 }

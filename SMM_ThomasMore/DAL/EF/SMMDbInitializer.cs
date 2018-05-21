@@ -20,7 +20,7 @@ namespace SMM_ThomasMore.DAL.EF
       {
         username = "Testgebruiker",
         email = "test@test.be",
-        type = UserType.INGELOGDEGEBRUIKER,
+        type = UserType.ADMIN,
           // test123456   -hashed
           wachtwoord = "R+wt15HjHi7yB2yvZO2bPQ==",
         confirmEmail = true

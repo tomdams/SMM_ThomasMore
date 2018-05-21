@@ -1,0 +1,37 @@
+﻿@model SMM_ThomasMore.Domain.Thema
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewThema</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Naam:  </td>
+            <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Keywords</td>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var keyword in Model.keywords)
+            {
+            <tr>
+                <td>@keyword.woord</td>
+            </tr>
+            }
+        }
+        
+    </table>
+    @using (Html.BeginForm("SaveThema", "UIElement"))
+    {
+    <input type="submit" value="Save Grafiek" class="btn btn-info">
+    }
+</body>
+</html>

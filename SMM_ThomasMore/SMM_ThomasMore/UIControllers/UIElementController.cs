@@ -15,6 +15,7 @@ namespace SMM_ThomasMore.UIControllers
         private UserController uc = new UserController();
         private SMController smc = new SMController();
         private static Element element;
+
         // GET: UIElement
         public UIElementController()
         {
@@ -122,5 +123,66 @@ namespace SMM_ThomasMore.UIControllers
       }
       return Redirect("https://twitter.com/" + persoon.twitter + "/profile_image?size=original");
     }
+
+    [Authorize(Roles = "superadmin,admin")]
+    public ActionResult ElementBeherenPage()
+    {
+      List<Element> elementen = elController.getElements().ToList();
+      return View(elementen);
+    }
+
+
+    public ActionResult EditThema(int elementId)
+    {
+      element = elController.GetElement(elementId);
+      return View("~/Views/UIElement/NewThema.cshtml", element);
+    }
+
+    public ActionResult EditPersoon(int elementId)
+    {
+      element = elController.GetElement(elementId);
+      return View("~/Views/Home/Index.cshtml");
+    }
+
+    public ActionResult EditOrganisatie(int elementId)
+    {
+      element = elController.GetElement(elementId);
+      return View("~/Views/Home/Index.cshtml");
+    }
+
+    public ActionResult SaveThema()
+    {
+      if (element.element_id == 0)
+      {
+        Thema t = (Thema) elController.GetElement(element.element_id);
+       // elController.addThema();
+      }
+      return View("~/Views/Home/Index.cshtml");
+    }
+
+    public ActionResult CreateOrganisatie()
+    {
+      element = new Organisatie();
+      return View("~/Views/UIElement/NewThema.cshtml");
+    }
+    public ActionResult CreateThema()
+    {
+      element = new Organisatie();
+      return View("~/Views/UIElement/NewThema.cshtml");
+    }
+
+    public ActionResult CreatePersoon()
+    {
+      element = new Organisatie();
+      return View("~/Views/UIElement/NewThema.cshtml");
+    }
+    [HttpPost]
+    public ActionResult CreateThema(Thema t)
+    {
+      elController.addElement(t);
+      return View("~/Views/Home/Index.cshtml");
+    }
+
+
   }
 }

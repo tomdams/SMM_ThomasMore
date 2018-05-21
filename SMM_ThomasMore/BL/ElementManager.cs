@@ -239,6 +239,23 @@ namespace SMM_ThomasMore.BL
             data = data.Trim().Remove(0, 5).Remove(data.Length - 8, 3);
             string[] gesplitsteData = data.Split(stringSeparators, StringSplitOptions.None);
             return gesplitsteData;
-        } 
+        }
+
+    public IEnumerable<Element> getElements(int platform_id)
+    {
+      return repo.getElements(platform_id);
+    }
+
+    public void addElement(Element e, int platform_id)
+    {
+      if (e.GetType().ToString().ToLower().Contains("organisatie"))
+      {
+        repo.addOrganisatie((Organisatie) e, platform_id);
+      }
+      else if (e.GetType().ToString().ToLower().Contains("persoon"))
+      {
+        repo.addPersoon((Persoon) e, platform_id );
+      }
+    }
   }
 }

@@ -18,5 +18,6 @@ namespace SMM_ThomasMore.DAL
         IEnumerable<Persoon> getPersonen();
         Persoon getPersoon(string naam);
         Organisatie getOrganisatie(string organisation);
+        void addOrganisatie(Organisatie o, int platformid);
   }
 }

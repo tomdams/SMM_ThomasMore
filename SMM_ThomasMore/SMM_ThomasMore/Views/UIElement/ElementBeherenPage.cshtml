@@ -1,0 +1,45 @@
+﻿
+@{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ElementBeherenPage</title>
+</head>
+<body>
+    <div class="list-group">
+        <h2>Thema's</h2>
+        @foreach (var item in Model)
+        {
+            if (item.GetType().ToString().ToLower().Contains("thema"))
+            {
+            <a href="@Url.Action("EditThema", "UIElement", new { elementId = item.element_id })" class="list-group-item">@item.naam</a>
+            } 
+        }
+
+        <h2>Organisaties</h2>
+        @foreach (var item in Model)
+        {
+            if (item.GetType().ToString().ToLower().Contains("organisatie"))
+            {
+            <a href="@Url.Action("EditOrganisatie", "UIElement")" class="list-group-item">@item.naam - @item.twitter - @item.facebook</a>
+            }
+        }
+
+        <h2>Personen</h2>
+        @foreach (var item in Model)
+        {
+            if (item.GetType().ToString().ToLower().Contains("persoon"))
+            {
+            <a href="@Url.Action("EditPersoon", "UIElement")" class="list-group-item">@item.naam - @item.twitter - @item.facebook - @item.organisation - @item.town</a>
+            }
+        }
+
+        <a href="@Url.Action("CreateThema", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
+    </div>
+</body>
+</html>

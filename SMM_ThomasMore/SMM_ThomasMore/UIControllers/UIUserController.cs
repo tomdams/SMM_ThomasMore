@@ -17,7 +17,7 @@ namespace SMM_ThomasMore.Controllers
   public class UIUserController : Controller
   {
 
-    private UserController uc;
+    private UserController uc; 
     public UIUserController()
     {
       uc = new UserController();
@@ -119,10 +119,10 @@ namespace SMM_ThomasMore.Controllers
     [Authorize(Roles = "superadmin,admin")]
     public ActionResult UserBeherenPage()
     {
-
-
       return View();
     }
+
+    
 
 
     public ActionResult Afmelden()
