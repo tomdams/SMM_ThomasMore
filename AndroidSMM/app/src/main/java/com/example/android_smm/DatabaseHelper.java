@@ -13,7 +13,7 @@ import java.io.Console;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "SMMDatabase";
+    public static final String DATABASE_NAME = "SMMDatabase.db";
     public static final String TABLE_NAME = "dbo.Users";
     public static final String COL1 = "id";
     public static final String COL2 = "email";

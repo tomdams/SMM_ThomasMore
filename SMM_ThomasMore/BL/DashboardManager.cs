@@ -296,6 +296,18 @@ namespace SMM_ThomasMore.BL
     {
       return repo.GetAdminDashboard(platformId);
     }
-  }
+
+        public List<Grafiek> GetGrafieken(Dashboard dashboard)
+        {
+            List<Grafiek> grafieken = new List<Grafiek>();
+            foreach (Grafiek g in repo.GetGrafieken().ToList()) {
+                if (g.dashboards.Contains(dashboard)) {
+                    grafieken.Add(g);
+                }
+            }
+            return grafieken;
+        
+        }
+    }
 }
 

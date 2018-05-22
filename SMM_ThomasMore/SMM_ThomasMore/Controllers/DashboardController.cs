@@ -51,5 +51,9 @@ namespace SMM_ThomasMore.Controllers
       return mgr.GetAdminDashboard(platformId);
     }
 
-  }
+        internal List<Grafiek> GetGrafieken(Dashboard dashboard)
+        {
+            return mgr.GetGrafieken(dashboard);
+        }
+    }
 }

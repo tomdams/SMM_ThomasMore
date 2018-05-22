@@ -73,6 +73,23 @@ namespace SMM_ThomasMore.BL
             return users;
         }
 
+        public List<Deelplatform> getDashboards(User u)
+        {
+            IEnumerable<Dashboard> db = repo.getDashboards();
+            List<Deelplatform> deelplatformen = new List<Deelplatform>();
+            foreach (Dashboard d in db) {
+                if (d.user.Equals(u)) {
+                    deelplatformen.Add(d.deelplatform);
+                }
+            }
+
+
+            return deelplatformen;
+
+        }
+
+        
+
         public void sendAlerts(Element element)
         {
             IEnumerable<AlertInstellingen> ai = repo.GetAlertInstellingen();
