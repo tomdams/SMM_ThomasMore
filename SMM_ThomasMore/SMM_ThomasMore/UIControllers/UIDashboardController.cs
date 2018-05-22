@@ -13,10 +13,24 @@ namespace SMM_ThomasMore.UIControllers
   {
     ElementController ec = new ElementController();
     DashboardController dc = new DashboardController();
-    private static Grafiek lastGrafiek;
+        private UserController uc;
+        private static Grafiek lastGrafiek;
 
-    // GET: UIDashboard
-    public ActionResult Index()
+        public UIDashboardController()
+        {
+            uc = new UserController();
+            if (UserController.currentUser != null)
+            {
+                UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
+            }
+        }
+
+
+
+
+
+        // GET: UIDashboard
+        public ActionResult Index()
     {
       return View();
     }

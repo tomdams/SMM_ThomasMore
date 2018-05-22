@@ -11,7 +11,7 @@ namespace SMM_ThomasMore.Models.AndroidModels
     {
         public int id;
         public string titel;
-        public int plaats;
+       // public int plaats;
         public bool kruising;
 
         public string x_as;
@@ -32,5 +32,7 @@ namespace SMM_ThomasMore.Models.AndroidModels
 
         public GrafiekOnderwerp grafiekOnderwerp;
         public GrafiekType grafiekType;
+
+        
     }
 }

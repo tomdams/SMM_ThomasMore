@@ -18,7 +18,11 @@ namespace SMM_ThomasMore.Controllers
         private PlatformController pController;
 
         public HomeController()
-        { 
+        {
+            elController = new ElementController();
+            sMController = new SMController();
+            dbController = new DashboardController();
+            pController = new PlatformController();
           if (UserController.currentUser != null)
           {
             uController = new UserController();
@@ -27,15 +31,12 @@ namespace SMM_ThomasMore.Controllers
         }
         public ActionResult Index()
         {
-            elController = new ElementController();
-            sMController = new SMController();
-            dbController = new DashboardController();
-            pController = new PlatformController();
+       
             PlatformController.currentDeelplatform = pController.GetDeelplatform(1);
             //dbController.UpdateGrafieken(PlatformController.currentDeelplatform.id);
             if (!ingelezen)
             {
-                //elController.politiciInlezen();
+                elController.politiciInlezen();
                 //dbController.UpdateGrafieken(1);
                 ingelezen = true;
             }
