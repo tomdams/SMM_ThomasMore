@@ -8,10 +8,6 @@ import java.time.LocalDateTime;
 public class Grafiek {
     public int id ;
     public String titel ;
-<<<<<<< HEAD
-    public int plaats ;
-=======
->>>>>>> 8c7ee7e530a573430f792fc1f1a2394e03df1fd2
     public boolean kruising ;
 
     public String x_as ;
@@ -35,11 +31,7 @@ public class Grafiek {
     public GrafiekOnderwerp grafiekOnderwerp ;
     public GrafiekType grafiekType ;
 
-<<<<<<< HEAD
-   // public  ICollection<Element> elements;
-=======
 
->>>>>>> 8c7ee7e530a573430f792fc1f1a2394e03df1fd2
 
 
 }
