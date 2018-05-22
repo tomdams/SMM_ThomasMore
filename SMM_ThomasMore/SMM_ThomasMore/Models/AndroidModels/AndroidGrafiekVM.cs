@@ -13,7 +13,6 @@ namespace SMM_ThomasMore.Models.AndroidModels
         public string titel;
         public int plaats;
         public bool kruising;
-
         public string x_as;
         public string y_as;
         public string y_as1;
