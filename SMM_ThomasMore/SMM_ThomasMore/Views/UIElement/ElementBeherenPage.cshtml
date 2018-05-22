@@ -20,26 +20,26 @@
             <a href="@Url.Action("EditThema", "UIElement", new { elementId = item.element_id })" class="list-group-item">@item.naam</a>
             } 
         }
-
+        <a href="@Url.Action("CreateThema", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
         <h2>Organisaties</h2>
         @foreach (var item in Model)
         {
             if (item.GetType().ToString().ToLower().Contains("organisatie"))
             {
-            <a href="@Url.Action("EditOrganisatie", "UIElement")" class="list-group-item">@item.naam - @item.twitter - @item.facebook</a>
+            <a href="@Url.Action("EditOrganisatie", "UIElement", new { elementId = item.element_id })" class="list-group-item">@item.naam - @item.twitter - @item.facebook</a>
             }
         }
-
+        <a href="@Url.Action("CreateOrganisatie", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
         <h2>Personen</h2>
         @foreach (var item in Model)
         {
             if (item.GetType().ToString().ToLower().Contains("persoon"))
             {
-            <a href="@Url.Action("EditPersoon", "UIElement")" class="list-group-item">@item.naam - @item.twitter - @item.facebook - @item.organisation - @item.town</a>
+            <a href="@Url.Action("EditPersoon", "UIElement", new { elementId = item.element_id })" class="list-group-item">@item.naam - @item.twitter - @item.facebook - @item.organisation - @item.town</a>
             }
         }
-
-        <a href="@Url.Action("CreateThema", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
+        <a href="@Url.Action("CreatePersoon", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
+      
     </div>
 </body>
 </html>

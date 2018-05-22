@@ -3,6 +3,9 @@ using SMM_ThomasMore.Domain;
 using System.Collections.Generic;
 using SC.BL.Domain;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Validation;
+using System.Linq;
 
 namespace SMM_ThomasMore.DAL
 {
@@ -195,12 +198,6 @@ namespace SMM_ThomasMore.DAL
       return grafieken;
     }
 
-
-    public void addThema(Thema t)
-    {
-      throw new NotImplementedException();
-    }
-
     public Element getElement(string naam, int platform_id)
     {
       List<Persoon> personen = new List<Persoon>();
@@ -277,6 +274,76 @@ namespace SMM_ThomasMore.DAL
       deelplatform.elements.Add(o);
       o.Deelplatform = deelplatform;
       ctx.SaveChanges();
+    }
+
+    public void addThema(Thema e, int platform_id)
+    {
+      e.grafieken = basisGrafieken(e);
+      ctx.Themas.Add(e);
+      Deelplatform deelplatform = ctx.Deelplatformen.Find(platform_id);
+      deelplatform.elements.Add(e);
+      e.Deelplatform = deelplatform;
+      ctx.SaveChanges();
+    }
+
+    public void updateElement(Element element, int element_id, int platformid)
+    {
+      if (element.GetType().ToString().ToLower().Contains("thema"))
+      {
+        Thema nieuw = (Thema)element;
+        Thema e = (Thema)getElement(element_id);
+        e.naam = nieuw.naam;
+        e.keywords = nieuw.keywords;
+        ctx.SaveChanges();
+      }
+      else if (element.GetType().ToString().ToLower().Contains("organisatie"))
+      {
+        Organisatie nieuw = (Organisatie)element;
+        Organisatie e = (Organisatie)getElement(element_id);
+
+        e.naam = nieuw.naam;
+        e.twitter = nieuw.twitter;
+        e.facebook = nieuw.facebook;
+        e.gemeente = nieuw.gemeente;
+        ctx.SaveChanges();
+      }
+      else if (element.GetType().ToString().ToLower().Contains("persoon"))
+      {
+        Persoon nieuw = (Persoon)element;
+        Persoon e = (Persoon)getElement(element_id);
+        bool bestaat = false;
+
+        foreach (var organisatie in ctx.Organisaties)
+        {
+          if (organisatie.naam.ToLower().Equals(nieuw.organisation.ToLower()))
+          {
+            bestaat = true;
+          }
+        }
+
+        e.naam = nieuw.naam;
+        e.geboorteDatum = nieuw.geboorteDatum;
+        e.geslacht = nieuw.geslacht;
+        e.twitter = nieuw.twitter;
+        e.facebook = nieuw.facebook;
+        e.town = nieuw.town;
+        e.postal_code = nieuw.postal_code;
+        e.district = nieuw.district;
+        e.organisation = nieuw.organisation;
+        if (nieuw.geboorteDatum == new DateTime(1, 1, 1))
+        {
+          e.geboorteDatum = new DateTime(2000, 1, 1);
+        }
+        if (!bestaat)
+        {
+          Organisatie o = new Organisatie() { naam = nieuw.organisation, Deelplatform = ctx.Deelplatformen.Find(platformid), personen = new List<Persoon>() };
+          o.personen.Add(e);
+          ctx.Organisaties.Add(o);
+        }
+
+        ctx.SaveChanges();
+
+      }
     }
   }
 }

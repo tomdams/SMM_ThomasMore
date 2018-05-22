@@ -11,7 +11,6 @@ namespace SMM_ThomasMore.DAL
         Element getElement(string naam, int platform_id);
         User getUser(int id);
         void addPersoon(Persoon p, int platformid);
-        void addThema(Thema t);
         void AddAI(AlertInstellingen ai);
         IEnumerable<AlertInstellingen> getAIs();
         void RemoveAI(AlertInstellingen ai);
@@ -19,5 +18,7 @@ namespace SMM_ThomasMore.DAL
         Persoon getPersoon(string naam);
         Organisatie getOrganisatie(string organisation);
         void addOrganisatie(Organisatie o, int platformid);
+        void addThema(Thema e, int platform_id);
+    void updateElement(Element element, int elementid, int platformid);
   }
 }

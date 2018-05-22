@@ -3,8 +3,7 @@
 @{
   if (ViewBag.user != null && User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
   {
-
-      ViewBag.Title = @ViewBag.dashboard.ToString();
+     ViewBag.Title = @ViewBag.dashboard.ToString();
   }
   else
   {

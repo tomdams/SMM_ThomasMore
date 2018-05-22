@@ -102,5 +102,10 @@ namespace SMM_ThomasMore.DAL
             a.gelezen = true;
             uctx.SaveChanges();
         }
-  }
+
+        public IEnumerable<Dashboard> getDashboards()
+        {
+            return uctx.Dashboards.ToList<Dashboard>();
+        }
+    }
 }

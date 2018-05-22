@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SC.BL.Domain
+namespace SMM_ThomasMore.Domain
 {
   public class Persoon : Element
   {

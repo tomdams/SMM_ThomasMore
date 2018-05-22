@@ -14,6 +14,7 @@ namespace SMM_ThomasMore.BL
         Persoon getPersoon(Element element);
         void berekenPersoon(Persoon persoon);
         IEnumerable<Element> getElements(int platform_id);
-        
+    void addElement(Element e, int id);
+    void updateElement(Element element, int elementid, int platformid);
   }
 }

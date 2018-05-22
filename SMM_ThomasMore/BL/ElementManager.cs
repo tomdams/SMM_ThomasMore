@@ -256,6 +256,16 @@ namespace SMM_ThomasMore.BL
       {
         repo.addPersoon((Persoon) e, platform_id );
       }
+      else if (e.GetType().ToString().ToLower().Contains("thema"))
+      {
+        repo.addThema((Thema)e, platform_id);
+      }
+
+    }
+
+    public void updateElement(Element element, int elementid, int platformid)
+    {
+      repo.updateElement(element,elementid,platformid);
     }
   }
 }

@@ -141,29 +141,19 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult EditPersoon(int elementId)
     {
       element = elController.GetElement(elementId);
-      return View("~/Views/Home/Index.cshtml");
+      return View("~/Views/UIElement/NewPersoon.cshtml",element);
     }
 
     public ActionResult EditOrganisatie(int elementId)
     {
       element = elController.GetElement(elementId);
-      return View("~/Views/Home/Index.cshtml");
-    }
-
-    public ActionResult SaveThema()
-    {
-      if (element.element_id == 0)
-      {
-        Thema t = (Thema) elController.GetElement(element.element_id);
-       // elController.addThema();
-      }
-      return View("~/Views/Home/Index.cshtml");
+      return View("~/Views/UIElement/NewOrganisatie.cshtml",element);
     }
 
     public ActionResult CreateOrganisatie()
     {
       element = new Organisatie();
-      return View("~/Views/UIElement/NewThema.cshtml");
+      return View("~/Views/UIElement/NewOrganisatie.cshtml");
     }
     public ActionResult CreateThema()
     {
@@ -174,13 +164,47 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult CreatePersoon()
     {
       element = new Organisatie();
-      return View("~/Views/UIElement/NewThema.cshtml");
+      return View("~/Views/UIElement/NewPersoon.cshtml");
     }
     [HttpPost]
     public ActionResult CreateThema(Thema t)
     {
-      elController.addElement(t);
-      return View("~/Views/Home/Index.cshtml");
+      if (element.element_id == 0)
+      {
+        elController.addElement(t);
+      }
+      else
+      {
+        elController.updateElement(t, element.element_id);
+      }
+     
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+    [HttpPost]
+    public ActionResult CreatePersoon(Persoon p)
+    {
+      if (element.element_id == 0)
+      {
+        elController.addElement(p);
+      }
+      else
+      {
+        elController.updateElement(p, element.element_id);
+      }
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+    [HttpPost]
+    public ActionResult CreateOrganisatie(Organisatie o)
+    {
+      if (element.element_id == 0)
+      {
+        elController.addElement(o);
+      }
+      else
+      {
+        elController.updateElement(o, element.element_id);
+      }
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
     }
 
 

@@ -10,28 +10,31 @@
     <title>NewThema</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>Naam:  </td>
-            <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
-        </tr>
-        <tr>
-            <td>Keywords</td>
-        </tr>
-        @if (Model != null)
-        {
-            foreach (var keyword in Model.keywords)
-            {
+@using (Html.BeginForm("CreateThema", "UIElement"))
+{
+    <form>
+        <table>
             <tr>
-                <td>@keyword.woord</td>
+                <td>Naam:  </td>
+                <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
             </tr>
+            <tr>
+                <td>Keywords</td>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var keyword in Model.keywords)
+                {
+                <tr>
+                    <td>@Html.EditorFor(k => keyword.woord)</td>
+                </tr>
+                }
             }
-        }
+
+        </table>
         
-    </table>
-    @using (Html.BeginForm("SaveThema", "UIElement"))
-    {
-    <input type="submit" value="Save Grafiek" class="btn btn-info">
+        <input type="submit" value="Save Thema" class="btn btn-info">
+    </form>
     }
 </body>
 </html>
