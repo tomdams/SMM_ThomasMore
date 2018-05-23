@@ -46,7 +46,7 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult GenereerGrafiek(WebGrafiekVM g)
     {
       Element e = ec.GetElement(g.elementNaam);
-      if(e != null)
+      if(e != null && lastGrafiekVM.grafiek.elements.Count < 5)
       {
         lastGrafiekVM.grafiek.elements.Add(e);
       }

@@ -7,7 +7,7 @@ using System.Data.Entity.Validation;
 
 namespace SMM_ThomasMore.DAL.EF
 {
-  class SMMDbInitializer : DropCreateDatabaseIfModelChanges<SMMDbContext>
+  class SMMDbInitializer : DropCreateDatabaseAlways<SMMDbContext>
   {
     protected override void Seed(SMMDbContext context)
     {
@@ -123,6 +123,46 @@ namespace SMM_ThomasMore.DAL.EF
         woord = "buitenland",
         thema = t2
       };
+
+      Grafiek g1 = new Grafiek()
+      {
+        titel = "Polariteit ",
+        plaats = 3,
+        x_as = "Positief, Negatief, Neutraal",
+        y_as = "4, 0, 1",
+        x_as_beschrijving = "Sentiment",
+        y_as_beschrijving = "Aantal Vermeldingen",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.SENTIMENT,
+        grafiekType = GrafiekType.STAAF,
+      };
+
+      Grafiek g2 = new Grafiek()
+      {
+        titel = "Mannen/Vrouwen over ",
+        plaats = 3,
+        x_as = "Man, Vrouw",
+        y_as = "60, 24",
+        x_as_beschrijving = "Geslacht",
+        y_as_beschrijving = "Aantal Vermeldingen",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.GESLACHT,
+        grafiekType = GrafiekType.TAART,
+      };
+      g1.dashboards.Add(d1);
+      g2.dashboards.Add(d1);
+      d1.grafieken.Add(g1);
+      d1.grafieken.Add(g2);
 
       t1.keywords.Add(k1);
       t1.keywords.Add(k2);
