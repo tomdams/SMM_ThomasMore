@@ -11,9 +11,8 @@ namespace SMM_ThomasMore.Models.AndroidModels
     {
         public int id;
         public string titel;
-       // public int plaats;
+        public int plaats;
         public bool kruising;
-
         public string x_as;
         public string y_as;
         public string y_as1;
@@ -23,8 +22,7 @@ namespace SMM_ThomasMore.Models.AndroidModels
         public string x_as_beschrijving;
         public string y_as_beschrijving;
 
-        public DateTime beginDate;
-        public DateTime eindDate;
+  
         public string leeftijd;
         public Geslacht? geslacht;
         public Polariteit? polariteit;
@@ -32,7 +30,5 @@ namespace SMM_ThomasMore.Models.AndroidModels
 
         public GrafiekOnderwerp grafiekOnderwerp;
         public GrafiekType grafiekType;
-
-        
     }
 }

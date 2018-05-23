@@ -16,6 +16,6 @@ namespace SMM_ThomasMore.BL
     Grafiek GetGrafiek(int id);
     void RemoveGrafiek(int id, int platform_Id);
     Dashboard GetAdminDashboard(int platformId);
-       List<Grafiek> GetGrafieken(Dashboard dashboard);
+    List<Grafiek> GetGrafieken(Dashboard dashboard);
     }
 }

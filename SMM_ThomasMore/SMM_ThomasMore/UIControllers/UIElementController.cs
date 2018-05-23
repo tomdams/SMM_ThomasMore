@@ -15,6 +15,7 @@ namespace SMM_ThomasMore.UIControllers
         private UserController uc = new UserController();
         private SMController smc = new SMController();
         private static Element element;
+
         // GET: UIElement
         public UIElementController()
         {
@@ -122,5 +123,95 @@ namespace SMM_ThomasMore.UIControllers
       }
       return Redirect("https://twitter.com/" + persoon.twitter + "/profile_image?size=original");
     }
+
+    [Authorize(Roles = "superadmin,admin")]
+    public ActionResult ElementBeherenPage()
+    {
+      List<Element> elementen = elController.getElements().ToList();
+      return View(elementen);
+    }
+
+
+    public ActionResult EditThema(int elementId)
+    {
+      element = elController.GetElement(elementId);
+      return View("~/Views/UIElement/NewThema.cshtml", element);
+    }
+
+    public ActionResult EditPersoon(int elementId)
+    {
+      element = elController.GetElement(elementId);
+      return View("~/Views/UIElement/NewPersoon.cshtml",element);
+    }
+
+    public ActionResult EditOrganisatie(int elementId)
+    {
+      element = elController.GetElement(elementId);
+      return View("~/Views/UIElement/NewOrganisatie.cshtml",element);
+    }
+
+    public ActionResult CreateOrganisatie()
+    {
+      element = new Organisatie();
+      return View("~/Views/UIElement/NewOrganisatie.cshtml");
+    }
+    public ActionResult CreateThema()
+    {
+      element = new Organisatie();
+      return View("~/Views/UIElement/NewThema.cshtml");
+    }
+
+    public ActionResult CreatePersoon()
+    {
+      element = new Organisatie();
+      return View("~/Views/UIElement/NewPersoon.cshtml");
+    }
+    [HttpPost]
+    public ActionResult CreateThema(Thema t)
+    {
+      if (element.element_id == 0)
+      {
+        elController.addElement(t);
+      }
+      else
+      {
+        elController.updateElement(t, element.element_id);
+      }
+     
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+    [HttpPost]
+    public ActionResult CreatePersoon(Persoon p)
+    {
+      if (element.element_id == 0)
+      {
+        elController.addElement(p);
+      }
+      else
+      {
+        elController.updateElement(p, element.element_id);
+      }
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+    [HttpPost]
+    public ActionResult CreateOrganisatie(Organisatie o)
+    {
+      if (element.element_id == 0)
+      {
+        elController.addElement(o);
+      }
+      else
+      {
+        elController.updateElement(o, element.element_id);
+      }
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+
+    public ActionResult DeleteElement(int element_id)
+    {
+      elController.deleteElement(element_id);
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+
   }
 }

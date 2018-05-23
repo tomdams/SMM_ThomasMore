@@ -53,49 +53,49 @@ namespace SMM_ThomasMore.BL
 
         public void politiciInlezen()
         {
-            try
-            {
-                using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\Data\politici.json"))
-                {
-                    string json = r.ReadToEnd();
+      try
+      {
+        using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\Data\politici.json"))
+        {
+          string json = r.ReadToEnd();
 
-                    dynamic array = JsonConvert.DeserializeObject(json);
-                    foreach (var item in array)
-                    {
-                        Persoon p = new Persoon();
-                        p.element_id = item.id;
-                        p.first_name = item.first_name;
-                        p.last_name = item.last_name;
-                        p.district = item.district;
-                        p.level = item.level;
-                        if (item.gender.ToString().ToLower().Equals("m"))
-                        {
-                            p.geslacht = Geslacht.Man;
-                        }
-                        else
-                        {
-                            p.geslacht = Geslacht.Vrouw;
-                        }
-                        p.twitter = item.twitter;
-                        p.site = item.site;
-                        DateTime date = item.dateOfBirth;
-                        p.geboorteDatum = date;
-                        p.facebook = item.facebook;
-                        p.postal_code = item.postal_code;
-                        p.naam = item.full_name;
-                        p.position = item.position;
-                        p.organisation = item.organisation;
-                        p.town = item.town;
-
-                        repo.addPersoon(p, 1);
-                    }
-                }
-            }
-            catch (Exception e)
+          dynamic array = JsonConvert.DeserializeObject(json);
+          foreach (var item in array)
+          {
+            Persoon p = new Persoon();
+            p.element_id = item.id;
+            p.first_name = item.first_name;
+            p.last_name = item.last_name;
+            p.district = item.district;
+            p.level = item.level;
+            if (item.gender.ToString().ToLower().Equals("m"))
             {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+              p.geslacht = Geslacht.Man;
             }
+            else
+            {
+              p.geslacht = Geslacht.Vrouw;
+            }
+            p.twitter = item.twitter;
+            p.site = item.site;
+            DateTime date = item.dateOfBirth;
+            p.geboorteDatum = date;
+            p.facebook = item.facebook;
+            p.postal_code = item.postal_code;
+            p.naam = item.full_name;
+            p.position = item.position;
+            p.organisation = item.organisation;
+            p.town = item.town;
+
+            repo.addPersoon(p, 1);
+          }
+        }
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("The file could not be read:");
+        Console.WriteLine(e.Message);
+      }
         }
 
         public void volgElement(int element_id, AlertType type, int user_id)
@@ -239,6 +239,38 @@ namespace SMM_ThomasMore.BL
             data = data.Trim().Remove(0, 5).Remove(data.Length - 8, 3);
             string[] gesplitsteData = data.Split(stringSeparators, StringSplitOptions.None);
             return gesplitsteData;
-        } 
+        }
+
+    public IEnumerable<Element> getElements(int platform_id)
+    {
+      return repo.getElements(platform_id);
+    }
+
+    public void addElement(Element e, int platform_id)
+    {
+      if (e.GetType().ToString().ToLower().Contains("organisatie"))
+      {
+        repo.addOrganisatie((Organisatie) e, platform_id);
+      }
+      else if (e.GetType().ToString().ToLower().Contains("persoon"))
+      {
+        repo.addPersoon((Persoon) e, platform_id );
+      }
+      else if (e.GetType().ToString().ToLower().Contains("thema"))
+      {
+        repo.addThema((Thema)e, platform_id);
+      }
+
+    }
+
+    public void updateElement(Element element, int elementid, int platformid)
+    {
+      repo.updateElement(element,elementid,platformid);
+    }
+
+    public void deleteElement(int element_id)
+    {
+      repo.deleteElement(element_id);
+    }
   }
 }

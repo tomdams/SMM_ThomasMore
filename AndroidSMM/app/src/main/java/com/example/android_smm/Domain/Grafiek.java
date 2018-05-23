@@ -2,10 +2,12 @@ package com.example.android_smm.Domain;
 
 import android.support.annotation.Nullable;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
-public class Grafiek {
+public class Grafiek implements Serializable{
     public int id ;
     public String titel ;
     public boolean kruising ;
@@ -19,8 +21,7 @@ public class Grafiek {
     public String x_as_beschrijving ;
     public String y_as_beschrijving;
 
-    public LocalDateTime beginDate ;
-    public LocalDateTime eindDate ;
+
     public String leeftijd ;
     @Nullable
     public Geslacht geslacht;

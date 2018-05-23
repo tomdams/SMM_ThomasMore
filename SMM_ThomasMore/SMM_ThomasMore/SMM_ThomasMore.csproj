@@ -4550,6 +4550,11 @@
     <Content Include="Views\Shared\SearchBar.cshtml" />
     <Content Include="Views\UIUser\Unverified.cshtml" />
     <Content Include="Views\UIDashboard\NewGrafiek.cshtml" />
+    <Content Include="Views\UIElement\ElementBeherenPage.cshtml" />
+    <Content Include="Views\UIElement\NewThema.cshtml" />
+    <Content Include="Views\UIElement\NewOrganisatie.cshtml" />
+    <Content Include="Views\UIElement\NewPersoon.cshtml" />
+    <Content Include="Views\UIUser\NewUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SC.BL.Domain
+namespace SMM_ThomasMore.Domain
 {
   public class Persoon : Element
   {
@@ -16,7 +16,7 @@ namespace SC.BL.Domain
     public Geslacht geslacht { get; set; }
     public string twitter { get; set; }
     public string site { get; set; }
-    public DateTime geboorteDatum { get; set; }
+    public DateTime? geboorteDatum { get; set; }
     public string facebook { get; set; }
     public string postal_code { get; set; }
     public string position { get; set; }

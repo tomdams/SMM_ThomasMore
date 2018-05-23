@@ -1,0 +1,40 @@
+﻿@model SMM_ThomasMore.Domain.Thema
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewThema</title>
+</head>
+<body>
+@using (Html.BeginForm("CreateThema", "UIElement"))
+{
+    <form>
+        <table>
+            <tr>
+                <td>Naam:  </td>
+                <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td>Keywords</td>
+            </tr>
+            @if (Model != null)
+            {
+                for (int i = 0; i < Model.keywords.Count; i++)
+                {
+                 <tr>
+                     <td>@Html.EditorFor(m => Model.keywords[i].woord, new {  htmlAttributes = new { placeholder = "Keyword", @class = "form-control" } })</td>
+                 </tr>
+                 }
+            }
+
+        </table>
+        
+        <input type="submit" value="Save Thema" class="btn btn-info">
+    </form>
+    }
+</body>
+</html>

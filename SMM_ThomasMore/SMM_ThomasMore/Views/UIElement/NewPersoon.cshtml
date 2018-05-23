@@ -1,0 +1,64 @@
+﻿@model SMM_ThomasMore.Domain.Persoon
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewThema</title>
+</head>
+<body>
+@using (Html.BeginForm("CreatePersoon", "UIElement"))
+{
+    <form>
+        <table>
+            <tr>
+                <td>Naam:  </td>
+                <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td>Geslacht: </td>
+                <td>
+                    @Html.EnumDropDownListFor(
+    model => model.geslacht,
+    "Selecteer geslacht",
+    new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>Twitter: </td>
+                <td>@Html.EditorFor(model => model.twitter, new { htmlAttributes = new { placeholder = "Twitter", @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td>Facebook: </td>
+                <td>@Html.EditorFor(model => model.facebook, new { htmlAttributes = new { placeholder = "Facebook", @class = "form-control" } }) </td>
+            </tr>
+            <tr>
+                <td>Gemeente: </td>
+                <td>@Html.EditorFor(model => model.town, new { htmlAttributes = new { placeholder = "Gemeente", @class = "form-control" } }) </td>
+            </tr>
+            <tr>
+                <td>Postcode: </td>
+                <td>@Html.EditorFor(model => model.postal_code, new { htmlAttributes = new { placeholder = "Postcode", @class = "form-control" } }) </td>
+            </tr>
+            <tr>
+                <td>District: </td>
+                <td>@Html.EditorFor(model => model.district, new { htmlAttributes = new { placeholder = "District", @class = "form-control" } }) </td>
+            </tr>
+            <tr>
+                <td>Organisatie: </td>
+                <td>@Html.EditorFor(model => model.organisation, new { htmlAttributes = new { placeholder = "Organisatie", @class = "form-control" } }) </td>  
+            </tr>
+            <tr>
+                <td>Geboortedatum </td>
+                <td>@Html.EditorFor(model => model.geboorteDatum, new { htmlAttributes = new { type = "date"} })</td>
+            </tr>
+        </table>
+        
+        <input type="submit" value="Save Persoon" class="btn btn-info">
+    </form>
+    }
+</body>
+</html>

@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
 
                      if(jsonuser != null){
                          if (jsonuser.isConfirmEmail()){
-                             intent.putExtra("username",jsonuser);
+                             intent.putExtra("currentUser",jsonuser);
                              startActivity(intent);
                          }
                      }

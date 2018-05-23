@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using SC.BL.Domain;
 using SMM_ThomasMore.Domain;
 namespace SMM_ThomasMore.BL
@@ -12,5 +13,9 @@ namespace SMM_ThomasMore.BL
         Element getElement(int element_id);
         Persoon getPersoon(Element element);
         void berekenPersoon(Persoon persoon);
-    }
+        IEnumerable<Element> getElements(int platform_id);
+    void addElement(Element e, int id);
+    void updateElement(Element element, int elementid, int platformid);
+    void deleteElement(int element_id);
+  }
 }

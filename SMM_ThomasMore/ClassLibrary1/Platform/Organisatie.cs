@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SC.BL.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,9 @@ namespace SMM_ThomasMore.Domain
     {
         public string profiel { get; set; }
         public string gemeente { get; set; }
-    }
+        public virtual ICollection<Persoon> personen { get; set; }
+        public string twitter { get; set; }
+        public string facebook { get; set; }
+
+  }
 }

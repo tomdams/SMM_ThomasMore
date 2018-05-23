@@ -27,6 +27,7 @@ namespace SMM_ThomasMore.DAL.EF
     public DbSet<Dashboard> Dashboards { get; set; }
     public DbSet<Grafiek> Grafieken { get; set; }
     public DbSet<Deelplatform> Deelplatformen {get; set; }
+    public DbSet<Keyword> Keywords { get; set; }
 
     //1
 

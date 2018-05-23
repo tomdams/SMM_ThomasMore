@@ -88,12 +88,13 @@
                                 </li>
                                 <li>
                                     @if (User.IsInRole("admin") || User.IsInRole("superadmin"))
-                                    {
-                                        <a><i class="fa fa-desktop"></i> Admin <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="@Url.Action("UserBeherenPage", "UIUser")">Users  beheren</a></li>
-                                        </ul>
-                                    }
+                    {
+                        <a><i class="fa fa-desktop"></i> Admin <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="@Url.Action("UserBeherenPage", "UIUser")">Users  beheren</a></li>
+                            <li><a href="@Url.Action("ElementBeherenPage", "UIElement")">Elements  beheren</a></li>
+                        </ul>
+                          }
                                 </li>
                                 <li>
                                     @if (User.IsInRole("superadmin"))

@@ -1,0 +1,51 @@
+﻿@model SMM_ThomasMore.Domain.Organisatie
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewThema</title>
+</head>
+<body>
+@using (Html.BeginForm("CreateOrganisatie", "UIElement"))
+{
+    <form>
+        <table>
+            <tr>
+                <td>Naam:  </td>
+                <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td>Profiel: </td>
+                <td>@Html.EditorFor(model => model.profiel, new { htmlAttributes = new { placeholder = "Profiel", @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td>Gemeente: </td>
+                <td>@Html.EditorFor(model => model.gemeente, new { htmlAttributes = new { placeholder = "Gemeente", @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td>Twitter: </td>
+                <td>@Html.EditorFor(model => model.twitter, new { htmlAttributes = new { placeholder = "Twitter", @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td>Facebook: </td>
+                <td>@Html.EditorFor(model => model.facebook, new { htmlAttributes = new { placeholder = "Facebook", @class = "form-control" } })</td>
+            </tr>
+
+            <tr>
+                <td>Leden: </td>
+                @foreach (var persoon in Model.personen)
+                {
+                  <td>@persoon.naam</td>
+                }
+            </tr>
+        </table>
+        
+        <input type="submit" value="Save Organisatie" class="btn btn-info">
+    </form>
+    }
+</body>
+</html>

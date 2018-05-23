@@ -88,7 +88,24 @@ namespace SMM_ThomasMore.BL
 
         }
 
-        
+        public void updateUser(User u, int user_id)
+        {
+            repo.updateUser(u, user_id);
+        }
+
+        public User getUserByID(int user_id)
+        {
+            foreach (User u in repo.getUsers().ToList())
+            {
+                if (u.user_id.Equals(user_id))
+                {
+                    return u;
+                }
+            }
+            return null;
+        }
+
+      
 
         public void sendAlerts(Element element)
         {
@@ -166,7 +183,7 @@ namespace SMM_ThomasMore.BL
                 }
             }
         }
-        public IEnumerable getUsers()
+        public IEnumerable<User> getUsers()
         {
             return repo.getUsers();
         }

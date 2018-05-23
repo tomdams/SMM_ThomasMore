@@ -1,15 +1,29 @@
-﻿@model SMM_ThomasMore.Models.UserVM
-@{
-    ViewBag.Title = "UserBeherenPage";
-}
-
-<h2>UserBeherenPage</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <button><a href="@Url.Action("ExportUsers", "UIUser")">Exporteer alle gebruikers</button>
-
+﻿@{
 
 }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserBeherenPage</title>
+</head>
+<body>
+    <div class="list-group">
+        @using (Html.BeginForm())
+          {
+              @Html.AntiForgeryToken()
+              <button><a href="@Url.Action("ExportUsers", "UIUser")">Exporteer alle gebruikers</button>
+         }
+
+        <h2>Users:</h2>
+        @foreach (var item in Model)
+         {
+        <a href="@Url.Action("EditUser", "UIUser", new { userId = item.user_id })" class="list-group-item">@item.username - @item.type - @item.email </a>
+            }
+            <a href="@Url.Action("CreateUser", "UIUser")" class="list-group-item">Nieuwe User maken</a>
+
+</div>
+</body>
+</html>
