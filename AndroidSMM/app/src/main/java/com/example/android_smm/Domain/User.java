@@ -52,6 +52,16 @@ public class User implements Serializable{
         this.deelplatformen = deelplatformen;
     }
 
+    public Deelplatform getDeelplatform(String naam){
+        for (Deelplatform deelplatform : deelplatformen) {
+            if (deelplatform.getNaam().equals(naam)){
+                return deelplatform;
+            }
+        }
+
+        return null;
+    }
+
     /*
     public  ICollection<AlertInstellingen> alertInstellingen;
     public  ICollection<Alert> alerts ;

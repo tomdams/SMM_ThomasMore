@@ -52,7 +52,7 @@ namespace SMM_ThomasMore.Controllers
 
     public void addElement(Element e)
     {
-      mgr.addElement(e, PlatformController.currentDeelplatform.id);
+      mgr.addElement(e, PlatformController.currentDeelplatform.id, UserController.currentUser);
     }
 
     public IEnumerable<Element> getElements()
@@ -60,12 +60,12 @@ namespace SMM_ThomasMore.Controllers
       return mgr.getElements(PlatformController.currentDeelplatform.id);
     }
 
-    public void updateElement(Element element, int elementid)
-    {
-      mgr.updateElement(element, elementid, PlatformController.currentDeelplatform.id);
-    }
+        public void updateElement(Element element, int elementid)
+        {
+            mgr.updateElement(element, elementid, PlatformController.currentDeelplatform.id, UserController.currentUser);
+        }
 
-    internal void deleteElement(int element_id)
+        internal void deleteElement(int element_id)
     {
       mgr.deleteElement(element_id);
     }

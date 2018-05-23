@@ -21,5 +21,6 @@ namespace SMM_ThomasMore.DAL
         void addThema(Thema e, int platform_id);
     void updateElement(Element element, int elementid, int platformid);
     void deleteElement(int element_id);
-  }
+        void addActiviteit(User u, string message);
+    }
 }

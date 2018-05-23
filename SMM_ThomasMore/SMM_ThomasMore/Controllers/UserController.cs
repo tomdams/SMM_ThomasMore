@@ -89,9 +89,18 @@ namespace SMM_ThomasMore.Controllers
             return umgr.getUsers();
         }
 
-        public void updateUser(User u,int user_id)
+        public void updateUser(User u, int user_id, User currentuser)
         {
-            umgr.updateUser(u, user_id);
+            umgr.updateUser(u, user_id, currentuser);
+        }
+
+        public string ExportActiviteit(int user_id)
+        {
+            return umgr.ExportActiviteit(user_id);
+        }
+        public void logLogon(User u)
+        {
+            umgr.logLogon(u);
         }
     }
 }

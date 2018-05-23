@@ -55,22 +55,30 @@ namespace SMM_ThomasMore.BL
         public string ExportUsers(User user)
         {
             String users = "sep=," + Environment.NewLine;
-            if (user.type == UserType.SUPERADMIN)
+            users += "user_id, email, username, wachtwoord, type, confirmEmail, status " + Environment.NewLine;
+            if (user.type == UserType.SUPERADMIN || user.type == UserType.ADMIN)
             {
                 foreach (User u in repo.getUsers().ToList())
                 {
-                    users += u.exportAsSuperadmin() + Environment.NewLine;
+                    users += u.export() + Environment.NewLine;
                 }
             }
-            else if (user.type == UserType.ADMIN)
-            {
-                foreach (User u in repo.getUsers().ToList())
-                {
-                    users += u.exportAsAdmin() + Environment.NewLine;
-                }
-            }
-
+            repo.addActiviteit(user, "Gebruiker heeft een lijst van gebruikers geexporteerd");
             return users;
+        }
+
+        public string ExportActiviteit(int user_id)
+        {
+            String activiteit = "sep=," + Environment.NewLine;
+            activiteit += " user_id, beschrijving, datum" + Environment.NewLine;
+            foreach (Activiteit a in repo.getActiviteiten())
+            {
+                if (a.user_id == user_id)
+                {
+                    activiteit += a.export() + Environment.NewLine;
+                }
+            }
+            return activiteit;
         }
 
         public List<Deelplatform> getDashboards(User u)
@@ -88,9 +96,12 @@ namespace SMM_ThomasMore.BL
 
         }
 
-        public void updateUser(User u, int user_id)
+        public void updateUser(User u, int user_id, User currentUser)
         {
             repo.updateUser(u, user_id);
+            u = repo.getUser(user_id);
+            repo.addActiviteit(u, "Gebruiker werd geupdate door '" + currentUser.username + "'");
+            repo.addActiviteit(currentUser, "Gebruiker heeft user '" + u.username + "' geupdate");
         }
 
         public User getUserByID(int user_id)
@@ -105,7 +116,11 @@ namespace SMM_ThomasMore.BL
             return null;
         }
 
-      
+        public void logLogon(User u)
+        {
+
+            repo.addActiviteit(u, "Gebruiker heeft zich aangemeld");
+        }
 
         public void sendAlerts(Element element)
         {
@@ -151,17 +166,7 @@ namespace SMM_ThomasMore.BL
             Console.WriteLine("Trending: {0},  mobilenotification verstuurt naar {1}", element.naam, user.username);
         }
 
-        public User Aanmelden(string username)
-        {
-            foreach(User u in repo.getUsers().ToList())
-            {
-              if (u.username.Equals(username))
-              {
-                return u;
-              }
-            }
-            return null;
-        }
+      
 
         public void AddAI(AlertInstellingen ai)
         {
@@ -179,6 +184,8 @@ namespace SMM_ThomasMore.BL
             foreach (User u in repo.getUsers().ToList()) {
                 if (u.user_id.ToString().Equals(id)) {
                     repo.verifyUser(u);
+                    repo.addActiviteit(u, "Gebruiker heeft zijn account geverifieerd");
+
                     break;
                 }
             }

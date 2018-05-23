@@ -51,11 +51,7 @@ namespace SMM_ThomasMore.Controllers
             else
             {
                 ViewBag.dashboard = dbController.GetAdminDashboard(PlatformController.currentDeelplatform.id);
-            }
-
-            
-
-            
+            }      
             return View();
         }
 

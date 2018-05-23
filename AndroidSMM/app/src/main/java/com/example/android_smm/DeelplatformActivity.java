@@ -1,8 +1,13 @@
 package com.example.android_smm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android_smm.Domain.Deelplatform;
 import com.example.android_smm.Domain.User;
@@ -39,8 +44,26 @@ public  class DeelplatformActivity extends AppCompatActivity {
 
         lvDashboarden.setAdapter(deelplatformAdapter);
 
+        addEventhandlers();
 
+    }
 
+    private void addEventhandlers(){
+        lvDashboarden.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView tv = (TextView) view.findViewById(R.id.tvOnderwerp);
+                String deelplatformNaam = tv.getText().toString();
+                //Toast.makeText(getApplicationContext(), tv.getText(), Toast.LENGTH_SHORT).show();
+
+                Deelplatform clickedDeelplatform = currentUser.getDeelplatform(deelplatformNaam);
+
+                Intent intent = new Intent(DeelplatformActivity.this, DashboardActivity.class);
+                intent.putExtra("clickedDeelplatform", clickedDeelplatform);
+
+                startActivity(intent);
+            }
+        });
     }
 }
 

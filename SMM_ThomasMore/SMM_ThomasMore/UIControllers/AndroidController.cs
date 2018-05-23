@@ -16,12 +16,7 @@ namespace SMM_ThomasMore.UIControllers
         UserController uc = new UserController();
         DashboardController dc = new DashboardController();
         PlatformController pc = new PlatformController();
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "Pieter Jan is een ", "Hond" };
-        }
-
-        
+  
         public string getUser(string username, string password)
         {
 
@@ -74,14 +69,39 @@ namespace SMM_ThomasMore.UIControllers
                     polariteit = g.polariteit,
                     opleiding = g.opleiding,
                     grafiekOnderwerp = g.grafiekOnderwerp,
-                    grafiekType = g.grafiekType,
-                    
-                    
+                    grafiekType = g.grafiekType,                   
                 });
             }
                string json = JsonConvert.SerializeObject(agvm);
                return json;
         }
 
+        public string getAlerts(string username, string password) {
+            List<AndroidAlertVM> aavm = new List<AndroidAlertVM>();
+            User user = uc.getUser(username, password);
+            List<Alert> alerts= user.getUnreadAlerts(AlertType.MOBILENOTIFICATION.ToString());
+            foreach (Alert a in alerts) {
+                aavm.Add(new AndroidAlertVM() {
+                    Id = a.Id,
+                    message = a.message,
+                    gelezen = a.gelezen                   
+                });
+            }
+            aavm.Add(new AndroidAlertVM()
+            {
+                Id = 200,
+                message = " voorbeeld message in afwachting van alerts",
+                gelezen = false
+            });
+            aavm.Add(new AndroidAlertVM()
+            {
+                Id = 201,
+                message = " een tweede voorbeeld....",
+                gelezen = false
+            });
+
+            string json = JsonConvert.SerializeObject(aavm);
+            return json;
+        }
     }
 }

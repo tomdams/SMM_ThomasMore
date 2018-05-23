@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.android_smm.Api.ApiClient;
 import com.example.android_smm.Api.ApiInterface;
+import com.example.android_smm.Domain.Alert;
 import com.example.android_smm.Domain.Deelplatform;
 import com.example.android_smm.Domain.Grafiek;
 import com.example.android_smm.Domain.User;
@@ -76,7 +77,7 @@ public class OverzichtActivity extends AppCompatActivity {
                 data.put("password", currentUser.getWachtwoord());
 
                 // MAARTEN : Dit is voor het ophalen van de deelplatformen, deze zijn aan te spreken in de dashboardactivity.
-
+/*
                 apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
                 final Call<String> deelplatform = apiInterface.DeelplatformenVoorUser(data);
                 deelplatform.enqueue(new Callback<String>() {
@@ -131,7 +132,7 @@ public class OverzichtActivity extends AppCompatActivity {
                     }
                 });
 
-
+*/
                 //MAARTEN : Dit is voor het ophalen van de grafieken voor een bepaald deelplaatform/dashboard van de user.
                 //Plaats maar waar je het wil doen!
                 //   Map<String, String> data = new HashMap<>();
@@ -162,9 +163,41 @@ public class OverzichtActivity extends AppCompatActivity {
                     }
                 });
 */
+                ///// NOTIFICATIONS OPHALEN
 
+                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+                final Call<String> notifications = apiInterface.GetAlertsVoorUser(data);
+                notifications.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        APIresponse = response.body().toString();
+                        List<Alert> alerts = (List<Alert>) fromJson(APIresponse,new TypeToken<List<Alert>>(){}.getType());
+
+                        // check outcome
+                        alerts.toString();
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+
+                    }
+
+                });
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         notificationCardView.setOnClickListener(new View.OnClickListener() {
             @Override

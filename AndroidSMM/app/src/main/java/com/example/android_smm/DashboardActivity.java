@@ -1,5 +1,6 @@
 package com.example.android_smm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -7,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.android_smm.Domain.Deelplatform;
+import com.example.android_smm.Domain.Grafiek;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -33,6 +36,7 @@ public class DashboardActivity extends AppCompatActivity {
     ArrayList<String> labels;
     BarDataSet barDataSet;
     ScrollView scrollView;
+    Deelplatform currentDeelplatform;
 
 
 
@@ -41,15 +45,22 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //(User) getIntent().getExtras().getSerializable("currentUser");
+        currentDeelplatform = (Deelplatform) getIntent().getExtras().getSerializable("clickedDeelplatform");
+
+        for (Grafiek grafiek : currentDeelplatform.getGrafieken()) {
+
+        }
 
         //Dashboard scrollable maken
         scrollView = new ScrollView(this);
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
-
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
         layout.setLayoutParams(layoutParams);
-        ArrayList<String> X = new ArrayList<>();
+
+
+       /*ArrayList<String> X = new ArrayList<>();
         ArrayList<Integer> Y = new ArrayList<>();
 
 
@@ -77,7 +88,7 @@ public class DashboardActivity extends AppCompatActivity {
         X.add("July");
         addPieChart(X, Y);
         addLineChart(X,Y);
-        scrollView.addView(layout);
+        scrollView.addView(layout);*/
 
         //Dashboard scrollable maken
         scrollView.setPadding(0,50,0,50);
