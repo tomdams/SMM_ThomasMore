@@ -13,6 +13,9 @@ public interface ApiInterface {
     Call<String> DeelplatformenVoorUser(@QueryMap Map<String, String> user);
     @GET("Getgrafieken")
     Call<String> DashboardVoorGekozenDeelplatform(@QueryMap Map<String, String> user_deelplatformid);
+    @GET("Getalerts")
+    Call<String> GetAlertsVoorUser(@QueryMap Map<String, String> user);
+
 }
 
 
