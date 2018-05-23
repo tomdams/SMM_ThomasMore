@@ -36,7 +36,7 @@ namespace SMM_ThomasMore.Controllers
             //dbController.UpdateGrafieken(PlatformController.currentDeelplatform.id);
             if (!ingelezen)
             {
-                elController.politiciInlezen();
+               // elController.politiciInlezen();
                 //dbController.UpdateGrafieken(1);
                 ingelezen = true;
             }

@@ -1,4 +1,5 @@
 ﻿using Facebook;
+using SC.BL.Domain.User;
 using SMM_ThomasMore.BL;
 using SMM_ThomasMore.Domain;
 using SMM_ThomasMore.Models;
@@ -18,6 +19,7 @@ namespace SMM_ThomasMore.Controllers
   {
 
     private UserController uc; 
+    private static User lastUpdatedUser;
     public UIUserController()
     {
       uc = new UserController();
@@ -50,6 +52,9 @@ namespace SMM_ThomasMore.Controllers
           {
             return RedirectToAction("Unverified", "UIUser");
           }
+          if (authenticatedUser.status == UserStatus.INACTIEF) {
+              return RedirectToAction("Unverified", "UIUser");
+           }
           UserController.currentUser = authenticatedUser;
           var authTicket = new FormsAuthenticationTicket(1, authenticatedUser.username, DateTime.Now, DateTime.Now.AddMinutes(30), true, authenticatedUser.type.ToString().ToLower());
           string cookieContents = FormsAuthentication.Encrypt(authTicket);
@@ -79,6 +84,7 @@ namespace SMM_ThomasMore.Controllers
           wachtwoord = uc.Hash(userVM.wachtwoord),         
           email = userVM.email,
           confirmEmail = false,
+          status=UserStatus.INACTIEF,
           username = userVM.username,
           type = UserType.SUPERADMIN
           
@@ -116,16 +122,43 @@ namespace SMM_ThomasMore.Controllers
             }
       return View();
     }
-    [Authorize(Roles = "superadmin,admin")]
-    public ActionResult UserBeherenPage()
-    {
-      return View();
-    }
-
     
+        [Authorize(Roles = "superadmin,admin")]
+        public ActionResult UserBeherenPage()
+        {
+            List<User> users = uc.getUsers().ToList();
+            return View(users);
+        }
+
+        public ActionResult EditUser(int userId)
+        {
+            lastUpdatedUser = uc.getUserByID(userId);
+            return View("~/Views/UIUser/NewUser.cshtml", lastUpdatedUser);
+        }
+        public ActionResult CreateUser()
+        {
+            lastUpdatedUser = new User();
+            return View("~/Views/UIUser/NewUser.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult Createuser(User u)
+        {          
+            if (lastUpdatedUser.user_id == 0)
+            {
+                //  probleem met hashed wachtwoord ?
+                //  uc.addUser(u, PlatformController.currentDeelplatform.id);
+            }
+            else
+            {
+                uc.updateUser( u,lastUpdatedUser.user_id);
+               
+            }
+            return View("~/Views/UIUser/UserBeherenPage.cshtml", uc.getUsers().ToList());
+        }
 
 
-    public ActionResult Afmelden()
+        public ActionResult Afmelden()
     {
       FormsAuthentication.SignOut();
       UserController.currentUser = null;

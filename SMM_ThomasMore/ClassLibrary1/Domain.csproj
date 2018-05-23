@@ -63,6 +63,7 @@
     <Compile Include="Platform\Thema.cs" />
     <Compile Include="SocialeMedia\Geslacht.cs" />
     <Compile Include="User\User.cs" />
+    <Compile Include="User\UserStatus.cs" />
     <Compile Include="User\UserType.cs" />
   </ItemGroup>
   <ItemGroup>

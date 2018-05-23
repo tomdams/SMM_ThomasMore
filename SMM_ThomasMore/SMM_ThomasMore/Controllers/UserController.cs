@@ -1,6 +1,7 @@
 ﻿using SMM_ThomasMore.BL;
 using SMM_ThomasMore.Domain;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,5 +77,21 @@ namespace SMM_ThomasMore.Controllers
             return Convert.ToBase64String(hashBytes);
         }
 
+    
+
+        public User getUserByID(int user_id)
+        {
+            return umgr.getUserByID(user_id);
+        }
+
+        public IEnumerable<User> getUsers()
+        {
+            return umgr.getUsers();
+        }
+
+        public void updateUser(User u,int user_id)
+        {
+            umgr.updateUser(u, user_id);
+        }
     }
 }

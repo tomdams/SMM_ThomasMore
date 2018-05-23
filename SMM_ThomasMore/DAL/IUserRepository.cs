@@ -15,5 +15,6 @@ namespace SMM_ThomasMore.DAL
         void AddUser(User u, int platformId);
         void verifyUser(User id);
         IEnumerable<Dashboard> getDashboards();
+        void updateUser(User u, int user_id);
     }
 }
