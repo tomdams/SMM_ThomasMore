@@ -16,5 +16,6 @@ namespace SMM_ThomasMore.BL
         IEnumerable<Element> getElements(int platform_id);
     void addElement(Element e, int id);
     void updateElement(Element element, int elementid, int platformid);
+    void deleteElement(int element_id);
   }
 }

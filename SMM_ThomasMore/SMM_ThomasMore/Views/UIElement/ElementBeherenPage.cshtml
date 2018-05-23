@@ -17,28 +17,90 @@
         {
             if (item.GetType().ToString().ToLower().Contains("thema"))
             {
-            <a href="@Url.Action("EditThema", "UIElement", new { elementId = item.element_id })" class="list-group-item">@item.naam</a>
-            } 
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <p class="list-group-item">@item.naam</p>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("EditThema", "UIElement", new { elementId = item.element_id})">Edit</a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id})">Delete</a>
+                    </td>
+                </tr>
+            </table>
+            }
         }
-        <a href="@Url.Action("CreateThema", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
+        <a href="@Url.Action("CreateThema", "UIElement")" class="list-group-item">Nieuw thema maken</a>
         <h2>Organisaties</h2>
         @foreach (var item in Model)
         {
             if (item.GetType().ToString().ToLower().Contains("organisatie"))
             {
-            <a href="@Url.Action("EditOrganisatie", "UIElement", new { elementId = item.element_id })" class="list-group-item">@item.naam - @item.twitter - @item.facebook</a>
+                if (item.twitter == null)
+                {
+                    item.twitter = "(geen twitter meegegeven)";
+                }
+                if (item.facebook == null)
+                {
+                    item.facebook = "(geen facebook meegegeven)";
+                }
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <p class="list-group-item">@item.naam - @item.twitter - @item.facebook</p>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EditOrganisatie", "UIElement", new { elementId = item.element_id})">Edit</a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id})">Delete</a>
+                        </td>
+                    </tr>
+                </table>
             }
         }
-        <a href="@Url.Action("CreateOrganisatie", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
+        <a href="@Url.Action("CreateOrganisatie", "UIElement")" class="list-group-item">Nieuwe organisatie maken</a>
         <h2>Personen</h2>
         @foreach (var item in Model)
         {
+
             if (item.GetType().ToString().ToLower().Contains("persoon"))
             {
-            <a href="@Url.Action("EditPersoon", "UIElement", new { elementId = item.element_id })" class="list-group-item">@item.naam - @item.twitter - @item.facebook - @item.organisation - @item.town</a>
+                if (item.twitter == null)
+                {
+                    item.twitter = "(geen twitter meegegeven)";
+                }
+                if (item.facebook == null)
+                {
+                    item.facebook = "(geen facebook meegegeven)";
+                }
+                if (item.organisation == null)
+                {
+                    item.organisation = "(geen organisatie meegegeven)";
+                }
+                if (item.town == null)
+                {
+                    item.town = "(geen gemeente meegegeven)";
+                }
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <p class="list-group-item">@item.naam - @item.twitter - @item.facebook - @item.organisation - @item.town - @item.geboorteDatum</p>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("EditPersoon", "UIElement", new { elementId = item.element_id})">Edit</a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id})">Delete</a>
+                    </td>
+                </tr>
+            </table>
+
             }
         }
-        <a href="@Url.Action("CreatePersoon", "UIElement")" class="list-group-item">Nieuwe meme maken</a>
+        <a href="@Url.Action("CreatePersoon", "UIElement")" class="list-group-item">Nieuwe persoon maken</a>
       
     </div>
 </body>

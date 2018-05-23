@@ -14,5 +14,6 @@ namespace SMM_ThomasMore.Domain
         public virtual ICollection<Persoon> personen { get; set; }
         public string twitter { get; set; }
         public string facebook { get; set; }
+
   }
 }

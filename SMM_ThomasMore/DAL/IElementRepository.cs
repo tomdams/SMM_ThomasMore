@@ -20,5 +20,6 @@ namespace SMM_ThomasMore.DAL
         void addOrganisatie(Organisatie o, int platformid);
         void addThema(Thema e, int platform_id);
     void updateElement(Element element, int elementid, int platformid);
+    void deleteElement(int element_id);
   }
 }

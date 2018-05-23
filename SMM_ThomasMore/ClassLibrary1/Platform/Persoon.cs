@@ -16,7 +16,7 @@ namespace SMM_ThomasMore.Domain
     public Geslacht geslacht { get; set; }
     public string twitter { get; set; }
     public string site { get; set; }
-    public DateTime geboorteDatum { get; set; }
+    public DateTime? geboorteDatum { get; set; }
     public string facebook { get; set; }
     public string postal_code { get; set; }
     public string position { get; set; }

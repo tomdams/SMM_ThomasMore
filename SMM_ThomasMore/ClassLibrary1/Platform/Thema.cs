@@ -8,6 +8,11 @@ namespace SMM_ThomasMore.Domain
 {
     public class Thema : Element
     {
-    public virtual ICollection<Keyword> keywords { get; set; }
+    public virtual List<Keyword> keywords { get; set; }
+
+    public Thema()
+    {
+      keywords = new List<Keyword>();
     }
+  }
 }

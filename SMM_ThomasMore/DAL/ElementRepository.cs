@@ -10,124 +10,124 @@ using System.Linq;
 namespace SMM_ThomasMore.DAL
 {
   public class ElementRepository : IElementRepository
+  {
+    private SMMDbContext ctx;
+    private DashboardRepository dashboardRepository;
+    public ElementRepository()
     {
-        private SMMDbContext ctx;
-        private DashboardRepository dashboardRepository;
-        public ElementRepository()  
-        {
-            ctx = new SMMDbContext();
-            dashboardRepository = new DashboardRepository();
-            ctx.Database.Initialize(false);
-        }
+      ctx = new SMMDbContext();
+      dashboardRepository = new DashboardRepository();
+      ctx.Database.Initialize(false);
+    }
 
-        public void AddAI(AlertInstellingen ai)
-        {
-            ctx.AlertInstellingen.Add(ai);
-            Element e = ctx.Elements.Find(ai.element.element_id);
-            User u = ctx.Users.Find(ai.user.user_id);
-            e.alertInstellingen.Add(ai);
-            u.alertInstellingen.Add(ai);
-            ctx.SaveChanges();
-        }
+    public void AddAI(AlertInstellingen ai)
+    {
+      ctx.AlertInstellingen.Add(ai);
+      Element e = ctx.Elements.Find(ai.element.element_id);
+      User u = ctx.Users.Find(ai.user.user_id);
+      e.alertInstellingen.Add(ai);
+      u.alertInstellingen.Add(ai);
+      ctx.SaveChanges();
+    }
 
-        public void addPersoon(Persoon p, int platformid)
-        {
-          p.grafieken = basisGrafieken(p);
-          ctx.Personen.Add(p);
-          Deelplatform deelplatform = ctx.Deelplatformen.Find(platformid);
-          deelplatform.elements.Add(p);
-          p.Deelplatform = deelplatform;
-          foreach (var grafiek in p.grafieken)
-          {
-            ctx.Grafieken.Add(grafiek);
-          }
-          Organisatie o = getOrganisatie(p.organisation);
-          
-          if (o is null)
-          {
-            o = new Organisatie() { naam = p.organisation, Deelplatform = p.Deelplatform, personen = new List<Persoon>() {p}  };
-            ctx.Elements.Add(o);
-          }
-          else
-          {
-            o.personen.Add(p);
-          }
+    public void addPersoon(Persoon p, int platformid)
+    {
+      p.grafieken = basisGrafieken(p);
+      ctx.Personen.Add(p);
+      Deelplatform deelplatform = ctx.Deelplatformen.Find(platformid);
+      deelplatform.elements.Add(p);
+      p.Deelplatform = deelplatform;
+      foreach (var grafiek in p.grafieken)
+      {
+        ctx.Grafieken.Add(grafiek);
+      }
+      Organisatie o = getOrganisatie(p.organisation);
 
-          
-          ctx.SaveChanges();
-        }
-        public void berekenPersoon(Persoon persoon)
-        {
+      if (o is null)
+      {
+        o = new Organisatie() { naam = p.organisation, Deelplatform = p.Deelplatform, personen = new List<Persoon>() { p } };
+        ctx.Elements.Add(o);
+      }
+      else
+      {
+        o.personen.Add(p);
+      }
 
 
-            //ctx.SaveChanges();
-        }
-        public IEnumerable<AlertInstellingen> getAIs()
-        {
-            return ctx.AlertInstellingen;
-        }
+      ctx.SaveChanges();
+    }
+    public void berekenPersoon(Persoon persoon)
+    {
 
-        public Element getElement(int element_Id)
-        {
-            return ctx.Elements.Find(element_Id);
-        }
-        public IEnumerable<Element> getElements(int platform_id)
-        {
-          List<Element> elements = new List<Element>();
-          foreach (Persoon p in ctx.Personen)
-          {
-             elements.Add(p);
-          }
-          foreach(Organisatie o in ctx.Organisaties)
-          {
-             elements.Add(o);
-          }
-          foreach(Thema t in ctx.Themas)
-          {
-            elements.Add(t);
-          }
-          
-          return elements;
-        }
 
-        public IEnumerable<Persoon> getPersonen()
+      //ctx.SaveChanges();
+    }
+    public IEnumerable<AlertInstellingen> getAIs()
+    {
+      return ctx.AlertInstellingen;
+    }
+
+    public Element getElement(int element_Id)
+    {
+      return ctx.Elements.Find(element_Id);
+    }
+    public IEnumerable<Element> getElements(int platform_id)
+    {
+      List<Element> elements = new List<Element>();
+      foreach (Persoon p in ctx.Personen)
+      {
+        elements.Add(p);
+      }
+      foreach (Organisatie o in ctx.Organisaties)
+      {
+        elements.Add(o);
+      }
+      foreach (Thema t in ctx.Themas)
+      {
+        elements.Add(t);
+      }
+
+      return elements;
+    }
+
+    public IEnumerable<Persoon> getPersonen()
+    {
+      return ctx.Personen;
+    }
+    public Persoon getPersoon(string naam)
+    {
+      Persoon p = null;
+      var personen = ctx.Personen.Include("Grafieken");
+      foreach (Persoon persoon in personen)
+      {
+        if (persoon.naam.Equals(naam))
         {
-           return ctx.Personen;
+          p = persoon;
         }
-        public Persoon getPersoon(string naam)
-        {
-            Persoon p = null;
-            var personen = ctx.Personen.Include("Grafieken");
-            foreach (Persoon persoon in personen)
-            {
-                if (persoon.naam.Equals(naam))
-                {
-                    p = persoon;
-                }
-            }
+      }
 
 
       return p;
-        }
+    }
 
-        public User getUser(int id)
+    public User getUser(int id)
+    {
+      foreach (User u in ctx.Users)
+      {
+        if (u.user_id == id)
         {
-            foreach (User u in ctx.Users)
-            {
-                if (u.user_id == id)
-                {
-                    return u;
-                }
-            }
-            return null;
+          return u;
         }
+      }
+      return null;
+    }
 
 
-        public void RemoveAI(AlertInstellingen ai)
-        {
-            ctx.AlertInstellingen.Remove(ai);
-            ctx.SaveChanges();
-        }
+    public void RemoveAI(AlertInstellingen ai)
+    {
+      ctx.AlertInstellingen.Remove(ai);
+      ctx.SaveChanges();
+    }
 
     private List<Grafiek> basisGrafieken(Element e)
     {
@@ -201,7 +201,7 @@ namespace SMM_ThomasMore.DAL
     public Element getElement(string naam, int platform_id)
     {
       List<Persoon> personen = new List<Persoon>();
-      foreach(Persoon p in ctx.Personen)
+      foreach (Persoon p in ctx.Personen)
       {
         if (p.naam.ToLower().Equals(naam.ToLower()))
         {
@@ -209,9 +209,9 @@ namespace SMM_ThomasMore.DAL
         }
       }
 
-      foreach(Persoon p in personen)
+      foreach (Persoon p in personen)
       {
-        if(p.Deelplatform.id == platform_id)
+        if (p.Deelplatform.id == platform_id)
         {
           return p;
         }
@@ -313,13 +313,17 @@ namespace SMM_ThomasMore.DAL
         Persoon e = (Persoon)getElement(element_id);
         bool bestaat = false;
 
-        foreach (var organisatie in ctx.Organisaties)
+        if (nieuw.organisation != null)
         {
-          if (organisatie.naam.ToLower().Equals(nieuw.organisation.ToLower()))
+          foreach (var organisatie in ctx.Organisaties)
           {
-            bestaat = true;
+            if (organisatie.naam.ToLower().Equals(nieuw.organisation.ToLower()))
+            {
+              bestaat = true;
+            }
           }
         }
+
 
         e.naam = nieuw.naam;
         e.geboorteDatum = nieuw.geboorteDatum;
@@ -332,7 +336,7 @@ namespace SMM_ThomasMore.DAL
         e.organisation = nieuw.organisation;
         if (nieuw.geboorteDatum == new DateTime(1, 1, 1))
         {
-          e.geboorteDatum = new DateTime(2000, 1, 1);
+          e.geboorteDatum = null;
         }
         if (!bestaat)
         {
@@ -344,6 +348,34 @@ namespace SMM_ThomasMore.DAL
         ctx.SaveChanges();
 
       }
+    }
+
+    public void deleteElement(int element_id)
+    {
+      Element e = (getElement(element_id)); 
+
+      if (e.GetType().ToString().ToLower().Contains("thema"))
+      {
+        Thema t = (Thema)e;
+        ctx.Keywords.RemoveRange(t.keywords);
+        ctx.Themas.Remove((Thema)e);
+      }
+      else if (e.GetType().ToString().ToLower().Contains("organisatie"))
+      {
+        Organisatie o = (Organisatie)e;
+        foreach (var persoon in o.personen)
+        {
+          persoon.organisation = null;
+          persoon.organisatie = null;
+        }
+        ctx.Organisaties.Remove(o);
+      }
+      else if (e.GetType().ToString().ToLower().Contains("persoon"))
+      {
+        Persoon p = (Persoon)e;
+        ctx.Personen.Remove(p);
+      }
+      ctx.SaveChanges();
     }
   }
 }

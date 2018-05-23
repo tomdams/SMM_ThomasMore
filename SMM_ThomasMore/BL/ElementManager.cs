@@ -267,5 +267,10 @@ namespace SMM_ThomasMore.BL
     {
       repo.updateElement(element,elementid,platformid);
     }
+
+    public void deleteElement(int element_id)
+    {
+      repo.deleteElement(element_id);
+    }
   }
 }

@@ -207,6 +207,11 @@ namespace SMM_ThomasMore.UIControllers
       return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
     }
 
+    public ActionResult DeleteElement(int element_id)
+    {
+      elController.deleteElement(element_id);
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
 
   }
 }

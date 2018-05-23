@@ -64,5 +64,10 @@ namespace SMM_ThomasMore.Controllers
     {
       mgr.updateElement(element, elementid, PlatformController.currentDeelplatform.id);
     }
+
+    internal void deleteElement(int element_id)
+    {
+      mgr.deleteElement(element_id);
+    }
   }
 }
