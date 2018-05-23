@@ -22,8 +22,7 @@ namespace SMM_ThomasMore.Models.AndroidModels
         public string x_as_beschrijving;
         public string y_as_beschrijving;
 
-        public DateTime beginDate;
-        public DateTime eindDate;
+  
         public string leeftijd;
         public Geslacht? geslacht;
         public Polariteit? polariteit;

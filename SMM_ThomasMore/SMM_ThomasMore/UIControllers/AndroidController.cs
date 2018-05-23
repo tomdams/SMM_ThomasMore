@@ -69,8 +69,7 @@ namespace SMM_ThomasMore.UIControllers
                     y_as4 = g.y_as4,
                     x_as_beschrijving = g.x_as_beschrijving,
                     y_as_beschrijving = g.y_as_beschrijving,
-                    beginDate = g.beginDate,
-                    eindDate = g.eindDate,
+                    
                     leeftijd = g.leeftijd,
                     geslacht = g.geslacht,
                     polariteit = g.polariteit,

@@ -83,30 +83,23 @@ public class OverzichtActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         APIresponse = response.body().toString();
-                        List<Deelplatform> deelplatforms = (List<Deelplatform>) fromJson(APIresponse, new TypeToken<List<Deelplatform>>() {
-                        }.getType());
+                        List<Deelplatform> deelplatforms = (List<Deelplatform>) fromJson(APIresponse, new TypeToken<List<Deelplatform>>() {}.getType());
 
                         currentUser.setDeelplatformen(deelplatforms);
-                        // intent.putExtra("deelplatformen",(Serializable) deelplatforms);
-
-                        /*for (int index = 0; index < currentUser.getDeelplatformen().size(); index++) {
-
-                            data.put("deelplatformid", "1");
 
 
+                        for (final Deelplatform d:currentUser.getDeelplatformen()) {
+                            data.put("deelplatformid", String.valueOf(d.getId()));
                             apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
                             final Call<String> grafiek = apiInterface.DashboardVoorGekozenDeelplatform(data);
                             grafiek.enqueue(new Callback<String>() {
                                 @Override
                                 public void onResponse(Call<String> call, Response<String> response) {
                                     APIresponse = response.body().toString();
-                                    List<Grafiek> grafieks = (List<Grafiek>) fromJson(APIresponse, new TypeToken<List<Grafiek>>() {
-                                    }.getType());
-
-                                    Intent intent = new Intent(OverzichtActivity.this, DashboardActivity.class);
-                                    intent.putExtra("username", currentUser);
-                                    intent.putExtra("grafieken", (Serializable) grafieks);
-                                    startActivity(intent);
+                                    List<Grafiek> grafieks = (List<Grafiek>) fromJson(APIresponse, new TypeToken<List<Grafiek>>() {}.getType());
+                                    d.setGrafieken(grafieks);
+                                   // om te debuggen --> d = gevuld :)
+                                    d.getGrafieken();
                                 }
 
                                 @Override
@@ -114,11 +107,20 @@ public class OverzichtActivity extends AppCompatActivity {
                                     String debug;
                                 }
                             });
+                        }
 
-                        }*/
+
+
+
+
+
+
+
+
+
 
                         Intent intent = new Intent(OverzichtActivity.this, DeelplatformActivity.class);
-
+                        // intent.putExtra("deelplatformen",(Serializable) deelplatforms);
                         intent.putExtra("currentUser", currentUser);
                         startActivity(intent);
                     }
@@ -132,10 +134,10 @@ public class OverzichtActivity extends AppCompatActivity {
 
                 //MAARTEN : Dit is voor het ophalen van de grafieken voor een bepaald deelplaatform/dashboard van de user.
                 //Plaats maar waar je het wil doen!
-               /* Map<String, String> data = new HashMap<>();
-                final User u =(User)getIntent().getExtras().getSerializable("username");
-                data.put("username",u.getUsername());
-                data.put("password",u.getWachtwoord());
+                //   Map<String, String> data = new HashMap<>();
+                /*
+                data.put("username",currentUser.getUsername());
+                data.put("password",currentUser.getWachtwoord());
                 // de 1 te vervangen door opgehaalde deelplatformid van bovenstaande API call
                 data.put("deelplatformid","1");
 
@@ -149,8 +151,8 @@ public class OverzichtActivity extends AppCompatActivity {
                         List<Grafiek> grafieks = (List<Grafiek>) fromJson(APIresponse,new TypeToken<List<Grafiek>>(){}.getType());
 
                         Intent intent = new Intent(OverzichtActivity.this, DashboardActivity.class);
-                        intent.putExtra("username",u);
-                        intent.putExtra("grafieken",(Serializable) grafieks);
+                        intent.putExtra("username",currentUser);
+                        intent.putExtra("grafieken", (Serializable) grafieks);
                         startActivity(intent);
                     }
 
@@ -158,8 +160,8 @@ public class OverzichtActivity extends AppCompatActivity {
                     public void onFailure(Call<String> call, Throwable t) {
                         String debug;
                     }
-                });*/
-
+                });
+*/
 
             }
         });
