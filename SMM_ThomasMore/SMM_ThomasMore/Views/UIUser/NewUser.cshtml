@@ -1,0 +1,42 @@
+﻿@model SMM_ThomasMore.Domain.User
+    @{
+
+    }
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>New User</title>
+    </head>
+    <body>
+        @using (Html.BeginForm("CreateUser", "UIUser"))
+        {
+            <form>
+                <table>
+                    <tr>
+                        <td>Username:  </td>
+                        <td>@Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "username", @class = "form-control" } })</td>
+                    </tr>
+                    <tr>
+                        <td>Email:  </td>
+                        <td>@Html.EditorFor(model => model.email, new { htmlAttributes = new { placeholder = "username", @class = "form-control" } })</td>
+                    </tr>
+                    <tr>
+                        <td>Email confirmed:  </td>
+                        <td>@Html.EditorFor(model => model.confirmEmail, new { htmlAttributes = new { placeholder = "username", @class = "form-control" } })</td>
+                    </tr>
+                    <tr>
+                        <td>Account status:  </td>
+                        <td>@Html.EnumDropDownListFor(model => model.status, "Selecteer status", new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td>Functie: </td>
+                        <td>@Html.EnumDropDownListFor(model => model.type, "Selecteer usertype", new { @class = "form-control" })</td>
+                    </tr>
+                </table>
+                <input type="submit" value="Save User" class="btn btn-info">
+            </form>
+        }
+    </body>
+</html>

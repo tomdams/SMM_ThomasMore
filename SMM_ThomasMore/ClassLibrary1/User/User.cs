@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SC.BL.Domain.User;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,6 +16,7 @@ namespace SMM_ThomasMore.Domain
         public int user_id { get; set; }
         public string email { get; set; }
         public bool confirmEmail { get; set; }
+        public UserStatus status { get; set; }
         public string wachtwoord { get; set; }
         public string username { get; set; }
         public UserType type { get; set; }    

@@ -3,6 +3,7 @@ package com.example.android_smm.Domain;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by mario on 18-5-2018.
@@ -20,6 +21,8 @@ public class User implements Serializable{
     private String Wachtwoord;
     @SerializedName("username")
     private String Username;
+
+    private List<Deelplatform> deelplatformen;
 
     public int getUser_id() {
         return User_id;
@@ -40,7 +43,16 @@ public class User implements Serializable{
     public boolean isConfirmEmail() {
         return ConfirmEmail;
     }
-/*
+
+    public List<Deelplatform> getDeelplatformen() {
+        return deelplatformen;
+    }
+
+    public void setDeelplatformen(List<Deelplatform> deelplatformen) {
+        this.deelplatformen = deelplatformen;
+    }
+
+    /*
     public  ICollection<AlertInstellingen> alertInstellingen;
     public  ICollection<Alert> alerts ;
     public  ICollection<Dashboard> dasboards ;

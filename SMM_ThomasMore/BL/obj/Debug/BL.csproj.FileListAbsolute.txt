@@ -1,5 +1,18 @@
-C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
-C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\Versie 23 05\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
@@ -11,5 +24,7 @@ C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
 C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb

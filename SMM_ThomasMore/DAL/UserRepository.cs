@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SC.BL.Domain.User;
 using SMM_ThomasMore.DAL.EF;
 using SMM_ThomasMore.Domain;
 namespace SMM_ThomasMore.DAL
@@ -87,7 +88,9 @@ namespace SMM_ThomasMore.DAL
 
         public void verifyUser(User u)
         {
-            uctx.Users.Find(u.user_id).confirmEmail = true;
+            User user = uctx.Users.Find(u.user_id);
+            user.confirmEmail = true;
+            user.status = UserStatus.ACTIEF;
             uctx.SaveChanges();
         }
 
@@ -106,6 +109,19 @@ namespace SMM_ThomasMore.DAL
         public IEnumerable<Dashboard> getDashboards()
         {
             return uctx.Dashboards.ToList<Dashboard>();
+        }
+
+        public void updateUser(User u, int user_id)
+        {
+            User user = uctx.Users.Find(user_id);
+
+           
+                user.username = u.username;
+                user.type = u.type;
+                user.email = u.email;
+                user.confirmEmail = u.confirmEmail;
+                user.status = u.status;
+            uctx.SaveChanges();
         }
     }
 }
