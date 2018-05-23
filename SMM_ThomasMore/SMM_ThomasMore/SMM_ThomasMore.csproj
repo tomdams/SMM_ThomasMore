@@ -165,6 +165,7 @@
     <Compile Include="Models\AndroidModels\AndroidGrafiekVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidUserVM.cs" />
     <Compile Include="Models\VerifyVM.cs" />
+    <Compile Include="Models\WebGrafiekVM.cs" />
     <Compile Include="UIControllers\AndroidController.cs" />
     <Compile Include="UIControllers\HomeController.cs" />
     <Compile Include="Controllers\SMController.cs" />

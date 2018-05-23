@@ -36,12 +36,6 @@ namespace SMM_ThomasMore.BL
     {
       foreach (Grafiek g in repo.GetGrafieken())
       {
-        if (g.kruising)
-        {
-          repo.setElement(1, 163);
-          repo.setElement(1, 254);
-          repo.setElement(1, 223);
-        }
         if(g.elements.First().Deelplatform.id == platformId)
         {
           Grafiek graph = updateGrafiek(repo.GetGrafiek(g.id));
@@ -59,7 +53,7 @@ namespace SMM_ThomasMore.BL
       string y_as4 = "";
       string x_as = "";
 
-      if (g.kruising)
+      if (g.elements.Count > 1)
       {
         int count = 0;
         string temporaryString = "";

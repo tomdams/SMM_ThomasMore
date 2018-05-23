@@ -18,7 +18,7 @@ namespace SMM_ThomasMore.UIControllers
         PlatformController pc = new PlatformController();
         public IEnumerable<string> Get()
         {
-            return new string[] { "Pieter Jan is een ", "Hond" };
+            return new string[] { "Test ", "sdf" };
         }
 
         
@@ -55,8 +55,32 @@ namespace SMM_ThomasMore.UIControllers
                Deelplatform deelplatform = pc.GetDeelplatform(Convert.ToInt32(deelplatformid));
                Dashboard dashboard = dc.GetDashboard(user, deelplatform);
                List<Grafiek> grafieken = dc.GetGrafieken(dashboard);
-               
-               AndroidGrafiekVM agvm = new AndroidGrafiekVM();
+            List<AndroidGrafiekVM> agvm = new List<AndroidGrafiekVM>();
+            foreach (Grafiek g in grafieken) {
+                agvm.Add(new AndroidGrafiekVM() {
+                    id = g.id,
+                    titel = g.titel,
+                    x_as = g.x_as,
+                    y_as = g.y_as,
+                    y_as1 = g.y_as1,
+                    y_as2 = g.y_as2,
+                    y_as3 = g.y_as3,
+                    y_as4 = g.y_as4,
+                    x_as_beschrijving = g.x_as_beschrijving,
+                    y_as_beschrijving = g.y_as_beschrijving,
+                    beginDate = g.beginDate,
+                    eindDate = g.eindDate,
+                    leeftijd = g.leeftijd,
+                    geslacht = g.geslacht,
+                    polariteit = g.polariteit,
+                    opleiding = g.opleiding,
+                    grafiekOnderwerp = g.grafiekOnderwerp,
+                    grafiekType = g.grafiekType,
+                    
+                    
+                });
+            }
+          
 
                string json = JsonConvert.SerializeObject(agvm);
                return json;

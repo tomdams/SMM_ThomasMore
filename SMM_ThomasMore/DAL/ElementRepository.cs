@@ -120,7 +120,6 @@ namespace SMM_ThomasMore.DAL
       {
         titel = "Aantal vermeldingen " + e.naam,
         plaats = 3,
-        kruising = false,
         x_as = "",
         y_as = "",
         x_as_beschrijving = "",
@@ -139,7 +138,6 @@ namespace SMM_ThomasMore.DAL
       {
         titel = "Polariteit " + e.naam,
         plaats = 3,
-        kruising = false,
         x_as = "",
         y_as = "",
         x_as_beschrijving = "",
@@ -158,7 +156,6 @@ namespace SMM_ThomasMore.DAL
       {
         titel = "Mannen/Vrouwen over " + e.naam,
         plaats = 3,
-        kruising = false,
         x_as = "",
         y_as = "",
         x_as_beschrijving = "",

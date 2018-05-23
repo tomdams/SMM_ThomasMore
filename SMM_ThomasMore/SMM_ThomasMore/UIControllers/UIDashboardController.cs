@@ -1,6 +1,7 @@
 ﻿using SC.BL.Domain.User;
 using SMM_ThomasMore.Controllers;
 using SMM_ThomasMore.Domain;
+using SMM_ThomasMore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,53 +14,66 @@ namespace SMM_ThomasMore.UIControllers
   {
     ElementController ec = new ElementController();
     DashboardController dc = new DashboardController();
-    private static Grafiek lastGrafiek;
+    private UserController uc;
+    private static WebGrafiekVM lastGrafiekVM;
 
-    // GET: UIDashboard
-    public ActionResult Index()
+        public UIDashboardController()
+        {
+            uc = new UserController();
+            if (UserController.currentUser != null)
+            {
+                UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
+            }
+        }
+
+
+
+
+
+        // GET: UIDashboard
+        public ActionResult Index()
     {
       return View();
     }
 
     public ActionResult NewGrafiek(int eid)
     {
-      lastGrafiek = new Grafiek();
-      lastGrafiek.kruising = true;
-      lastGrafiek.elements.Add(ec.GetElement(eid));
-      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
+      lastGrafiekVM = new WebGrafiekVM();
+      lastGrafiekVM.grafiek.elements.Add(ec.GetElement(eid));
+      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
     }
 
-    public ActionResult GenereerGrafiek(Grafiek g)
+    public ActionResult GenereerGrafiek(WebGrafiekVM g)
     {
-      Element e = ec.GetElement(g.x_as);
+      Element e = ec.GetElement(g.elementNaam);
       if(e != null)
       {
-        lastGrafiek.elements.Add(e);
+        lastGrafiekVM.grafiek.elements.Add(e);
       }
-      g.elements = lastGrafiek.elements;
-      g.dashboards = lastGrafiek.dashboards;
-      g.id = lastGrafiek.id;
-      g.kruising = lastGrafiek.kruising;
-      lastGrafiek = dc.UpdateGrafiek(g);
-      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
+      g.grafiek.elements = lastGrafiekVM.grafiek.elements;
+      g.grafiek.dashboards = lastGrafiekVM.grafiek.dashboards;
+      g.grafiek.id = lastGrafiekVM.grafiek.id;
+      lastGrafiekVM.grafiek = dc.UpdateGrafiek(g.grafiek);
+      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
     }
 
     public ActionResult EditGrafiek(int grafiek_id)
     {
-      lastGrafiek = dc.GetGrafiek(grafiek_id);
-      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
+      lastGrafiekVM = new WebGrafiekVM();
+      lastGrafiekVM.grafiek = dc.GetGrafiek(grafiek_id);
+      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
     }
 
     public ActionResult SaveGrafiek()
     {
-      if(!(lastGrafiek.beginDate.Equals(new DateTime(0001,01,1)) || lastGrafiek.eindDate.Equals(new DateTime(0001, 01, 1))))
+      if(!(lastGrafiekVM.grafiek.beginDate.Equals(new DateTime(0001,01,1)) || lastGrafiekVM.grafiek.eindDate.Equals(new DateTime(0001, 01, 1))))
       {
-        dc.AddGrafiek(dc.GetDashboard(UserController.currentUser, PlatformController.currentDeelplatform), lastGrafiek);
+        dc.AddGrafiek(dc.GetDashboard(UserController.currentUser, PlatformController.currentDeelplatform), lastGrafiekVM.grafiek);
         return RedirectToAction("Index", "Home");
       }
       else
       {
-        return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiek);
+        return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
       }
       
       
@@ -69,6 +83,13 @@ namespace SMM_ThomasMore.UIControllers
     {
       dc.RemoveGrafiek(grafiek_id, dc.GetDashboard(UserController.currentUser, PlatformController.currentDeelplatform).id);
       return RedirectToAction("Index", "Home");
+    }
+
+    public ActionResult DeleteElement(int eid)
+    {
+      lastGrafiekVM.grafiek.elements.Remove(ec.GetElement(eid));
+      lastGrafiekVM.grafiek = dc.UpdateGrafiek(lastGrafiekVM.grafiek);
+      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
     }
   }
 }

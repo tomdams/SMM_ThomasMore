@@ -66,8 +66,10 @@
     {
         int ycoord = (i / 3) * 4;
         int xcoord = (i % 3) * 4;
-        if (ViewBag.dashboard.grafieken[i].kruising)
+        if (ViewBag.dashboard.grafieken[i].elements.Count > 1)
         {
+            if (ViewBag.dashboard.grafieken[i].grafiekType.ToString().Equals("LIJN"))
+            {
         <script type="text/javascript">
                         console.log("ja");
                                 google.charts.setOnLoadCallback(drawChart);
@@ -150,17 +152,125 @@
         </script>
 
 
-                            <div class="grid-stack-item"
-                                 data-gs-x="@xcoord" data-gs-y="@ycoord"
-                                 data-gs-width="8" data-gs-height="4">
-                                <div class="grid-stack-item-content">
-                                    <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
+        <div class="grid-stack-item"
+             data-gs-x="@xcoord" data-gs-y="@ycoord"
+             data-gs-width="8" data-gs-height="4">
+            <div class="grid-stack-item-content">
+                @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                {
+                <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
                                     <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
-                                    <div id="chart_@i" style="width: 100%; height: 90%;">
-                                    </div>
+                }
 
-                                </div>
-                            </div>
+                <div id="chart_@i" style="width: 100%; height: 90%;">
+                </div>
+
+            </div>
+        </div>
+            }
+            if (ViewBag.dashboard.grafieken[i].grafiekType.ToString().Equals("STAAF") || (ViewBag.dashboard.grafieken[i].grafiekType.ToString().Equals("TAART")))
+            {
+        <script type="text/javascript">
+                                google.charts.setOnLoadCallback(drawVisualization);
+
+                                function drawVisualization() {
+                                    // Some raw data (not necessarily accurate)
+                                    var data = new google.visualization.DataTable();
+                                      data.addColumn('string', '@ViewBag.dashboard.grafieken[i].x_as_beschrijving');
+                                      var namenString = "@ViewBag.dashboard.grafieken[i].GetElementNames()";
+                                      var namen = new Array();
+                                      namen = namenString.split(',');
+                                      for (j = 0; j < namen.length; j++)
+                                      {
+                                          data.addColumn('number', namen[j]);
+                                      }
+
+                                      var x_asString = "@ViewBag.dashboard.grafieken[i].x_as"
+                                      var valueString = "@ViewBag.dashboard.grafieken[i].y_as"
+                                      var valueString1 = "@ViewBag.dashboard.grafieken[i].y_as1"
+                                      var valueString2 = "@ViewBag.dashboard.grafieken[i].y_as2"
+                                      var valueString3 = "@ViewBag.dashboard.grafieken[i].y_as3"
+                                      var valueString4 = "@ViewBag.dashboard.grafieken[i].y_as4"
+
+                                      var x_asArray = new Array();
+                                      var valueArray = new Array();
+                                      var valueArray1 = new Array();
+                                      var valueArray2 = new Array();
+                                      var valueArray3 = new Array();
+                                      var valueArray4 = new Array();
+
+                                      var x_asArray = x_asString.split(', ');
+                                      var valueArray = valueString.split(', ');
+                                      var valueArray1 = valueString1.split(', ');
+                                      var valueArray2 = valueString2.split(', ');
+                                      var valueArray3 = valueString3.split(', ');
+                                      var valueArray4 = valueString4.split(', ');
+
+                                      var totalArray = new Array();
+                                      for (j = 0; j < x_asArray.length; j++) {
+                                          var newArray = new Array();
+                                          newArray[0] = x_asArray[j];
+                                          if (!valueArray[0] == "") {
+                                              newArray[1] = valueArray[j];
+                                          }
+                                          if (!valueArray1[0] == "") {
+                                              newArray[2] = valueArray1[j];
+                                          }
+                                          if (!valueArray2[0] == "") {
+                                              newArray[3] = valueArray2[j];
+                                          }
+                                          if (!valueArray3[0] == "") {
+                                              newArray[4] = valueArray3[j];
+                                          }
+                                          if (!valueArray4[0] == "") {
+                                              newArray[5] = valueArray4[j];
+                                          }
+                                          totalArray[j] = newArray;
+                                      }
+
+                                      for (var a = 0; a < totalArray.length; a++) {
+                                          for (var j = 1; j < totalArray[a].length; j++) {
+                                              totalArray[a][j] = parseInt(totalArray[a][j]);
+                                          }
+                                      }
+
+
+                                      console.log(totalArray);
+                                      data.addRows(totalArray);
+
+                                    var options = {
+                                        title: '@ViewBag.dashboard.grafieken[i].titel',
+                                        vAxis: { title: '@ViewBag.dashboard.grafieken[i].y_as_beschrijving' },
+                                        hAxis: { title: '@ViewBag.dashboard.grafieken[i].x_as_beschrijving' },
+                                        seriesType: 'bars',
+                                        series: { 5: { type: 'line' } }
+                                    };
+
+                                    console.log(data);
+
+                                    var chart = new google.visualization.ComboChart(document.getElementById('chart_@i'));
+                                    chart.draw(data, options);
+                                }
+        </script>
+
+
+                <div class="grid-stack-item"
+                     data-gs-x="@xcoord" data-gs-y="@ycoord"
+                     data-gs-width="8" data-gs-height="4">
+                    <div class="grid-stack-item-content">
+                        @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                        {
+                        <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
+                        <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
+                        }
+
+                        <div id="chart_@i" style="width: 100%; height: 90%;">
+                        </div>
+
+                    </div>
+                </div>
+            }
+
         }
         else
         {
@@ -211,15 +321,18 @@
                         var chart = new google.visualization.PieChart(document.getElementById('chart_@i'));
                         chart.draw(data, options);
                     }
-            </script>
+        </script>
 
 
                             <div class="grid-stack-item"
                                  data-gs-x="@xcoord" data-gs-y="@ycoord"
                                  data-gs-width="4" data-gs-height="4">
                                 <div class="grid-stack-item-content">
+                                    @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                                    {
                                     <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
                                     <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
+                                    }
                                     <div id="chart_@i" style="width: 100%; height: 90%;">
                                     </div>
 
@@ -277,8 +390,11 @@
                                  data-gs-x="@xcoord" data-gs-y="@ycoord"
                                  data-gs-width="4" data-gs-height="4">
                                 <div class="grid-stack-item-content">
+                                    @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                                    {
                                     <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
                                     <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
+                                    }
                                     <div id="chart_@i" style="width: 100%; height: 90%;"></div>
                                 </div>
                             </div>
@@ -334,8 +450,11 @@
                                  data-gs-x="@xcoord" data-gs-y="@ycoord"
                                  data-gs-width="4" data-gs-height="4">
                                 <div class="grid-stack-item-content">
+                                    @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+                                    {
                                     <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Edit</a>
                                     <a href='@Url.Action("DeleteGrafiek","UIDashboard", new { grafiek_id = ViewBag.dashboard.grafieken[i].id })' class="dropbtn">Delete</a>
+                                    }
                                     <div id="chart_@i" style="width: 100%; height: 90%;"></div>
                                 </div>
                             </div>

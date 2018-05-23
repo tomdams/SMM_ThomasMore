@@ -33,7 +33,6 @@ namespace SMM_ThomasMore.DAL
         graph.beginDate = g.beginDate;
         graph.eindDate = g.eindDate;
         graph.titel = g.titel;
-        graph.kruising = g.kruising;
         graph.grafiekOnderwerp = g.grafiekOnderwerp;
         graph.grafiekType = g.grafiekType;
         graph.leeftijd = g.leeftijd;
@@ -84,6 +83,7 @@ namespace SMM_ThomasMore.DAL
 
           if (adminGrafiek)
           {
+            //admingrafiek kopieren op eigen dashboard
             dashboard.grafieken.Remove(ctx.Grafieken.Find(g.id));
             ctx.Grafieken.Find(g.id).dashboards.Remove(dashboard);
 
@@ -91,7 +91,6 @@ namespace SMM_ThomasMore.DAL
             graph.beginDate = g.beginDate;
             graph.eindDate = g.eindDate;
             graph.titel = g.titel;
-            graph.kruising = g.kruising;
             graph.grafiekOnderwerp = g.grafiekOnderwerp;
             graph.grafiekType = g.grafiekType;
             graph.leeftijd = g.leeftijd;
@@ -114,18 +113,64 @@ namespace SMM_ThomasMore.DAL
               graph.elements.Add(element);
               element.grafieken.Add(graph);
             }
+            foreach (Element e in graph.elements.Except(elements))
+            {
+              e.grafieken.Remove(graph);
+            }
             dashboard.grafieken.Add(graph);
             graph.dashboards.Add(dashboard);
-
+          }
+          else
+          {
+            //user verandert eigen grafiek
+            Grafiek graph = ctx.Grafieken.Find(g.id);
+            graph.beginDate = g.beginDate;
+            graph.eindDate = g.eindDate;
+            graph.titel = g.titel;
+            graph.grafiekOnderwerp = g.grafiekOnderwerp;
+            graph.grafiekType = g.grafiekType;
+            graph.leeftijd = g.leeftijd;
+            graph.opleiding = g.opleiding;
+            graph.polariteit = g.polariteit;
+            graph.plaats = g.plaats;
+            graph.x_as = g.x_as;
+            graph.y_as = g.y_as;
+            graph.y_as1 = g.y_as1;
+            graph.y_as2 = g.y_as2;
+            graph.y_as3 = g.y_as3;
+            graph.y_as4 = g.y_as4;
+            graph.x_as_beschrijving = g.x_as_beschrijving;
+            graph.y_as_beschrijving = g.y_as_beschrijving;
+            foreach (Element e in elements)
+            {
+              Element element = ctx.Elements.Find(e.element_id);
+              bool bestaat = false;
+              foreach (Grafiek grafiek in element.grafieken)
+              {
+                if (grafiek.id == g.id)
+                {
+                  bestaat = true;
+                }
+              }
+              if (!bestaat)
+              {
+                graph.elements.Add(element);
+                element.grafieken.Add(graph);
+              }
+            }
+            foreach (Element e in graph.elements.Except(elements))
+            {
+              e.grafieken.Remove(graph);
+            }
           }
         }
         else
         {
+          //user verandert eigen grafiek
           Grafiek graph = ctx.Grafieken.Find(g.id);
           graph.beginDate = g.beginDate;
           graph.eindDate = g.eindDate;
           graph.titel = g.titel;
-          graph.kruising = g.kruising;
           graph.grafiekOnderwerp = g.grafiekOnderwerp;
           graph.grafiekType = g.grafiekType;
           graph.leeftijd = g.leeftijd;
@@ -157,8 +202,11 @@ namespace SMM_ThomasMore.DAL
               element.grafieken.Add(graph);
             }
           }
+          foreach (Element e in graph.elements.Except(elements))
+          {
+            e.grafieken.Remove(graph);
+          }
         }
-        
       }
       //Nieuwe grafiek
       else
@@ -235,6 +283,10 @@ namespace SMM_ThomasMore.DAL
       {
         Grafiek g = ctx.Grafieken.Find(id);
         Dashboard d = ctx.Dashboards.Find(dashboardId);
+        foreach(Element e in g.elements)
+        {
+          e.grafieken.Remove(g);
+        }
         g.dashboards.Remove(d);
         d.grafieken.Remove(g);
       }
