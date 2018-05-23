@@ -374,5 +374,16 @@ namespace SMM_ThomasMore.DAL
       }
       ctx.SaveChanges();
     }
-  }
+        public void addActiviteit(User u, string message)
+        {
+            Activiteit a = new Activiteit()
+            {
+                user_id = u.user_id,
+                beschrijving = message,
+                datum = DateTime.Now
+            };
+            ctx.Activiteiten.Add(a);
+            ctx.SaveChanges();
+        }
+    }
 }

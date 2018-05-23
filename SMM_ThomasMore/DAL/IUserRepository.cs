@@ -16,5 +16,7 @@ namespace SMM_ThomasMore.DAL
         void verifyUser(User id);
         IEnumerable<Dashboard> getDashboards();
         void updateUser(User u, int user_id);
+        void addActiviteit(User u, string message);
+        IEnumerable<Activiteit> getActiviteiten();
     }
 }

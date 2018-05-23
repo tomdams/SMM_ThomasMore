@@ -16,12 +16,7 @@ namespace SMM_ThomasMore.UIControllers
         UserController uc = new UserController();
         DashboardController dc = new DashboardController();
         PlatformController pc = new PlatformController();
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "Pieter Jan is een ", "Hond" };
-        }
-
-        
+  
         public string getUser(string username, string password)
         {
 
@@ -74,9 +69,7 @@ namespace SMM_ThomasMore.UIControllers
                     polariteit = g.polariteit,
                     opleiding = g.opleiding,
                     grafiekOnderwerp = g.grafiekOnderwerp,
-                    grafiekType = g.grafiekType,
-                    
-                    
+                    grafiekType = g.grafiekType,                   
                 });
             }
                string json = JsonConvert.SerializeObject(agvm);

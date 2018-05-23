@@ -143,16 +143,23 @@ namespace SMM_ThomasMore.Controllers
 
         [HttpPost]
         public ActionResult Createuser(User u)
-        {          
+        {
             if (lastUpdatedUser.user_id == 0)
             {
                 //  probleem met hashed wachtwoord ?
                 //  uc.addUser(u, PlatformController.currentDeelplatform.id);
             }
+            else if (lastUpdatedUser.type == UserType.SUPERADMIN)
+            {
+                // Geen superadmins aanpassen
+            }
+            else if (UserController.currentUser.type == UserType.ADMIN && lastUpdatedUser.type == UserType.ADMIN)
+            {
+                // Admin kan geen andere Admin aanpassen
+            }
             else
             {
-                uc.updateUser( u,lastUpdatedUser.user_id);
-               
+                uc.updateUser(u, lastUpdatedUser.user_id, UserController.currentUser);
             }
             return View("~/Views/UIUser/UserBeherenPage.cshtml", uc.getUsers().ToList());
         }
@@ -281,6 +288,13 @@ namespace SMM_ThomasMore.Controllers
 
             return File(new System.Text.UTF8Encoding().GetBytes(csv), "text/csv", "Users.csv");
         }
-        
+
+        public FileContentResult ExportActiviteit()
+        {
+            string csv = uc.ExportActiviteit(lastUpdatedUser.user_id);
+            return File(new System.Text.UTF8Encoding().GetBytes(csv), "text/csv", "Activiteit.csv");
+        }
+
     }
+
 }

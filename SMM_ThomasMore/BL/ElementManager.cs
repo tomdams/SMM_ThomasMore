@@ -100,7 +100,8 @@ namespace SMM_ThomasMore.BL
 
         public void volgElement(int element_id, AlertType type, int user_id)
         {
-            AlertInstellingen ai = new AlertInstellingen(type, repo.getUser(user_id), repo.getElement(element_id));
+            User u = repo.getUser(user_id);
+            AlertInstellingen ai = new AlertInstellingen(type, u, repo.getElement(element_id));
             ai.element_id = element_id;
             ai.user_id = user_id;
             bool exists = false;
@@ -114,15 +115,20 @@ namespace SMM_ThomasMore.BL
                 }
             }
 
+            Element e = repo.getElement(element_id);
             if (!exists)
             {
                 repo.getUser(user_id).alertInstellingen.Add(ai);
-                repo.getElement(element_id).alertInstellingen.Add(ai);
+
+                e.alertInstellingen.Add(ai);
                 repo.AddAI(ai);
+                repo.addActiviteit(u, "Gebruiker volgt nu '" + e.naam + "'");
             }
             else
             {
                 repo.RemoveAI(ai);
+                repo.addActiviteit(u, "Gebruiker volgt '" + e.naam + "' niet meer");
+
             }
         }
         public Persoon getPersoon(Element element)
@@ -246,29 +252,33 @@ namespace SMM_ThomasMore.BL
       return repo.getElements(platform_id);
     }
 
-    public void addElement(Element e, int platform_id)
-    {
-      if (e.GetType().ToString().ToLower().Contains("organisatie"))
-      {
-        repo.addOrganisatie((Organisatie) e, platform_id);
-      }
-      else if (e.GetType().ToString().ToLower().Contains("persoon"))
-      {
-        repo.addPersoon((Persoon) e, platform_id );
-      }
-      else if (e.GetType().ToString().ToLower().Contains("thema"))
-      {
-        repo.addThema((Thema)e, platform_id);
-      }
+        public void addElement(Element e, int platform_id, User u)
+        {
+            if (e.GetType().ToString().ToLower().Contains("organisatie"))
+            {
+                repo.addOrganisatie((Organisatie)e, platform_id);
+                repo.addActiviteit(u, " Gebruiker voegde organistatie '" + e.naam + "' toe");
+            }
+            else if (e.GetType().ToString().ToLower().Contains("persoon"))
+            {
+                repo.addPersoon((Persoon)e, platform_id);
+                repo.addActiviteit(u, " Gebruiker voegde persoon '" + e.naam + "' toe");
+            }
+            else if (e.GetType().ToString().ToLower().Contains("thema"))
+            {
+                repo.addThema((Thema)e, platform_id);
+                repo.addActiviteit(u, " Gebruiker voegde thema '" + e.naam + "' toe");
+            }
 
-    }
+        }
 
-    public void updateElement(Element element, int elementid, int platformid)
-    {
-      repo.updateElement(element,elementid,platformid);
-    }
+        public void updateElement(Element element, int elementid, int platformid, User u)
+        {
+            repo.updateElement(element, elementid, platformid);
+            repo.addActiviteit(u, " Gebruiker wijzigde '" + element.naam + "'");
+        }
 
-    public void deleteElement(int element_id)
+        public void deleteElement(int element_id)
     {
       repo.deleteElement(element_id);
     }

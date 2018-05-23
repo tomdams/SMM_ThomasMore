@@ -28,11 +28,11 @@ namespace SMM_ThomasMore.DAL.EF
     public DbSet<Grafiek> Grafieken { get; set; }
     public DbSet<Deelplatform> Deelplatformen {get; set; }
     public DbSet<Keyword> Keywords { get; set; }
+     public DbSet<Activiteit> Activiteiten { get; set; }
+        //1
 
-    //1
 
-
-    public void AddUserRole(User user, UserType type)
+        public void AddUserRole(User user, UserType type)
     {
       User u = Users.Find(user.user_id);
       u.type = type;  

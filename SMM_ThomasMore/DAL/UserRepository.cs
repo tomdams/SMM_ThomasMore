@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SC.BL.Domain.User;
 using SMM_ThomasMore.DAL.EF;
@@ -115,13 +116,33 @@ namespace SMM_ThomasMore.DAL
         {
             User user = uctx.Users.Find(user_id);
 
-           
-                user.username = u.username;
-                user.type = u.type;
-                user.email = u.email;
-                user.confirmEmail = u.confirmEmail;
-                user.status = u.status;
+
+            user.username = u.username;
+            user.type = u.type;
+            user.email = u.email;
+            user.confirmEmail = u.confirmEmail;
+            user.status = u.status;
             uctx.SaveChanges();
+        }
+
+        public void addActiviteit(User u, string message)
+        {
+            User us = getUser(u.user_id);
+            Activiteit a = new Activiteit()
+            {
+                user_id = u.user_id,
+
+                beschrijving = message,
+                datum = DateTime.Now
+            };
+
+            uctx.Activiteiten.Add(a);
+            uctx.SaveChanges();
+        }
+
+        public IEnumerable<Activiteit> getActiviteiten()
+        {
+            return uctx.Activiteiten.ToList();
         }
     }
 }
