@@ -159,6 +159,7 @@ namespace SMM_ThomasMore.DAL.EF
         grafiekOnderwerp = GrafiekOnderwerp.GESLACHT,
         grafiekType = GrafiekType.TAART,
       };
+
       g1.dashboards.Add(d1);
       g2.dashboards.Add(d1);
       d1.grafieken.Add(g1);

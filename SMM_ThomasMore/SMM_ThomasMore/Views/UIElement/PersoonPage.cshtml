@@ -13,6 +13,46 @@
     .dropdown:hover .dropbtn {
         background-color: #3e8e41;
     }
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    ul {
+        list-style-type: none;
+    }
 </style>
 
 
@@ -21,10 +61,27 @@
   ViewBag.Title = "PersoonPage";
 }
 
+<div id="myModal" class="modal">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+        <ul>
+            <li>
+                <a href='@Url.Action("volgElement","UIElement", new { type =  1})' class="btn btn-dark">Web Notification</a>
+            </li>
+            <li>
+                <a href='@Url.Action("volgElement","UIElement", new { type =  2})' class="btn btn-dark">Mobile Notification</a>
+            </li>
+            <li>
+                <a href='@Url.Action("volgElement","UIElement", new { type =  3})' class="btn btn-dark">Mail</a>
+            </li>
+        </ul> 
+    </div>
+
+</div>
 
 <div class="col-md-3 col-xs-12 widget widget_tally_box">
-    <div class="x_panel fixed_height_390" ">
+    <div class="x_panel fixed_height_390">
         <div class="x_content">
 
             <div class="flex">
@@ -59,9 +116,11 @@
                     </li>
                 </ul>
             </div>
-            <form style="float:left" action="http://localhost:11981/UIElement/volgElement" method="GET">
-                <input type="submit" class="btn btn-default" value="Volg element" />
-            </form>
+            @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+            {
+                <button id="myBtn" class="btn-dark">Volg Element</button>
+            }
+            
 
             <form action="http://localhost:11981/UIElement/leesMessages" method="GET">
                 <input type="submit" class="btn btn-default" value="Lees Messages" />
@@ -113,7 +172,7 @@
                     <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
                 }
 
-                
+
 
             }
         </div>
@@ -121,7 +180,7 @@
 </div>
 
 <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="x_panel" ">
+    <div class="x_panel">
         <div class="x_title">
             <h2>Voorkomende woorden <small>Overzicht</small></h2>
             <ul class="nav navbar-right panel_toolbox">
@@ -161,7 +220,7 @@
 </div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel" ">
+    <div class="x_panel">
         <div class="x_title">
             <h2>Grafieken <small>Overzicht</small></h2>
             <ul class="nav navbar-right panel_toolbox">
@@ -410,7 +469,33 @@
                                                 $('.grid-stack').gridstack(options);
                                             });
             </script>
-            
+            <script>
+                                            // Get the modal
+                                            var modal = document.getElementById('myModal');
+
+                                            // Get the button that opens the modal
+                                            var btn = document.getElementById("myBtn");
+
+                                            // Get the <span> element that closes the modal
+                                            var span = document.getElementsByClassName("close")[0];
+
+                                            // When the user clicks the button, open the modal
+                                            btn.onclick = function () {
+                                                modal.style.display = "block";
+                                            }
+
+                                            // When the user clicks on <span> (x), close the modal
+                                            span.onclick = function () {
+                                                modal.style.display = "none";
+                                            }
+
+                                            // When the user clicks anywhere outside of the modal, close it
+                                            window.onclick = function (event) {
+                                                if (event.target == modal) {
+                                                    modal.style.display = "none";
+                                                }
+                                            }
+            </script>
 
 
 

@@ -47,11 +47,18 @@ namespace SMM_ThomasMore.UIControllers
         }
 
         
-        public ActionResult volgElement()
+        public ActionResult volgElement(int type)
         {
+            AlertType alertType = AlertType.NOTIFICATION;
+            switch (type)
+            {
+              case 1: alertType = AlertType.NOTIFICATION; break;
+              case 2: alertType = AlertType.MOBILENOTIFICATION; break;
+              case 3: alertType = AlertType.MAIL; break;
+            }
             if (UserController.currentUser != null)
             {
-               elController.volgElement(element.element_id, AlertType.NOTIFICATION, UserController.currentUser.user_id);
+               elController.volgElement(element.element_id, alertType, UserController.currentUser.user_id);
             }
             return View("~/Views/UIElement/PersoonPage.cshtml", element);
         }
