@@ -105,3 +105,4 @@ C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\SMM_Tho
 C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.csproj.CoreCompileInputs.cache
 C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.dll
 C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\SMM_ThomasMore\obj\Debug\SMM_ThomasMore.csprojResolveAssemblyReference.cache

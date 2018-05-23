@@ -76,5 +76,32 @@ namespace SMM_ThomasMore.UIControllers
                return json;
         }
 
+        public string getAlerts(string username, string password) {
+            List<AndroidAlertVM> aavm = new List<AndroidAlertVM>();
+            User user = uc.getUser(username, password);
+            List<Alert> alerts= user.getUnreadAlerts(AlertType.MOBILENOTIFICATION.ToString());
+            foreach (Alert a in alerts) {
+                aavm.Add(new AndroidAlertVM() {
+                    Id = a.Id,
+                    message = a.message,
+                    gelezen = a.gelezen                   
+                });
+            }
+            aavm.Add(new AndroidAlertVM()
+            {
+                Id = 200,
+                message = " voorbeeld message in afwachting van alerts",
+                gelezen = false
+            });
+            aavm.Add(new AndroidAlertVM()
+            {
+                Id = 201,
+                message = " een tweede voorbeeld....",
+                gelezen = false
+            });
+
+            string json = JsonConvert.SerializeObject(aavm);
+            return json;
+        }
     }
 }
