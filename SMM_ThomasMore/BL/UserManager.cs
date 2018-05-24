@@ -118,7 +118,6 @@ namespace SMM_ThomasMore.BL
 
         public void logLogon(User u)
         {
-
             repo.addActiviteit(u, "Gebruiker heeft zich aangemeld");
         }
 

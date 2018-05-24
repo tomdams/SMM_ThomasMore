@@ -106,6 +106,7 @@ namespace SMM_ThomasMore.Controllers
 
         public void ChangeUserEmail(ChangeEmailVM vm)
         {
+
             User u = currentUser;
             u.email = vm.nieuweEmail;
             updateUser(u,currentUser.user_id, currentUser);

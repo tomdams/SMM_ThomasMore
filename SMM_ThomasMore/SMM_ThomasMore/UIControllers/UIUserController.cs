@@ -56,7 +56,9 @@ namespace SMM_ThomasMore.Controllers
           if (authenticatedUser.status == UserStatus.INACTIEF) {
               return RedirectToAction("InactiefAccount", "UIUser");
            }
+          
           UserController.currentUser = authenticatedUser;
+          uc.logLogon(UserController.currentUser);
           var authTicket = new FormsAuthenticationTicket(1, authenticatedUser.username, DateTime.Now, DateTime.Now.AddMinutes(30), true, authenticatedUser.type.ToString().ToLower());
           string cookieContents = FormsAuthentication.Encrypt(authTicket);
           var encTicket = FormsAuthentication.Encrypt(authTicket);
@@ -136,6 +138,8 @@ namespace SMM_ThomasMore.Controllers
             lastUpdatedUser = uc.getUserByID(userId);
             return View("~/Views/UIUser/NewUser.cshtml", lastUpdatedUser);
         }
+
+     
         public ActionResult CreateUser()
         {
             lastUpdatedUser = new User();
@@ -145,6 +149,7 @@ namespace SMM_ThomasMore.Controllers
         [HttpPost]
         public ActionResult Createuser(User u)
         {
+
             if (lastUpdatedUser.user_id == 0)
             {
                 //  probleem met hashed wachtwoord ?
@@ -160,6 +165,7 @@ namespace SMM_ThomasMore.Controllers
             }
             else
             {
+                u.wachtwoord = lastUpdatedUser.wachtwoord;
                 uc.updateUser(u, lastUpdatedUser.user_id, UserController.currentUser);
             }
             return View("~/Views/UIUser/UserBeherenPage.cshtml", uc.getUsers().ToList());
@@ -288,32 +294,57 @@ namespace SMM_ThomasMore.Controllers
             uc.verifyUser(userid);
             return RedirectToAction("Index", "Home");                    
         }
-
+        [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
         public FileContentResult ExportUsers()
         {
             string csv = uc.ExportUsers(uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord));
 
             return File(new System.Text.UTF8Encoding().GetBytes(csv), "text/csv", "Users.csv");
         }
-
+        [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
         public FileContentResult ExportActiviteit()
         {
             string csv = uc.ExportActiviteit(lastUpdatedUser.user_id);
             return File(new System.Text.UTF8Encoding().GetBytes(csv), "text/csv", "Activiteit.csv");
         }
 
+
+        [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
         public ActionResult ChangeUserUsername(ChangeUsernameVM vm) {
-            uc.ChangeUserUsername(vm);
+            if (ModelState.IsValid) {
+                if (vm.username.Equals(UserController.currentUser.username))
+                {
+                       uc.ChangeUserUsername(vm); 
+                }               
+            }           
             return View("~/Views/UIUser/AccountInstellingenPage.cshtml");            
         }
+
+        [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
         public ActionResult ChangeUserPassword(ChangePasswordVM vm)
         {
-            uc.ChangeUserPassword(vm);
+            if (ModelState.IsValid)
+            {
+                vm.wachtwoord = uc.Hash(vm.wachtwoord);
+                if (vm.wachtwoord.Equals(UserController.currentUser.wachtwoord))
+                {
+                    vm.nieuwWachtwoord = uc.Hash(vm.nieuwWachtwoord);
+                    uc.ChangeUserPassword(vm);
+                }
+            }
             return View("~/Views/UIUser/AccountInstellingenPage.cshtml");
         }
+
+        [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
         public ActionResult ChangeUserEmail(ChangeEmailVM vm)
         {
-            uc.ChangeUserEmail(vm);
+            if (ModelState.IsValid)
+            {
+                if (vm.email.Equals(UserController.currentUser.email))
+                {
+                    uc.ChangeUserEmail(vm);
+                }
+            }
             return View("~/Views/UIUser/AccountInstellingenPage.cshtml");
         }
     }
