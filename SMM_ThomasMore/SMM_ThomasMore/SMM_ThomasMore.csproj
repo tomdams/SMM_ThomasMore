@@ -4563,6 +4563,8 @@
     <Content Include="Views\UIUser\ChangePassword.cshtml" />
     <Content Include="Views\UIUser\ChangeUsername.cshtml" />
     <Content Include="Views\UIUser\ChangeEmail.cshtml" />
+    <Content Include="Views\UIUser\DeelplatformenBeherenPage.cshtml" />
+    <Content Include="Views\UIUser\NewDeelplatform.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

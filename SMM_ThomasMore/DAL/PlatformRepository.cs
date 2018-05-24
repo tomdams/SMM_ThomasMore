@@ -23,5 +23,10 @@ namespace SMM_ThomasMore.DAL
     {
       return ctx.Deelplatformen.Find(id);
     }
-  }
+
+        public IEnumerable<Deelplatform> GetDeelplatformen()
+        {
+            return ctx.Deelplatformen;
+        }
+    }
 }

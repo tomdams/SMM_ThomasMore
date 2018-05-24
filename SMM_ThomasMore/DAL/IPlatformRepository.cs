@@ -10,5 +10,6 @@ namespace SMM_ThomasMore.DAL
   public interface IPlatformRepository
   {
     Deelplatform GetDeelplatform(int id);
-  }
+    IEnumerable<Deelplatform> GetDeelplatformen();
+    }
 }

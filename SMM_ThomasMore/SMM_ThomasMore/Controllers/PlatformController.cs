@@ -21,5 +21,10 @@ namespace SMM_ThomasMore.Controllers
     {
       return mgr.GetDeelplatform(id);
     }
-  }
+
+        public List<Deelplatform> GetDeelplatformen()
+        {
+           return mgr.GetDeelplatform();
+        }
+    }
 }

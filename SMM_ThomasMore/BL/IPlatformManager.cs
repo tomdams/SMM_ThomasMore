@@ -10,5 +10,6 @@ namespace SMM_ThomasMore.BL
   public interface IPlatformManager
   {
     Deelplatform GetDeelplatform(int id);
-  }
+    List<Deelplatform> GetDeelplatform();
+    }
 }
