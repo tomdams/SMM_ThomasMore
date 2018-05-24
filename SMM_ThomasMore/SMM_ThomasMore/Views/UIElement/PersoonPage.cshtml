@@ -129,7 +129,7 @@
 
             <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
 
-            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen</p>
+            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen (@Model.trend)</p>
         </div>
     </div>
 </div>

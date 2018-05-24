@@ -92,5 +92,12 @@ namespace SMM_ThomasMore.UIControllers
       lastGrafiekVM.grafiek = dc.UpdateGrafiek(lastGrafiekVM.grafiek);
       return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
     }
+
+    public ActionResult NewGrafiekByName(string naam)
+    {
+      lastGrafiekVM = new WebGrafiekVM();
+      lastGrafiekVM.grafiek.elements.Add(ec.GetElement(naam));
+      return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
+    }
   }
 }

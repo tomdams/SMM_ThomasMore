@@ -20,6 +20,7 @@ namespace SMM_ThomasMore.BL
         private IUserManager userMgr;
         private IUserRepository userRepo;
         private ISMRepository smRepo;
+        private DateTime today = new DateTime(2018, 04, 29);
         public ElementManager()
         {
             repo = new ElementRepository();
@@ -236,6 +237,7 @@ namespace SMM_ThomasMore.BL
             p1.aantalVermeldingen = aantalVermeldingen;
             p1.verhalen = verhalenUrls;
             p1.woorden = wordsList;
+            p1.trend = berekenTrend(p1);
         }
 
 
@@ -279,8 +281,63 @@ namespace SMM_ThomasMore.BL
         }
 
         public void deleteElement(int element_id)
+        {
+            repo.deleteElement(element_id);
+        }
+        public string berekenTrend(Element e)
+        {
+          double aantalVermeldingenVandaag = countVermeldingen(e, today.AddDays(-1), today);
+          double aantalVermeldingen1 = countVermeldingen(e, today.AddDays(-2), today.AddDays(-1));
+          double aantalVermeldingen2 = countVermeldingen(e, today.AddDays(-3), today.AddDays(-2));
+          double aantalVermeldingen3 = countVermeldingen(e, today.AddDays(-4), today.AddDays(-3));
+          double gemiddelde = (aantalVermeldingen1 + aantalVermeldingen2 + aantalVermeldingen3) / 3;
+
+          double verandering = aantalVermeldingenVandaag / gemiddelde;
+
+          if(verandering <= 0.5)
+          {
+            return "Sterke daling";
+          }
+          else if(verandering > 0.5 && verandering < 0.9)
+          {
+            return "Daling";
+          }
+          else if(verandering >= 0.9 && verandering <= 1.1)
+          {
+            return "Neutraal";
+          }
+          else if(verandering > 1.1 && verandering < 1.5)
+          {
+            return "Stijging";
+          }
+          else
+          {
+            return "Sterke stijging";
+          }  
+        }
+
+    private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
     {
-      repo.deleteElement(element_id);
+      int aantalVermeldingen = 0;
+
+      foreach (Message m in smRepo.getMessages())
+      {
+        if (m.date > startDate && m.date < endDate)
+        {
+          if (m.persons.ToLower().Contains(e.naam.ToLower()))
+          {
+            aantalVermeldingen++;
+          }
+          else
+          {
+            if (m.words.ToLower().Contains(e.naam.ToLower()))
+            {
+              aantalVermeldingen++;
+            }
+          }
+        }
+      }
+      return aantalVermeldingen;
     }
   }
 }
