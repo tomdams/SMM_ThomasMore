@@ -53,6 +53,7 @@ namespace SMM_ThomasMore.UIControllers
       g.grafiek.elements = lastGrafiekVM.grafiek.elements;
       g.grafiek.dashboards = lastGrafiekVM.grafiek.dashboards;
       g.grafiek.id = lastGrafiekVM.grafiek.id;
+      lastGrafiekVM.elementNaam = null;
       lastGrafiekVM.grafiek = dc.UpdateGrafiek(g.grafiek);
       return View("~/Views/UIDashboard/NewGrafiek.cshtml", lastGrafiekVM);
     }

@@ -86,7 +86,7 @@ namespace SMM_ThomasMore.Controllers
           confirmEmail = false,
           status=UserStatus.INACTIEF,
           username = userVM.username,
-          type = UserType.SUPERADMIN
+          type = UserType.INGELOGDEGEBRUIKER
           
         };
         uc.addUser(newUser, PlatformController.currentDeelplatform.id);

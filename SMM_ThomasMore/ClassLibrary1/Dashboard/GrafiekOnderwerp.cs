@@ -8,6 +8,6 @@ namespace SMM_ThomasMore.Domain
 {
   public enum GrafiekOnderwerp
   {
-    DATUM, SENTIMENT, GESLACHT, LEEFTIJD, OPLEIDING
+    DATUM_PER_DAG, DATUM_PER_WEEK, SENTIMENT, GESLACHT, LEEFTIJD, OPLEIDING
   }
 }

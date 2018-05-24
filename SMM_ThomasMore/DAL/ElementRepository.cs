@@ -146,7 +146,7 @@ namespace SMM_ThomasMore.DAL
         leeftijd = null,
         geslacht = null,
         polariteit = null,
-        grafiekOnderwerp = GrafiekOnderwerp.DATUM,
+        grafiekOnderwerp = GrafiekOnderwerp.DATUM_PER_DAG,
         grafiekType = GrafiekType.LIJN,
       };
 

@@ -45,7 +45,6 @@ C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\BL\obj\
 C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.dll
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll

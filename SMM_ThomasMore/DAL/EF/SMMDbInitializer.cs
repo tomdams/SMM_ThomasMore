@@ -7,7 +7,7 @@ using System.Data.Entity.Validation;
 
 namespace SMM_ThomasMore.DAL.EF
 {
-  class SMMDbInitializer : DropCreateDatabaseAlways<SMMDbContext>
+  class SMMDbInitializer : DropCreateDatabaseIfModelChanges<SMMDbContext>
   {
     protected override void Seed(SMMDbContext context)
     {
@@ -20,7 +20,7 @@ namespace SMM_ThomasMore.DAL.EF
       {
         username = "Testgebruiker",
         email = "test@test.be",
-        type = UserType.ADMIN,
+        type = UserType.INGELOGDEGEBRUIKER,
         // test123456   -hashed
         wachtwoord = "R+wt15HjHi7yB2yvZO2bPQ==",
         confirmEmail = true
@@ -160,10 +160,10 @@ namespace SMM_ThomasMore.DAL.EF
         grafiekType = GrafiekType.TAART,
       };
 
-      g1.dashboards.Add(d1);
+      /*g1.dashboards.Add(d1);
       g2.dashboards.Add(d1);
       d1.grafieken.Add(g1);
-      d1.grafieken.Add(g2);
+      d1.grafieken.Add(g2);*/
 
       t1.keywords.Add(k1);
       t1.keywords.Add(k2);

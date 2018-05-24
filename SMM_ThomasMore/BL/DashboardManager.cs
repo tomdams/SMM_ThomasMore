@@ -78,14 +78,14 @@ namespace SMM_ThomasMore.BL
           }
           x_as = "Man, Vrouw";
         }
-        if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.DATUM))
+        if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.DATUM_PER_DAG))
         {
           double days = (g.eindDate - g.beginDate).TotalDays;
           foreach (Element e in elements)
           {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < days; i++)
             {
-              temporaryString += countVermeldingen(e, g.beginDate.AddDays(i * (days / 5)), g.beginDate.AddDays((i + 1) * (days / 5)), g.leeftijd, g.geslacht, g.polariteit, g.opleiding) + ", ";
+              temporaryString += countVermeldingen(e, g.beginDate.AddDays(i), g.beginDate.AddDays((i + 1)), g.leeftijd, g.geslacht, g.polariteit, g.opleiding) + ", ";
             }
             switch (count)
             {
@@ -98,9 +98,34 @@ namespace SMM_ThomasMore.BL
             count++;
             temporaryString = "";
           }
-          for (int i = 0; i < 5; i++)
+          for (int i = 0; i < days; i++)
           {
-            x_as += g.beginDate.AddDays(i * (days / 5)).ToShortDateString() + " - " + g.beginDate.AddDays((i + 1) * (days / 5)).ToShortDateString() + ", ";
+            x_as += g.beginDate.AddDays(i).ToShortDateString() + ", ";
+          }
+        }
+        if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.DATUM_PER_WEEK))
+        {
+          double days = ((g.eindDate - g.beginDate).TotalDays)/7;
+          foreach (Element e in elements)
+          {
+            for (int i = 0; i < days; i++)
+            {
+              temporaryString += countVermeldingen(e, g.beginDate.AddDays(i*7), g.beginDate.AddDays((i + 1)*7), g.leeftijd, g.geslacht, g.polariteit, g.opleiding) + ", ";
+            }
+            switch (count)
+            {
+              case 0: y_as = temporaryString; break;
+              case 1: y_as1 = temporaryString; break;
+              case 2: y_as2 = temporaryString; break;
+              case 3: y_as3 = temporaryString; break;
+              case 4: y_as4 = temporaryString; break;
+            }
+            count++;
+            temporaryString = "";
+          }
+          for (int i = 0; i < days; i++)
+          {
+            x_as += g.beginDate.AddDays(i*7).ToShortDateString() + ", ";
           }
         }
         if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.SENTIMENT))
@@ -174,13 +199,22 @@ namespace SMM_ThomasMore.BL
             "" + countVermeldingen(g.elements.First(), g.beginDate, g.eindDate, g.leeftijd, Geslacht.Vrouw, g.polariteit, g.opleiding);
           x_as = "Man, Vrouw";
         }
-        if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.DATUM))
+        if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.DATUM_PER_DAG))
         {
           double days = (g.eindDate - g.beginDate).TotalDays;
-          for (int i = 0; i < 5; i++)
+          for (int i = 0; i < days; i++)
           {
-            y_as += countVermeldingen(g.elements.First(), g.beginDate.AddDays(i * (days / 5)), g.beginDate.AddDays((i + 1) * (days / 5)), g.leeftijd, g.geslacht, g.polariteit, g.opleiding) + ", ";
-            x_as += g.beginDate.AddDays(i * (days / 5)).ToShortDateString() + " - " + g.beginDate.AddDays((i + 1) * (days / 5)).ToShortDateString() + ", ";
+            y_as += countVermeldingen(g.elements.First(), g.beginDate.AddDays(i), g.beginDate.AddDays((i + 1)), g.leeftijd, g.geslacht, g.polariteit, g.opleiding) + ", ";
+            x_as += g.beginDate.AddDays(i).ToShortDateString() + ", ";
+          }
+        }
+        if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.DATUM_PER_WEEK))
+        {
+          double days = ((g.eindDate - g.beginDate).TotalDays)/7;
+          for (int i = 0; i < days; i++)
+          {
+            y_as += countVermeldingen(g.elements.First(), g.beginDate.AddDays(i*7), g.beginDate.AddDays((i + 1)*7), g.leeftijd, g.geslacht, g.polariteit, g.opleiding) + ", ";
+            x_as += g.beginDate.AddDays(i*7).ToShortDateString() + ", ";
           }
         }
         if (g.grafiekOnderwerp.Equals(GrafiekOnderwerp.SENTIMENT))
