@@ -10,55 +10,124 @@
     <title>NewThema</title>
 </head>
 <body>
-@using (Html.BeginForm("CreatePersoon", "UIElement"))
-{
-    <form>
-        <table>
-            <tr>
-                <td>Naam:  </td>
-                <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
-            </tr>
-            <tr>
-                <td>Geslacht: </td>
-                <td>
-                    @Html.EnumDropDownListFor(
-    model => model.geslacht,
-    "Selecteer geslacht",
-    new { @class = "form-control" })
-                </td>
-            </tr>
-            <tr>
-                <td>Twitter: </td>
-                <td>@Html.EditorFor(model => model.twitter, new { htmlAttributes = new { placeholder = "Twitter", @class = "form-control" } })</td>
-            </tr>
-            <tr>
-                <td>Facebook: </td>
-                <td>@Html.EditorFor(model => model.facebook, new { htmlAttributes = new { placeholder = "Facebook", @class = "form-control" } }) </td>
-            </tr>
-            <tr>
-                <td>Gemeente: </td>
-                <td>@Html.EditorFor(model => model.town, new { htmlAttributes = new { placeholder = "Gemeente", @class = "form-control" } }) </td>
-            </tr>
-            <tr>
-                <td>Postcode: </td>
-                <td>@Html.EditorFor(model => model.postal_code, new { htmlAttributes = new { placeholder = "Postcode", @class = "form-control" } }) </td>
-            </tr>
-            <tr>
-                <td>District: </td>
-                <td>@Html.EditorFor(model => model.district, new { htmlAttributes = new { placeholder = "District", @class = "form-control" } }) </td>
-            </tr>
-            <tr>
-                <td>Organisatie: </td>
-                <td>@Html.EditorFor(model => model.organisation, new { htmlAttributes = new { placeholder = "Organisatie", @class = "form-control" } }) </td>  
-            </tr>
-            <tr>
-                <td>Geboortedatum </td>
-                <td>@Html.EditorFor(model => model.geboorteDatum, new { htmlAttributes = new { type = "date"} })</td>
-            </tr>
-        </table>
-        
-        <input type="submit" value="Save Persoon" class="btn btn-info">
-    </form>
+
+    @using (Html.BeginForm("CreatePersoon", "UIElement"))
+    {
+
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Persoon</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+
+
+
+                        <li>
+                            <a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="naam">
+                                Naam <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class=" col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="profiel">
+                                Geslacht <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EnumDropDownListFor(model => model.geslacht, "Selecteer geslacht", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="twitter">
+                                Twitter <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.twitter, new { htmlAttributes = new { placeholder = "Twitter", @class = "form-control" } })
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="facebook">
+                                Facebook <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.facebook, new { htmlAttributes = new { placeholder = "Facebook", @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="gemeente">
+                                Gemeente <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.town, new { htmlAttributes = new { placeholder = "Gemeente", @class = "form-control" } })
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="postcode">
+                                Postcode <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.postal_code, new { htmlAttributes = new { placeholder = "Postcode", @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="district">
+                                District <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.district, new { htmlAttributes = new { placeholder = "District", @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="organisatie">
+                                Organisatie <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.organisation, new { htmlAttributes = new { placeholder = "Organisatie", @class = "form-control" } })
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="geboortedatum">
+                                Geboortedatum <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.geboorteDatum, new { htmlAttributes = new { type = "date", @class = "form-control" } })
+                            </div>
+                        </div>
+
+
+
+                        <input type="submit" value="Save Persoon" class="btn btn-info" style="float:right">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     }
+
 </body>
 </html>

@@ -161,20 +161,20 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            @for (int index = 0; index < Model.verhalen.Count(); index++)
+            @if (Model.verhalen != null)
             {
-                if (Model.verhalen[index].ToString().Length >= 110)
+                for (int index = 0; index < Model.verhalen.Count(); index++)
                 {
-                    String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
-                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
+                    if (Model.verhalen[index].ToString().Length >= 110)
+                    {
+                        String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
+                <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
+                    }
+                    else
+                    {
+                <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
+                    }
                 }
-                else
-                {
-                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
-                }
-
-
-
             }
         </div>
     </div>
@@ -208,14 +208,15 @@
         <div class="x_content">
 
             <p>Meest gebrukte woorden:</p>
-            @for (var i = 0; i < Model.woorden.Length; i++)
+
+            @if (Model.woorden != null)
             {
+                for (var i = 0; i < Model.woorden.Length; i++)
+                {
 
-            <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.woorden[i]))</button>
+                <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.woorden[i]))</button>
+                }
             }
-
-
-
         </div>
     </div>
 </div>

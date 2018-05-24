@@ -10,42 +10,105 @@
     <title>NewThema</title>
 </head>
 <body>
-@using (Html.BeginForm("CreateOrganisatie", "UIElement"))
-{
-    <form>
-        <table>
-            <tr>
-                <td>Naam:  </td>
-                <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })</td>
-            </tr>
-            <tr>
-                <td>Profiel: </td>
-                <td>@Html.EditorFor(model => model.profiel, new { htmlAttributes = new { placeholder = "Profiel", @class = "form-control" } })</td>
-            </tr>
-            <tr>
-                <td>Gemeente: </td>
-                <td>@Html.EditorFor(model => model.gemeente, new { htmlAttributes = new { placeholder = "Gemeente", @class = "form-control" } })</td>
-            </tr>
-            <tr>
-                <td>Twitter: </td>
-                <td>@Html.EditorFor(model => model.twitter, new { htmlAttributes = new { placeholder = "Twitter", @class = "form-control" } })</td>
-            </tr>
-            <tr>
-                <td>Facebook: </td>
-                <td>@Html.EditorFor(model => model.facebook, new { htmlAttributes = new { placeholder = "Facebook", @class = "form-control" } })</td>
-            </tr>
+    @using (Html.BeginForm("CreateOrganisatie", "UIElement"))
+    {
 
-            <tr>
-                <td>Leden: </td>
-                @foreach (var persoon in Model.personen)
-                {
-                  <td>@persoon.naam</td>
-                }
-            </tr>
-        </table>
-        
-        <input type="submit" value="Save Organisatie" class="btn btn-info">
-    </form>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Organisatie</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+
+
+
+                        <li>
+                            <a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="naam">
+                                Naam <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "Naam", @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class=" col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="profiel">
+                                Profiel <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.profiel, new { htmlAttributes = new { placeholder = "Profiel", @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class=" col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="gemeente">
+                                Gemeente <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.gemeente, new { htmlAttributes = new { placeholder = "Gemeente", @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="twitter">
+                                Twitter <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.twitter, new { htmlAttributes = new { placeholder = "Twitter", @class = "form-control" } })
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label col-lg-1 col-md-2 col-sm-4 col-xs-12" for="facebook">
+                                Facebook <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.facebook, new { htmlAttributes = new { placeholder = "Facebook", @class = "form-control" } })
+                            </div>
+                        </div>
+
+
+                        <div class="x_content">
+                            <br />
+
+                            <h2>Leden:</h2>
+                            @if (Model != null && Model.personen != null)
+                            {
+                                foreach (var persoon in Model.personen)
+                                {
+
+                                <button type="button" class="btn btn-default">@persoon.naam</button>
+                                }
+                            }
+
+                        </div>
+
+
+
+                        <input type="submit" value="Save Organisatie" class="btn btn-info" style="float:right">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     }
 </body>
 </html>

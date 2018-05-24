@@ -4556,6 +4556,8 @@
     <Content Include="Views\UIElement\NewOrganisatie.cshtml" />
     <Content Include="Views\UIElement\NewPersoon.cshtml" />
     <Content Include="Views\UIUser\NewUser.cshtml" />
+    <Content Include="Views\UIElement\OrganisatiePage.cshtml" />
+    <Content Include="Views\UIElement\ThemaPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

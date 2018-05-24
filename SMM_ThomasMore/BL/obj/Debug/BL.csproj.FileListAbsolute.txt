@@ -75,3 +75,4 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
+C:\School\2\Integratie\Project5\SMM_ThomasMore\BL\bin\Debug\EntityFramework.xml

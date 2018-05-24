@@ -1,0 +1,518 @@
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<style>
+
+    .dropbtn {
+        background-color: lightslategray;
+        color: white;
+        padding: 8px;
+        font-size: 8px;
+        border: none;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+
+@model SMM_ThomasMore.Domain.Element
+@{
+  ViewBag.Title = "PersoonPage";
+}
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <ul>
+            <li>
+                <a href='@Url.Action("volgElement","UIElement", new { type =  1})' class="btn btn-dark">Web Notification</a>
+            </li>
+            <li>
+                <a href='@Url.Action("volgElement","UIElement", new { type =  2})' class="btn btn-dark">Mobile Notification</a>
+            </li>
+            <li>
+                <a href='@Url.Action("volgElement","UIElement", new { type =  3})' class="btn btn-dark">Mail</a>
+            </li>
+        </ul> 
+    </div>
+
+</div>
+
+<div class="col-md-3 col-xs-12 widget widget_tally_box">
+    <div class="x_panel fixed_height_390">
+        <div class="x_content">
+
+            <div class="flex">
+                <ul class="list-inline widget_profile_box">
+                    <li>
+                        <a href='@Url.Action("Facebook","UIElement")'>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <img src='@Url.Action("TwitterPic","UIElement")' alt="..." class="img-circle profile_img">
+                    </li>
+                    <li>
+                        <a href='@Url.Action("Twitter","UIElement")'>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <h3 class="name">@Html.DisplayFor(m => m.naam)</h3>
+
+            <div class="flex">
+                <ul class="list-inline count2">
+                    <li>
+                        <h3>@Model.grafieken.Count</h3>
+                        <span>Grafieken</span>
+                    </li>
+                    <li>
+                        <h3>@Model.alertInstellingen.Count</h3>
+                        <span>Volgers</span>
+                    </li>
+                </ul>
+            </div>
+            @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+            {
+                <button id="myBtn" class="btn-dark">Volg Element</button>
+            }
+            
+
+            <form action="http://localhost:11981/UIElement/leesMessages" method="GET">
+                <input type="submit" class="btn btn-default" value="Lees Messages" />
+            </form>
+
+            <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
+
+            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Gebruikte links <small>Klik om te gaan</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            @if(Model.verhalen != null) { 
+            for (int index = 0; index < Model.verhalen.Count(); index++)
+            {
+                if (Model.verhalen[index].ToString().Length >= 110)
+                {
+                    String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
+                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
+                }
+                else
+                {
+                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Voorkomende woorden <small>Overzicht</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <p>Meest gebrukte woorden:</p>
+
+            @if (Model.woorden != null)
+            {
+            for (var i = 0; i < Model.woorden.Length; i++)
+            {
+
+            <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.woorden[i]))</button>
+                }
+            }
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Grafieken <small>Overzicht</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script>
+                google.charts.load("current", { packages: ["corechart"] });
+                console.log("load");
+            </script>
+
+
+            @for (int i = 0; i < Model.grafieken.Count; i++)
+            {
+                if (Model.grafieken.ElementAt(i).dashboards.Count == 0)
+                {
+                    switch (@Model.grafieken.ElementAt(i).grafiekType.ToString())
+                    {
+                        case "TAART":
+                    <script type="text/javascript">
+                        console.log("ja");
+                        google.charts.setOnLoadCallback(drawChart);
+                        console.log("nee");
+                                            function drawChart() {
+
+
+                                                var tempdata   = [];
+                                                var Header = ['@Model.grafieken.ElementAt(i).x_as_beschrijving', '@Model.grafieken.ElementAt(i).y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                                var xAsString = "@Model.grafieken.ElementAt(i).x_as";
+                                                var xAsArray = new Array();
+                                                xAsArray = xAsString.split(', ');
+                                                var yAsArray = new Array();
+                                                    var yAsString = "@Model.grafieken.ElementAt(i).y_as";
+                                                    yAsArray = yAsString.split(', ');
+                                                    for (var j = 0; j < xAsArray.length; j++) {
+                                                        var temp = [];
+                                                        console.log(xAsArray[j]);
+                                                        console.log(yAsArray[j]);
+                                                        temp.push(xAsArray[j]);
+                                                        var yel = parseInt(yAsArray[j]);
+                                                        temp.push(yel);
+
+                                                        tempdata.push(temp);
+                                                    }
+
+                                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                            var options = {
+                                        title: '@Model.grafieken.ElementAt(i).titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+                                    };
+
+                                        var chart = new google.visualization.PieChart(document.getElementById('chart_@i'));
+                                        chart.draw(data, options);
+                                }
+                    </script>
+
+
+                    <div class="grid-stack-item"
+                         data-gs-x="0" data-gs-y="0"
+                         data-gs-width="4" data-gs-height="4">
+                        <div class="grid-stack-item-content">
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;">
+                            </div>
+
+                        </div>
+                    </div>
+                            break;
+                        case "STAAF":
+                    <script type="text/javascript">
+                        console.log("ja");
+                        google.charts.setOnLoadCallback(drawChart);
+                        console.log("nee");
+                                            function drawChart() {
+
+
+                                                var tempdata   = [];
+                                                var Header = ['@Model.grafieken.ElementAt(i).x_as_beschrijving', '@Model.grafieken.ElementAt(i).y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                                var xAsString = "@Model.grafieken.ElementAt(i).x_as";
+                                                var xAsArray = new Array();
+                                                xAsArray = xAsString.split(', ');
+                                                var yAsArray = new Array();
+                                                    var yAsString = "@Model.grafieken.ElementAt(i).y_as";
+                                                    yAsArray = yAsString.split(', ');
+                                                    for (var j = 0; j < xAsArray.length; j++) {
+                                                        var temp = [];
+                                                        console.log(xAsArray[j]);
+                                                        console.log(yAsArray[j]);
+                                                        temp.push(xAsArray[j]);
+                                                        var yel = parseInt(yAsArray[j]);
+                                                        temp.push(yel);
+
+                                                        tempdata.push(temp);
+                                                    }
+
+                                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                            var options = {
+                                        title: '@Model.grafieken.ElementAt(i).titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+                                    };
+
+                                        var chart = new google.visualization.BarChart(document.getElementById('chart_@i'));
+                                        chart.draw(data, options);
+                                }
+                    </script>
+
+
+                    <div class="grid-stack-item"
+                         data-gs-x="0" data-gs-y="0"
+                         data-gs-width="4" data-gs-height="4">
+                        <div class="grid-stack-item-content">
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;"></div>
+                        </div>
+                    </div>
+                            break;
+                        case "LIJN":
+                    <script type="text/javascript">
+                        console.log("ja");
+                        google.charts.setOnLoadCallback(drawChart);
+                        console.log("nee");
+                                            function drawChart() {
+
+
+                                                var tempdata   = [];
+                                                var Header = ['@Model.grafieken.ElementAt(i).x_as_beschrijving', '@Model.grafieken.ElementAt(i).y_as_beschrijving']
+                                                tempdata.push(Header);
+
+
+                                                var xAsString = "@Model.grafieken.ElementAt(i).x_as";
+                                                var xAsArray = new Array();
+                                                xAsArray = xAsString.split(', ');
+                                                var yAsArray = new Array();
+                                                    var yAsString = "@Model.grafieken.ElementAt(i).y_as";
+                                                    yAsArray = yAsString.split(', ');
+                                                    for (var j = 0; j < xAsArray.length; j++) {
+                                                        var temp = [];
+                                                        console.log(xAsArray[j]);
+                                                        console.log(yAsArray[j]);
+                                                        temp.push(xAsArray[j]);
+                                                        var yel = parseInt(yAsArray[j]);
+                                                        temp.push(yel);
+
+                                                        tempdata.push(temp);
+                                                    }
+
+                                                    var data = google.visualization.arrayToDataTable(tempdata);
+
+
+                                            var options = {
+                                        title: '@Model.grafieken.ElementAt(i).titel',
+                                        is3D: true,
+                                        backgroundColor: 'none',
+                                        colors: ['#d7cec7', '#76323f', '#c09f80']
+
+                                    };
+
+                                        var chart = new google.visualization.LineChart(document.getElementById('chart_@i'));
+                                        chart.draw(data, options);
+                                }
+                    </script>
+
+
+                    <div class="grid-stack-item"
+                         data-gs-x="0" data-gs-y="0"
+                         data-gs-width="4" data-gs-height="4">
+                        <div class="grid-stack-item-content">
+                            <a href='@Url.Action("EditGrafiek","UIDashboard", new { grafiek_id = Model.grafieken.ElementAt(i).id })' class="dropbtn">Edit</a>
+                            <div id="chart_@i" style="width: 100%; height: 90%;"></div>
+                        </div>
+                    </div>
+                            break;
+                    }
+                }
+            }
+
+
+
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
+            <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+            <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+            <script type="text/javascript">
+                                            $(function () {
+                                                var options = {
+                                                    cellHeight: 75,
+                                                    verticalMargin: 10,
+                                                    disableResize: true
+
+                                                };
+                                                $('.grid-stack').gridstack(options);
+                                            });
+            </script>
+
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
+            <script src="../Content/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+            <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+            <script type="text/javascript">
+                                            $(function () {
+                                                var options = {
+                                                    cellHeight: 75,
+                                                    verticalMargin: 10,
+                                                    disableResize: true
+
+                                                };
+                                                $('.grid-stack').gridstack(options);
+                                            });
+            </script>
+            <script>
+                                            // Get the modal
+                                            var modal = document.getElementById('myModal');
+
+                                            // Get the button that opens the modal
+                                            var btn = document.getElementById("myBtn");
+
+                                            // Get the <span> element that closes the modal
+                                            var span = document.getElementsByClassName("close")[0];
+
+                                            // When the user clicks the button, open the modal
+                                            btn.onclick = function () {
+                                                modal.style.display = "block";
+                                            }
+
+                                            // When the user clicks on <span> (x), close the modal
+                                            span.onclick = function () {
+                                                modal.style.display = "none";
+                                            }
+
+                                            // When the user clicks anywhere outside of the modal, close it
+                                            window.onclick = function (event) {
+                                                if (event.target == modal) {
+                                                    modal.style.display = "none";
+                                                }
+                                            }
+            </script>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+    
+
+
+
+

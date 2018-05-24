@@ -38,11 +38,23 @@ namespace SMM_ThomasMore.UIControllers
             {
                 if (element.GetType().ToString().ToLower().Contains("persoon"))
                 {
-                    Persoon persoon = elController.getPersoon(element);
+                    Persoon persoon = (Persoon)element;
                     elController.berekenPersoon(persoon);
                     return View("~/Views/UIElement/PersoonPage.cshtml", persoon);
                 }
-            }
+                else if (element.GetType().ToString().ToLower().Contains("thema"))
+                {
+                  Thema thema = (Thema)element;
+                  //elController.berekenPersoon(persoon);
+                  return View("~/Views/UIElement/ThemaPage.cshtml", thema);
+                }
+                else if (element.GetType().ToString().ToLower().Contains("organisatie"))
+                {
+                  Organisatie organisatie = (Organisatie)element;
+                  //elController.berekenPersoon(persoon);
+                  return View("~/Views/UIElement/OrganisatiePage.cshtml", organisatie);
+                }
+      }
             return View("~/Views/Home/Index.cshtml");
         }
 
