@@ -33,10 +33,7 @@ public class OverzichtActivity extends AppCompatActivity {
     CardView dashboardCardView;
     @BindView(R.id.notificationId)
     CardView notificationCardView;
-    @BindView(R.id.accountSettingsId)
-    CardView accountSettingsCardView;
-    @BindView(R.id.chartSettingsId)
-    CardView chardSettingsCardView;
+
     @BindView(R.id.signOutId)
     CardView signOutCardView;
     @BindView(R.id.colapppsingtoolbar)
@@ -177,26 +174,13 @@ public class OverzichtActivity extends AppCompatActivity {
             }
         });
 
-        accountSettingsCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(OverzichtActivity.this, AccountSettingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        chardSettingsCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(OverzichtActivity.this, ChartSettingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         signOutCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OverzichtActivity.this, LoginActivity.class);
+                currentUser = null;
                 startActivity(intent);
             }
         });
@@ -206,5 +190,10 @@ public class OverzichtActivity extends AppCompatActivity {
 
     public static Object fromJson(String jsonString, Type type) {
         return new Gson().fromJson(jsonString, type);
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

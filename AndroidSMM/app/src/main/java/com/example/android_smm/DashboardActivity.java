@@ -48,16 +48,35 @@ public class DashboardActivity extends AppCompatActivity {
         //(User) getIntent().getExtras().getSerializable("currentUser");
         currentDeelplatform = (Deelplatform) getIntent().getExtras().getSerializable("clickedDeelplatform");
 
-        for (Grafiek grafiek : currentDeelplatform.getGrafieken()) {
-
-        }
-
         //Dashboard scrollable maken
         scrollView = new ScrollView(this);
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
         layout.setLayoutParams(layoutParams);
+
+        for (Grafiek grafiek : currentDeelplatform.getGrafieken()) {
+            switch (grafiek.getGrafiekType()){
+                case TAART:
+                    if(grafiek.getY_as1() == null){
+                        addPieChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
+                    }
+                    break;
+                case LIJN:
+                    if(grafiek.getY_as1() == null){
+                        addLineChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
+                    }
+                    break;
+                case STAAF:
+                    if(grafiek.getY_as1() == null){
+                        addBarChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
+                    }
+                    break;
+            }
+
+        }
+
+
 
 
        /*ArrayList<String> X = new ArrayList<>();
@@ -87,8 +106,8 @@ public class DashboardActivity extends AppCompatActivity {
         Y.add(5);
         X.add("July");
         addPieChart(X, Y);
-        addLineChart(X,Y);
-        scrollView.addView(layout);*/
+        addLineChart(X,Y);*/
+        scrollView.addView(layout);
 
         //Dashboard scrollable maken
         scrollView.setPadding(0,50,0,50);
@@ -101,10 +120,10 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
-    private void addPieChart(ArrayList<String> X, ArrayList<Integer> Y){
+    private void addPieChart(ArrayList<String> X, ArrayList<Integer> Y, String titel, String Xas_beschrijving,String Yas_beschrijving){
         CardView cardView = new CardView(this);
         TextView textView = new TextView(this);
-        textView.setText("Test titel");
+        textView.setText(titel);
         LinearLayout chartLayout = new LinearLayout(this);
         chartLayout.setOrientation(LinearLayout.VERTICAL);
 
@@ -119,8 +138,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         }
 
-        PieDataSet pieDataSet = new PieDataSet(entries, "# of calls");
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        PieDataSet pieDataSet = new PieDataSet(entries, Xas_beschrijving);
+        pieDataSet.setColors(new int[] { R.color.backgroundcolor, R.color.orangiee, R.color.colorPrimary, R.color.colorPrimaryDark}, getApplicationContext());
 
         for (int i = 0; i <X.size(); i++){
             labels.add(X.get(i));
@@ -130,7 +149,7 @@ public class DashboardActivity extends AppCompatActivity {
         PieData data = new PieData(labels, pieDataSet);
         chart.setData(data);
         chart.animateY(1000);
-        chart.setDescription("test beschrijving");
+        chart.setDescription(Yas_beschrijving);
         chart.setMinimumHeight(1000);
         pieDataSet.setValueTextSize(6);
         chartLayout.addView(textView);
@@ -146,10 +165,10 @@ public class DashboardActivity extends AppCompatActivity {
         layout.addView(cardView);
     }
 
-    private void addLineChart(ArrayList<String> X, ArrayList<Integer> Y){
+    private void addLineChart(ArrayList<String> X, ArrayList<Integer> Y, String titel, String Xas_beschrijving,String Yas_beschrijving){
         CardView cardView = new CardView(this);
         TextView textView = new TextView(this);
-        textView.setText("Test titel");
+        textView.setText(titel);
         LinearLayout chartLayout = new LinearLayout(this);
         chartLayout.setOrientation(LinearLayout.VERTICAL);
 
@@ -163,8 +182,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         }
 
-        LineDataSet lineDataSet = new LineDataSet(entries, "# of calls");
-        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        LineDataSet lineDataSet = new LineDataSet(entries, Xas_beschrijving);
+        lineDataSet.setColors(new int[] { R.color.backgroundcolor, R.color.orangiee, R.color.colorPrimary, R.color.colorPrimaryDark}, getApplicationContext());
 
         for (int i = 0; i <X.size(); i++){
             labels.add(X.get(i));
@@ -172,7 +191,7 @@ public class DashboardActivity extends AppCompatActivity {
         LineData data = new LineData(labels, lineDataSet);
         chart.setData(data);
         chart.animateY(1000);
-        chart.setDescription("test beschrijving");
+        chart.setDescription(Yas_beschrijving);
         chart.setMinimumHeight(1000);
         lineDataSet.setValueTextSize(6);
         chartLayout.addView(textView);
@@ -190,19 +209,19 @@ public class DashboardActivity extends AppCompatActivity {
 
 
 
-    private void addBarChart(ArrayList<String> X, ArrayList<Integer> Y){
+    private void addBarChart(ArrayList<String> X, ArrayList<Integer> Y, String titel, String Xas_beschrijving,String Yas_beschrijving){
         CardView cardView = new CardView(this);
         TextView textView = new TextView(this);
-        textView.setText("Test titel");
+        textView.setText(titel);
         LinearLayout chartLayout = new LinearLayout(this);
         chartLayout.setOrientation(LinearLayout.VERTICAL);
 
         BarChart chart = new BarChart(this);
-        addGegevensXY(X, Y);
+        addGegevensXY(X, Y, Xas_beschrijving);
         BarData data = new BarData(labels, barDataSet);
         chart.setData(data);
         chart.animateY(1000);
-        chart.setDescription("test beschrijving");
+        chart.setDescription(Yas_beschrijving);
         chart.setMinimumHeight(1000);
 
         chartLayout.addView(textView);
@@ -218,15 +237,15 @@ public class DashboardActivity extends AppCompatActivity {
         layout.addView(cardView);
     }
 
-    private void addGegevensXY(ArrayList<String> X, ArrayList<Integer> Y){
+    private void addGegevensXY(ArrayList<String> X, ArrayList<Integer> Y, String Xas_Beschrijving){
         ArrayList<BarEntry>entries = new ArrayList<>();
         labels = new ArrayList<String>();
         for (int i = 0; i<Y.size();i++){
             entries.add(new BarEntry(Y.get(i), i));
         }
 
-       barDataSet = new BarDataSet(entries, "# of calls");
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+       barDataSet = new BarDataSet(entries, Xas_Beschrijving);
+        barDataSet.setColors(new int[] { R.color.backgroundcolor, R.color.orangiee, R.color.colorPrimary, R.color.colorPrimaryDark}, getApplicationContext());
 
         for (int i = 0; i <X.size(); i++){
             labels.add(X.get(i));
