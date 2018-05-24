@@ -23,6 +23,7 @@ public class User implements Serializable{
     private String Username;
 
     private List<Deelplatform> deelplatformen;
+    private List<Alert> alerts;
 
     public int getUser_id() {
         return User_id;
@@ -48,6 +49,8 @@ public class User implements Serializable{
         return deelplatformen;
     }
 
+
+
     public void setDeelplatformen(List<Deelplatform> deelplatformen) {
         this.deelplatformen = deelplatformen;
     }
@@ -60,6 +63,14 @@ public class User implements Serializable{
         }
 
         return null;
+    }
+
+    public List<Alert> getAlerts() {
+        return alerts;
+    }
+
+    public void setAlerts(List<Alert> alerts) {
+        this.alerts = alerts;
     }
 
     /*

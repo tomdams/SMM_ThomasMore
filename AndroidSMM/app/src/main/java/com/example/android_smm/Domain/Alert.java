@@ -3,8 +3,32 @@ package com.example.android_smm.Domain;
 import java.io.Serializable;
 
 public class Alert implements Serializable {
-    public int Id ;
-    public String message;
+    private int Id ;
+    private String message;
     // public DateTime date
-    public boolean gelezen;
+    private boolean gelezen;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public boolean isGelezen() {
+        return gelezen;
+    }
+
+    public void setGelezen(boolean gelezen) {
+        this.gelezen = gelezen;
+    }
 }
