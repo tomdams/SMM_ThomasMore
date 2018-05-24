@@ -23,7 +23,7 @@ public class Grafiek implements Serializable{
     private String y_as4 ;
     private String x_as_beschrijving ;
     private String y_as_beschrijving;
-
+    public List<Element> elements;
 
     private String leeftijd ;
     @Nullable

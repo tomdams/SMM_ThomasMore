@@ -284,7 +284,9 @@ namespace SMM_ThomasMore.Controllers
             List<Deelplatform> deelplatformen = pc.GetDeelplatformen();
             return View(deelplatformen);
         }
-
+        public ActionResult DeelplatformenPage() {
+            return View();
+        }
     [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
     public ActionResult AccountInstellingenPage()
     {

@@ -163,6 +163,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\AndroidModels\AndroidAlertVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidDeelplatformVM.cs" />
+    <Compile Include="Models\AndroidModels\AndroidElementVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidGrafiekVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidUserVM.cs" />
     <Compile Include="Models\ChangeAccountModels\ChangeEmailVM.cs" />
