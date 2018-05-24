@@ -71,8 +71,8 @@ public class OverzichtActivity extends AppCompatActivity {
                 startActivity(intent);*/
 
 
-                final Map<String, String> data = new HashMap<>();
 
+                final Map<String, String> data = new HashMap<>();
                 data.put("username", currentUser.getUsername());
                 data.put("password", currentUser.getWachtwoord());
 
@@ -165,24 +165,7 @@ public class OverzichtActivity extends AppCompatActivity {
 */
                 ///// NOTIFICATIONS OPHALEN
 
-                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-                final Call<String> notifications = apiInterface.GetAlertsVoorUser(data);
-                notifications.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        APIresponse = response.body().toString();
-                        List<Alert> alerts = (List<Alert>) fromJson(APIresponse,new TypeToken<List<Alert>>(){}.getType());
 
-                        // check outcome
-                        alerts.toString();
-                    }
-
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-
-                    }
-
-                });
             }
         });
 
@@ -202,8 +185,37 @@ public class OverzichtActivity extends AppCompatActivity {
         notificationCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OverzichtActivity.this, NotificationActivity.class);
-                startActivity(intent);
+
+                final Map<String, String> data = new HashMap<>();
+                data.put("username", currentUser.getUsername());
+                data.put("password", currentUser.getWachtwoord());
+
+                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+                final Call<String> notifications = apiInterface.GetAlertsVoorUser(data);
+                notifications.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        APIresponse = response.body().toString();
+                        List<Alert> alerts = (List<Alert>) fromJson(APIresponse,new TypeToken<List<Alert>>(){}.getType());
+
+                        // check outcome
+                        Intent intent = new Intent(OverzichtActivity.this, NotificationActivity.class);
+                        currentUser.setAlerts(alerts);
+                        intent.putExtra("currentUser", currentUser);
+                        startActivity(intent);
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+
+                    }
+
+                });
+
+
+
             }
         });
 
