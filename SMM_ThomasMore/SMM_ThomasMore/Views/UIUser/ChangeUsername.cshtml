@@ -1,0 +1,28 @@
+﻿@model SMM_ThomasMore.Models.ChangeAccountModels.ChangeUsernameVM
+@{
+
+}
+
+@using (Html.BeginForm("ChangeUserUsername", "UIUser"))
+{
+    <form>
+        <table>
+            <tr>
+                <td>Oude username:  </td>
+                <td>@Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "username", @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })</td>
+            </tr>
+            <tr>
+                <td>Nieuw username:  </td>
+                <td>@Html.EditorFor(model => model.nieuweUsername, new { htmlAttributes = new { placeholder = "nieuwe username", @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(model => model.nieuweUsername, "", new { @class = "text-danger" })</td>
+            </tr>
+            <tr>
+                <td>Herhaal nieuwe username:  </td>
+                <td>@Html.EditorFor(model => model.compareUsername, new { htmlAttributes = new { placeholder = "Herhaal nieuwe username", @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(model => model.compareUsername, "", new { @class = "text-danger" })</td>
+            </tr>
+        </table>
+        <input type="submit" value="Save username" class="btn btn-info">
+    </form>
+}

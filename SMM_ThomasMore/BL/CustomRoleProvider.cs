@@ -42,7 +42,7 @@ namespace SC.BL
     {
       using (SMMDbContext ctx = new SMMDbContext())
       {
-        User user = ctx.Users.SingleOrDefault(u => u.username == username);
+        User user = ctx.Users.FirstOrDefault(u => u.username == username);
         if (user == null)
           return new string[] { };
          return new string[] { user.type.ToString() };

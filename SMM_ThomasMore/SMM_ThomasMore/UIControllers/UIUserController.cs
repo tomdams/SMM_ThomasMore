@@ -3,6 +3,7 @@ using SC.BL.Domain.User;
 using SMM_ThomasMore.BL;
 using SMM_ThomasMore.Domain;
 using SMM_ThomasMore.Models;
+using SMM_ThomasMore.Models.ChangeAccountModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +54,7 @@ namespace SMM_ThomasMore.Controllers
             return RedirectToAction("Unverified", "UIUser");
           }
           if (authenticatedUser.status == UserStatus.INACTIEF) {
-              return RedirectToAction("Unverified", "UIUser");
+              return RedirectToAction("InactiefAccount", "UIUser");
            }
           UserController.currentUser = authenticatedUser;
           var authTicket = new FormsAuthenticationTicket(1, authenticatedUser.username, DateTime.Now, DateTime.Now.AddMinutes(30), true, authenticatedUser.type.ToString().ToLower());
@@ -275,8 +276,14 @@ namespace SMM_ThomasMore.Controllers
       return View();
     }
 
+        public ActionResult InactiefAccount()
+        {            
 
-   public ActionResult Verified(string userid)
+            return View();
+        }
+
+
+        public ActionResult Verified(string userid)
         {
             uc.verifyUser(userid);
             return RedirectToAction("Index", "Home");                    
@@ -295,6 +302,20 @@ namespace SMM_ThomasMore.Controllers
             return File(new System.Text.UTF8Encoding().GetBytes(csv), "text/csv", "Activiteit.csv");
         }
 
+        public ActionResult ChangeUserUsername(ChangeUsernameVM vm) {
+            uc.ChangeUserUsername(vm);
+            return View("~/Views/UIUser/AccountInstellingenPage.cshtml");            
+        }
+        public ActionResult ChangeUserPassword(ChangePasswordVM vm)
+        {
+            uc.ChangeUserPassword(vm);
+            return View("~/Views/UIUser/AccountInstellingenPage.cshtml");
+        }
+        public ActionResult ChangeUserEmail(ChangeEmailVM vm)
+        {
+            uc.ChangeUserEmail(vm);
+            return View("~/Views/UIUser/AccountInstellingenPage.cshtml");
+        }
     }
 
 }

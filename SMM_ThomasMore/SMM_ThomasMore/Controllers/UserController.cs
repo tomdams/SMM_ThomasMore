@@ -1,5 +1,6 @@
 ﻿using SMM_ThomasMore.BL;
 using SMM_ThomasMore.Domain;
+using SMM_ThomasMore.Models.ChangeAccountModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -101,6 +102,27 @@ namespace SMM_ThomasMore.Controllers
         public void logLogon(User u)
         {
             umgr.logLogon(u);
+        }
+
+        public void ChangeUserEmail(ChangeEmailVM vm)
+        {
+            User u = currentUser;
+            u.email = vm.nieuweEmail;
+            updateUser(u,currentUser.user_id, currentUser);
+        }
+
+        public void ChangeUserPassword(ChangePasswordVM vm)
+        {
+            User u = currentUser;
+            u.wachtwoord = vm.nieuwWachtwoord;
+            updateUser(u, currentUser.user_id, currentUser);
+        }
+
+        public void ChangeUserUsername(ChangeUsernameVM vm)
+        {
+            User u = currentUser;
+            u.username = vm.nieuweUsername;
+            updateUser(u, currentUser.user_id, currentUser);
         }
     }
 }

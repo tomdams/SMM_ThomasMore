@@ -10,20 +10,67 @@
     <title>UserBeherenPage</title>
 </head>
 <body>
-    <div class="list-group">
-        @using (Html.BeginForm())
-          {
-              @Html.AntiForgeryToken()
-              <button><a href="@Url.Action("ExportUsers", "UIUser")">Exporteer alle gebruikers</button>
-         }
+    @*Users*@
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thema's</h2>
+                    <ul class="nav navbar-right panel_toolbox">
 
-        <h2>Users:</h2>
-        @foreach (var item in Model)
-         {
-        <a href="@Url.Action("EditUser", "UIUser", new { userId = item.user_id })" class="list-group-item">@item.username - @item.type - @item.email </a>
-            }
-            <a href="@Url.Action("CreateUser", "UIUser")" class="list-group-item">Nieuwe User maken</a>
 
-</div>
+
+                        <li>
+                            <a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Naam</th>
+                                <th>Role</th>
+                                <th>E-mail</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int countUser = 0;
+                                foreach (var item in Model)
+                                {
+                                    countUser++;
+                                    <tr>
+                                        <th>@countUser</th>
+                                        <td>@item.username</td>
+                                        <td>@item.type</td>
+                                        <td>@item.email</td>
+                                        <td><a href="@Url.Action("EditUser", "UIUser", new { userId = item.user_id })">Edit</a></td>
+                                    </tr>
+                                }
+
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <div style="float:right">
+                        <a href="@Url.Action("ExportUsers", "UIUser")"><button class="btn btn-default">Users exporteren</button></a>
+                        <a href="@Url.Action("CreateUser", "UIUser")"><button class="btn btn-default">User toevoegen</button></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </body>
 </html>
