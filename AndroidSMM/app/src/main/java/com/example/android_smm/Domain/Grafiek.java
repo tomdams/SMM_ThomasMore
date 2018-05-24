@@ -113,5 +113,9 @@ public class Grafiek implements Serializable{
     public GrafiekType getGrafiekType() {
         return grafiekType;
     }
+
+    public List<Element> getElements() {
+        return elements;
+    }
 }
 

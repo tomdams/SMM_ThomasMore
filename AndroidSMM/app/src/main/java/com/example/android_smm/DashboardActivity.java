@@ -58,55 +58,30 @@ public class DashboardActivity extends AppCompatActivity {
         for (Grafiek grafiek : currentDeelplatform.getGrafieken()) {
             switch (grafiek.getGrafiekType()){
                 case TAART:
-                    if(grafiek.getY_as1() == null){
+                    if(grafiek.getElements().size() ==1){
+                        addPieChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
+                    }else if(grafiek.getElements().size() >1){
                         addPieChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
                     }
                     break;
                 case LIJN:
-                    if(grafiek.getY_as1() == null){
+                    if(grafiek.getElements().size() ==1){
                         addLineChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
+                    }else if(grafiek.getElements().size() >1){
+                        addPieChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
                     }
                     break;
                 case STAAF:
-                    if(grafiek.getY_as1() == null){
+                    if(grafiek.getElements().size() ==1){
                         addBarChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
+                    }else if(grafiek.getElements().size() >1){
+                        addPieChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
                     }
                     break;
             }
 
         }
 
-
-
-
-       /*ArrayList<String> X = new ArrayList<>();
-        ArrayList<Integer> Y = new ArrayList<>();
-
-
-        //TestData
-        Y.add(4);
-        Y.add(8);
-        Y.add(6);
-        Y.add(12);
-        Y.add(18);
-        Y.add(9);
-
-        X.add("January");
-        X.add("February");
-        X.add("March");
-        X.add("April");
-        X.add("May");
-        X.add("June");
-
-
-
-
-        initializeComponents();
-        addBarChart(X,Y);
-        Y.add(5);
-        X.add("July");
-        addPieChart(X, Y);
-        addLineChart(X,Y);*/
         scrollView.addView(layout);
 
         //Dashboard scrollable maken
@@ -237,14 +212,14 @@ public class DashboardActivity extends AppCompatActivity {
         layout.addView(cardView);
     }
 
-    private void addGegevensXY(ArrayList<String> X, ArrayList<Integer> Y, String Xas_Beschrijving){
+    private void addGegevensXY(ArrayList<String> X, ArrayList<Integer> Y, String Xas_beschrijving){
         ArrayList<BarEntry>entries = new ArrayList<>();
         labels = new ArrayList<String>();
         for (int i = 0; i<Y.size();i++){
             entries.add(new BarEntry(Y.get(i), i));
         }
 
-       barDataSet = new BarDataSet(entries, Xas_Beschrijving);
+       barDataSet = new BarDataSet(entries, Xas_beschrijving);
         barDataSet.setColors(new int[] { R.color.backgroundcolor, R.color.orangiee, R.color.colorPrimary, R.color.colorPrimaryDark}, getApplicationContext());
 
         for (int i = 0; i <X.size(); i++){
