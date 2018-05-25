@@ -28,5 +28,13 @@ namespace SMM_ThomasMore.DAL
         {
             return ctx.Deelplatformen;
         }
+
+        public void updateDeelplatform(Deelplatform d)
+        {
+            Deelplatform teUpdaten = GetDeelplatform(d.id);
+            teUpdaten.naam = d.naam;
+            ctx.SaveChanges();
+            
+        }
     }
 }

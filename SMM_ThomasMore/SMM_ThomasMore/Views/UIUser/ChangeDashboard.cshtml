@@ -1,0 +1,13 @@
+﻿@model SMM_ThomasMore.Models.DashboardAdminVM
+@{
+
+}
+
+@using (Html.BeginForm("UpdateDashboard", "UIUser"))
+{
+    
+   
+    <td>@Html.EditorFor(Model => Model.dashboardid, new { htmlAttributes = new { @class = "form-control" } })</td>
+    <td>@Html.EditorFor(model => model.adminDashboard, new { htmlAttributes = new { @class = "form-control" } })</td>
+    <td> <input type="submit" value="Save" class="btn btn-info"> </td>
+}

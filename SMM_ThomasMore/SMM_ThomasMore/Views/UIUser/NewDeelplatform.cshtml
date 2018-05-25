@@ -10,8 +10,61 @@
     <title>New User</title>
 </head>
 <body>
+    @using (Html.BeginForm("UpdateDeelplatformNaam", "UIUser"))
+    {
+        <form>
+            <table>
+                <tr>
+                    <td>Naam:  </td>
+                    <td>@Html.EditorFor(model => model.naam, new { htmlAttributes = new { placeholder = "username", @class = "form-control" } })</td>
+                </tr>
 
+            </table>
+            <input type="submit" value="Save Deelplatformnaam" class="btn btn-info">
+        </form>
+    }
 
+ 
+        <form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Admin #</th>                       
+                        <th>Dashboard ID</th>
+                        <th>Deelplatform dashboard (slechts 1 mogelijk)</th>
+                        <th>Save</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        int countAdmins = 0;
+
+                        for(int i = 0;i<Model.dashboards.Count;i++) {
+                            if (Model.dashboards.ToList()[i].user.type == SMM_ThomasMore.Domain.UserType.ADMIN)
+                            {
+
+                                countAdmins++;
+                     <tr>
+                        <th>@countAdmins</th>
+                          
+                             @{
+                                         SMM_ThomasMore.Models.DashboardAdminVM davm = new SMM_ThomasMore.Models.DashboardAdminVM() {                                         
+                                         dashboardid = Model.dashboards.ToList()[i].id,
+                                         adminDashboard = Model.dashboards.ToList()[i].adminDashboard
+                                 };
+                             }
+                        
+                                @{ Html.RenderPartial("ChangeDashboard", davm); }
+                    </tr>
+                            }                            
+                        }
+                      }
+                </tbody>
+
+            </table>
+            
+        </form>
+   
 
 </body>
 </html>

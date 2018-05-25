@@ -169,6 +169,7 @@
     <Compile Include="Models\ChangeAccountModels\ChangeEmailVM.cs" />
     <Compile Include="Models\ChangeAccountModels\ChangePasswordVM.cs" />
     <Compile Include="Models\ChangeAccountModels\ChangeUsernameVM.cs" />
+    <Compile Include="Models\DashboardAdminVM.cs" />
     <Compile Include="Models\VerifyVM.cs" />
     <Compile Include="Models\WebGrafiekVM.cs" />
     <Compile Include="UIControllers\AndroidController.cs" />
@@ -3612,7 +3613,7 @@
     <Content Include="Scripts\bootstrap-progressbar.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="ApplicationInsights.config">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\politici.json" />
     <Content Include="Content\less\alerts.less" />
@@ -4569,6 +4570,7 @@
     <Content Include="Views\UIUser\ChangeEmail.cshtml" />
     <Content Include="Views\UIUser\DeelplatformenBeherenPage.cshtml" />
     <Content Include="Views\UIUser\NewDeelplatform.cshtml" />
+    <Content Include="Views\UIUser\ChangeDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

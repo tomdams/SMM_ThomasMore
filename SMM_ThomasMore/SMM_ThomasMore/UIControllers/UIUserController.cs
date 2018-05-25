@@ -362,6 +362,26 @@ namespace SMM_ThomasMore.Controllers
             }
             return View("~/Views/UIUser/AccountInstellingenPage.cshtml");
         }
+
+
+        public ActionResult UpdateDeelplatformNaam(Deelplatform d) {
+            if (!(d.naam is  null))
+            {
+                lastUpdatedDeelplatform.naam = d.naam;
+            }           
+            pc.updateDeelplatform(lastUpdatedDeelplatform);
+            return RedirectToAction("DeelplatformenBeherenPage");
+        }
+
+        public void UpdateDashboard(DashboardAdminVM d) {
+            foreach (Dashboard dashboard in lastUpdatedDeelplatform.dashboards) {
+                string s= "";
+            }
+
+        }
+        
+
+
     }
 
 }
