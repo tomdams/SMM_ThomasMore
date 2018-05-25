@@ -5,35 +5,145 @@ import android.support.annotation.Nullable;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class Grafiek implements Serializable{
-    public int id ;
-    public String titel ;
-    public boolean kruising ;
+    private int id ;
+    private String titel ;
+    private boolean kruising ;
 
-    public String x_as ;
-    public String y_as ;
-    public String y_as1 ;
-    public String y_as2 ;
-    public String y_as3 ;
-    public String y_as4 ;
-    public String x_as_beschrijving ;
-    public String y_as_beschrijving;
+    private String x_as ;
+    private String y_as ;
+    private String y_as1 ;
+    private String y_as2 ;
+    private String y_as3 ;
+    private String y_as4 ;
+    private String x_as_beschrijving ;
+    private String y_as_beschrijving;
+    public List<Element> elements;
 
-
-    public String leeftijd ;
+    private String leeftijd ;
     @Nullable
-    public Geslacht geslacht;
+    private Geslacht geslacht;
     @Nullable
-    public Polariteit polariteit ;
-    public String opleiding ;
+    private Polariteit polariteit ;
+    private String opleiding ;
 
-    public GrafiekOnderwerp grafiekOnderwerp ;
-    public GrafiekType grafiekType ;
+    private GrafiekOnderwerp grafiekOnderwerp ;
+    private GrafiekType grafiekType ;
 
+    public int getId() {
+        return id;
+    }
 
+    public String getTitel() {
+        return titel;
+    }
 
+    public boolean isKruising() {
+        return kruising;
+    }
 
+    public ArrayList<String> getX_as() {
+        ArrayList returnList = new ArrayList();
+        returnList.addAll(Arrays.asList(x_as.split(", ")));
+        return returnList;
+    }
+
+    public ArrayList<Integer> getY_as() {
+        String[] cijfers = y_as.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
+    }
+
+    public ArrayList<Integer> getY_as1() {
+        String[] cijfers = y_as1.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
+    }
+
+    public ArrayList<Integer> getY_as2() {
+        String[] cijfers = y_as2.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
+    }
+
+    public ArrayList<Integer> getY_as3() {
+        String[] cijfers = y_as3.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
+    }
+
+    public ArrayList<Integer> getY_as4() {
+        String[] cijfers = y_as4.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
+    }
+
+    public String getX_as_beschrijving() {
+        return x_as_beschrijving;
+    }
+
+    public String getY_as_beschrijving() {
+        return y_as_beschrijving;
+    }
+
+    public String getLeeftijd() {
+        return leeftijd;
+    }
+
+    @Nullable
+    public Geslacht getGeslacht() {
+        return geslacht;
+    }
+
+    @Nullable
+    public Polariteit getPolariteit() {
+        return polariteit;
+    }
+
+    public String getOpleiding() {
+        return opleiding;
+    }
+
+    public GrafiekOnderwerp getGrafiekOnderwerp() {
+        return grafiekOnderwerp;
+    }
+
+    public GrafiekType getGrafiekType() {
+        return grafiekType;
+    }
+
+    public List<Element> getElements() {
+        return elements;
+    }
 }
 

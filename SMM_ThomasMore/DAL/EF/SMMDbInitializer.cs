@@ -49,8 +49,24 @@ namespace SMM_ThomasMore.DAL.EF
         deelplatform = platform1,
         adminDashboard = true
       };
+      User u3 = new User()
+      {
+        username = "TestSuperadmin",
+        email = "test123@test.be",
+        type = UserType.SUPERADMIN,
+        // test123456   -hashed
+        wachtwoord = "R+wt15HjHi7yB2yvZO2bPQ==",
+        confirmEmail = true
+      };
 
-      Thema t1 = new Thema()
+       Dashboard d3 = new Dashboard()
+       {
+         user = u3,
+         deelplatform = platform1,
+         adminDashboard = false
+       };
+
+       Thema t1 = new Thema()
       {
         naam = "mobiliteit",
         keywords = new List<Keyword>(),
@@ -160,6 +176,24 @@ namespace SMM_ThomasMore.DAL.EF
         grafiekType = GrafiekType.TAART,
       };
 
+      Grafiek g3 = new Grafiek()
+      {
+        titel = "Mannen/Vrouwen over ",
+        plaats = 3,
+        x_as = "Man, Vrouw",
+        y_as = "60, 24",
+        x_as_beschrijving = "Geslacht",
+        y_as_beschrijving = "Aantal Vermeldingen",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.GESLACHT,
+        grafiekType = GrafiekType.TAART,
+      };
+
       /*g1.dashboards.Add(d1);
       g2.dashboards.Add(d1);
       d1.grafieken.Add(g1);
@@ -183,8 +217,12 @@ namespace SMM_ThomasMore.DAL.EF
         u2.dasboards.Add(d2);
         platform1.dashboards.Add(d2);
 
+            u3.dasboards.Add(d3);
+            platform1.dashboards.Add(d3);
+
         context.Users.Add(u1);
         context.Users.Add(u2);
+        context.Users.Add(u3);
 
         context.Keywords.Add(k1);
         context.Keywords.Add(k2);

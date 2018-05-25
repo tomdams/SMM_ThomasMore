@@ -11,5 +11,6 @@ namespace SMM_ThomasMore.Models.AndroidModels
         public string message { get; set; }
         // public DateTime date { get; set; }
         public bool gelezen { get; set; }
+
     }
 }

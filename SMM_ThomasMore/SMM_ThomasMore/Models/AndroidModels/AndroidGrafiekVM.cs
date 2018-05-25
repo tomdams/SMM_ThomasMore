@@ -22,12 +22,12 @@ namespace SMM_ThomasMore.Models.AndroidModels
         public string x_as_beschrijving;
         public string y_as_beschrijving;
 
-  
+        public List<AndroidElementVM> elements;
         public string leeftijd;
         public Geslacht? geslacht;
         public Polariteit? polariteit;
         public string opleiding;
-
+      
         public GrafiekOnderwerp grafiekOnderwerp;
         public GrafiekType grafiekType;
     }

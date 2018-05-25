@@ -19,15 +19,18 @@ namespace SMM_ThomasMore.Controllers
   public class UIUserController : Controller
   {
 
-    private UserController uc; 
+    private UserController uc;
+    private PlatformController pc;
     private static User lastUpdatedUser;
-    public UIUserController()
+    private static Deelplatform lastUpdatedDeelplatform;
+        public UIUserController()
     {
       uc = new UserController();
       if (UserController.currentUser != null)
       {
         UserController.currentUser = uc.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
       }
+            pc = new PlatformController();
     }
 
     // GET: User
@@ -132,6 +135,14 @@ namespace SMM_ThomasMore.Controllers
             List<User> users = uc.getUsers().ToList();
             return View(users);
         }
+
+
+        public ActionResult EditDeelplatform(int deelplatformid)
+        {
+            lastUpdatedDeelplatform = pc.GetDeelplatform(deelplatformid);
+            return View("~/Views/UIUser/NewDeelplatform.cshtml", lastUpdatedDeelplatform);
+        }
+
 
         public ActionResult EditUser(int userId)
         {
@@ -267,15 +278,21 @@ namespace SMM_ThomasMore.Controllers
       return View();
     }
 
-    public ActionResult DeelplatformenPage()
+    [Authorize(Roles = "superadmin")]
+    public ActionResult DeelplatformenBeherenPage()
     {
-      return View();
-    }
+            List<Deelplatform> deelplatformen = pc.GetDeelplatformen();
+            return View(deelplatformen);
+        }
+        public ActionResult DeelplatformenPage() {
+            return View();
+        }
     [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
     public ActionResult AccountInstellingenPage()
     {
       return View();
     }
+
 
     public ActionResult Confirmation()
     {
@@ -284,10 +301,8 @@ namespace SMM_ThomasMore.Controllers
 
         public ActionResult InactiefAccount()
         {            
-
             return View();
         }
-
 
         public ActionResult Verified(string userid)
         {

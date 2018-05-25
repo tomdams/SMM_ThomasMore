@@ -33,7 +33,7 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
+        width: 20%;
     }
 
     /* The Close Button */
@@ -66,6 +66,7 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
+        <span>Geef aan welk type alert je wil ontvangen voor deze persoon</span>
         <ul>
             <li>
                 <a href='@Url.Action("volgElement","UIElement", new { type =  1})' class="btn btn-dark">Web Notification</a>
@@ -129,7 +130,7 @@
 
             <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
 
-            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen</p>
+            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen (@Model.trend)</p>
         </div>
     </div>
 </div>

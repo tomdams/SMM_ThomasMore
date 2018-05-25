@@ -5,28 +5,3 @@ C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsof
 C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
-C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
-D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
-E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
-C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache

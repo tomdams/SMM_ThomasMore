@@ -21,5 +21,10 @@ namespace SMM_ThomasMore.BL
     {
       return repo.GetDeelplatform(id);
     }
-  }
+
+        public List<Deelplatform> GetDeelplatform()
+        {
+           return repo.GetDeelplatformen().ToList();
+        }
+    }
 }
