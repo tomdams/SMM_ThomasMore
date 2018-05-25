@@ -56,4 +56,9 @@ public class StartActivity extends AppCompatActivity{
         timer.start();
 
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android_smm.Domain.Deelplatform;
@@ -40,7 +41,14 @@ public class DeelplatformAdapter extends ArrayAdapter{
         }
 
         TextView tvOnderwerp = convertView.findViewById(R.id.tvOnderwerp);
+        TextView tvAantalGrafs = convertView.findViewById(R.id.tvAantalGrafs);
+        ImageView ivDashboard = convertView.findViewById(R.id.ivDashboard);
+        ImageView ivChart = convertView.findViewById(R.id.ivChart);
         tvOnderwerp.setText(deelplatform.getNaam());
+        tvAantalGrafs.setText(deelplatform.getGrafieken().size()+"");
+        ivChart.setImageResource(R.drawable.chart);
+        ivDashboard.setImageResource(R.drawable.dashboard);
+
         return convertView;
     }
 }
