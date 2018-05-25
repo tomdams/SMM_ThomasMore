@@ -339,5 +339,15 @@ namespace SMM_ThomasMore.BL
       }
       return aantalVermeldingen;
     }
+
+    public void deleteKeyword(int keyword_id, int element_id)
+    {
+      repo.deleteKeyword(keyword_id, element_id);
+    }
+
+    public void addKeyword(int element_id)
+    {
+      repo.addKeyword(element_id);
+    }
   }
 }

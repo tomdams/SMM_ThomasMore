@@ -35,7 +35,7 @@ namespace SMM_ThomasMore.Controllers
             PlatformController.currentDeelplatform = pController.GetDeelplatform(1);
             if (!ingelezen)
             {
-               // elController.politiciInlezen();
+               elController.politiciInlezen();
                // dbController.UpdateGrafieken(1);
                 ingelezen = true;
             }

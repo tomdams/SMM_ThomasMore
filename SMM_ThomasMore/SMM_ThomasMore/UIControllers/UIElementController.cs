@@ -38,11 +38,23 @@ namespace SMM_ThomasMore.UIControllers
             {
                 if (element.GetType().ToString().ToLower().Contains("persoon"))
                 {
-                    Persoon persoon = elController.getPersoon(element);
+                    Persoon persoon = (Persoon)element;
                     elController.berekenPersoon(persoon);
                     return View("~/Views/UIElement/PersoonPage.cshtml", persoon);
                 }
-            }
+                else if (element.GetType().ToString().ToLower().Contains("thema"))
+                {
+                  Thema thema = (Thema)element;
+                  //elController.berekenPersoon(persoon);
+                  return View("~/Views/UIElement/ThemaPage.cshtml", thema);
+                }
+                else if (element.GetType().ToString().ToLower().Contains("organisatie"))
+                {
+                  Organisatie organisatie = (Organisatie)element;
+                  //elController.berekenPersoon(persoon);
+                  return View("~/Views/UIElement/OrganisatiePage.cshtml", organisatie);
+                }
+      }
             return View("~/Views/Home/Index.cshtml");
         }
 
@@ -218,6 +230,18 @@ namespace SMM_ThomasMore.UIControllers
     {
       elController.deleteElement(element_id);
       return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+
+    public ActionResult DeleteKeyword(int keyword_id, int element_id)
+    {
+      elController.deleteKeyword(keyword_id, element_id);
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+
+    public ActionResult CreateKeyword(int element_id)
+    {
+      elController.addKeyword(element_id);
+      return View("~/Views/UIElement/NewThema.cshtml", elController.GetElement(element_id));
     }
 
   }

@@ -26,17 +26,13 @@ namespace SMM_ThomasMore.UIControllers
             }
         }
 
-
-
-
-
         // GET: UIDashboard
         public ActionResult Index()
     {
       return View();
     }
 
-    public ActionResult NewGrafiek(int eid)
+    public ActionResult NewGrafiek(int eid, int type)
     {
       lastGrafiekVM = new WebGrafiekVM();
       lastGrafiekVM.grafiek.elements.Add(ec.GetElement(eid));

@@ -8,6 +8,6 @@ namespace SMM_ThomasMore.Domain
 {
   public enum GrafiekType
   {
-    STAAF, LIJN, TAART
+    STAAF, LIJN, TAART, GETAL
   }
 }

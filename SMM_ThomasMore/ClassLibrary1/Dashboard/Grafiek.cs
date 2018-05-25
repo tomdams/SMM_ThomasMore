@@ -31,6 +31,7 @@ namespace SMM_ThomasMore.Domain
     public Geslacht? geslacht { get; set; }
     public Polariteit? polariteit { get; set; }
     public string opleiding { get; set; }
+    public string trend { get; set; }
 
     public GrafiekOnderwerp grafiekOnderwerp { get; set; }
     public GrafiekType grafiekType { get; set; }

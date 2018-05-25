@@ -11,97 +11,217 @@
     <title>ElementBeherenPage</title>
 </head>
 <body>
-    <div class="list-group">
-        <h2>Thema's</h2>
-        @foreach (var item in Model)
-        {
-            if (item.GetType().ToString().ToLower().Contains("thema"))
-            {
-            <table style="width:100%">
-                <tr>
-                    <td>
-                        <p class="list-group-item">@item.naam</p>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("EditThema", "UIElement", new { elementId = item.element_id})">Edit</a>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id})">Delete</a>
-                    </td>
-                </tr>
-            </table>
-            }
-        }
-        <a href="@Url.Action("CreateThema", "UIElement")" class="list-group-item">Nieuw thema maken</a>
-        <h2>Organisaties</h2>
-        @foreach (var item in Model)
-        {
-            if (item.GetType().ToString().ToLower().Contains("organisatie"))
-            {
-                if (item.twitter == null)
-                {
-                    item.twitter = "(geen twitter meegegeven)";
-                }
-                if (item.facebook == null)
-                {
-                    item.facebook = "(geen facebook meegegeven)";
-                }
-                <table style="width:100%">
-                    <tr>
-                        <td>
-                            <p class="list-group-item">@item.naam - @item.twitter - @item.facebook</p>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("EditOrganisatie", "UIElement", new { elementId = item.element_id})">Edit</a>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id})">Delete</a>
-                        </td>
-                    </tr>
-                </table>
-            }
-        }
-        <a href="@Url.Action("CreateOrganisatie", "UIElement")" class="list-group-item">Nieuwe organisatie maken</a>
-        <h2>Personen</h2>
-        @foreach (var item in Model)
-        {
+    @*THEMA's*@
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thema's</h2>
+                    <ul class="nav navbar-right panel_toolbox">
 
-            if (item.GetType().ToString().ToLower().Contains("persoon"))
-            {
-                if (item.twitter == null)
-                {
-                    item.twitter = "(geen twitter meegegeven)";
-                }
-                if (item.facebook == null)
-                {
-                    item.facebook = "(geen facebook meegegeven)";
-                }
-                if (item.organisation == null)
-                {
-                    item.organisation = "(geen organisatie meegegeven)";
-                }
-                if (item.town == null)
-                {
-                    item.town = "(geen gemeente meegegeven)";
-                }
-            <table style="width:100%">
-                <tr>
-                    <td>
-                        <p class="list-group-item">@item.naam - @item.twitter - @item.facebook - @item.organisation - @item.town - @item.geboorteDatum</p>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("EditPersoon", "UIElement", new { elementId = item.element_id})">Edit</a>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id})">Delete</a>
-                    </td>
-                </tr>
-            </table>
 
-            }
-        }
-        <a href="@Url.Action("CreatePersoon", "UIElement")" class="list-group-item">Nieuwe persoon maken</a>
-      
+
+                        <li>
+                            <a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Element</th>
+                                <th>Edit</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                              int countThemas = 0;
+                              foreach (var item in Model)
+                              {
+
+                                  if (item.GetType().ToString().ToLower().Contains("thema"))
+                                  {
+                                      countThemas++;
+                                <tr>
+                                    <th>@countThemas</th>
+                                    <td>@item.naam</td>
+                                    <td><a href="@Url.Action("EditThema", "UIElement", new { elementId = item.element_id })">Edit</a></td>
+                                    <td><a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id })">Delete</a></td>
+                                </tr>
+                                  }
+                              }
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <a href="@Url.Action("CreateThema", "UIElement")"><button style="float:right" class="btn btn-default">Thema toevoegen</button></a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    @*ORGANISATIES*@
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Organisaties</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+
+
+
+                        <li>
+                            <a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Element</th>
+                                <th>Facebook</th>
+                                <th>Twitter</th>
+                                <th>Edit</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                              int countOrganisaties = 0;
+                              foreach (var item in Model)
+                              {
+                                  if (item.GetType().ToString().ToLower().Contains("organisatie"))
+                                  {
+                                      countOrganisaties++;
+                                      if (item.twitter == null)
+                                      {
+                                          item.twitter = "(geen twitter meegegeven)";
+                                      }
+                                      if (item.facebook == null)
+                                      {
+                                          item.facebook = "(geen facebook meegegeven)";
+                                      }
+
+                                    <tr>
+                                        <th>@countOrganisaties</th>
+                                        <td>@item.naam</td>
+                                        <td>@item.facebook</td>
+                                        <td>@item.twitter</td>
+                                        <td><a href="@Url.Action("EditOrganisatie", "UIElement", new { elementId = item.element_id })">Edit</a></td>
+                                        <td><a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id })">Delete</a></td>
+                                        <td></td>
+                                    </tr>
+                                  }
+                              }
+                            }
+
+                        </tbody>
+                    </table>
+                    <a href="@Url.Action("CreateOrganisatie", "UIElement")"><button style="float:right" class="btn btn-default">Organisatie toevoegen</button></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*PERSONEN*@
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Personen</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+
+
+
+                        <li>
+                            <a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Element</th>
+                                <th>Organisatie</th>
+                                <th>Gemeente</th>
+                                <th>Facebook</th>
+                                <th>Twitter</th>
+                                <th>Geboortedatum</th>
+                                <th>Edit</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+
+                              int personenCount = 0;
+                              foreach (var item in Model)
+                              {
+
+                                  if (item.GetType().ToString().ToLower().Contains("persoon"))
+                                  {
+
+                                      personenCount++;
+                                      if (item.twitter == null)
+                                      {
+
+                                          item.twitter = "(geen twitter meegegeven)";
+                                      }
+                                      if (item.facebook == null)
+                                      {
+                                          item.facebook = "(geen facebook meegegeven)";
+                                      }
+                                      if (item.organisation == null)
+                                      {
+                                          item.organisation = "(geen organisatie meegegeven)";
+                                      }
+                                      if (item.town == null)
+                                      {
+                                          item.town = "(geen gemeente meegegeven)";
+                                      }
+
+
+                                    @*@item.naam - @item.twitter - @item.facebook - @item.organisation - @item.town - @item.geboorteDatum*@
+                                    <tr>
+                                        <th>@personenCount</th>
+                                        <td style="word-wrap:break-word;max-width:100px">@item.naam</td>
+                                        <td style="word-wrap:break-word;max-width:100px">@item.organisation</td>
+                                        <td style="word-wrap:break-word;max-width:100px">@item.town</td>
+                                        <td style="word-wrap:break-word;max-width:100px">@item.facebook</td>
+                                        <td style="word-wrap:break-word;max-width:100px">@item.twitter</td>
+                                        <td style="word-wrap:break-word;max-width:100px">@item.geboorteDatum</td>
+                                        <td style="word-wrap:break-word;max-width:100px"><a href="@Url.Action("EditPersoon", "UIElement", new { elementId = item.element_id})">Edit</a></td>
+                                        <td style="word-wrap:break-word;max-width:100px"><a href="@Url.Action("DeleteElement", "UIElement", new { element_id = item.element_id})">Delete</a></td>
+                                    </tr>
+
+                                  }
+                              }
+                            }
+
+                        </tbody>
+                    </table>
+                    <a href="@Url.Action("CreatePersoon", "UIElement")"><button style="float:right" class="btn btn-default">Persoon toevoegen</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
 </html>

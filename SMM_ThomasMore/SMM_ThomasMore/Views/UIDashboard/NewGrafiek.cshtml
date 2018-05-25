@@ -19,26 +19,31 @@
     new { @class = "form-control" })
     </td>
 </tr>
-<tr>
-    <td>Grafiektype </td>
-    <td>
-        @Html.EnumDropDownListFor(
+    @if (Model.grafiek.grafiekType.ToString().Equals("GETAL"))
+    {
+    <tr>
+        <td>Grafiektype </td>
+        <td>
+            @Html.EnumDropDownListFor(
     x => x.grafiek.grafiekType,
     "Selecteer grafiekType",
     new { @class = "form-control" })
-    </td>
-</tr>
+        </td>
+    </tr>
     <tr>
         <td><h2>Elementen</h2></td>
     </tr>
     <tr>
         <td>Voeg element toe </td>
-        <td>@Html.EditorFor(model => model.elementNaam, new { htmlAttributes = new { placeholder = "Elementnaam", @class = "form-control" } })
-        <input type="submit" value="Add Element" class="btn btn-info"></td>
-    </tr>
-<tr>
-    <td><h2>Filters (leeg laten voor elke optie)</h2></td>
+        <td>
+            @Html.EditorFor(model => model.elementNaam, new { htmlAttributes = new { placeholder = "Elementnaam", @class = "form-control" } })
+        <input type="submit" value="Add Element" class="btn btn-info">
+    </td>
 </tr>
+        }
+    <tr>
+        <td><h2>Filters (leeg laten voor elke optie)</h2></td>
+    </tr>
 <tr>
     <td>Begindatum </td>
     <td>@Html.EditorFor(model => model.grafiek.beginDate, new { htmlAttributes = new { type = "date", required = "required" } })</td>

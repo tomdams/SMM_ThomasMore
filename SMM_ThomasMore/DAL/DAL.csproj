@@ -55,6 +55,7 @@
     <Compile Include="EF\SMMDbContext.cs" />
     <Compile Include="EF\SMMDbInitializer.cs" />
     <Compile Include="ElementRepository.cs" />
+    <Compile Include="FormattedDbEntityValidationException.cs" />
     <Compile Include="IDashboardRepository.cs" />
     <Compile Include="IElementRepository.cs" />
     <Compile Include="IPlatformRepository.cs" />

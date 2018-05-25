@@ -3612,7 +3612,7 @@
     <Content Include="Scripts\bootstrap-progressbar.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\politici.json" />
     <Content Include="Content\less\alerts.less" />
@@ -4560,6 +4560,8 @@
     <Content Include="Views\UIElement\NewOrganisatie.cshtml" />
     <Content Include="Views\UIElement\NewPersoon.cshtml" />
     <Content Include="Views\UIUser\NewUser.cshtml" />
+    <Content Include="Views\UIElement\OrganisatiePage.cshtml" />
+    <Content Include="Views\UIElement\ThemaPage.cshtml" />
     <Content Include="Views\Home\ElementSearchBar.cshtml" />
     <Content Include="Views\UIUser\InactiefAccount.cshtml" />
     <Content Include="Views\UIUser\ChangePassword.cshtml" />

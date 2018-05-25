@@ -66,8 +66,18 @@ namespace SMM_ThomasMore.Controllers
         }
 
         internal void deleteElement(int element_id)
+        {
+          mgr.deleteElement(element_id);
+        }
+
+        internal void deleteKeyword(int keyword_id, int element_id)
+        {
+          mgr.deleteKeyword(keyword_id, element_id);
+        }
+
+    internal void addKeyword(int element_id)
     {
-      mgr.deleteElement(element_id);
+      mgr.addKeyword(element_id);
     }
   }
 }

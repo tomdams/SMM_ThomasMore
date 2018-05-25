@@ -33,7 +33,7 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 20%;
+        width: 80%;
     }
 
     /* The Close Button */
@@ -62,10 +62,10 @@
 }
 
 <div id="myModal" class="modal">
+
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <span>Geef aan welk type alert je wil ontvangen voor deze persoon</span>
         <ul>
             <li>
                 <a href='@Url.Action("volgElement","UIElement", new { type =  1})' class="btn btn-dark">Web Notification</a>
@@ -79,22 +79,6 @@
         </ul> 
     </div>
 
-</div>
-
-<div id="myModal1" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <span>Geef aan welk type alert je wil ontvangen voor deze persoon</span>
-        <ul>
-            <li>
-                <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = Model.element_id, type =  0})' class="btn btn-dark">Grafiek</a>
-            </li>
-            <li>
-                <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = Model.element_id, type =  1})' class="btn btn-dark">Getal</a>
-            </li>
-        </ul>
-    </div>
 </div>
 
 <div class="col-md-3 col-xs-12 widget widget_tally_box">
@@ -144,9 +128,8 @@
             </form>
 
             <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
-            <button id="myBtn1" class="btn-dark">Create grafiek</button>
 
-            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen (@Model.trend)</p>
+            <p style="font-size:1.7em;font-weight:bold;font-style:italic">@Html.DisplayFor(m => m.aantalVermeldingen) vermeldingen</p>
         </div>
     </div>
 </div>
@@ -178,18 +161,18 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            @if (Model.verhalen != null)
+
+            @if(Model.verhalen != null) { 
+            for (int index = 0; index < Model.verhalen.Count(); index++)
             {
-                for (int index = 0; index < Model.verhalen.Count(); index++)
+                if (Model.verhalen[index].ToString().Length >= 110)
                 {
-                    if (Model.verhalen[index].ToString().Length >= 110)
-                    {
-                        String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
-                <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
-                    }
-                    else
-                    {
-                <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
+                    String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
+                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
+                }
+                else
+                {
+                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
                     }
                 }
             }
@@ -228,12 +211,15 @@
 
             @if (Model.woorden != null)
             {
-                for (var i = 0; i < Model.woorden.Length; i++)
-                {
+            for (var i = 0; i < Model.woorden.Length; i++)
+            {
 
-                <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.woorden[i]))</button>
+            <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.woorden[i]))</button>
                 }
             }
+
+
+
         </div>
     </div>
 </div>
@@ -491,11 +477,9 @@
             <script>
                                             // Get the modal
                                             var modal = document.getElementById('myModal');
-                                            var modal1 = document.getElementById('myModal1');
 
                                             // Get the button that opens the modal
                                             var btn = document.getElementById("myBtn");
-                                            var btn1 = document.getElementById("myBtn1");
 
                                             // Get the <span> element that closes the modal
                                             var span = document.getElementsByClassName("close")[0];
@@ -504,14 +488,10 @@
                                             btn.onclick = function () {
                                                 modal.style.display = "block";
                                             }
-                                            btn1.onclick = function () {
-                                                modal1.style.display = "block";
-                                            }
 
                                             // When the user clicks on <span> (x), close the modal
                                             span.onclick = function () {
                                                 modal.style.display = "none";
-                                                modal1.style.display = "none";
                                             }
 
                                             // When the user clicks anywhere outside of the modal, close it
@@ -520,12 +500,10 @@
                                                     modal.style.display = "none";
                                                 }
                                             }
-                                            window.onclick = function (event) {
-                                                if (event.target == modal1) {
-                                                    modal1.style.display = "none";
-                                                }
-                                            }
             </script>
+
+
+
         </div>
     </div>
 </div>
