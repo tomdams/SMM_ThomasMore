@@ -11,7 +11,7 @@ namespace SMM_ThomasMore.Controllers
   public class HomeController : Controller
   {
         private ElementController elController;
-        private SMController sMController;
+        private static SMController sMController;
         private UserController uController;
         private static bool ingelezen = false;
         private DashboardController dbController;
@@ -22,21 +22,24 @@ namespace SMM_ThomasMore.Controllers
             elController = new ElementController();
             sMController = new SMController();
             dbController = new DashboardController();
-            pController = new PlatformController();
-          if (UserController.currentUser != null)
+            pController = new PlatformController();      
+
+        if (UserController.currentUser != null)
           {
             uController = new UserController();
             UserController.currentUser = uController.getUser(UserController.currentUser.username, UserController.currentUser.wachtwoord);
           }
         }
+
+        
         public ActionResult Index()
-        {
+            {
        
             PlatformController.currentDeelplatform = pController.GetDeelplatform(1);
             if (!ingelezen)
             {
                elController.politiciInlezen();
-               // dbController.UpdateGrafieken(1);
+               sMController.readMessages(PlatformController.currentDeelplatform.id);
                 ingelezen = true;
             }
 
@@ -80,6 +83,5 @@ namespace SMM_ThomasMore.Controllers
 
             return View();
     }
-
-    }
+  }
 }

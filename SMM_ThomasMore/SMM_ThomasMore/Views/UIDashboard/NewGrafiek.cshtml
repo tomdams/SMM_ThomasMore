@@ -10,17 +10,16 @@
         <td>Titel </td>
         <td>@Html.EditorFor(model => model.grafiek.titel, new { htmlAttributes = new { placeholder = "Titel", @class = "form-control" } })</td>
     </tr>
+    
     <tr>
-        <td>Aantal vermeldingen per </td>
+        <td>Onderwerp </td>
         <td>
             @Html.EnumDropDownListFor(
     x => x.grafiek.grafiekOnderwerp,
     "Selecteer onderwerp",
     new { @class = "form-control" })
-    </td>
-</tr>
-    @if (Model.grafiek.grafiekType.ToString().Equals("GETAL"))
-    {
+        </td>
+    </tr>
     <tr>
         <td>Grafiektype </td>
         <td>
@@ -40,7 +39,6 @@
         <input type="submit" value="Add Element" class="btn btn-info">
     </td>
 </tr>
-        }
     <tr>
         <td><h2>Filters (leeg laten voor elke optie)</h2></td>
     </tr>

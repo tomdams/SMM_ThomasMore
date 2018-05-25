@@ -152,15 +152,26 @@ namespace SC.BL
       {
         if (m.date > startDate && m.date < endDate)
         {
-          if (m.persons.ToLower().Contains(e.naam.ToLower()))
+          if (e.GetType().ToString().ToLower().Contains("persoon") || e.GetType().ToString().ToLower().Contains("organisatie"))
           {
-            aantalVermeldingen++;
-          }
-          else
-          {
-            if (m.words.ToLower().Contains(e.naam.ToLower()))
+            if (m.persons.ToLower().Contains(e.naam.ToLower()))
             {
               aantalVermeldingen++;
+            }
+            else if (m.words.ToLower().Contains(e.naam.ToLower()))
+            {
+              aantalVermeldingen++;
+            }
+          }
+          if (e.GetType().ToString().ToLower().Contains("thema"))
+          {
+            Thema t = repo.GetThema(e.element_id);
+            foreach (Keyword k in t.keywords)
+            {
+              if (m.words.ToLower().Contains(k.woord.ToLower()))
+              {
+                aantalVermeldingen++;
+              }
             }
           }
         }

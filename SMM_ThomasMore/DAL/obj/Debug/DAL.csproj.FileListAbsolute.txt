@@ -13,6 +13,7 @@ C:\School\2\Integratie\Project5\SMM_ThomasMore\DAL\obj\Debug\DAL.csprojResolveAs
 C:\School\2\Integratie\Project5\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\School\2\Integratie\Project5\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
 C:\School\2\Integratie\Project5\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+<<<<<<< HEAD
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll.config
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.pdb
@@ -28,3 +29,20 @@ D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csprojResolveA
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
 D:\Integratie\new\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+=======
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll.config
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.xml
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.xml
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+>>>>>>> 779588e89dc596f689d9ba4376ebe77e8e8a0a5a

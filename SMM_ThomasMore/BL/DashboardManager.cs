@@ -237,7 +237,6 @@ namespace SMM_ThomasMore.BL
           y_as += countVermeldingen(g.elements.First(), g.beginDate, g.eindDate, g.leeftijd, g.geslacht, g.polariteit, "-");
           x_as = "+, -";
         }
-        
       }
       g.x_as = x_as;
       g.y_as = y_as;
@@ -290,21 +289,32 @@ namespace SMM_ThomasMore.BL
 
                 if ((polariteit is null) || (polariteit.Equals(p)))
                 {
-                  if (m.persons.ToLower().Contains(e.naam.ToLower()))
+                  if (e.GetType().ToString().ToLower().Contains("persoon") || e.GetType().ToString().ToLower().Contains("organisatie"))
                   {
-                    aantalVermeldingen++;
-                  }
-                  else
-                  {
-                    if (m.words.ToLower().Contains(e.naam.ToLower()))
+                    if (m.persons.ToLower().Contains(e.naam.ToLower()))
+                    {
+                      aantalVermeldingen++;
+                    }
+                    else if (m.words.ToLower().Contains(e.naam.ToLower()))
                     {
                       aantalVermeldingen++;
                     }
                   }
+                    if (e.GetType().ToString().ToLower().Contains("thema"))
+                    {
+                      Thema t = repo.GetThema(e.element_id);
+                      foreach(Keyword k in t.keywords)
+                      {
+                        if (m.words.ToLower().Contains(k.woord.ToLower()))
+                        {
+                          aantalVermeldingen++;
+                        }
+                      }
+                    }
+                  }  
                 }
               }
             }
-          }
         }
       }
       return aantalVermeldingen;

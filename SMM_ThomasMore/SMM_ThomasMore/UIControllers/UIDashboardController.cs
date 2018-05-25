@@ -32,7 +32,7 @@ namespace SMM_ThomasMore.UIControllers
       return View();
     }
 
-    public ActionResult NewGrafiek(int eid, int type)
+    public ActionResult NewGrafiek(int eid)
     {
       lastGrafiekVM = new WebGrafiekVM();
       lastGrafiekVM.grafiek.elements.Add(ec.GetElement(eid));

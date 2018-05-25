@@ -73,7 +73,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/cerclebackgroundpurple"
+                            android:background="@drawable/cerclebackorangie"
                             android:padding="10dp"
                             android:src="@drawable/ic_view_quilt_black_24dp" />
 
@@ -165,7 +165,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/cerclebackgroundpurple"
+                            android:background="@drawable/cerclebackgroundpink"
                             android:src="@drawable/ic_power_settings_new_black_24dp"
                             android:padding="10dp"/>
 

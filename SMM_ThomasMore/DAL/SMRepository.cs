@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SMM_ThomasMore.Domain;
 
 namespace SC.DAL
 {
@@ -22,6 +23,11 @@ namespace SC.DAL
     {
       smctx.Messages.Add(m);
       smctx.SaveChanges();
+    }
+
+    public Thema GetThema(int id)
+    {
+      return smctx.Themas.Find(id);
     }
 
     IEnumerable<Message> ISMRepository.getMessages()

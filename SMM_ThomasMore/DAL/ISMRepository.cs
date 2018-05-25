@@ -1,4 +1,5 @@
 ﻿using SC.BL.Domain.SocialeMedia;
+using SMM_ThomasMore.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace SC.DAL
   {
     void add(Message m);
     IEnumerable<Message> getMessages();
+    Thema GetThema(int id);
   }
 }

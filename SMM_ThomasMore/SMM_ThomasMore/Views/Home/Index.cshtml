@@ -87,8 +87,23 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+        #welcomeDiv {
+            margin: auto;
+            width: 50%;
+            border: 3px solid black;
+            padding: 10px;
+            text-align: center;
+            font-size: large;
+        }
     </style>
 </head>
+@if (!(User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin")))
+{
+<div id="welcomeDiv">
+    Welkom Op de Sociale Media Monitor. Hier kan een deelplatform kiezen en personen, organisaties en thema's op sociale media opvolgen. Als je je hierboven registreert kan je grafieken op je persoonlijk dashboard plaatsen!
+</div>
+}
+
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
