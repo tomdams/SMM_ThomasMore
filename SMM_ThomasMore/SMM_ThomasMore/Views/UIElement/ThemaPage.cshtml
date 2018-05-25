@@ -1,6 +1,5 @@
 ﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <style>
-
     .dropbtn {
         background-color: lightslategray;
         color: white;
@@ -13,6 +12,7 @@
     .dropdown:hover .dropbtn {
         background-color: #3e8e41;
     }
+
     .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
@@ -50,6 +50,7 @@
             text-decoration: none;
             cursor: pointer;
         }
+
     ul {
         list-style-type: none;
     }
@@ -76,10 +77,11 @@
             <li>
                 <a href='@Url.Action("volgElement","UIElement", new { type =  3})' class="btn btn-dark">Mail</a>
             </li>
-        </ul> 
+        </ul>
     </div>
 
 </div>
+
 
 <div class="col-md-3 col-xs-12 widget widget_tally_box">
     <div class="x_panel fixed_height_390">
@@ -119,9 +121,9 @@
             </div>
             @if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
             {
-                <button id="myBtn" class="btn-dark">Volg Element</button>
+            <button id="myBtn" class="btn-dark">Volg Element</button>
             }
-            
+
 
             <form action="http://localhost:11981/UIElement/leesMessages" method="GET">
                 <input type="submit" class="btn btn-default" value="Lees Messages" />
@@ -133,6 +135,9 @@
         </div>
     </div>
 </div>
+
+@if (Model.keywords.Count <= 5)
+{
 <div class="col-md-3 col-xs-12 widget widget_tally_box">
     <div class="x_panel">
         <div class="x_title">
@@ -159,30 +164,15 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-
-            @if (Model.keywords != null)
+            @for (int index = 0; index < Model.keywords.Count(); index++)
             {
-                if (Model.keywords.Count() > 5)
-                {
-                    for (int index = 0; index < 5; index++)
-                    {
-                    <button type="button" class="btn btn-default" style="width:100%">@Html.DisplayFor(m => (m.keywords[index].woord))</button>
-                    }
-                }
-                else
-                {
-                    for (int index = 0; index < Model.keywords.Count(); index++)
-                    {
-                        <button type="button" class="btn btn-default" style="width:100%">@Html.DisplayFor(m => (m.keywords[index].woord))</button>
-                    }
-                }
-
+            <button type="button" class="btn btn-default" style="width:100%">@Html.DisplayFor(m => (m.keywords[index].woord))</button>
             }
         </div>
     </div>
 </div>
 
-
+}
 
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
@@ -211,18 +201,18 @@
         </div>
         <div class="x_content">
 
-            @if(Model.verhalen != null)
+            @if (Model.verhalen != null)
             {
                 for (int index = 0; index < Model.verhalen.Count(); index++)
                 {
                     if (Model.verhalen[index].ToString().Length >= 110)
                     {
                         String afgekort = Model.verhalen[index].ToString().Substring(0, 110);
-                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
-                }
-                else
-                {
-                    <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
+                <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@afgekort...</button>
+                    }
+                    else
+                    {
+                <button style="width:100%;white-space:normal;word-wrap:break-word" href=@Model.verhalen[index] type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Ga">@Model.verhalen[index].ToString()</button>
                     }
                 }
             }
@@ -260,7 +250,7 @@
         <div class="x_content">
 
             <p>Meest gebrukte woorden:</p>
-            
+
             @if (Model.woorden != null)
             {
                 for (var i = 0; i < Model.woorden.Length; i++)
@@ -269,7 +259,7 @@
                 <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.woorden[i]))</button>
                 }
             }
-            
+
 
 
 
@@ -563,10 +553,48 @@
     </div>
 </div>
 
+@if (Model.keywords.Count > 5)
+{
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Keywords</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            @for (int index = 0; index < Model.keywords.Count(); index++)
+            {
+            <button type="button" class="btn btn-default">@Html.DisplayFor(m => (m.keywords[index].woord))</button>
+            }
+        </div>
+    </div>
+</div>
+
+}
 
 
 
-    
+
+
 
 
 
