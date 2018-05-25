@@ -15,5 +15,6 @@ namespace SMM_ThomasMore.BL
         IEnumerable<User> getUsers();
         User getUser(int id);
         void AddUser(User u, int platformId);
+        List<AlertInstellingen> getAlertInstellingen(User u);
     }
 }

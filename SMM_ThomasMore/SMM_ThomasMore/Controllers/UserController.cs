@@ -125,5 +125,9 @@ namespace SMM_ThomasMore.Controllers
             u.username = vm.nieuweUsername;
             updateUser(u, currentUser.user_id, currentUser);
         }
+        public IEnumerable<AlertInstellingen> getAlertinstellingen() {
+
+            return umgr.getAlertInstellingen(currentUser);
+        }
     }
 }

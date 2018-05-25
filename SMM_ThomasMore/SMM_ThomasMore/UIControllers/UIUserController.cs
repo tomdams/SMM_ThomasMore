@@ -259,8 +259,9 @@ namespace SMM_ThomasMore.Controllers
     [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
     public ActionResult AlertInstellingenPage()
     {
-      return View();
-    }
+            List<AlertInstellingen> alertinstellingen = uc.getAlertinstellingen().ToList();
+            return View(alertinstellingen);
+        }
 
     [Authorize(Roles = "superadmin,admin")]
     public ActionResult PlatformbeheerPage()

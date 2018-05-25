@@ -56,7 +56,7 @@ namespace SMM_ThomasMore.DAL
 
         public IEnumerable<AlertInstellingen> GetAlertInstellingen()
         {
-           return uctx.AlertInstellingen.ToList<AlertInstellingen>();
+            return uctx.AlertInstellingen.ToList();
         }
 
         public IEnumerable<User> getUsers()
