@@ -15,51 +15,51 @@ namespace SC.BL
 {
   public class SMManager : ISMManager
   {
-        private ISMRepository repo;
-        private IElementRepository elementrepo;
-        private IElementManager em;
-        private IDashboardManager dbManager;
-        private readonly int MINIMUM = 10;
-        private static DateTime lastRead = new DateTime(2018, 04, 25);
-        private DateTime today = new DateTime(2018, 04, 29);
+    private ISMRepository repo;
+    private IElementRepository elementrepo;
+    private IElementManager em;
+    private IDashboardManager dbManager;
+    private readonly int MINIMUM = 10;
+    private static DateTime lastRead = new DateTime(2018, 04, 25);
+    private DateTime today = new DateTime(2018, 04, 29);
 
     public object UserController { get; private set; }
 
     public void checkTrending(int platform_id)
-        {
-            //elements ophalen
-            elementrepo = new ElementRepository();
-            List<Element> elements = elementrepo.getElements(platform_id).ToList();
+    {
+      //elements ophalen
+      elementrepo = new ElementRepository();
+      List<Element> elements = elementrepo.getElements(platform_id).ToList();
 
-            foreach (Element e in elements)
-            {
-                if (checkTrending(e))
-                {
-                    em.genereerAlerts(e);
-                }
-            }
+      foreach (Element e in elements)
+      {
+        if (checkTrending(e))
+        {
+          em.genereerAlerts(e);
         }
+      }
+    }
 
-        public bool checkTrending(Element e)
+    public bool checkTrending(Element e)
+    {
+      //tijdspanne vermeldingen veranderen
+      int vermeldingenVandaag = countVermeldingen(e, today.AddDays(-1), today);
+
+      if (vermeldingenVandaag > MINIMUM)
+      {
+        //gemiddelde van de laatste 3 dagen berekenen
+        double gemiddeldeVermeldingen = 0;
+        string history = "";
+
+        for (int i = 1; i < 4; i++)
         {
-            //tijdspanne vermeldingen veranderen
-            int vermeldingenVandaag = countVermeldingen(e, today.AddDays(-1), today);
+          gemiddeldeVermeldingen += countVermeldingen(e, today.AddDays(0 - (i + 1)), today.AddDays(0 - i));
+          history += e.naam + " dag(en) geleden " + i + ": " + countVermeldingen(e, today.AddDays(0 - (i + 1)), today.AddDays(0 - i)) + "\n";
+        }
+        gemiddeldeVermeldingen /= 3;
 
-            if (vermeldingenVandaag > MINIMUM)
-            {
-                //gemiddelde van de laatste 3 dagen berekenen
-                double gemiddeldeVermeldingen = 0;
-                string history = "";
-
-                for (int i = 1; i < 4; i++)
-                {
-                    gemiddeldeVermeldingen += countVermeldingen(e, today.AddDays(0 - (i + 1)), today.AddDays(0 - i));
-                    history += e.naam + " dag(en) geleden " + i + ": " + countVermeldingen(e, today.AddDays(0 - (i + 1)), today.AddDays(0 - i)) + "\n";
-                }
-                gemiddeldeVermeldingen /= 3;
-
-                if (vermeldingenVandaag > (gemiddeldeVermeldingen * 1.15))
-                {
+        if (vermeldingenVandaag > (gemiddeldeVermeldingen * 1.15))
+        {
           /*
           System.Diagnostics.Debug.WriteLine(e.naam + " is trending");
           System.Diagnostics.Debug.WriteLine(e.naam + " vermeldingen vandaag " + vermeldingenVandaag);
@@ -68,81 +68,81 @@ namespace SC.BL
           System.Diagnostics.Debug.WriteLine(e.naam + " 3 dag geleden: " + countVermeldingen(e, today.AddDays(0 - (4)), today.AddDays(-3)));
           */
           return true;
-                }
-            }
-            return false;
         }
+      }
+      return false;
+    }
 
-        public void readMessages(int platform_id)
+    public void readMessages(int platform_id)
     {
-            //repo maken
-            repo = new SMRepository();
-            em = new ElementManager();
-            dbManager = new DashboardManager();
+      //repo maken
+      repo = new SMRepository();
+      em = new ElementManager();
+      dbManager = new DashboardManager();
 
       string json = "";
-            using (var client = new System.Net.Http.HttpClient())
-            {
-                var uri = "https://kdg.textgain.com/query";
-                var httpRequest = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Post, uri);
-                var content = "{ \"since\":\"" + lastRead.ToString("dd MMM yyyy HH:mm:ss") + "\",\n" +
-                "\"until\":\"30 april 2018 22:00\" }";
+      using (var client = new System.Net.Http.HttpClient())
+      {
+        var uri = "https://kdg.textgain.com/query";
+        var httpRequest = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Post, uri);
+        var content = "{ \"since\":\"" + lastRead.ToString("dd MMM yyyy HH:mm:ss") + "\",\n" +
+        "\"until\":\"30 april 2018 22:00\" }";
         httpRequest.Content = new System.Net.Http.StringContent(content, Encoding.UTF8, "application/json");
-                httpRequest.Headers.Add("X-API-Key", "aEN3K6VJPEoh3sMp9ZVA73kkr");
-                httpRequest.Headers.Add("Accept", "application/json; charset=utf-8");
+        httpRequest.Headers.Add("X-API-Key", "aEN3K6VJPEoh3sMp9ZVA73kkr");
+        httpRequest.Headers.Add("Accept", "application/json; charset=utf-8");
 
-                System.Net.Http.HttpResponseMessage response = client.SendAsync(httpRequest).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    json = response.Content.ReadAsStringAsync().Result;
-                }
-            };
-
-            dynamic array = JsonConvert.DeserializeObject(json);
-            foreach (var item in array)
-            {
-                DateTime date = item.date;
-                Message m = new Message();
-                m.id = item.id;
-                m.source = item.source;
-                m.geo = item.geo.ToString();
-                m.mentions = item.mentions.ToString();
-                m.retweet = item.retweet;
-                m.date = date;
-                m.words = item.words.ToString();
-                if (item.sentiment.ToString() is null)
-                {
-                  m.sentiment = "";
-                }
-                else
-                {
-                  m.sentiment = item.sentiment.ToString();
-                }
-                m.hashtags = item.hashtags.ToString();
-                m.urls = item.urls.ToString();
-                m.themas = item.themes.ToString();
-                m.persons = item.persons.ToString();
-                m.age = item.profile.age;
-                if (item.profile.gender.ToString().ToLower().Equals("m"))
-                {
-                    m.geslacht = Geslacht.Man;
-                }
-                else
-                {
-                    m.geslacht = Geslacht.Vrouw;
-                }
-                m.education = item.profile.education;
-                m.personality = item.profile.personality;
-                m.language = item.profile.language;
-
-                repo.add(m);
-            }
-
-            checkTrending(platform_id);
-            dbManager.updateGrafieken(platform_id);
-            //Commentaar weghalen
-            lastRead = DateTime.Now;
+        System.Net.Http.HttpResponseMessage response = client.SendAsync(httpRequest).Result;
+        if (response.IsSuccessStatusCode)
+        {
+          json = response.Content.ReadAsStringAsync().Result;
         }
+      };
+
+      dynamic array = JsonConvert.DeserializeObject(json);
+      foreach (var item in array)
+      {
+        DateTime date = item.date;
+        Message m = new Message();
+        m.id = item.id;
+        m.source = item.source;
+        m.geo = item.geo.ToString();
+        m.mentions = item.mentions.ToString();
+        m.retweet = item.retweet;
+        m.date = date;
+        m.words = item.words.ToString();
+        if (item.sentiment.ToString() is null)
+        {
+          m.sentiment = "";
+        }
+        else
+        {
+          m.sentiment = item.sentiment.ToString();
+        }
+        m.hashtags = item.hashtags.ToString();
+        m.urls = item.urls.ToString();
+        m.themas = item.themes.ToString();
+        m.persons = item.persons.ToString();
+        m.age = item.profile.age;
+        if (item.profile.gender.ToString().ToLower().Equals("m"))
+        {
+          m.geslacht = Geslacht.Man;
+        }
+        else
+        {
+          m.geslacht = Geslacht.Vrouw;
+        }
+        m.education = item.profile.education;
+        m.personality = item.profile.personality;
+        m.language = item.profile.language;
+
+        repo.add(m);
+      }
+
+      checkTrending(platform_id);
+      dbManager.updateGrafieken(platform_id);
+      //Commentaar weghalen
+      lastRead = DateTime.Now;
+    }
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
     {
@@ -166,6 +166,6 @@ namespace SC.BL
         }
       }
       return aantalVermeldingen;
-    }           
-            }          
+    }
+  }
 }
