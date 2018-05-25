@@ -59,13 +59,13 @@ namespace SC.BL
         gemiddeldeVermeldingen /= 3;
 
         if (vermeldingenVandaag > (gemiddeldeVermeldingen * 1.15))
-        {
-        
+
           return true;
-        }
       }
       return false;
     }
+
+
 
     public void readMessages(int platform_id)
     {
@@ -134,6 +134,7 @@ namespace SC.BL
 
       checkTrending(platform_id);
       dbManager.updateGrafieken(platform_id);
+
       lastRead = DateTime.Now;
     }
 
