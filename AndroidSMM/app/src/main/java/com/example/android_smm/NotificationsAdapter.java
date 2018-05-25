@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android_smm.Domain.Alert;
@@ -48,9 +49,12 @@ public class NotificationsAdapter extends ArrayAdapter<Alert>
         }
 
         TextView tvOnderwerp = (TextView) convertView.findViewById(R.id.tvOnderwerp);
-        TextView tvDatum = (TextView) convertView.findViewById(R.id.tvDatum);
+
+        ImageView ivNotificaion = (ImageView) convertView.findViewById(R.id.ivNotification);
 
         tvOnderwerp.setText(alert.getMessage());
+        ivNotificaion.setImageResource(R.drawable.notification);
+
         //tvDatum.setText(notification.getDatum()+"");
 
         return convertView;
