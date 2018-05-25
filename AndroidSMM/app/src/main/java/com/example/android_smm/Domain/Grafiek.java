@@ -64,20 +64,48 @@ public class Grafiek implements Serializable{
         return returnList;
     }
 
-    public String getY_as1() {
-        return y_as1;
+    public ArrayList<Integer> getY_as1() {
+        String[] cijfers = y_as1.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
     }
 
-    public String getY_as2() {
-        return y_as2;
+    public ArrayList<Integer> getY_as2() {
+        String[] cijfers = y_as2.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
     }
 
-    public String getY_as3() {
-        return y_as3;
+    public ArrayList<Integer> getY_as3() {
+        String[] cijfers = y_as3.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
     }
 
-    public String getY_as4() {
-        return y_as4;
+    public ArrayList<Integer> getY_as4() {
+        String[] cijfers = y_as4.split(", ");
+        ArrayList<Integer> returnList = new ArrayList();
+
+        for (String cijfer : cijfers) {
+            returnList.add(Integer.parseInt(cijfer));
+        }
+
+        return returnList;
     }
 
     public String getX_as_beschrijving() {
