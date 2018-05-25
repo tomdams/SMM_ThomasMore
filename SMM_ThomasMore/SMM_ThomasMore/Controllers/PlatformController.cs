@@ -26,5 +26,10 @@ namespace SMM_ThomasMore.Controllers
         {
            return mgr.GetDeelplatform();
         }
+
+        public void updateDeelplatform(Deelplatform d)
+        {
+            mgr.updateDeelplatform(d);
+        }
     }
 }

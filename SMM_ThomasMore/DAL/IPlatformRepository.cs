@@ -11,5 +11,6 @@ namespace SMM_ThomasMore.DAL
   {
     Deelplatform GetDeelplatform(int id);
     IEnumerable<Deelplatform> GetDeelplatformen();
+        void updateDeelplatform(Deelplatform d);
     }
 }
