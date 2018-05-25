@@ -151,8 +151,6 @@ namespace SMM_ThomasMore.BL
             foreach (Message m in smRepo.getMessages())
             {
                 mentioned = false;
-                //   if (m.date > startDate && m.date < endDate)
-                //  {
                 if (m.persons.ToLower().Contains(persoon.naam.ToLower()))
                 {
                     mentioned = true;
@@ -167,7 +165,6 @@ namespace SMM_ThomasMore.BL
                     mentioned = true;
                 }
 
-                //  }
                 {
                     if (mentioned)
                     {
