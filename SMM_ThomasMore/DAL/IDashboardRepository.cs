@@ -19,5 +19,6 @@ namespace SMM_ThomasMore.DAL
     void setElement(int grafiekid, int elementid);
     void RemoveGrafiek(int id, int platform_Id);
     Dashboard GetAdminDashboard(int platformid);
+    Thema GetThema(int id);
   }
 }

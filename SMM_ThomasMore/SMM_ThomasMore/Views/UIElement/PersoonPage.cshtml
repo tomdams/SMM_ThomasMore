@@ -9,25 +9,23 @@
         border: none;
     }
 
-    /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {
         background-color: #3e8e41;
     }
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        padding-top: 100px;
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%; 
+        height: 100%; 
+        overflow: auto;
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
     }
 
-    /* Modal Content */
     .modal-content {
         background-color: #fefefe;
         margin: auto;
@@ -36,7 +34,6 @@
         width: 20%;
     }
 
-    /* The Close Button */
     .close {
         color: #aaaaaa;
         float: right;
@@ -62,10 +59,9 @@
 }
 
 <div id="myModal" class="modal">
-
-    <!-- Modal content -->
+   
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" id="closeBtn">&times;</span>
         <span>Geef aan welk type alert je wil ontvangen voor deze persoon</span>
         <ul>
             <li>
@@ -81,6 +77,8 @@
     </div>
 
 </div>
+
+
 
 <div class="col-md-3 col-xs-12 widget widget_tally_box">
     <div class="x_panel fixed_height_390">
@@ -127,10 +125,6 @@
                 <button id="myBtn" class="btn-dark">Volg Element</button>
             }
             
-
-            <form action="http://localhost:11981/UIElement/leesMessages" method="GET">
-                <input type="submit" class="btn btn-default" value="Lees Messages" />
-            </form>
 
             <a href='@Url.Action("NewGrafiek","UIDashboard", new { eid = this.Model.element_id })' class="btn btn-dark">Create Grafiek</a>
 
@@ -476,36 +470,36 @@
                                                 $('.grid-stack').gridstack(options);
                                             });
             </script>
+@if (User.IsInRole("ingelogdegebruiker") || User.IsInRole("admin") || User.IsInRole("superadmin"))
+{
             <script>
-                                            // Get the modal
                                             var modal = document.getElementById('myModal');
+                                            
 
-                                            // Get the button that opens the modal
                                             var btn = document.getElementById("myBtn");
+                                            
 
-                                            // Get the <span> element that closes the modal
-                                            var span = document.getElementsByClassName("close")[0];
+                                            var span = document.getElementById("closeBtn")
+                                            
 
-                                            // When the user clicks the button, open the modal
                                             btn.onclick = function () {
                                                 modal.style.display = "block";
                                             }
+                                            
 
-                                            // When the user clicks on <span> (x), close the modal
                                             span.onclick = function () {
                                                 modal.style.display = "none";
                                             }
-
-                                            // When the user clicks anywhere outside of the modal, close it
-                                            window.onclick = function (event) {
+                                               window.onclick = function (event) {
                                                 if (event.target == modal) {
                                                     modal.style.display = "none";
                                                 }
                                             }
+                                            
             </script>
-
-
-
+}
+                
+            
         </div>
     </div>
 </div>

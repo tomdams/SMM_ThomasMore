@@ -10,35 +10,38 @@
         <td>Titel </td>
         <td>@Html.EditorFor(model => model.grafiek.titel, new { htmlAttributes = new { placeholder = "Titel", @class = "form-control" } })</td>
     </tr>
+    
     <tr>
-        <td>Aantal vermeldingen per </td>
+        <td>Onderwerp </td>
         <td>
             @Html.EnumDropDownListFor(
     x => x.grafiek.grafiekOnderwerp,
     "Selecteer onderwerp",
     new { @class = "form-control" })
-    </td>
-</tr>
-<tr>
-    <td>Grafiektype </td>
-    <td>
-        @Html.EnumDropDownListFor(
+        </td>
+    </tr>
+    <tr>
+        <td>Grafiektype </td>
+        <td>
+            @Html.EnumDropDownListFor(
     x => x.grafiek.grafiekType,
     "Selecteer grafiekType",
     new { @class = "form-control" })
-    </td>
-</tr>
+        </td>
+    </tr>
     <tr>
         <td><h2>Elementen</h2></td>
     </tr>
     <tr>
         <td>Voeg element toe </td>
-        <td>@Html.EditorFor(model => model.elementNaam, new { htmlAttributes = new { placeholder = "Elementnaam", @class = "form-control" } })
-        <input type="submit" value="Add Element" class="btn btn-info"></td>
-    </tr>
-<tr>
-    <td><h2>Filters (leeg laten voor elke optie)</h2></td>
+        <td>
+            @Html.EditorFor(model => model.elementNaam, new { htmlAttributes = new { placeholder = "Elementnaam", @class = "form-control" } })
+        <input type="submit" value="Add Element" class="btn btn-info">
+    </td>
 </tr>
+    <tr>
+        <td><h2>Filters (leeg laten voor elke optie)</h2></td>
+    </tr>
 <tr>
     <td>Begindatum </td>
     <td>@Html.EditorFor(model => model.grafiek.beginDate, new { htmlAttributes = new { type = "date", required = "required" } })</td>
@@ -115,7 +118,7 @@
     {
     <tr>
         <td>@e.naam</td>
-        <td><a href='@Url.Action("DeleteElement","UIDashboard", new { eid = e.element_id })' class="btn btn-dark">CDelete Element</a></td>
+        <td><a href='@Url.Action("DeleteElement","UIDashboard", new { eid = e.element_id })' class="btn btn-dark">Delete Element</a></td>
     </tr>
     }
 </table>
@@ -238,7 +241,6 @@
                                 google.charts.setOnLoadCallback(drawVisualization);
 
                                 function drawVisualization() {
-                                    // Some raw data (not necessarily accurate)
                                     var data = new google.visualization.DataTable();
                                       data.addColumn('string', '@Model.grafiek.x_as_beschrijving');
                                       var namenString = "@Model.grafiek.GetElementNames()";

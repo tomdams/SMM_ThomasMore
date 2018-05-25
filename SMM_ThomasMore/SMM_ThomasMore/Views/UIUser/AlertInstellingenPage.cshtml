@@ -1,7 +1,71 @@
-﻿
-@{
-    ViewBag.Title = "AlertInstellingen";
+﻿@{
+  
 }
 
-<h2>AlertInstellingen</h2>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AlertInstellingen</title>
+</head>
+<body>
+    @*Users*@
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+
+                    <h2>Alertinstellingen</h2>
+
+                    <ul class="nav navbar-right panel_toolbox">
+
+
+
+                        <li>
+                            <a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Element</th>
+                                <th>Type Alert</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int countElement = 0;
+                                foreach (var item in Model)
+                                {
+                                    countElement++;
+                                    <tr>
+                                        <th>@countElement</th>
+                                        <td>@item.user.username</td>
+                                        <td>@item.element.naam</td>
+                                        <td>@item.type</td>
+                                    </tr>
+                                }
+
+                            }
+
+
+                        </tbody>
+                    </table>         
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>

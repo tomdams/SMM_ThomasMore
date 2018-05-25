@@ -203,5 +203,17 @@ namespace SMM_ThomasMore.BL
     {
       repo.setALertGelezen(alert_id);
     }
-  }
+
+
+        public List<AlertInstellingen> getAlertInstellingen(User u)
+        {
+            List<AlertInstellingen> aiList = new List<AlertInstellingen>();
+            foreach (AlertInstellingen ai in repo.GetAlertInstellingen()) {
+                if (ai.user.Equals(u)) {
+                    aiList.Add(ai);
+                }
+            }
+            return aiList;
+        }
+    }
 }

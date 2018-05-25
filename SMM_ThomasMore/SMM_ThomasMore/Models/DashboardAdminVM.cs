@@ -9,8 +9,8 @@ namespace SMM_ThomasMore.Models
     {
       
         public int dashboardid { get; set; }
-        public bool adminDashboard { get; set; }        
-       
-     
+        public bool adminDashboard { get; set; }
+        public string usernameAdmin { get; set; }
+
     }
 }

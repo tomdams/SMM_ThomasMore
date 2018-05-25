@@ -273,6 +273,11 @@ namespace SMM_ThomasMore.DAL
       return ctx.Messages.ToList();
     }
 
+    public Thema GetThema(int id)
+    {
+      return ctx.Themas.Find(id);
+    }
+
     public void RemoveGrafiek(int id, int dashboardId)
     {
       if (ctx.Dashboards.Find(dashboardId).adminDashboard)
