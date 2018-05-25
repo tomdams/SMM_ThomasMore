@@ -76,3 +76,38 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
 C:\Users\Mario\Desktop\skool\intrgratie\V2\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.xml
+<<<<<<< HEAD
+=======
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v3\SMM_ThomasMore\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\SC.BL.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\SC.BL.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\SC.BL.Domain.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\SC.DAL.pdb
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\SC.DAL.dll.config
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\EntityFramework.xml
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\Newtonsoft.Json.xml
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\obj\Debug\SC.BL.dll
+E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\SMM_ThomasMore\BL\obj\Debug\SC.BL.pdb
+>>>>>>> d770f50f904797a3132e504064e5938ba30cfb37

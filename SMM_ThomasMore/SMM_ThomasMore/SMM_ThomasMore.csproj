@@ -163,6 +163,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\AndroidModels\AndroidAlertVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidDeelplatformVM.cs" />
+    <Compile Include="Models\AndroidModels\AndroidElementVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidGrafiekVM.cs" />
     <Compile Include="Models\AndroidModels\AndroidUserVM.cs" />
     <Compile Include="Models\ChangeAccountModels\ChangeEmailVM.cs" />
@@ -4564,6 +4565,8 @@
     <Content Include="Views\UIUser\ChangePassword.cshtml" />
     <Content Include="Views\UIUser\ChangeUsername.cshtml" />
     <Content Include="Views\UIUser\ChangeEmail.cshtml" />
+    <Content Include="Views\UIUser\DeelplatformenBeherenPage.cshtml" />
+    <Content Include="Views\UIUser\NewDeelplatform.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

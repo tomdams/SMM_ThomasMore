@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>UserBeherenPage</title>
+    <title>DeelplatformenBeherenPage</title>
 </head>
 <body>
     @*Users*@
@@ -15,11 +15,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-<<<<<<< HEAD
-                    <h2>Thema's</h2>
-=======
-                    <h2>Users</h2>
->>>>>>> d770f50f904797a3132e504064e5938ba30cfb37
+                    <h2>Deelplatformen</h2>
                     <ul class="nav navbar-right panel_toolbox">
 
 
@@ -36,24 +32,21 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Naam</th>
-                                <th>Role</th>
-                                <th>E-mail</th>
+                                <th>Naam</th>                         
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
                             @{
-                                int countUser = 0;
+                                int countDeelplatform = 0;
                                 foreach (var item in Model)
                                 {
-                                    countUser++;
+                                    countDeelplatform++;
                                     <tr>
-                                        <th>@countUser</th>
-                                        <td>@item.username</td>
-                                        <td>@item.type</td>
-                                        <td>@item.email</td>
-                                        <td><a href="@Url.Action("EditUser", "UIUser", new { userId = item.user_id })">Edit</a></td>
+                                        <th>@countDeelplatform</th>
+                                        <td>@item.naam</td>
+                                
+                                        <td><a href="@Url.Action("EditDeelplatform", "UIUser", new { deelplatformid = item.id })">Edit</a></td>
                                     </tr>
                                 }
 
@@ -63,7 +56,7 @@
                         </tbody>
                     </table>
                     <div style="float:right">
-                        <a href="@Url.Action("ExportUsers", "UIUser")"><button class="btn btn-default">Users exporteren</button></a>
+                     
                         <a href="@Url.Action("CreateUser", "UIUser")"><button class="btn btn-default">User toevoegen</button></a>
                     </div>
 

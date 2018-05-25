@@ -3,7 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidSMM.iml" filepath="$PROJECT_DIR$/AndroidSMM.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+=======
+      <module fileurl="file://E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\AndroidSMM\AndroidSMM.iml" filepath="E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\AndroidSMM\AndroidSMM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\AndroidSMM\app\app.iml" filepath="E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\mariointegration\AndroidSMM\app\app.iml" />
+>>>>>>> d770f50f904797a3132e504064e5938ba30cfb37
     </modules>
   </component>
 </project>

@@ -50,8 +50,16 @@ namespace SMM_ThomasMore.UIControllers
                Deelplatform deelplatform = pc.GetDeelplatform(Convert.ToInt32(deelplatformid));
                Dashboard dashboard = dc.GetDashboard(user, deelplatform);
                List<Grafiek> grafieken = dc.GetGrafieken(dashboard);
-            List<AndroidGrafiekVM> agvm = new List<AndroidGrafiekVM>();
+               List<AndroidGrafiekVM> agvm = new List<AndroidGrafiekVM>();
+            
             foreach (Grafiek g in grafieken) {
+                List<AndroidElementVM> aevm = new List<AndroidElementVM>();
+                foreach (Element e in g.elements) {
+                    aevm.Add(new AndroidElementVM() {
+                        element_id = e.element_id,
+                        naam =e.naam
+                    });
+                }
                 agvm.Add(new AndroidGrafiekVM() {
                     id = g.id,
                     titel = g.titel,
@@ -63,7 +71,7 @@ namespace SMM_ThomasMore.UIControllers
                     y_as4 = g.y_as4,
                     x_as_beschrijving = g.x_as_beschrijving,
                     y_as_beschrijving = g.y_as_beschrijving,
-                    
+                    elements =aevm,
                     leeftijd = g.leeftijd,
                     geslacht = g.geslacht,
                     polariteit = g.polariteit,
@@ -71,6 +79,7 @@ namespace SMM_ThomasMore.UIControllers
                     grafiekOnderwerp = g.grafiekOnderwerp,
                     grafiekType = g.grafiekType,                   
                 });
+           
             }
                string json = JsonConvert.SerializeObject(agvm);
                return json;
