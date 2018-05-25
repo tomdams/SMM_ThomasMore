@@ -101,7 +101,7 @@ public class OverzichtActivity extends AppCompatActivity {
 
 
                                     i++;
-                                    if(i == currentUser.getDeelplatformen().size()){
+                                    if(i >= currentUser.getDeelplatformen().size()){
                                         Intent intent = new Intent(OverzichtActivity.this, DeelplatformActivity.class);
                                         // intent.putExtra("deelplatformen",(Serializable) deelplatforms);
                                         intent.putExtra("currentUser", currentUser);

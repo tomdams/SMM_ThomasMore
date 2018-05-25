@@ -46,3 +46,34 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SM
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
 >>>>>>> 779588e89dc596f689d9ba4376ebe77e8e8a0a5a
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll.config
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll.config
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.DAL.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\SC.BL.Domain.pdb
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.dll
+C:\Users\Mario\Desktop\skool\intrgratie\v2\SMM_ThomasMore\SMM_ThomasMore\DAL\obj\Debug\SC.DAL.pdb
+>>>>>>> 9e3a6c1e2de4d6990791c12e51db6808820f3a72

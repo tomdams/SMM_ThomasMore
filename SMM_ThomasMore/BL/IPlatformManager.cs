@@ -11,5 +11,6 @@ namespace SMM_ThomasMore.BL
   {
     Deelplatform GetDeelplatform(int id);
     List<Deelplatform> GetDeelplatform();
+        void updateDeelplatform(Deelplatform d);
     }
 }

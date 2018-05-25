@@ -56,7 +56,7 @@
 </style>
 
 
-@model SMM_ThomasMore.Domain.Element
+@model SMM_ThomasMore.Domain.Persoon
 @{
   ViewBag.Title = "PersoonPage";
 }
@@ -95,6 +95,10 @@
                         </a>
                     </li>
                     <li>
+                        @if (Model.twitter == null)
+	                    {
+		                    
+	                    }
                         <img src='@Url.Action("TwitterPic","UIElement")' alt="..." class="img-circle profile_img">
                     </li>
                     <li>

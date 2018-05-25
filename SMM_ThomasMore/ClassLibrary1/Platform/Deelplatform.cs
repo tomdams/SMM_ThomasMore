@@ -14,7 +14,7 @@ namespace SMM_ThomasMore.Domain
     public string naam { get; set; }
 
     public virtual ICollection<Element> elements { get; set; }
-    public virtual ICollection<Dashboard> dashboards { get; set; }
+    public virtual List<Dashboard> dashboards { get; set; }
 
     public Deelplatform()
     {

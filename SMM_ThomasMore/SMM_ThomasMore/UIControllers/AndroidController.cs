@@ -98,13 +98,13 @@ namespace SMM_ThomasMore.UIControllers
             }
             aavm.Add(new AndroidAlertVM()
             {
-                Id = 200,
-                message = " voorbeeld message in afwachting van alerts",
+                Id = 2000,
+                message = " voorbeeld voor als er geen alerts zijn",
                 gelezen = false
             });
             aavm.Add(new AndroidAlertVM()
             {
-                Id = 201,
+                Id = 2001,
                 message = " een tweede voorbeeld....",
                 gelezen = false
             });

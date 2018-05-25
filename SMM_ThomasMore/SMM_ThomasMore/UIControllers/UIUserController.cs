@@ -259,8 +259,9 @@ namespace SMM_ThomasMore.Controllers
     [Authorize(Roles = "superadmin,admin,ingelogdegebruiker")]
     public ActionResult AlertInstellingenPage()
     {
-      return View();
-    }
+            List<AlertInstellingen> alertinstellingen = uc.getAlertinstellingen().ToList();
+            return View(alertinstellingen);
+        }
 
     [Authorize(Roles = "superadmin,admin")]
     public ActionResult PlatformbeheerPage()
@@ -362,6 +363,26 @@ namespace SMM_ThomasMore.Controllers
             }
             return View("~/Views/UIUser/AccountInstellingenPage.cshtml");
         }
+
+
+        public ActionResult UpdateDeelplatformNaam(Deelplatform d) {
+            if (!(d.naam is  null))
+            {
+                lastUpdatedDeelplatform.naam = d.naam;
+            }           
+            pc.updateDeelplatform(lastUpdatedDeelplatform);
+            return RedirectToAction("DeelplatformenBeherenPage");
+        }
+
+        public void UpdateDashboard(DashboardAdminVM d) {
+            foreach (Dashboard dashboard in lastUpdatedDeelplatform.dashboards) {
+                string s= "";
+            }
+
+        }
+        
+
+
     }
 
 }

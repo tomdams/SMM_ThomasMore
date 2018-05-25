@@ -29,7 +29,37 @@ namespace SMM_ThomasMore.UIControllers
         {
             return View();
         }
-        [HttpPost]
+
+    public ActionResult ElementPage(string elnaam)
+    {
+      element = elController.GetElement(elnaam);
+
+      if (element != null)
+      {
+        if (element.GetType().ToString().ToLower().Contains("persoon"))
+        {
+          Persoon persoon = (Persoon)element;
+          elController.berekenPersoon(persoon);
+          return View("~/Views/UIElement/PersoonPage.cshtml", persoon);
+        }
+        else if (element.GetType().ToString().ToLower().Contains("thema"))
+        {
+          Thema thema = (Thema)element;
+          //elController.berekenPersoon(persoon);
+          return View("~/Views/UIElement/ThemaPage.cshtml", thema);
+        }
+        else if (element.GetType().ToString().ToLower().Contains("organisatie"))
+        {
+          Organisatie organisatie = (Organisatie)element;
+          //elController.berekenPersoon(persoon);
+          return View("~/Views/UIElement/OrganisatiePage.cshtml", organisatie);
+        }
+      }
+      return View("~/Views/Home/Index.cshtml");
+    }
+
+
+    [HttpPost]
         public ActionResult ElementPage(Element el)
         {
             element = elController.GetElement(el.naam);
@@ -84,28 +114,54 @@ namespace SMM_ThomasMore.UIControllers
         public ActionResult Twitter()
          {
             Persoon persoon = new Persoon();
+            Organisatie organisatie = new Organisatie();
             if (element != null)
             {
-                if (element.GetType() == typeof(Persoon))
+              if (element.GetType().ToString().ToLower().Contains("persoon"))
+              {
+                persoon = elController.getPersoon(element);
+                if (persoon.twitter.Equals(null))
                 {
-                    persoon = elController.getPersoon(element);
+                  return Redirect("https://twitter.com/" + persoon.twitter);
                 }
+              }
+              else if (element.GetType().ToString().ToLower().Contains("organisatie"))
+              {
+                organisatie = (Organisatie)elController.GetElement(element.element_id);
+                if (organisatie.twitter.Equals(null))
+                {
+                  return Redirect("https://twitter.com/" + persoon.twitter);
+                }
+              }
             }
-            return Redirect("https://twitter.com/" + persoon.twitter);
+      return ElementPage(element);
         }
 
         public ActionResult Facebook()
         {
-            Persoon persoon = new Persoon();
-            if (element != null)
-            {
-                if (element.GetType() == typeof(Persoon))
-                {
-                    persoon = elController.getPersoon(element);
-                }
-            }
+      Persoon persoon = new Persoon();
+      Organisatie organisatie = new Organisatie();
+      if (element != null)
+      {
+        if (element.GetType().ToString().ToLower().Contains("persoon"))
+        {
+          persoon = elController.getPersoon(element);
+          if (!persoon.facebook.Equals(null) && !persoon.facebook.Equals(""))
+          {
             return Redirect(persoon.facebook);
+          }
         }
+        else if (element.GetType().ToString().ToLower().Contains("organisatie"))
+        {
+          organisatie = (Organisatie)elController.GetElement(element.element_id);
+          if (!organisatie.facebook.Equals(null) && !persoon.facebook.Equals(""))
+          {
+            return Redirect(persoon.facebook);
+          }
+        }
+      }
+      return ElementPage(element);
+    }
 
         public ActionResult AfterAlertElementPage(int element_id, int alert_id)
         {
@@ -133,14 +189,28 @@ namespace SMM_ThomasMore.UIControllers
     public ActionResult TwitterPic()
     {
       Persoon persoon = new Persoon();
-      if (element != null)
+      Organisatie organisatie = new Organisatie();
+      if(element != null)
       {
         if (element.GetType().ToString().ToLower().Contains("persoon"))
         {
           persoon = elController.getPersoon(element);
+          if (persoon.twitter != null)
+          {
+           return Redirect("https://twitter.com/" + persoon.twitter + "/profile_image?size=original");
+          }
+         
+        }
+        if (element.GetType().ToString().ToLower().Contains("organisatie"))
+        {
+          organisatie = (Organisatie)elController.GetElement(element.naam);
+          if (organisatie.twitter != null)
+          {
+          return Redirect("https://twitter.com/" + organisatie.twitter + "/profile_image?size=original");
+          }
         }
       }
-      return Redirect("https://twitter.com/" + persoon.twitter + "/profile_image?size=original");
+      return File("../Content/images/profile_picture.png", "image/png");
     }
 
     [Authorize(Roles = "superadmin,admin")]
@@ -176,13 +246,13 @@ namespace SMM_ThomasMore.UIControllers
     }
     public ActionResult CreateThema()
     {
-      element = new Organisatie();
-      return View("~/Views/UIElement/NewThema.cshtml");
+      element = new Thema();
+      return View("~/Views/UIElement/NewThema.cshtml",element);
     }
 
     public ActionResult CreatePersoon()
     {
-      element = new Organisatie();
+      element = new Persoon();
       return View("~/Views/UIElement/NewPersoon.cshtml");
     }
     [HttpPost]

@@ -291,17 +291,20 @@ namespace SMM_ThomasMore.DAL
         Thema e = (Thema)getElement(element_id);
         e.naam = nieuw.naam;
         int aantal = e.keywords.Count;
-        for (int i = 0; i < aantal; i++)
+        if (e.keywords != nieuw.keywords)
         {
-          Keyword k = e.keywords[0];
-          ctx.Keywords.Remove(k);
-        } 
+          for (int i = 0; i < aantal; i++)
+            {
+              Keyword k = e.keywords[0];
+              ctx.Keywords.Remove(k);
+            } 
        
-        foreach (var keyword in nieuw.keywords)
-        {
-          ctx.Keywords.Add(keyword);
+            foreach (var keyword in nieuw.keywords)
+            {
+              ctx.Keywords.Add(keyword);
+            }
+            e.keywords = nieuw.keywords;
         }
-        e.keywords = nieuw.keywords;
         ctx.SaveChanges();
       }
       else if (element.GetType().ToString().ToLower().Contains("organisatie"))
