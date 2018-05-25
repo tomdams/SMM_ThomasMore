@@ -13,6 +13,6 @@ namespace SMM_ThomasMore.Domain
     public Thema()
     {
       keywords = new List<Keyword>();
-    }
+      }
   }
 }

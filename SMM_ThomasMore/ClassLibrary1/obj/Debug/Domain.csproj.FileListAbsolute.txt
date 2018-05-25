@@ -29,3 +29,4 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
+C:\School\2\Integratie\Project5\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache

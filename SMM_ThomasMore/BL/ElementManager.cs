@@ -282,5 +282,15 @@ namespace SMM_ThomasMore.BL
     {
       repo.deleteElement(element_id);
     }
+
+    public void deleteKeyword(int keyword_id, int element_id)
+    {
+      repo.deleteKeyword(keyword_id, element_id);
+    }
+
+    public void addKeyword(int element_id)
+    {
+      repo.addKeyword(element_id);
+    }
   }
 }

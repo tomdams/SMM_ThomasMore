@@ -122,6 +122,7 @@ namespace SMM_ThomasMore.DAL
             user.email = u.email;
             user.confirmEmail = u.confirmEmail;
             user.status = u.status;
+            user.wachtwoord = u.wachtwoord;
             uctx.SaveChanges();
         }
 

@@ -1,0 +1,28 @@
+﻿@model SMM_ThomasMore.Models.ChangeAccountModels.ChangeEmailVM
+@{
+
+}
+
+@using (Html.BeginForm("ChangeUserEmail", "UIUser"))
+{
+    <form>
+        <table>
+            <tr>
+                <td>Oude email:  </td>
+                <td>@Html.EditorFor(model => model.email, new { htmlAttributes = new { placeholder = "email", @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })</td>
+            </tr>
+            <tr>
+                <td>Nieuw email:  </td>
+                <td>@Html.EditorFor(model => model.nieuweEmail, new { htmlAttributes = new { placeholder = "nieuwe email", @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(model => model.nieuweEmail, "", new { @class = "text-danger" })</td>
+            </tr>
+            <tr>
+                <td>Herhaal nieuwe email:  </td>
+                <td>@Html.EditorFor(model => model.compareEmail, new { htmlAttributes = new { placeholder = "Herhaal nieuwe email", @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(model => model.compareEmail, "", new { @class = "text-danger" })</td>
+            </tr>
+        </table>
+        <input type="submit" value="Save email" class="btn btn-info">
+    </form>
+}

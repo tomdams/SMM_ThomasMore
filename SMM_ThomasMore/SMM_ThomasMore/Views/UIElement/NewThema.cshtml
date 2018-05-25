@@ -45,6 +45,7 @@
                         {
                         <tr>
                             <td style="word-wrap:break-word;max-width:250px">@Html.EditorFor(m => Model.keywords[i].woord, new { htmlAttributes = new { placeholder = "Keyword", @class = "form-control" } })</td>
+                            <td><a href="@Url.Action("DeleteKeyword", "UIElement", new { keyword_id = Model.keywords[i].id, element_id = Model.element_id })">Delete</a></td>
                         </tr>
                         }
                     }
@@ -52,7 +53,7 @@
 
 
                 <br />
-
+                <a href="@Url.Action("CreateKeyword", "UIElement", new { element_id = Model.element_id })">Create Keyword</a>
                 <input type="submit" value="Save Thema" class="btn btn-primary">
 
             </form>

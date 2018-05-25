@@ -300,7 +300,6 @@ namespace SMM_ThomasMore.DAL
         foreach (var keyword in nieuw.keywords)
         {
           ctx.Keywords.Add(keyword);
-         // e.keywords.Add(keyword);
         }
         e.keywords = nieuw.keywords;
         ctx.SaveChanges();
@@ -397,5 +396,45 @@ namespace SMM_ThomasMore.DAL
             ctx.Activiteiten.Add(a);
             ctx.SaveChanges();
         }
+
+    public void deleteKeyword(int keyword_id, int element_id)
+    {
+      Thema e = (Thema)getElement(element_id);
+      Keyword k = getKeyword(keyword_id);
+      e.keywords.Remove(k);
+      ctx.Keywords.Remove(k);
+      ctx.SaveChanges();
     }
+
+    public Keyword getKeyword(int keyword_id)
+    {
+      return ctx.Keywords.Find(keyword_id);
+    }
+
+    public void addKeyword(int element_id)
+    {
+      try
+      {
+        Thema t = (Thema)getElement(element_id);
+        Keyword k = new Keyword();
+        k.thema = t;
+        t.keywords.Add(k);
+        ctx.SaveChanges();
+      }
+      catch (DbEntityValidationException e)
+      {
+        foreach (var eve in e.EntityValidationErrors)
+        {
+          Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+              eve.Entry.Entity.GetType().Name, eve.Entry.State);
+          foreach (var ve in eve.ValidationErrors)
+          {
+            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                ve.PropertyName, ve.ErrorMessage);
+          }
+        }
+        throw;
+      }
+    }
+  }
 }

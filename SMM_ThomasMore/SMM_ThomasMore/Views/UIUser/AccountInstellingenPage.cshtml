@@ -3,5 +3,27 @@
     ViewBag.Title = "AccountInstellingen";
 }
 
-<h2>AccountInstellingen</h2>
 
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AccountInstellingen</title>
+</head>
+<body>
+    <div class="list-group">
+
+        @{ Html.RenderPartial("ChangePassword", new SMM_ThomasMore.Models.ChangeAccountModels.ChangePasswordVM()); }
+        @{ Html.RenderPartial("ChangeUsername", new SMM_ThomasMore.Models.ChangeAccountModels.ChangeUsernameVM()); }
+        @{ Html.RenderPartial("ChangeEmail", new SMM_ThomasMore.Models.ChangeAccountModels.ChangeEmailVM()); }
+
+
+
+
+    </div>
+</body>
+</html>

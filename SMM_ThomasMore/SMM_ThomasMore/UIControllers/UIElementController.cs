@@ -232,5 +232,17 @@ namespace SMM_ThomasMore.UIControllers
       return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
     }
 
+    public ActionResult DeleteKeyword(int keyword_id, int element_id)
+    {
+      elController.deleteKeyword(keyword_id, element_id);
+      return View("~/Views/UIElement/ElementBeherenPage.cshtml", elController.getElements().ToList());
+    }
+
+    public ActionResult CreateKeyword(int element_id)
+    {
+      elController.addKeyword(element_id);
+      return View("~/Views/UIElement/NewThema.cshtml", elController.GetElement(element_id));
+    }
+
   }
 }
