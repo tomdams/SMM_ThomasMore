@@ -1,5 +1,10 @@
 package com.example.android_smm.Domain;
 
+import com.google.gson.annotations.SerializedName;
+
 public enum Geslacht {
-    Man, Vrouw
+    @SerializedName("0")
+    Man,
+    @SerializedName("1")
+    Vrouw
 }

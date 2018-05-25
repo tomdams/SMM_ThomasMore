@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidSMM.iml" filepath="$PROJECT_DIR$/AndroidSMM.iml" />
-      <module fileurl="file://E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\AndroidSMM\AndroidSMM.iml" filepath="E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\AndroidSMM\AndroidSMM.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\AndroidSMM\app\app.iml" filepath="E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\integrationMERGEMerge\AndroidSMM\app\app.iml" />
     </modules>
   </component>
 </project>

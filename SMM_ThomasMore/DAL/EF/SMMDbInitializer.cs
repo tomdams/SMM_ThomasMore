@@ -7,7 +7,7 @@ using System.Data.Entity.Validation;
 
 namespace SMM_ThomasMore.DAL.EF
 {
-  class SMMDbInitializer : DropCreateDatabaseAlways<SMMDbContext>
+  class SMMDbInitializer : DropCreateDatabaseIfModelChanges<SMMDbContext>
   {
     protected override void Seed(SMMDbContext context)
     {
@@ -143,6 +143,24 @@ namespace SMM_ThomasMore.DAL.EF
       };
 
       Grafiek g2 = new Grafiek()
+      {
+        titel = "Mannen/Vrouwen over ",
+        plaats = 3,
+        x_as = "Man, Vrouw",
+        y_as = "60, 24",
+        x_as_beschrijving = "Geslacht",
+        y_as_beschrijving = "Aantal Vermeldingen",
+
+        beginDate = new DateTime(2018, 04, 25),
+        eindDate = new DateTime(2018, 04, 30, 23, 59, 59),
+        leeftijd = null,
+        geslacht = null,
+        polariteit = null,
+        grafiekOnderwerp = GrafiekOnderwerp.GESLACHT,
+        grafiekType = GrafiekType.TAART,
+      };
+
+      Grafiek g3 = new Grafiek()
       {
         titel = "Mannen/Vrouwen over ",
         plaats = 3,

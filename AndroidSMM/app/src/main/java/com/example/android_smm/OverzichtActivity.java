@@ -46,7 +46,7 @@ public class OverzichtActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
     private String APIresponse;
     private User currentUser;
-
+    public int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,7 @@ public class OverzichtActivity extends AppCompatActivity {
                 data.put("password", currentUser.getWachtwoord());
 
                 // MAARTEN : Dit is voor het ophalen van de deelplatformen, deze zijn aan te spreken in de dashboardactivity.
-/*
+
                 apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
                 final Call<String> deelplatform = apiInterface.DeelplatformenVoorUser(data);
                 deelplatform.enqueue(new Callback<String>() {
@@ -101,71 +101,29 @@ public class OverzichtActivity extends AppCompatActivity {
                                     d.setGrafieken(grafieks);
                                    // om te debuggen --> d = gevuld :)
                                     d.getGrafieken();
-                                }
 
+
+                                    i++;
+                                    if(i == currentUser.getDeelplatformen().size()){
+                                        Intent intent = new Intent(OverzichtActivity.this, DeelplatformActivity.class);
+                                        // intent.putExtra("deelplatformen",(Serializable) deelplatforms);
+                                        intent.putExtra("currentUser", currentUser);
+                                        startActivity(intent);
+                                    }
+                    }
                                 @Override
                                 public void onFailure(Call<String> call, Throwable t) {
                                     String debug;
                                 }
                             });
                         }
-
-
-
-
-
-
-
-
-
-
-
-                        Intent intent = new Intent(OverzichtActivity.this, DeelplatformActivity.class);
-                        // intent.putExtra("deelplatformen",(Serializable) deelplatforms);
-                        intent.putExtra("currentUser", currentUser);
-                        startActivity(intent);
                     }
-
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
                         // error handling
                     }
+
                 });
-
-*/
-                //MAARTEN : Dit is voor het ophalen van de grafieken voor een bepaald deelplaatform/dashboard van de user.
-                //Plaats maar waar je het wil doen!
-                //   Map<String, String> data = new HashMap<>();
-                /*
-                data.put("username",currentUser.getUsername());
-                data.put("password",currentUser.getWachtwoord());
-                // de 1 te vervangen door opgehaalde deelplatformid van bovenstaande API call
-                data.put("deelplatformid","1");
-
-
-                apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-                final Call<String> grafiek = apiInterface.DashboardVoorGekozenDeelplatform(data);
-                grafiek.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String > call, Response<String> response) {
-                        APIresponse = response.body().toString();
-                        List<Grafiek> grafieks = (List<Grafiek>) fromJson(APIresponse,new TypeToken<List<Grafiek>>(){}.getType());
-
-                        Intent intent = new Intent(OverzichtActivity.this, DashboardActivity.class);
-                        intent.putExtra("username",currentUser);
-                        intent.putExtra("grafieken", (Serializable) grafieks);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-                        String debug;
-                    }
-                });
-*/
-                ///// NOTIFICATIONS OPHALEN
-
-
             }
         });
 
