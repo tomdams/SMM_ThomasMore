@@ -65,7 +65,17 @@ public class DashboardActivity extends AppCompatActivity {
                     if(grafiek.getElements().size() ==1){
                         addPieChart(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getX_as_beschrijving(),grafiek.getY_as_beschrijving());
                     }else if(grafiek.getElements().size() >1){
-
+                        switch (grafiek.getElements().size()) {
+                            case 2:
+                                addBarKruising(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getY_as_beschrijving(), grafiek.getElements().get(0).naam, 2, grafiek.getY_as1(), grafiek.getElements().get(1).naam);
+                                break;
+                            case 3: addBarKruising(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getY_as_beschrijving(),grafiek.getElements().get(0).naam, 3, grafiek.getY_as1(), grafiek.getElements().get(1).naam, grafiek.getY_as2(), grafiek.getElements().get(2).naam);
+                                break;
+                            case 4: addBarKruising(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getY_as_beschrijving(),grafiek.getElements().get(0).naam, 4, grafiek.getY_as1(), grafiek.getElements().get(1).naam, grafiek.getY_as2(), grafiek.getElements().get(2).naam, grafiek.getY_as3(), grafiek.getElements().get(3).naam);
+                                break;
+                            case 5: addBarKruising(grafiek.getX_as(), grafiek.getY_as(), grafiek.getTitel(), grafiek.getY_as_beschrijving(),grafiek.getElements().get(0).naam, 4, grafiek.getY_as1(), grafiek.getElements().get(1).naam, grafiek.getY_as2(), grafiek.getElements().get(2).naam, grafiek.getY_as3(), grafiek.getElements().get(3).naam, grafiek.getY_as4(), grafiek.getElements().get(4).naam);
+                                break;
+                        }
                     }
                     break;
                 case LIJN:
