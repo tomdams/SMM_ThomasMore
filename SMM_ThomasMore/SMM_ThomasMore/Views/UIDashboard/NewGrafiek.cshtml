@@ -118,7 +118,7 @@
     {
     <tr>
         <td>@e.naam</td>
-        <td><a href='@Url.Action("DeleteElement","UIDashboard", new { eid = e.element_id })' class="btn btn-dark">CDelete Element</a></td>
+        <td><a href='@Url.Action("DeleteElement","UIDashboard", new { eid = e.element_id })' class="btn btn-dark">Delete Element</a></td>
     </tr>
     }
 </table>
@@ -241,7 +241,6 @@
                                 google.charts.setOnLoadCallback(drawVisualization);
 
                                 function drawVisualization() {
-                                    // Some raw data (not necessarily accurate)
                                     var data = new google.visualization.DataTable();
                                       data.addColumn('string', '@Model.grafiek.x_as_beschrijving');
                                       var namenString = "@Model.grafiek.GetElementNames()";

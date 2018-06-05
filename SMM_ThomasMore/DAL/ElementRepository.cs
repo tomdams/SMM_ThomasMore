@@ -56,12 +56,7 @@ namespace SMM_ThomasMore.DAL
 
       ctx.SaveChanges();
     }
-    public void berekenPersoon(Persoon persoon)
-    {
 
-
-      //ctx.SaveChanges();
-    }
     public IEnumerable<AlertInstellingen> getAIs()
     {
       return ctx.AlertInstellingen;

@@ -7,8 +7,7 @@ using System.Web.Mvc;
 namespace SMM_ThomasMore.UIControllers
 {
     public class LoginController : Controller
-    {
-        // GET: Login        
+    {      
         public ActionResult Index()
         {
             return View();

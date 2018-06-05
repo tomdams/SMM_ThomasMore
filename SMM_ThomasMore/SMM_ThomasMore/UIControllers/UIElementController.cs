@@ -16,7 +16,6 @@ namespace SMM_ThomasMore.UIControllers
         private SMController smc = new SMController();
         private static Element element;
 
-        // GET: UIElement
         public UIElementController()
         {
           if (UserController.currentUser != null)
@@ -45,13 +44,11 @@ namespace SMM_ThomasMore.UIControllers
         else if (element.GetType().ToString().ToLower().Contains("thema"))
         {
           Thema thema = (Thema)element;
-          //elController.berekenPersoon(persoon);
           return View("~/Views/UIElement/ThemaPage.cshtml", thema);
         }
         else if (element.GetType().ToString().ToLower().Contains("organisatie"))
         {
           Organisatie organisatie = (Organisatie)element;
-          //elController.berekenPersoon(persoon);
           return View("~/Views/UIElement/OrganisatiePage.cshtml", organisatie);
         }
       }
@@ -75,13 +72,13 @@ namespace SMM_ThomasMore.UIControllers
                 else if (element.GetType().ToString().ToLower().Contains("thema"))
                 {
                   Thema thema = (Thema)element;
-                  //elController.berekenPersoon(persoon);
+                 
                   return View("~/Views/UIElement/ThemaPage.cshtml", thema);
                 }
                 else if (element.GetType().ToString().ToLower().Contains("organisatie"))
                 {
                   Organisatie organisatie = (Organisatie)element;
-                  //elController.berekenPersoon(persoon);
+
                   return View("~/Views/UIElement/OrganisatiePage.cshtml", organisatie);
                 }
       }

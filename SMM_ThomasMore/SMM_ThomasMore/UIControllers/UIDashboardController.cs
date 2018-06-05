@@ -26,7 +26,6 @@ namespace SMM_ThomasMore.UIControllers
             }
         }
 
-        // GET: UIDashboard
         public ActionResult Index()
     {
       return View();

@@ -59,19 +59,13 @@ namespace SC.BL
         gemiddeldeVermeldingen /= 3;
 
         if (vermeldingenVandaag > (gemiddeldeVermeldingen * 1.15))
-        {
-          /*
-          System.Diagnostics.Debug.WriteLine(e.naam + " is trending");
-          System.Diagnostics.Debug.WriteLine(e.naam + " vermeldingen vandaag " + vermeldingenVandaag);
-          System.Diagnostics.Debug.WriteLine(e.naam + " 1 dag geleden: " + countVermeldingen(e, today.AddDays(0 - (2)), today.AddDays(-1)));
-          System.Diagnostics.Debug.WriteLine(e.naam + " 2 dag geleden: " + countVermeldingen(e, today.AddDays(0 - (3)), today.AddDays(-2)));
-          System.Diagnostics.Debug.WriteLine(e.naam + " 3 dag geleden: " + countVermeldingen(e, today.AddDays(0 - (4)), today.AddDays(-3)));
-          */
+
           return true;
-        }
       }
       return false;
     }
+
+
 
     public void readMessages(int platform_id)
     {
@@ -147,7 +141,6 @@ namespace SC.BL
         checkTrending(platform_id);
         dbManager.updateGrafieken(platform_id);
       }
-      //Commentaar weghalen
     }
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)

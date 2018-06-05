@@ -17,7 +17,6 @@ namespace SMM_ThomasMore.Domain
     public virtual ICollection<Grafiek> grafieken { get; set; }
     [Required]
     public virtual Deelplatform deelplatform { get; set; }
-    //public ICollection<Zone> zones { get; set; }
 
     public Dashboard()
     {

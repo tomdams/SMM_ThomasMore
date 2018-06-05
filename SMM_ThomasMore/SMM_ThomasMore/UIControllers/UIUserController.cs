@@ -32,8 +32,6 @@ namespace SMM_ThomasMore.Controllers
       }
             pc = new PlatformController();
     }
-
-    // GET: User
     public ActionResult AanmeldenPage()
     {
       return View();
@@ -163,8 +161,7 @@ namespace SMM_ThomasMore.Controllers
 
             if (lastUpdatedUser.user_id == 0)
             {
-                //  probleem met hashed wachtwoord ?
-                //  uc.addUser(u, PlatformController.currentDeelplatform.id);
+               
             }
             else if (lastUpdatedUser.type == UserType.SUPERADMIN)
             {
@@ -232,21 +229,15 @@ namespace SMM_ThomasMore.Controllers
 
       var accessToken = result.access_token;
 
-      // Store the access token in the session for farther use
       Session["AccessToken"] = accessToken;
+ fb.AccessToken = accessToken;
 
-      // update the facebook client with the access token so
-      // we can make requests on behalf of the user
-      fb.AccessToken = accessToken;
-
-      // Get the user's information, like email, first name, middle name etc
       dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
       string email = me.email;
       string firstname = me.first_name;
       string middlename = me.middle_name;
       string lastname = me.last_name;
 
-      // Set the auth cookie
       FormsAuthentication.SetAuthCookie(email, false);
       return RedirectToAction("Index", "Home");
     }
