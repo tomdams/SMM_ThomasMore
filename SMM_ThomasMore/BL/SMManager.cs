@@ -139,8 +139,8 @@ namespace SC.BL
         }
 
         checkTrending(platform_id);
-        dbManager.updateGrafieken(platform_id);
       }
+      dbManager.updateGrafieken(platform_id);
     }
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)

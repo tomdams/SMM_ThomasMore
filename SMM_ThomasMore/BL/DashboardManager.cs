@@ -38,6 +38,11 @@ namespace SMM_ThomasMore.BL
       {
         if(g.elements.First().Deelplatform.id == platformId)
         {
+          if(g.dashboards.Count == 0)
+          {
+            g.beginDate = DateTime.Now.AddDays(-7);
+            g.eindDate = DateTime.Now;
+          }
           Grafiek graph = updateGrafiek(repo.GetGrafiek(g.id));
           repo.updateGrafiek(graph.x_as, graph.y_as, graph.id);
         }
