@@ -27,7 +27,7 @@ namespace SMM_ThomasMore.Controllers
 
         public void politiciInlezen()
         {
-          mgr.politiciInlezen();
+          mgr.politiciInlezen(PlatformController.currentDeelplatform.id);
         }
         public Element GetElement(string naam)
         {

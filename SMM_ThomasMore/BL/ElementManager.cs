@@ -21,6 +21,7 @@ namespace SMM_ThomasMore.BL
         private IUserRepository userRepo;
         private ISMRepository smRepo;
         private DateTime today = new DateTime(2018, 04, 29);
+
         public ElementManager()
         {
             repo = new ElementRepository();
@@ -52,50 +53,53 @@ namespace SMM_ThomasMore.BL
         }
 
 
-        public void politiciInlezen()
+        public void politiciInlezen(int platform_id)
         {
-      try
+      if(repo.getElements(platform_id).Count() < 100)
       {
-        using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\Data\politici.json"))
+        try
         {
-          string json = r.ReadToEnd();
-
-          dynamic array = JsonConvert.DeserializeObject(json);
-          foreach (var item in array)
+          using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\Data\politici.json"))
           {
-            Persoon p = new Persoon();
-            p.element_id = item.id;
-            p.first_name = item.first_name;
-            p.last_name = item.last_name;
-            p.district = item.district;
-            p.level = item.level;
-            if (item.gender.ToString().ToLower().Equals("m"))
-            {
-              p.geslacht = Geslacht.Man;
-            }
-            else
-            {
-              p.geslacht = Geslacht.Vrouw;
-            }
-            p.twitter = item.twitter;
-            p.site = item.site;
-            DateTime date = item.dateOfBirth;
-            p.geboorteDatum = date;
-            p.facebook = item.facebook;
-            p.postal_code = item.postal_code;
-            p.naam = item.full_name;
-            p.position = item.position;
-            p.organisation = item.organisation;
-            p.town = item.town;
+            string json = r.ReadToEnd();
 
-            repo.addPersoon(p, 1);
+            dynamic array = JsonConvert.DeserializeObject(json);
+            foreach (var item in array)
+            {
+              Persoon p = new Persoon();
+              p.element_id = item.id;
+              p.first_name = item.first_name;
+              p.last_name = item.last_name;
+              p.district = item.district;
+              p.level = item.level;
+              if (item.gender.ToString().ToLower().Equals("m"))
+              {
+                p.geslacht = Geslacht.Man;
+              }
+              else
+              {
+                p.geslacht = Geslacht.Vrouw;
+              }
+              p.twitter = item.twitter;
+              p.site = item.site;
+              DateTime date = item.dateOfBirth;
+              p.geboorteDatum = date;
+              p.facebook = item.facebook;
+              p.postal_code = item.postal_code;
+              p.naam = item.full_name;
+              p.position = item.position;
+              p.organisation = item.organisation;
+              p.town = item.town;
+
+              repo.addPersoon(p, 1);
+            }
           }
         }
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine("The file could not be read:");
-        Console.WriteLine(e.Message);
+        catch (Exception e)
+        {
+          Console.WriteLine("The file could not be read:");
+          Console.WriteLine(e.Message);
+        }
       }
         }
 

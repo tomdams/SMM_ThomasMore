@@ -23,9 +23,7 @@ E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SM
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.dll
 E:\Maarten\Documents\School\Tweede Jaar\Integratieproject\nieuwste_integratie\SMM_ThomasMore\ClassLibrary1\obj\Debug\SC.BL.Domain.pdb
-<<<<<<< HEAD
 >>>>>>> 779588e89dc596f689d9ba4376ebe77e8e8a0a5a
-=======
 C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.dll
 C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\SC.BL.Domain.pdb
 C:\Users\Mario\Desktop\skool\intrgratie\v1\SMM_ThomasMore\SMM_ThomasMore\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll

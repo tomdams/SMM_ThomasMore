@@ -43,7 +43,7 @@ namespace SC.BL
     public bool checkTrending(Element e)
     {
       //tijdspanne vermeldingen veranderen
-      int vermeldingenVandaag = countVermeldingen(e, today.AddDays(-1), today);
+      int vermeldingenVandaag = countVermeldingen(e, DateTime.Now.AddDays(-1), DateTime.Now);
 
       if (vermeldingenVandaag > MINIMUM)
       {
@@ -53,8 +53,8 @@ namespace SC.BL
 
         for (int i = 1; i < 4; i++)
         {
-          gemiddeldeVermeldingen += countVermeldingen(e, today.AddDays(0 - (i + 1)), today.AddDays(0 - i));
-          history += e.naam + " dag(en) geleden " + i + ": " + countVermeldingen(e, today.AddDays(0 - (i + 1)), today.AddDays(0 - i)) + "\n";
+          gemiddeldeVermeldingen += countVermeldingen(e, DateTime.Now.AddDays(0 - (i + 1)), DateTime.Now.AddDays(0 - i));
+          history += e.naam + " dag(en) geleden " + i + ": " + countVermeldingen(e, DateTime.Now.AddDays(0 - (i + 1)), DateTime.Now.AddDays(0 - i)) + "\n";
         }
         gemiddeldeVermeldingen /= 3;
 
@@ -79,14 +79,18 @@ namespace SC.BL
       repo = new SMRepository();
       em = new ElementManager();
       dbManager = new DashboardManager();
+      if(repo.getMessages().Count() != 0)
+      {
+        lastRead = (DateTime)repo.getMessages().Max(t => t.date);
+      }
+      System.Diagnostics.Debug.WriteLine(lastRead);
 
       string json = "";
       using (var client = new System.Net.Http.HttpClient())
       {
         var uri = "https://kdg.textgain.com/query";
         var httpRequest = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Post, uri);
-        var content = "{ \"since\":\"" + lastRead.ToString("dd MMM yyyy HH:mm:ss") + "\",\n" +
-        "\"until\":\"30 april 2018 22:00\" }";
+        var content = "{ \"since\":\"" + lastRead.ToString("dd MMM yyyy HH:mm:ss") + "\"}";
         httpRequest.Content = new System.Net.Http.StringContent(content, Encoding.UTF8, "application/json");
         httpRequest.Headers.Add("X-API-Key", "aEN3K6VJPEoh3sMp9ZVA73kkr");
         httpRequest.Headers.Add("Accept", "application/json; charset=utf-8");
@@ -99,49 +103,51 @@ namespace SC.BL
       };
 
       dynamic array = JsonConvert.DeserializeObject(json);
-      foreach (var item in array)
+      if(array.Count != 0)
       {
-        DateTime date = item.date;
-        Message m = new Message();
-        m.id = item.id;
-        m.source = item.source;
-        m.geo = item.geo.ToString();
-        m.mentions = item.mentions.ToString();
-        m.retweet = item.retweet;
-        m.date = date;
-        m.words = item.words.ToString();
-        if (item.sentiment.ToString() is null)
+        foreach (var item in array)
         {
-          m.sentiment = "";
-        }
-        else
-        {
-          m.sentiment = item.sentiment.ToString();
-        }
-        m.hashtags = item.hashtags.ToString();
-        m.urls = item.urls.ToString();
-        m.themas = item.themes.ToString();
-        m.persons = item.persons.ToString();
-        m.age = item.profile.age;
-        if (item.profile.gender.ToString().ToLower().Equals("m"))
-        {
-          m.geslacht = Geslacht.Man;
-        }
-        else
-        {
-          m.geslacht = Geslacht.Vrouw;
-        }
-        m.education = item.profile.education;
-        m.personality = item.profile.personality;
-        m.language = item.profile.language;
+          DateTime date = item.date;
+          Message m = new Message();
+          m.id = item.id;
+          m.source = item.source;
+          m.geo = item.geo.ToString();
+          m.mentions = item.mentions.ToString();
+          m.retweet = item.retweet;
+          m.date = date;
+          m.words = item.words.ToString();
+          if (item.sentiment.ToString() is null)
+          {
+            m.sentiment = "";
+          }
+          else
+          {
+            m.sentiment = item.sentiment.ToString();
+          }
+          m.hashtags = item.hashtags.ToString();
+          m.urls = item.urls.ToString();
+          m.themas = item.themes.ToString();
+          m.persons = item.persons.ToString();
+          m.age = item.profile.age;
+          if (item.profile.gender.ToString().ToLower().Equals("m"))
+          {
+            m.geslacht = Geslacht.Man;
+          }
+          else
+          {
+            m.geslacht = Geslacht.Vrouw;
+          }
+          m.education = item.profile.education;
+          m.personality = item.profile.personality;
+          m.language = item.profile.language;
 
-        repo.add(m);
+          repo.add(m);
+        }
+
+        checkTrending(platform_id);
+        dbManager.updateGrafieken(platform_id);
       }
-
-      checkTrending(platform_id);
-      dbManager.updateGrafieken(platform_id);
       //Commentaar weghalen
-      lastRead = DateTime.Now;
     }
 
     private int countVermeldingen(Element e, DateTime startDate, DateTime endDate)
